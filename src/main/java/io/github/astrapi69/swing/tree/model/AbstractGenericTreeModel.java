@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2021 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,8 +22,20 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69;
+package io.github.astrapi69.swing.tree.model;
 
-public class InitialTemplate
+import io.github.astrapi69.swing.tree.model.api.IGenericTreeModel;
+
+/**
+ * The class AbstractGenericTreeModel.
+ *
+ * @param <T>
+ *            the generic type of the model
+ */
+public abstract class AbstractGenericTreeModel<T> implements IGenericTreeModel<T>
 {
+
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
 }
