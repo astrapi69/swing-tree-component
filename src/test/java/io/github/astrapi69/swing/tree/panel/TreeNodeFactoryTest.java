@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,16 +24,17 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import org.junit.jupiter.api.Test;
+
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.test.instances.TestTreeNodeFactory;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
-import org.junit.jupiter.api.Test;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class TreeNodeFactoryTest

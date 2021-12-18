@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -33,18 +33,15 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeSelectionModel;
 
-import io.github.astrapi69.swing.component.factory.DimensionFactory;
-import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
-import io.github.astrapi69.swing.listener.mouse.MouseDoubleClickListener;
 import lombok.Getter;
 
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.swing.base.BasePanel;
-//import io.github.astrapi69.swing.components.factories.DimensionFactory;
-//import io.github.astrapi69.swing.components.factories.SwingContainerFactory;
-//import io.github.astrapi69.swing.mouse.MouseDoubleClickListener;
+import io.github.astrapi69.swing.component.factory.DimensionFactory;
+import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
+import io.github.astrapi69.swing.listener.mouse.MouseDoubleClickListener;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 
 

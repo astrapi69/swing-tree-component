@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,12 +24,13 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
-import io.github.astrapi69.tree.TreeNode;
+import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import java.awt.*;
+
+import io.github.astrapi69.tree.TreeNode;
 
 public class TreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
 {

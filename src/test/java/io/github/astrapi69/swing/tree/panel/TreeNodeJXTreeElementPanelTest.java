@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,15 +24,8 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.listener.RequestFocusListener;
-import io.github.astrapi69.swing.tree.JXTreeElement;
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
-import io.github.astrapi69.tree.TreeNode;
-import lombok.NonNull;
-import org.jdesktop.swingx.JXTree;
+import java.awt.*;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -43,8 +36,18 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.*;
-import java.awt.event.MouseEvent;
+
+import lombok.NonNull;
+
+import org.jdesktop.swingx.JXTree;
+
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.swing.listener.RequestFocusListener;
+import io.github.astrapi69.swing.tree.JXTreeElement;
+import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
+import io.github.astrapi69.tree.TreeNode;
 
 public class TreeNodeJXTreeElementPanelTest extends TreeNodeJXTreeElementPanel
 {
@@ -59,6 +62,33 @@ public class TreeNodeJXTreeElementPanelTest extends TreeNodeJXTreeElementPanel
 	public TreeNodeJXTreeElementPanelTest(final Model<TreeNode<JXTreeElement>> model)
 	{
 		super(model);
+	}
+
+	/**
+	 * Gets the selected option from the {@link JOptionPane}
+	 *
+	 * @param optionPane
+	 *            the option pane
+	 * @return the selected option
+	 */
+	public static int getSelectedOption(final @NonNull JOptionPane optionPane)
+	{
+		Object selectedOption = optionPane.getValue();
+		if (selectedOption == null)
+			return -1;
+		Object[] options = optionPane.getOptions();
+		if (options == null)
+		{
+			if (selectedOption instanceof Integer)
+				return ((Integer)selectedOption).intValue();
+			return -1;
+		}
+		for (int counter = 0, maxCounter = options.length; counter < maxCounter; counter++)
+		{
+			if (options[counter].equals(selectedOption))
+				return counter;
+		}
+		return -1;
 	}
 
 	@Override
@@ -237,32 +267,5 @@ public class TreeNodeJXTreeElementPanelTest extends TreeNodeJXTreeElementPanel
 	protected void onEditSelectedTreeNode()
 	{
 		System.out.println("onEditSelectedTreeNode");
-	}
-
-	/**
-	 * Gets the selected option from the {@link JOptionPane}
-	 *
-	 * @param optionPane
-	 *            the option pane
-	 * @return the selected option
-	 */
-	public static int getSelectedOption(final @NonNull JOptionPane optionPane)
-	{
-		Object selectedOption = optionPane.getValue();
-		if (selectedOption == null)
-			return -1;
-		Object[] options = optionPane.getOptions();
-		if (options == null)
-		{
-			if (selectedOption instanceof Integer)
-				return ((Integer)selectedOption).intValue();
-			return -1;
-		}
-		for (int counter = 0, maxCounter = options.length; counter < maxCounter; counter++)
-		{
-			if (options[counter].equals(selectedOption))
-				return counter;
-		}
-		return -1;
 	}
 }

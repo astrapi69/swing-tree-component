@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import lombok.NonNull;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableModel;
-import lombok.NonNull;
 import io.github.astrapi69.test.objects.Permission;
 
 /**

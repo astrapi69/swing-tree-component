@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,15 +24,8 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
-import io.github.astrapi69.swing.listener.RequestFocusListener;
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.swing.tree.renderer.TreeNodeCellRenderer;
-import io.github.astrapi69.tree.TreeElement;
-import io.github.astrapi69.tree.TreeNode;
-import org.jdesktop.swingx.JXTree;
+import java.awt.*;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -43,8 +36,17 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.*;
-import java.awt.event.MouseEvent;
+
+import org.jdesktop.swingx.JXTree;
+
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
+import io.github.astrapi69.swing.listener.RequestFocusListener;
+import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.swing.tree.renderer.TreeNodeCellRenderer;
+import io.github.astrapi69.tree.TreeElement;
+import io.github.astrapi69.tree.TreeNode;
 
 public class TreeNodeTreeElementPanelTest extends TreeNodeTreeElementPanel
 {

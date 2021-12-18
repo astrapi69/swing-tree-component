@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,17 +24,18 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
-import io.github.astrapi69.swing.component.factory.DimensionFactory;
-import io.github.astrapi69.swing.tree.labels.CheckBoxTreeLabel;
-import io.github.astrapi69.swing.tree.model.CheckableTreeNode;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
+import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.tree.TreeCellRenderer;
-import java.awt.*;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import io.github.astrapi69.swing.component.factory.DimensionFactory;
+import io.github.astrapi69.swing.tree.labels.CheckBoxTreeLabel;
+import io.github.astrapi69.swing.tree.model.CheckableTreeNode;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)

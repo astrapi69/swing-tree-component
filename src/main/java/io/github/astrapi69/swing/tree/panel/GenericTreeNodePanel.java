@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,12 +24,13 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import javax.swing.tree.TreeModel;
+
+import org.jdesktop.swingx.JXTree;
+
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
-import org.jdesktop.swingx.JXTree;
-
-import javax.swing.tree.TreeModel;
 
 /**
  * The abstract class {@link GenericTreeNodePanel} a given {@link TreeNode} parameterized with

@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,17 +24,18 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.api.ITreeNode;
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Vector;
 
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.MutableTreeNode;
-import java.io.Serializable;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Vector;
+
+import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.tree.api.ITreeNode;
 
 public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, Serializable
 {

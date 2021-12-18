@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,13 +24,8 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import io.github.astrapi69.file.create.FileCreationState;
-import io.github.astrapi69.file.create.FileFactory;
-import io.github.astrapi69.file.delete.DeleteFileExtensions;
-import io.github.astrapi69.file.system.SystemFileExtensions;
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
+import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -39,8 +34,14 @@ import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.event.MouseEvent;
-import java.io.File;
+
+import io.github.astrapi69.file.create.FileCreationState;
+import io.github.astrapi69.file.create.FileFactory;
+import io.github.astrapi69.file.delete.DeleteFileExtensions;
+import io.github.astrapi69.file.system.SystemFileExtensions;
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 public class TestFileTreePanel extends JXTreePanel<File>
 {
@@ -96,14 +97,11 @@ public class TestFileTreePanel extends JXTreePanel<File>
 	{
 		GroupLayout layout = new GroupLayout(this);
 		this.setLayout(layout);
-		layout.setHorizontalGroup(
-			layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addContainerGap()
-					.addComponent(scrTree, GroupLayout.PREFERRED_SIZE, 384,
-						GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout
-			.createParallelGroup(GroupLayout.Alignment.LEADING)
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+			.addGroup(layout.createSequentialGroup().addContainerGap()
+				.addComponent(scrTree, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 			.addGroup(layout.createSequentialGroup().addContainerGap()
 				.addComponent(scrTree, GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
 				.addContainerGap()));

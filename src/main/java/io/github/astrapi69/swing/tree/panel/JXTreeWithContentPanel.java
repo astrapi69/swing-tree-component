@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,13 +24,13 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import javax.swing.*;
+import javax.swing.table.TableModel;
+
+import lombok.Getter;
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
-import lombok.Getter;
-
-import javax.swing.*;
-import javax.swing.table.TableModel;
 
 @Getter
 public abstract class JXTreeWithContentPanel<T> extends JXTreePanel<T>
