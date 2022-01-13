@@ -4,6 +4,12 @@
 Version 1.1-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of gradle version to 7.3.3
+- update of com.github.ben-manes.versions.gradle.plugin to new version 0.41.0
+- update of swing-base-components version to 1.1
+
 Version 1
 -------------
 
