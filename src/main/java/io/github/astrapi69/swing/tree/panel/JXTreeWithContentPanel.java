@@ -59,7 +59,7 @@ public abstract class JXTreeWithContentPanel<T> extends JXTreePanel<T>
 	 *            the model
 	 * @return the table model
 	 */
-	protected abstract GenericTableModel getTableModel(T model);
+	protected abstract GenericTableModel newTableModel(T model);
 
 	/**
 	 * Factory method for creating the new {@link JScrollPane}. This method is invoked in the

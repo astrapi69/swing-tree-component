@@ -122,7 +122,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 		// set root
 		TreeNode<GenericTreeElement<List<Permission>>> root = (TreeNode<GenericTreeElement<List<Permission>>>)getModelObject()
 			.getRoot();
-		getTblTreeEntryTable().setModel(getTableModel(root));
+		getTblTreeEntryTable().setModel(newTableModel(root));
 	}
 
 	@Override
@@ -148,7 +148,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 				node = (DefaultMutableTreeNode)lastPathComponent;
 				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)node
 					.getUserObject();
-				getTableModel(selectedTreeNode);
+				newTableModel(selectedTreeNode);
 				int index = e.getChildIndices()[0];
 				node = (DefaultMutableTreeNode)(node.getChildAt(index));
 
@@ -190,7 +190,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	 * @param model
 	 */
 	@Override
-	protected GenericTableModel getTableModel(TreeNode<GenericTreeElement<List<Permission>>> model)
+	protected GenericTableModel newTableModel(TreeNode<GenericTreeElement<List<Permission>>> model)
 	{
 		GenericTreeElement<List<Permission>> parentTreeNode = model.getValue();
 		List<Permission> permissions = parentTreeNode.getDefaultContent();
@@ -211,7 +211,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 			TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNodeElement = (TreeNode<GenericTreeElement<List<Permission>>>)defaultMutableTreeNode
 				.getUserObject();
 
-			GenericTableModel tableModel = getTableModel(selectedTreeNodeElement);
+			GenericTableModel tableModel = newTableModel(selectedTreeNodeElement);
 
 			tableModel.fireTableDataChanged();
 

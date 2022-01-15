@@ -118,7 +118,7 @@ public class DemoTreeNodeJXTreeElementWithContentPanel extends TreeNodeJXTreeEle
 		super.onAfterInitializeComponents();
 		// set root
 		TreeNode<JXTreeElement> root = (TreeNode<JXTreeElement>)getModelObject().getRoot();
-		getTblTreeEntryTable().setModel(getTableModel(root));
+		getTblTreeEntryTable().setModel(newTableModel(root));
 	}
 
 	@Override
@@ -143,7 +143,7 @@ public class DemoTreeNodeJXTreeElementWithContentPanel extends TreeNodeJXTreeEle
 				node = (DefaultMutableTreeNode)lastPathComponent;
 				TreeNode<JXTreeElement> selectedTreeNode = (TreeNode<JXTreeElement>)node
 					.getUserObject();
-				getTableModel(selectedTreeNode);
+				newTableModel(selectedTreeNode);
 				int index = e.getChildIndices()[0];
 				node = (DefaultMutableTreeNode)(node.getChildAt(index));
 
@@ -185,7 +185,7 @@ public class DemoTreeNodeJXTreeElementWithContentPanel extends TreeNodeJXTreeEle
 	 * @param model
 	 */
 	@Override
-	protected GenericTableModel getTableModel(TreeNode<JXTreeElement> model)
+	protected GenericTableModel newTableModel(TreeNode<JXTreeElement> model)
 	{
 		JXTreeElement parentTreeNode = model.getValue();
 		Object defaultContent = parentTreeNode.getDefaultContent();
@@ -193,6 +193,11 @@ public class DemoTreeNodeJXTreeElementWithContentPanel extends TreeNodeJXTreeEle
 		// 2. Create a generic table model for the class Permission.
 		getTblTreeEntryTable().getGenericTableModel().removeAll();
 		getTblTreeEntryTable().getGenericTableModel().addList(permissions);
+		return getTblTreeEntryTable().getGenericTableModel();
+	}
+
+
+	public GenericTableModel getSelectedTableModel() {
 		return getTblTreeEntryTable().getGenericTableModel();
 	}
 
@@ -207,10 +212,9 @@ public class DemoTreeNodeJXTreeElementWithContentPanel extends TreeNodeJXTreeEle
 			TreeNode<JXTreeElement> selectedTreeNodeElement = (TreeNode<JXTreeElement>)defaultMutableTreeNode
 				.getUserObject();
 
-			GenericTableModel tableModel = getTableModel(selectedTreeNodeElement);
+			GenericTableModel tableModel = newTableModel(selectedTreeNodeElement);
 
 			tableModel.fireTableDataChanged();
-
 		}
 	}
 
