@@ -48,17 +48,17 @@ import io.github.astrapi69.swing.tree.renderer.TreeNodeCellRenderer;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 
-public class TreeNodeTreeElementPanelTest extends TreeNodeTreeElementPanel
+public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 {
 
 	private static final long serialVersionUID = 1L;
 
-	public TreeNodeTreeElementPanelTest()
+	public DemoTreeNodeTreeElementPanel()
 	{
 		this(BaseModel.of(new TreeNode<>()));
 	}
 
-	public TreeNodeTreeElementPanelTest(final Model<TreeNode<TreeElement>> model)
+	public DemoTreeNodeTreeElementPanel(final Model<TreeNode<TreeElement>> model)
 	{
 		super(model);
 	}

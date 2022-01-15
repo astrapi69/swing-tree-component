@@ -26,6 +26,7 @@ package io.github.astrapi69.swing.tree.panel;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.util.Optional;
 
 import javax.swing.*;
@@ -47,6 +48,7 @@ import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
 import io.github.astrapi69.swing.listener.mouse.MouseDoubleClickListener;
 import io.github.astrapi69.swing.table.GenericJXTable;
+import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
@@ -56,17 +58,17 @@ import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
 import io.github.astrapi69.test.objects.Permission;
 import io.github.astrapi69.tree.TreeNode;
 
-public class TreeNodeJXTreeElementWithContentPanelTest extends TreeNodeJXTreeElementWithContentPanel
+public class DemoTreeNodeJXTreeElementWithContentPanel extends TreeNodeJXTreeElementWithContentPanel
 {
 
 	private static final long serialVersionUID = 1L;
 
-	public TreeNodeJXTreeElementWithContentPanelTest()
+	public DemoTreeNodeJXTreeElementWithContentPanel()
 	{
 		this(BaseModel.of(new TreeNode<>()));
 	}
 
-	public TreeNodeJXTreeElementWithContentPanelTest(final Model<TreeNode<JXTreeElement>> model)
+	public DemoTreeNodeJXTreeElementWithContentPanel(final Model<TreeNode<JXTreeElement>> model)
 	{
 		super(model);
 	}
@@ -102,7 +104,7 @@ public class TreeNodeJXTreeElementWithContentPanelTest extends TreeNodeJXTreeEle
 					System.out.println(permission);
 
 					DialogExtensions.showInformationDialog(
-						TreeNodeJXTreeElementWithContentPanelTest.this, "Title",
+						DemoTreeNodeJXTreeElementWithContentPanel.this, "Title",
 						permission.toString());
 				}
 			}
@@ -187,7 +189,7 @@ public class TreeNodeJXTreeElementWithContentPanelTest extends TreeNodeJXTreeEle
 	{
 		JXTreeElement parentTreeNode = model.getValue();
 		Object defaultContent = parentTreeNode.getDefaultContent();
-		java.util.List<Permission> permissions = (java.util.List<Permission>)defaultContent;
+		List<Permission> permissions = (List<Permission>)defaultContent;
 		// 2. Create a generic table model for the class Permission.
 		getTblTreeEntryTable().getGenericTableModel().removeAll();
 		getTblTreeEntryTable().getGenericTableModel().addList(permissions);

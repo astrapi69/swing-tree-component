@@ -22,39 +22,31 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.test.instances;
 
-import lombok.NonNull;
-import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
-import io.github.astrapi69.swing.table.model.dynamic.DynamicTableModel;
-import io.github.astrapi69.test.objects.Permission;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-/**
- * The class DynamicPermissionsTableModel
- */
-public class DynamicPermissionsTableModel extends DynamicTableModel<Permission>
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import org.junit.jupiter.api.Test;
+
+import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.tree.TreeElement;
+import io.github.astrapi69.tree.TreeNode;
+
+
+public class TreeNodeFactoryTest
 {
 
-	public DynamicPermissionsTableModel(@NonNull DynamicTableColumnsModel<Permission> columnsModel)
+	@Test
+	public void testNewDefaultMutableTreeNode()
 	{
-		super(columnsModel);
+		TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
+			.initializeTestTreeNodeElement();
+		DefaultMutableTreeNode rootNode = TreeNodeFactory
+			.newDefaultMutableTreeNode(treeElementTreeNode);
+		assertNotNull(rootNode);
+		assertEquals(rootNode.getChildCount(), 2);
 	}
-
-	@Override
-	public Object getValueAt(final int row, final int col)
-	{
-		final Permission permission = getData().get(row);
-		switch (col)
-		{
-			case 0 :
-				return permission.getName();
-			case 1 :
-				return permission.getDescription();
-			case 3 :
-				return permission.getDescription();
-			default :
-				return null;
-		}
-	}
-
 }

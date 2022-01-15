@@ -22,31 +22,39 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.table.model;
 
-import java.awt.*;
-
-import io.github.astrapi69.window.adapter.CloseWindow;
+import lombok.NonNull;
+import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
+import io.github.astrapi69.swing.table.model.dynamic.DynamicTableModel;
+import io.github.astrapi69.test.objects.Permission;
 
 /**
- * The test class for {@link JXTreePanel}
+ * The class DynamicPermissionsTableModel
  */
-public class FileTreePanelTest
+public class DynamicPermissionsTableModel extends DynamicTableModel<Permission>
 {
 
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(final String[] args)
+	public DynamicPermissionsTableModel(@NonNull DynamicTableColumnsModel<Permission> columnsModel)
 	{
-		final Frame frame = new Frame("JXTreePanel");
-		frame.addWindowListener(new CloseWindow());
-		frame.add(new TestFileTreePanel());
-		frame.pack();
-		frame.setVisible(true);
+		super(columnsModel);
+	}
+
+	@Override
+	public Object getValueAt(final int row, final int col)
+	{
+		final Permission permission = getData().get(row);
+		switch (col)
+		{
+			case 0 :
+				return permission.getName();
+			case 1 :
+				return permission.getDescription();
+			case 3 :
+				return permission.getDescription();
+			default :
+				return null;
+		}
 	}
 
 }

@@ -4,6 +4,14 @@
 Version 1.1-SNAPSHOT
 -------------
 
+ADDED:
+
+- new class GenericTreeElement created
+- new class GenericTreeNodeCellRenderer created
+- new class TreeNodeGenericTreeElementWithContentPanel created
+- new test dependency for icons org.freedesktop.tango:tango-icon-theme in patch version 0.8.90 
+- new test dependency for icons io.github.astrapi69:silk-icon-theme in major version 1
+
 CHANGED:
 
 - update of gradle version to 7.3.3

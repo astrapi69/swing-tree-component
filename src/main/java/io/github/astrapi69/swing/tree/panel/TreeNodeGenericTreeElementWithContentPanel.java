@@ -24,30 +24,42 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import org.junit.jupiter.api.Test;
-
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 
-
-public class TreeNodeFactoryTest
+/**
+ * The abstract class {@link TreeNodeGenericTreeElementWithContentPanel} a given {@link TreeNode}
+ * parameterized with {@link TreeElement}
+ */
+public abstract class TreeNodeGenericTreeElementWithContentPanel<T>
+	extends
+		GenericTreeNodeWithContentPanel<GenericTreeElement<T>>
 {
 
-	@Test
-	public void testNewDefaultMutableTreeNode()
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Instantiates a new {@link TreeNodeGenericTreeElementWithContentPanel}
+	 */
+	public TreeNodeGenericTreeElementWithContentPanel()
 	{
-		TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
-			.initializeTestTreeNodeElement();
-		DefaultMutableTreeNode rootNode = TreeNodeFactory
-			.newDefaultMutableTreeNode(treeElementTreeNode);
-		assertNotNull(rootNode);
-		assertEquals(rootNode.getChildCount(), 2);
+		this(BaseModel.of(TreeNode.<GenericTreeElement<T>> builder().build()));
 	}
+
+	/**
+	 * Instantiates a new t{@link TreeNodeGenericTreeElementWithContentPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public TreeNodeGenericTreeElementWithContentPanel(
+		final Model<TreeNode<GenericTreeElement<T>>> model)
+	{
+		super(model);
+	}
+
 }

@@ -28,6 +28,7 @@ import static io.github.astrapi69.swing.tree.TreeNodeFactory.initializeTreeNodeW
 
 import java.util.List;
 
+import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.test.objects.Permission;
@@ -115,6 +116,62 @@ public class TestTreeNodeFactory
 			.setDefaultContent(permissions);
 		secondGrandChild = JXTreeElement.builder().name("secondGrandChild").parent(firstChild)
 			.node(false).build().setDefaultContent(permissions);
+		parentTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(parent, null);
+
+		firstChildTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(firstChild,
+			parentTreeNode);
+
+		secondChildTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(secondChild,
+			parentTreeNode);
+
+		firstGrandChildTreeNodeLeaf = TreeNodeFactory
+			.initializeTreeNodeWithTreeElement(firstGrandChild, firstChildTreeNode);
+		secondGrandChildTreeNodeLeaf = TreeNodeFactory
+			.initializeTreeNodeWithTreeElement(secondGrandChild, secondChildTreeNode);
+
+		firstGrandGrandChildTreeNode = TreeNodeFactory
+			.initializeTreeNodeWithTreeElement(firstGrandGrandChild, firstChildTreeNode);
+		return parentTreeNode;
+	}
+
+	public static TreeNode<GenericTreeElement<List<Permission>>> initializeTestGenericTreeNodeElement()
+	{
+		// 1. Create a list with data.
+		final List<Permission> permissions;
+		List<Permission> permissions1;
+		TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode;
+		TreeNode<GenericTreeElement<List<Permission>>> firstChildTreeNode;
+		TreeNode<GenericTreeElement<List<Permission>>> firstGrandChildTreeNodeLeaf;
+		TreeNode<GenericTreeElement<List<Permission>>> secondGrandChildTreeNodeLeaf;
+		GenericTreeElement<List<Permission>> firstGrandGrandChild;
+		TreeNode<GenericTreeElement<List<Permission>>> firstGrandGrandChildTreeNode;
+		TreeNode<GenericTreeElement<List<Permission>>> secondChildTreeNode;
+		List<TreeNode<GenericTreeElement<List<Permission>>>> list;
+		GenericTreeElement<List<Permission>> parent;
+		GenericTreeElement<List<Permission>> firstChild;
+		GenericTreeElement<List<Permission>> firstGrandChild;
+		GenericTreeElement<List<Permission>> secondChild;
+		GenericTreeElement<List<Permission>> secondGrandChild;
+
+		permissions = TestPermissionFactory.getPermissionsInGerman();
+		permissions1 = TestPermissionFactory.getPermissions();
+
+		parent = GenericTreeElement.<List<Permission>> builder().name("parent")
+			.iconPath("io/github/astrapi69/silk/icons/disk.png").withText(true).parent(null)
+			.node(true).build().setDefaultContent(permissions1);
+		firstChild = GenericTreeElement.<List<Permission>> builder().name("firstChild/search")
+			.parent(parent).iconPath("io/github/astrapi69/silk/icons/magnifier.png").withText(true)
+			.node(true).build().setDefaultContent(permissions);
+		firstGrandChild = GenericTreeElement.<List<Permission>> builder().name("firstGrandChild")
+			.iconPath("io/github/astrapi69/silk/icons/lock.png").withText(false).parent(firstChild)
+			.node(true).build().setDefaultContent(permissions);
+		firstGrandGrandChild = GenericTreeElement.<List<Permission>> builder()
+			.name("firstGrandGrandChild").parent(firstGrandChild).node(false).build()
+			.setDefaultContent(permissions);
+		secondChild = GenericTreeElement.<List<Permission>> builder().name("secondChild")
+			.parent(parent).node(true).build().setDefaultContent(permissions);
+		secondGrandChild = GenericTreeElement.<List<Permission>> builder().name("secondGrandChild")
+			.parent(firstChild).node(false).build().setDefaultContent(permissions);
 		parentTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(parent, null);
 
 		firstChildTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(firstChild,

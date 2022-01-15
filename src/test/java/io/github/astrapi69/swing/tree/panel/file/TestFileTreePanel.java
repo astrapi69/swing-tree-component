@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.tree.panel.file;
 
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -41,6 +41,7 @@ import io.github.astrapi69.file.delete.DeleteFileExtensions;
 import io.github.astrapi69.file.system.SystemFileExtensions;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 public class TestFileTreePanel extends JXTreePanel<File>

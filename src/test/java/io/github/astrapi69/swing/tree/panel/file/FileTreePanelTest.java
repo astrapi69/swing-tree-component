@@ -22,21 +22,17 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.tree.panel.file;
 
 import java.awt.*;
 
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.tree.JXTreeElement;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
-import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
  * The test class for {@link JXTreePanel}
  */
-public class JXTreeElementPanelTest
+public class FileTreePanelTest
 {
 
 	/**
@@ -49,9 +45,7 @@ public class JXTreeElementPanelTest
 	{
 		final Frame frame = new Frame("JXTreePanel");
 		frame.addWindowListener(new CloseWindow());
-		Model<TreeNode<JXTreeElement>> parentModel = BaseModel
-			.of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
-		frame.add(new TreeNodeJXTreeElementPanelTest(parentModel));
+		frame.add(new TestFileTreePanel());
 		frame.pack();
 		frame.setVisible(true);
 	}

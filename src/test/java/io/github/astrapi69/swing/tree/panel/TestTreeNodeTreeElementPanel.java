@@ -28,15 +28,15 @@ import java.awt.*;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.test.instances.TestTreeNodeFactory;
+import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
  * The test class for {@link JXTreePanel}
  */
-public class JXTreeElementWithContentPanelTest
+public class TestTreeNodeTreeElementPanel
 {
 
 	/**
@@ -47,11 +47,11 @@ public class JXTreeElementWithContentPanelTest
 	 */
 	public static void main(final String[] args)
 	{
-		final Frame frame = new Frame("JXTreeWithContentPanel");
+		final Frame frame = new Frame("JXTreePanel");
 		frame.addWindowListener(new CloseWindow());
-		Model<TreeNode<JXTreeElement>> parentModel = BaseModel
-			.of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
-		frame.add(new TreeNodeJXTreeElementWithContentPanelTest(parentModel));
+		Model<TreeNode<TreeElement>> parentModel = BaseModel
+			.of(TestTreeNodeFactory.initializeTestTreeNodeElement());
+		frame.add(new DemoTreeNodeTreeElementPanel(parentModel));
 		frame.pack();
 		frame.setVisible(true);
 	}

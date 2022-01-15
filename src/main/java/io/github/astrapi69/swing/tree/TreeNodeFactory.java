@@ -171,4 +171,33 @@ public class TreeNodeFactory
 		return treeNode;
 	}
 
+	/**
+	 * Factory method that creates a new {@link TreeNode} object from the given {@link TreeElement}
+	 * object
+	 *
+	 * @param treeElement
+	 *            the {@link TreeElement} object
+	 * @param parentTreeNode
+	 *            the parent object
+	 * @return the new {@link TreeNode} object
+	 */
+	public static <T> TreeNode<GenericTreeElement<T>> initializeTreeNodeWithTreeElement(
+		final GenericTreeElement<T> treeElement, TreeNode<GenericTreeElement<T>> parentTreeNode)
+	{
+		TreeNode<GenericTreeElement<T>> treeNode = new TreeNode<GenericTreeElement<T>>(treeElement)
+		{
+			@Override
+			public boolean isNode()
+			{
+				return treeElement.isNode();
+			}
+		};
+		treeNode.setDisplayValue(treeElement.getName());
+		if (parentTreeNode != null)
+		{
+			parentTreeNode.addChild(treeNode);
+		}
+		return treeNode;
+	}
+
 }
