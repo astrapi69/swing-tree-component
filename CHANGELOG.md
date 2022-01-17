@@ -15,8 +15,8 @@ ADDED:
 CHANGED:
 
 - update of gradle version to 7.3.3
-- update of com.github.ben-manes.versions.gradle.plugin to new version 0.41.0
-- update of swing-base-components version to 1.1
+- update of gradle-plugin dependency com.github.ben-manes.versions.gradle.plugin to new version 0.41.0
+- update of dependency swing-base-components to new version 1.1
 
 Version 1
 -------------
