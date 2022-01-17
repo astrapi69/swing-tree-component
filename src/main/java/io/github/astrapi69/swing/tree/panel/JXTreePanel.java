@@ -121,42 +121,34 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 			@Override
 			public void onSingleClick(MouseEvent mouseEvent)
 			{
-				int selRow = tree.getRowForLocation(mouseEvent.getX(), mouseEvent.getY());
-				if (selRow != -1)
+				if (mouseEvent.getButton() == MouseEvent.BUTTON1)
 				{
-					if (mouseEvent.getButton() == MouseEvent.BUTTON1)
-					{
-						onSingleLeftClick(mouseEvent);
-					}
-					if (mouseEvent.getButton() == MouseEvent.BUTTON2)
-					{
-						onSingleMiddleClick(mouseEvent);
-					}
-					if (mouseEvent.getButton() == MouseEvent.BUTTON3)
-					{
-						onSingleRightClick(mouseEvent);
-					}
+					onTreeSingleLeftClick(mouseEvent);
+				}
+				if (mouseEvent.getButton() == MouseEvent.BUTTON2)
+				{
+					onTreeSingleMiddleClick(mouseEvent);
+				}
+				if (mouseEvent.getButton() == MouseEvent.BUTTON3)
+				{
+					onTreeSingleRightClick(mouseEvent);
 				}
 			}
 
 			@Override
 			public void onDoubleClick(MouseEvent mouseEvent)
 			{
-				int selRow = tree.getRowForLocation(mouseEvent.getX(), mouseEvent.getY());
-				if (selRow != -1)
+				if (mouseEvent.getButton() == MouseEvent.BUTTON1)
 				{
-					if (mouseEvent.getButton() == MouseEvent.BUTTON1)
-					{
-						onDoubleLeftClick(mouseEvent);
-					}
-					if (mouseEvent.getButton() == MouseEvent.BUTTON2)
-					{
-						onDoubleMiddleClick(mouseEvent);
-					}
-					if (mouseEvent.getButton() == MouseEvent.BUTTON3)
-					{
-						onDoubleRightClick(mouseEvent);
-					}
+					onTreeDoubleLeftClick(mouseEvent);
+				}
+				if (mouseEvent.getButton() == MouseEvent.BUTTON2)
+				{
+					onTreeDoubleMiddleClick(mouseEvent);
+				}
+				if (mouseEvent.getButton() == MouseEvent.BUTTON3)
+				{
+					onTreeDoubleRightClick(mouseEvent);
 				}
 			}
 		});
@@ -191,7 +183,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 * @param event
 	 *            the mouse event
 	 */
-	protected void onDoubleLeftClick(MouseEvent event)
+	protected void onTreeDoubleLeftClick(MouseEvent event)
 	{
 	}
 
@@ -201,7 +193,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 * @param event
 	 *            the mouse event
 	 */
-	protected void onDoubleMiddleClick(MouseEvent event)
+	protected void onTreeDoubleMiddleClick(MouseEvent event)
 	{
 	}
 
@@ -211,7 +203,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 * @param event
 	 *            the mouse event
 	 */
-	protected void onDoubleRightClick(MouseEvent event)
+	protected void onTreeDoubleRightClick(MouseEvent event)
 	{
 	}
 
@@ -245,7 +237,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 * @param event
 	 *            the mouse event
 	 */
-	protected void onSingleLeftClick(MouseEvent event)
+	protected void onTreeSingleLeftClick(MouseEvent event)
 	{
 	}
 
@@ -255,7 +247,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 * @param event
 	 *            the mouse event
 	 */
-	protected void onSingleMiddleClick(MouseEvent event)
+	protected void onTreeSingleMiddleClick(MouseEvent event)
 	{
 	}
 
@@ -265,7 +257,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 * @param event
 	 *            the mouse event
 	 */
-	protected void onSingleRightClick(MouseEvent event)
+	protected void onTreeSingleRightClick(MouseEvent event)
 	{
 	}
 

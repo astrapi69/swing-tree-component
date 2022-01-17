@@ -126,7 +126,7 @@ public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 	}
 
 	@Override
-	protected void onSingleRightClick(MouseEvent e)
+	protected void onTreeSingleRightClick(MouseEvent e)
 	{
 		int x = e.getX();
 		int y = e.getY();

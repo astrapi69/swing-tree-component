@@ -25,41 +25,51 @@
 package io.github.astrapi69.swing.tree.panel;
 
 import java.awt.*;
-import java.util.List;
 
+import javax.swing.*;
+
+import lombok.Getter;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
-import io.github.astrapi69.test.objects.Permission;
-import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.window.adapter.CloseWindow;
+import io.github.astrapi69.swing.base.BasePanel;
 
-/**
- * The test class for {@link JXTreePanel}
- */
-public class TestTreeNodeGenericTreeElementWithContentPanel
+@Getter
+public class AddNodePanel extends BasePanel<AddNodeModelBean>
 {
+	JCheckBox cbxNode;
+	JTextField txtName;
+	JLabel lblName;
+	JLabel lblNode;
 
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(final String[] args)
+	public AddNodePanel()
 	{
-		final Frame frame = new Frame("TreeNodeGenericTreeElementWithContentPanel");
-		frame.addWindowListener(new CloseWindow());
-		TreeNode<GenericTreeElement<List<Permission>>> genericTreeElementTreeNode = TestTreeNodeFactory
-			.initializeTestGenericTreeNodeElement();
-		Model<TreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
-			.of(genericTreeElementTreeNode);
-		DemoTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithContentPanel(
-			treeNodeModel);
-		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
-		frame.pack();
-		frame.setVisible(true);
+		this(BaseModel.of(AddNodeModelBean.builder().build()));
 	}
 
+	public AddNodePanel(final Model<AddNodeModelBean> model)
+	{
+		super(model);
+	}
+
+	@Override
+	protected void onInitializeComponents()
+	{
+		super.onInitializeComponents();
+		lblName = new JLabel("Enter name for node:");
+		txtName = new JTextField();
+		lblNode = new JLabel("Is leaf:");
+		cbxNode = new JCheckBox();
+		add(lblName);
+		add(txtName);
+		add(lblNode);
+		add(cbxNode);
+	}
+
+	@Override
+	protected void onInitializeLayout()
+	{
+		super.onInitializeLayout();
+		GridLayout layout = new GridLayout(2, 2);
+		this.setLayout(layout);
+	}
 }

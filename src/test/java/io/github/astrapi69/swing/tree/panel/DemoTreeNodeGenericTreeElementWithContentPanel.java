@@ -24,14 +24,11 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Optional;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -43,10 +40,8 @@ import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.dialog.DialogExtensions;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
-import io.github.astrapi69.swing.listener.mouse.MouseDoubleClickListener;
 import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
@@ -89,29 +84,45 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	{
 		GenericTableModel<Permission> permissionsTableModel = new DynamicPermissionsTableModel(
 			new DynamicTableColumnsModel<Permission>(Permission.class));
-		GenericJXTable<Permission> table = new GenericJXTable<>(permissionsTableModel);
-		table.addMouseListener(new MouseDoubleClickListener()
+		GenericJXTable<Permission> table = new GenericJXTable<Permission>(permissionsTableModel)
 		{
-			public void onSingleClick(MouseEvent e)
+
+			protected void onSingleLeftClick(MouseEvent event)
 			{
-				System.out.println("single click");
+				super.onSingleLeftClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleLeftClick(event);
 			}
 
-			public void onDoubleClick(MouseEvent e)
+			protected void onSingleMiddleClick(MouseEvent event)
 			{
-				System.out.println("double click");
-				Optional<Permission> singleSelectedRowData = table.getSingleSelectedRowData();
-				if (singleSelectedRowData.isPresent())
-				{
-					Permission permission = singleSelectedRowData.get();
-					System.out.println(permission);
-
-					DialogExtensions.showInformationDialog(
-						DemoTreeNodeGenericTreeElementWithContentPanel.this, "Title",
-						permission.toString());
-				}
+				super.onSingleMiddleClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleMiddleClick(event);
 			}
-		});
+
+			protected void onSingleRightClick(MouseEvent event)
+			{
+				super.onSingleRightClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleRightClick(event);
+			}
+
+			protected void onDoubleLeftClick(MouseEvent event)
+			{
+				super.onDoubleLeftClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleLeftClick(event);
+			}
+
+			protected void onDoubleMiddleClick(MouseEvent event)
+			{
+				super.onDoubleMiddleClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleMiddleClick(event);
+			}
+
+			protected void onDoubleRightClick(MouseEvent event)
+			{
+				super.onDoubleRightClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleRightClick(event);
+			}
+		};
 		return table;
 	}
 
@@ -201,7 +212,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	}
 
 	@Override
-	protected void onSingleLeftClick(MouseEvent mouseEvent)
+	protected void onTreeSingleLeftClick(MouseEvent mouseEvent)
 	{
 		Optional<DefaultMutableTreeNode> selectedTreeNode = JTreeExtensions
 			.getSelectedDefaultMutableTreeNode(mouseEvent, tree);
@@ -219,109 +230,89 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	}
 
 	@Override
-	protected void onSingleRightClick(MouseEvent mouseEvent)
+	protected void onTreeSingleRightClick(MouseEvent mouseEvent)
 	{
 		int x = mouseEvent.getX();
 		int y = mouseEvent.getY();
 		TreePath selectionPath = tree.getPathForLocation(mouseEvent.getX(), mouseEvent.getY());
-		tree.getSelectionModel().setSelectionPath(selectionPath);
-
-		Object lastPathComponent = selectionPath.getLastPathComponent();
-		DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)lastPathComponent;
-		TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
-			.getUserObject();
-
-		JPopupMenu popup = new JPopupMenu();
-		if (parentTreeNode.isNode())
+		if (selectionPath != null)
 		{
-			JMenuItem menuItemAddChild = new JMenuItem("add node...");
-			menuItemAddChild.addActionListener(actionEvent -> this.onAddNewChildTreeNode());
-			popup.add(menuItemAddChild);
+			tree.getSelectionModel().setSelectionPath(selectionPath);
+
+			Object lastPathComponent = selectionPath.getLastPathComponent();
+			DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)lastPathComponent;
+			TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
+				.getUserObject();
+
+			JPopupMenu popup = new JPopupMenu();
+			if (parentTreeNode.isNode())
+			{
+				JMenuItem menuItemAddChild = new JMenuItem("add node...");
+				menuItemAddChild.addActionListener(actionEvent -> this.onAddNewChildTreeNode());
+				popup.add(menuItemAddChild);
+			}
+
+			if (!parentTreeNode.isRoot())
+			{
+				JMenuItem deleteNode = new JMenuItem("delete");
+				deleteNode.addActionListener(actionEvent -> this.onDeleteSelectedTreeNode());
+				popup.add(deleteNode);
+			}
+
+			JMenuItem menuItemEdit = new JMenuItem("Edit node...");
+			menuItemEdit.addActionListener(actionEvent -> this.onEditSelectedTreeNode());
+			popup.add(menuItemEdit);
+
+			JMenuItem menuItemCopy = new JMenuItem("Copy node");
+			menuItemCopy.addActionListener(actionEvent -> this.onCopySelectedTreeNode());
+			popup.add(menuItemCopy);
+
+			JMenuItem menuItemCollapse = new JMenuItem("Collapse node");
+			menuItemCollapse.addActionListener(actionEvent -> this.onCollapseSelectedTreeNode());
+			popup.add(menuItemCollapse);
+
+			JMenuItem menuItemExpand = new JMenuItem("Expand node");
+			menuItemExpand.addActionListener(actionEvent -> this.onExpandSelectedTreeNode());
+			popup.add(menuItemExpand);
+
+			popup.show(tree, x, y);
 		}
-
-		if (!parentTreeNode.isRoot())
-		{
-			JMenuItem deleteNode = new JMenuItem("delete");
-			deleteNode.addActionListener(actionEvent -> this.onDeleteSelectedTreeNode());
-			popup.add(deleteNode);
-		}
-
-		JMenuItem menuItemEdit = new JMenuItem("Edit node...");
-		menuItemEdit.addActionListener(actionEvent -> this.onEditSelectedTreeNode());
-		popup.add(menuItemEdit);
-
-		JMenuItem menuItemCopy = new JMenuItem("Copy node");
-		menuItemCopy.addActionListener(actionEvent -> this.onCopySelectedTreeNode());
-		popup.add(menuItemCopy);
-
-		JMenuItem menuItemCollapse = new JMenuItem("Collapse node");
-		menuItemCollapse.addActionListener(actionEvent -> this.onCollapseSelectedTreeNode());
-		popup.add(menuItemCollapse);
-
-		JMenuItem menuItemExpand = new JMenuItem("Expand node");
-		menuItemExpand.addActionListener(actionEvent -> this.onExpandSelectedTreeNode());
-		popup.add(menuItemExpand);
-
-		popup.show(tree, x, y);
 	}
 
 	protected void onAddNewChildTreeNode()
 	{
 		DefaultMutableTreeNode selectedTreeNode = getSelectedTreeNode();
-		TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
-			.getUserObject();
-		JTextField textField1 = new JTextField();
-		final JCheckBox checkBox = new JCheckBox();
-
-		checkBox.addChangeListener(new ChangeListener()
+		if (selectedTreeNode != null)
 		{
-			@Override
-			public void stateChanged(ChangeEvent changeEvent)
+			TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
+				.getUserObject();
+			AddNodePanel addNodePanel = new AddNodePanel();
+			JOptionPane pane = new JOptionPane(addNodePanel, JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.OK_CANCEL_OPTION);
+			JDialog dialog = pane.createDialog(null, "New node");
+			dialog.addWindowFocusListener(new RequestFocusListener(addNodePanel.getTxtName()));
+			dialog.pack();
+			dialog.setLocationRelativeTo(null);
+			dialog.setVisible(true);
+			int option = JOptionPaneExtensions.getSelectedOption(pane);
+
+			if (option == JOptionPane.OK_OPTION)
 			{
-				if (changeEvent.getSource() == checkBox)
-				{
-					if (checkBox.isSelected())
-					{
+				boolean allowsChildren = addNodePanel.getCbxNode().isSelected();
+				String userObject = addNodePanel.getTxtName().getText();
+				GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
+					.<List<Permission>> builder().name(userObject).parent(parentTreeNode.getValue())
+					.node(allowsChildren).build();
+				TreeNode<GenericTreeElement<List<Permission>>> newTreeNode = TreeNode
+					.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
+					.parent(parentTreeNode).displayValue(userObject).node(allowsChildren).build();
 
-					}
-					else
-					{
-
-					}
-				}
+				DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode,
+					allowsChildren);
+				selectedTreeNode.add(newChild);
+				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
+				tree.treeDidChange();
 			}
-		});
-		JPanel panel = new JPanel(new GridLayout(2, 2));
-		panel.add(new JLabel("Enter name for node:"));
-		panel.add(textField1);
-		panel.add(new JLabel("Is leaf:"));
-		panel.add(checkBox);
-
-		JOptionPane pane = new JOptionPane(panel, JOptionPane.INFORMATION_MESSAGE,
-			JOptionPane.OK_CANCEL_OPTION);
-		JDialog dialog = pane.createDialog(null, "New node");
-		dialog.addWindowFocusListener(new RequestFocusListener(textField1));
-		dialog.pack();
-		dialog.setLocationRelativeTo(null);
-		dialog.setVisible(true);
-		int option = JOptionPaneExtensions.getSelectedOption(pane);
-
-		if (option == JOptionPane.OK_OPTION)
-		{
-			boolean allowsChildren = !checkBox.isSelected();
-			String userObject = textField1.getText();
-			GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
-				.<List<Permission>> builder().name(userObject).parent(parentTreeNode.getValue())
-				.node(allowsChildren).build();
-			TreeNode<GenericTreeElement<List<Permission>>> newTreeNode = TreeNode
-				.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-				.parent(parentTreeNode).displayValue(userObject).node(allowsChildren).build();
-
-			DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode,
-				allowsChildren);
-			selectedTreeNode.add(newChild);
-			((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
-			tree.treeDidChange();
 		}
 	}
 
@@ -334,4 +325,71 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	{
 		System.out.println("onEditSelectedTreeNode");
 	}
+
+	/**
+	 * The callback method on the table single left click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableSingleLeftClick(MouseEvent event)
+	{
+		System.out.println("onTableSingleLeftClick");
+	}
+
+	/**
+	 * The callback method on the table single middle click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableSingleMiddleClick(MouseEvent event)
+	{
+		System.out.println("onTableSingleMiddleClick");
+	}
+
+	/**
+	 * The callback method on the table single right click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableSingleRightClick(MouseEvent event)
+	{
+		System.out.println("onTableSingleRightClick");
+	}
+
+	/**
+	 * The callback method on the table double left click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableDoubleLeftClick(MouseEvent event)
+	{
+		System.out.println("onTableDoubleLeftClick");
+	}
+
+	/**
+	 * The callback method on the table double middle click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableDoubleMiddleClick(MouseEvent event)
+	{
+		System.out.println("onTableDoubleMiddleClick");
+	}
+
+	/**
+	 * The callback method on the table double right click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableDoubleRightClick(MouseEvent event)
+	{
+		System.out.println("onTableDoubleRightClick");
+	}
+
 }

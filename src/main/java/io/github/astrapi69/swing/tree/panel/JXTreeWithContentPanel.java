@@ -24,6 +24,8 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import java.awt.event.MouseEvent;
+
 import javax.swing.*;
 import javax.swing.table.TableModel;
 
@@ -113,6 +115,66 @@ public abstract class JXTreeWithContentPanel<T> extends JXTreePanel<T>
 		setPreferredSize(newPreferredSize(1000, 780));
 		scrTree.setViewportView(tree);
 		scrTreeEntryTable.setViewportView(tblTreeEntryTable);
+	}
+
+	/**
+	 * The callback method on the table single left click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableSingleLeftClick(MouseEvent event)
+	{
+	}
+
+	/**
+	 * The callback method on the table single middle click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableSingleMiddleClick(MouseEvent event)
+	{
+	}
+
+	/**
+	 * The callback method on the table single right click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableSingleRightClick(MouseEvent event)
+	{
+	}
+
+	/**
+	 * The callback method on the table double left click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableDoubleLeftClick(MouseEvent event)
+	{
+	}
+
+	/**
+	 * The callback method on the table double middle click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableDoubleMiddleClick(MouseEvent event)
+	{
+	}
+
+	/**
+	 * The callback method on the table double right click.
+	 *
+	 * @param event
+	 *            the mouse event
+	 */
+	protected void onTableDoubleRightClick(MouseEvent event)
+	{
 	}
 
 }

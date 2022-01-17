@@ -136,42 +136,42 @@ public class TestTreeNodeFactory
 
 	public static TreeNode<GenericTreeElement<List<Permission>>> initializeTestGenericTreeNodeElement()
 	{
-		// 1. Create a list with data.
-		final List<Permission> permissions;
-		List<Permission> permissions1;
-		TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode;
-		TreeNode<GenericTreeElement<List<Permission>>> firstChildTreeNode;
-		TreeNode<GenericTreeElement<List<Permission>>> firstGrandChildTreeNodeLeaf;
-		TreeNode<GenericTreeElement<List<Permission>>> secondGrandChildTreeNodeLeaf;
-		GenericTreeElement<List<Permission>> firstGrandGrandChild;
-		TreeNode<GenericTreeElement<List<Permission>>> firstGrandGrandChildTreeNode;
-		TreeNode<GenericTreeElement<List<Permission>>> secondChildTreeNode;
-		List<TreeNode<GenericTreeElement<List<Permission>>>> list;
-		GenericTreeElement<List<Permission>> parent;
-		GenericTreeElement<List<Permission>> firstChild;
-		GenericTreeElement<List<Permission>> firstGrandChild;
-		GenericTreeElement<List<Permission>> secondChild;
-		GenericTreeElement<List<Permission>> secondGrandChild;
+		return initializeTestGenericTreeNodeElement(TestPermissionFactory.getPermissionsInGerman(),
+			TestPermissionFactory.getPermissions());
+	}
 
-		permissions = TestPermissionFactory.getPermissionsInGerman();
-		permissions1 = TestPermissionFactory.getPermissions();
+	public static <T> TreeNode<GenericTreeElement<List<T>>> initializeTestGenericTreeNodeElement(
+		List<T> first, List<T> second)
+	{
+		TreeNode<GenericTreeElement<List<T>>> parentTreeNode;
+		TreeNode<GenericTreeElement<List<T>>> firstChildTreeNode;
+		TreeNode<GenericTreeElement<List<T>>> firstGrandChildTreeNodeLeaf;
+		TreeNode<GenericTreeElement<List<T>>> secondGrandChildTreeNodeLeaf;
+		GenericTreeElement<List<T>> firstGrandGrandChild;
+		TreeNode<GenericTreeElement<List<T>>> firstGrandGrandChildTreeNode;
+		TreeNode<GenericTreeElement<List<T>>> secondChildTreeNode;
+		List<TreeNode<GenericTreeElement<List<T>>>> list;
+		GenericTreeElement<List<T>> parent;
+		GenericTreeElement<List<T>> firstChild;
+		GenericTreeElement<List<T>> firstGrandChild;
+		GenericTreeElement<List<T>> secondChild;
+		GenericTreeElement<List<T>> secondGrandChild;
 
-		parent = GenericTreeElement.<List<Permission>> builder().name("parent")
+		parent = GenericTreeElement.<List<T>> builder().name("parent")
 			.iconPath("io/github/astrapi69/silk/icons/disk.png").withText(true).parent(null)
-			.node(true).build().setDefaultContent(permissions1);
-		firstChild = GenericTreeElement.<List<Permission>> builder().name("firstChild/search")
-			.parent(parent).iconPath("io/github/astrapi69/silk/icons/magnifier.png").withText(true)
-			.node(true).build().setDefaultContent(permissions);
-		firstGrandChild = GenericTreeElement.<List<Permission>> builder().name("firstGrandChild")
+			.node(true).build().setDefaultContent(first);
+		firstChild = GenericTreeElement.<List<T>> builder().name("firstChild/search").parent(parent)
+			.iconPath("io/github/astrapi69/silk/icons/magnifier.png").withText(true).node(true)
+			.build().setDefaultContent(second);
+		firstGrandChild = GenericTreeElement.<List<T>> builder().name("firstGrandChild")
 			.iconPath("io/github/astrapi69/silk/icons/lock.png").withText(false).parent(firstChild)
-			.node(true).build().setDefaultContent(permissions);
-		firstGrandGrandChild = GenericTreeElement.<List<Permission>> builder()
-			.name("firstGrandGrandChild").parent(firstGrandChild).node(false).build()
-			.setDefaultContent(permissions);
-		secondChild = GenericTreeElement.<List<Permission>> builder().name("secondChild")
-			.parent(parent).node(true).build().setDefaultContent(permissions);
-		secondGrandChild = GenericTreeElement.<List<Permission>> builder().name("secondGrandChild")
-			.parent(firstChild).node(false).build().setDefaultContent(permissions);
+			.node(true).build().setDefaultContent(second);
+		firstGrandGrandChild = GenericTreeElement.<List<T>> builder().name("firstGrandGrandChild")
+			.parent(firstGrandChild).node(false).build().setDefaultContent(second);
+		secondChild = GenericTreeElement.<List<T>> builder().name("secondChild").parent(parent)
+			.node(true).build().setDefaultContent(second);
+		secondGrandChild = GenericTreeElement.<List<T>> builder().name("secondGrandChild")
+			.parent(firstChild).node(false).build().setDefaultContent(second);
 		parentTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(parent, null);
 
 		firstChildTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(firstChild,
@@ -189,5 +189,4 @@ public class TestTreeNodeFactory
 			.initializeTreeNodeWithTreeElement(firstGrandGrandChild, firstChildTreeNode);
 		return parentTreeNode;
 	}
-
 }

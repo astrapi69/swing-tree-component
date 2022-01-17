@@ -197,12 +197,13 @@ public class DemoTreeNodeJXTreeElementWithContentPanel extends TreeNodeJXTreeEle
 	}
 
 
-	public GenericTableModel getSelectedTableModel() {
+	public GenericTableModel getSelectedTableModel()
+	{
 		return getTblTreeEntryTable().getGenericTableModel();
 	}
 
 	@Override
-	protected void onSingleLeftClick(MouseEvent mouseEvent)
+	protected void onTreeSingleLeftClick(MouseEvent mouseEvent)
 	{
 		Optional<DefaultMutableTreeNode> selectedTreeNode = JTreeExtensions
 			.getSelectedDefaultMutableTreeNode(mouseEvent, tree);
@@ -219,7 +220,7 @@ public class DemoTreeNodeJXTreeElementWithContentPanel extends TreeNodeJXTreeEle
 	}
 
 	@Override
-	protected void onSingleRightClick(MouseEvent mouseEvent)
+	protected void onTreeSingleRightClick(MouseEvent mouseEvent)
 	{
 		int x = mouseEvent.getX();
 		int y = mouseEvent.getY();
