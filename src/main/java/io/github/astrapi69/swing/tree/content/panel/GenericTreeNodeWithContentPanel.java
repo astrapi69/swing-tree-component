@@ -22,32 +22,30 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.tree.content.panel;
 
 import javax.swing.*;
 
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.tree.TreeNode;
 
-public abstract class GenericTreeNodeWithGenericContentPanel<T, C>
-	extends
-		JXTreeWithGenericContentPanel<TreeNode<T>, C>
+public abstract class GenericTreeNodeWithContentPanel<T> extends JXTreeWithContentPanel<TreeNode<T>>
 {
 
 	/**
-	 * Instantiates a new {@link GenericTreeNodeWithGenericContentPanel}
+	 * Instantiates a new {@link GenericTreeNodeWithContentPanel}
 	 */
-	public GenericTreeNodeWithGenericContentPanel()
+	public GenericTreeNodeWithContentPanel()
 	{
 	}
 
 	/**
-	 * Instantiates a new t{@link GenericTreeNodeWithGenericContentPanel}
+	 * Instantiates a new t{@link GenericTreeNodeWithContentPanel}
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public GenericTreeNodeWithGenericContentPanel(final Model<TreeNode<T>> model)
+	public GenericTreeNodeWithContentPanel(final Model<TreeNode<T>> model)
 	{
 		super(model);
 	}

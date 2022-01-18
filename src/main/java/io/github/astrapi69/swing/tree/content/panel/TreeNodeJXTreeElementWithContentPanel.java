@@ -22,42 +22,40 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.tree.content.panel;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 
 /**
- * The abstract class {@link TreeNodeGenericTreeElementWithContentPanel} a given {@link TreeNode}
+ * The abstract class {@link TreeNodeJXTreeElementWithContentPanel} a given {@link TreeNode}
  * parameterized with {@link TreeElement}
  */
-public abstract class TreeNodeGenericTreeElementWithContentPanel<T>
-	extends
-		GenericTreeNodeWithContentPanel<GenericTreeElement<T>>
+public abstract class TreeNodeJXTreeElementWithContentPanel
+	extends GenericTreeNodeWithContentPanel<JXTreeElement>
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new {@link TreeNodeGenericTreeElementWithContentPanel}
+	 * Instantiates a new {@link TreeNodeJXTreeElementWithContentPanel}
 	 */
-	public TreeNodeGenericTreeElementWithContentPanel()
+	public TreeNodeJXTreeElementWithContentPanel()
 	{
-		this(BaseModel.of(TreeNode.<GenericTreeElement<T>> builder().build()));
+		this(BaseModel.of(TreeNode.<JXTreeElement> builder().build()));
 	}
 
 	/**
-	 * Instantiates a new t{@link TreeNodeGenericTreeElementWithContentPanel}
+	 * Instantiates a new t{@link TreeNodeJXTreeElementWithContentPanel}
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public TreeNodeGenericTreeElementWithContentPanel(
-		final Model<TreeNode<GenericTreeElement<T>>> model)
+	public TreeNodeJXTreeElementWithContentPanel(final Model<TreeNode<JXTreeElement>> model)
 	{
 		super(model);
 	}

@@ -22,44 +22,43 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
-
-import java.awt.*;
-import java.util.List;
+package io.github.astrapi69.swing.tree.content.panel;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
-import io.github.astrapi69.test.objects.Permission;
+import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
- * The test class for {@link JXTreePanel}
+ * The abstract class {@link TreeNodeGenericTreeElementWithContentPanel} a given {@link TreeNode}
+ * parameterized with {@link TreeElement}
  */
-public class TestTreeNodeGenericTreeElementWithGenericContentPanel
+public abstract class TreeNodeGenericTreeElementWithContentPanel<T>
+	extends GenericTreeNodeWithContentPanel<GenericTreeElement<T>>
 {
 
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
 	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
+	 * Instantiates a new {@link TreeNodeGenericTreeElementWithContentPanel}
 	 */
-	public static void main(final String[] args)
+	public TreeNodeGenericTreeElementWithContentPanel()
 	{
-		final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
-		frame.addWindowListener(new CloseWindow());
-		TreeNode<GenericTreeElement<List<Permission>>> genericTreeElementTreeNode = TestTreeNodeFactory
-			.initializeTestGenericTreeNodeElement();
-		Model<TreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
-			.of(genericTreeElementTreeNode);
-		DemoTreeNodeGenericTreeElementWithGenericContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithGenericContentPanel(
-			treeNodeModel);
-		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
-		frame.pack();
-		frame.setVisible(true);
+		this(BaseModel.of(TreeNode.<GenericTreeElement<T>> builder().build()));
+	}
+
+	/**
+	 * Instantiates a new t{@link TreeNodeGenericTreeElementWithContentPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public TreeNodeGenericTreeElementWithContentPanel(
+		final Model<TreeNode<GenericTreeElement<T>>> model)
+	{
+		super(model);
 	}
 
 }

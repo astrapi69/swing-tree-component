@@ -22,13 +22,14 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.tree.content.panel;
 
 import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
 
+import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import lombok.Getter;
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.swing.table.GenericJXTable;
@@ -98,7 +99,44 @@ public abstract class JXTreeWithGenericContentPanel<T, C> extends JXTreePanel<T>
 			{
 				return null;
 			}
-		});
+		})
+		{
+			protected void onSingleLeftClick(MouseEvent event)
+			{
+				super.onSingleLeftClick(event);
+				JXTreeWithGenericContentPanel.this.onTableSingleLeftClick(event);
+			}
+
+			protected void onSingleMiddleClick(MouseEvent event)
+			{
+				super.onSingleMiddleClick(event);
+				JXTreeWithGenericContentPanel.this.onTableSingleMiddleClick(event);
+			}
+
+			protected void onSingleRightClick(MouseEvent event)
+			{
+				super.onSingleRightClick(event);
+				JXTreeWithGenericContentPanel.this.onTableSingleRightClick(event);
+			}
+
+			protected void onDoubleLeftClick(MouseEvent event)
+			{
+				super.onDoubleLeftClick(event);
+				JXTreeWithGenericContentPanel.this.onTableDoubleLeftClick(event);
+			}
+
+			protected void onDoubleMiddleClick(MouseEvent event)
+			{
+				super.onDoubleMiddleClick(event);
+				JXTreeWithGenericContentPanel.this.onTableDoubleMiddleClick(event);
+			}
+
+			protected void onDoubleRightClick(MouseEvent event)
+			{
+				super.onDoubleRightClick(event);
+				JXTreeWithGenericContentPanel.this.onTableDoubleRightClick(event);
+			}
+		};
 	}
 
 	/**

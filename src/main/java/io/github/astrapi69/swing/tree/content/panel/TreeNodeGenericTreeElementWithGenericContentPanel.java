@@ -22,38 +22,43 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
-
-import java.awt.*;
+package io.github.astrapi69.swing.tree.content.panel;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.tree.JXTreeElement;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
+import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
- * The test class for {@link JXTreePanel}
+ * The abstract class {@link TreeNodeGenericTreeElementWithGenericContentPanel} a given
+ * {@link TreeNode} parameterized with {@link TreeElement}
  */
-public class TestTreeNodeJXTreeElementWithContentPanel
+public abstract class TreeNodeGenericTreeElementWithGenericContentPanel<T, C>
+	extends GenericTreeNodeWithGenericContentPanel<GenericTreeElement<T>, C>
 {
 
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
 	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
+	 * Instantiates a new {@link TreeNodeGenericTreeElementWithGenericContentPanel}
 	 */
-	public static void main(final String[] args)
+	public TreeNodeGenericTreeElementWithGenericContentPanel()
 	{
-		final Frame frame = new Frame("JXTreeWithContentPanel");
-		frame.addWindowListener(new CloseWindow());
-		Model<TreeNode<JXTreeElement>> parentModel = BaseModel
-			.of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
-		frame.add(new DemoTreeNodeJXTreeElementWithContentPanel(parentModel));
-		frame.pack();
-		frame.setVisible(true);
+		this(BaseModel.of(TreeNode.<GenericTreeElement<T>> builder().build()));
+	}
+
+	/**
+	 * Instantiates a new t{@link TreeNodeGenericTreeElementWithGenericContentPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public TreeNodeGenericTreeElementWithGenericContentPanel(
+		final Model<TreeNode<GenericTreeElement<T>>> model)
+	{
+		super(model);
 	}
 
 }
