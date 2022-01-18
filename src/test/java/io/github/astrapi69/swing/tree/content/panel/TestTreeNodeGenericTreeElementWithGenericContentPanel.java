@@ -30,7 +30,6 @@ import java.util.List;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.swing.tree.content.panel.DemoTreeNodeGenericTreeElementWithGenericContentPanel;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import io.github.astrapi69.test.instances.TestTreeNodeFactory;
 import io.github.astrapi69.test.objects.Permission;
@@ -57,7 +56,7 @@ public class TestTreeNodeGenericTreeElementWithGenericContentPanel
 			.initializeTestGenericTreeNodeElement();
 		Model<TreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
 			.of(genericTreeElementTreeNode);
-		DemoTreeNodeGenericTreeElementWithGenericContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithGenericContentPanel(
+		DemoTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithContentPanel(
 			treeNodeModel);
 		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
 		frame.pack();

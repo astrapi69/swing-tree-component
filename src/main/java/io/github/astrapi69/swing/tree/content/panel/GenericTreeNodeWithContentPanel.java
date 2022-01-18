@@ -26,10 +26,12 @@ package io.github.astrapi69.swing.tree.content.panel;
 
 import javax.swing.*;
 
+import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.tree.TreeNode;
 
-public abstract class GenericTreeNodeWithContentPanel<T> extends JXTreeWithContentPanel<TreeNode<T>>
+public abstract class GenericTreeNodeWithContentPanel<T, C>
+	extends JXTreeWithContentPanel<TreeNode<T>, C>
 {
 
 	/**
@@ -37,6 +39,7 @@ public abstract class GenericTreeNodeWithContentPanel<T> extends JXTreeWithConte
 	 */
 	public GenericTreeNodeWithContentPanel()
 	{
+		this(BaseModel.of(new TreeNode<>()));
 	}
 
 	/**

@@ -31,11 +31,11 @@ import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 
 /**
- * The abstract class {@link TreeNodeGenericTreeElementWithContentPanel} a given {@link TreeNode}
- * parameterized with {@link TreeElement}
+ * The abstract class {@link TreeNodeGenericTreeElementWithContentPanel} a given
+ * {@link TreeNode} parameterized with {@link TreeElement}
  */
-public abstract class TreeNodeGenericTreeElementWithContentPanel<T>
-	extends GenericTreeNodeWithContentPanel<GenericTreeElement<T>>
+public abstract class TreeNodeGenericTreeElementWithContentPanel<T, C>
+	extends GenericTreeNodeWithContentPanel<GenericTreeElement<T>, C>
 {
 
 	/** The Constant serialVersionUID. */

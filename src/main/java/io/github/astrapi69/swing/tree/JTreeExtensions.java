@@ -120,9 +120,9 @@ public class JTreeExtensions
 	 * @param tree
 	 *            the tree
 	 */
-	public static <T> Optional<T> getSelectedUserObject(final @NonNull JTree tree)
+	public static <T> Optional<T> getSelectedUserObject(final @NonNull MouseEvent mouseEvent, final @NonNull JTree tree)
 	{
-		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedTreeNode(tree);
+		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedDefaultMutableTreeNode(mouseEvent, tree);
 		if (selectedTreeNode.isPresent())
 		{
 			DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
