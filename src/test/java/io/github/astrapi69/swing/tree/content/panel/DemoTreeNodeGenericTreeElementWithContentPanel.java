@@ -250,7 +250,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 			if (!parentTreeNode.isRoot())
 			{
 				popup.add(MenuFactory.newJMenuItem("delete",
-					actionEvent -> this.onDeleteSelectedTreeNode()));
+					actionEvent -> this.onDeleteSelectedTreeNode(mouseEvent)));
 			}
 
 			popup.add(MenuFactory.newJMenuItem("Edit node...",
@@ -260,10 +260,10 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 				actionEvent -> this.onCopySelectedTreeNode()));
 
 			popup.add(MenuFactory.newJMenuItem("Collapse node",
-				actionEvent -> this.onCollapseSelectedTreeNode()));
+				actionEvent -> this.onCollapseSelectedTreeNode(mouseEvent)));
 
 			popup.add(MenuFactory.newJMenuItem("Expand node",
-				actionEvent -> this.onExpandSelectedTreeNode()));
+				actionEvent -> this.onExpandSelectedTreeNode(mouseEvent)));
 
 			popup.show(tree, x, y);
 		});

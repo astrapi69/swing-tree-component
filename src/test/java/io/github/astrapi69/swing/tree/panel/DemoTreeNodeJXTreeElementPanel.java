@@ -177,7 +177,7 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 		if (!parentTreeNode.isRoot())
 		{
 			JMenuItem deleteNode = new JMenuItem("delete");
-			deleteNode.addActionListener(actionEvent -> this.onDeleteSelectedTreeNode());
+			deleteNode.addActionListener(actionEvent -> this.onDeleteSelectedTreeNode(mouseEvent));
 			popup.add(deleteNode);
 		}
 
@@ -190,11 +190,11 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 		popup.add(menuItemCopy);
 
 		JMenuItem menuItemCollapse = new JMenuItem("Collapse node");
-		menuItemCollapse.addActionListener(actionEvent -> this.onCollapseSelectedTreeNode());
+		menuItemCollapse.addActionListener(actionEvent -> this.onCollapseSelectedTreeNode(mouseEvent));
 		popup.add(menuItemCollapse);
 
 		JMenuItem menuItemExpand = new JMenuItem("Expand node");
-		menuItemExpand.addActionListener(actionEvent -> this.onExpandSelectedTreeNode());
+		menuItemExpand.addActionListener(actionEvent -> this.onExpandSelectedTreeNode(mouseEvent));
 		popup.add(menuItemExpand);
 
 		popup.show(tree, x, y);

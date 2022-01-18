@@ -265,28 +265,28 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	/**
 	 * The callback method on add a new child tree node
 	 */
-	protected void onAddNewChildTreeNode()
+	protected void onAddNewChildTreeNode(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on copy an existing tree node
 	 */
-	protected void onCopySelectedTreeNode()
+	protected void onCopySelectedTreeNode(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on editing the selected tree node
 	 */
-	protected void onEditSelectedTreeNode()
+	protected void onEditSelectedTreeNode(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on expand the selected tree node
 	 */
-	protected void onExpandSelectedTreeNode()
+	protected void onExpandSelectedTreeNode(MouseEvent mouseEvent)
 	{
 		JTreeExtensions.expandAll(tree, JTreeExtensions.getTreePath(getSelectedTreeNode()), true);
 	}
@@ -294,17 +294,20 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	/**
 	 * The callback method on collapse the selected tree node
 	 */
-	protected void onCollapseSelectedTreeNode()
+	protected void onCollapseSelectedTreeNode(MouseEvent mouseEvent)
 	{
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree).ifPresent(selectedTreeNode ->{
+			JTreeExtensions.expandAll(tree, JTreeExtensions.getTreePath(selectedTreeNode), false);
+			});
 		JTreeExtensions.expandAll(tree, JTreeExtensions.getTreePath(getSelectedTreeNode()), false);
 	}
 
 	/**
 	 * The callback method on delete the selected tree node
 	 */
-	protected void onDeleteSelectedTreeNode()
+	protected void onDeleteSelectedTreeNode(MouseEvent mouseEvent)
 	{
-		JTreeExtensions.getSelectedTreeNode(tree).ifPresent(selectedTreeNode -> {
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree).ifPresent(selectedTreeNode -> {
 			int selectedNodeIndex = selectedTreeNode.getParent().getIndex(selectedTreeNode);
 			selectedTreeNode.removeAllChildren();
 			((DefaultMutableTreeNode)selectedTreeNode.getParent()).remove(selectedNodeIndex);
