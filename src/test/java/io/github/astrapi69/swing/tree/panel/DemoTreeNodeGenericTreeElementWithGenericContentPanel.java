@@ -54,19 +54,19 @@ import io.github.astrapi69.swing.tree.renderer.GenericTreeNodeCellRenderer;
 import io.github.astrapi69.test.objects.Permission;
 import io.github.astrapi69.tree.TreeNode;
 
-public class DemoTreeNodeGenericTreeElementWithContentPanel
+public class DemoTreeNodeGenericTreeElementWithGenericContentPanel
 	extends
-		TreeNodeGenericTreeElementWithContentPanel<List<Permission>>
+		TreeNodeGenericTreeElementWithGenericContentPanel<List<Permission>, Permission>
 {
 
 	private static final long serialVersionUID = 1L;
 
-	public DemoTreeNodeGenericTreeElementWithContentPanel()
+	public DemoTreeNodeGenericTreeElementWithGenericContentPanel()
 	{
 		this(BaseModel.of(new TreeNode<>()));
 	}
 
-	public DemoTreeNodeGenericTreeElementWithContentPanel(
+	public DemoTreeNodeGenericTreeElementWithGenericContentPanel(
 		final Model<TreeNode<GenericTreeElement<List<Permission>>>> model)
 	{
 		super(model);
@@ -81,47 +81,53 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	}
 
 	@Override
-	protected GenericJXTable newJTable()
+	protected GenericJXTable<Permission> newJTable()
 	{
 		GenericTableModel<Permission> permissionsTableModel = new DynamicPermissionsTableModel(
-			new DynamicTableColumnsModel<Permission>(Permission.class));
+			new DynamicTableColumnsModel<>(Permission.class));
 		GenericJXTable<Permission> table = new GenericJXTable<Permission>(permissionsTableModel)
 		{
 
 			protected void onSingleLeftClick(MouseEvent event)
 			{
 				super.onSingleLeftClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleLeftClick(event);
+				DemoTreeNodeGenericTreeElementWithGenericContentPanel.this
+					.onTableSingleLeftClick(event);
 			}
 
 			protected void onSingleMiddleClick(MouseEvent event)
 			{
 				super.onSingleMiddleClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleMiddleClick(event);
+				DemoTreeNodeGenericTreeElementWithGenericContentPanel.this
+					.onTableSingleMiddleClick(event);
 			}
 
 			protected void onSingleRightClick(MouseEvent event)
 			{
 				super.onSingleRightClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleRightClick(event);
+				DemoTreeNodeGenericTreeElementWithGenericContentPanel.this
+					.onTableSingleRightClick(event);
 			}
 
 			protected void onDoubleLeftClick(MouseEvent event)
 			{
 				super.onDoubleLeftClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleLeftClick(event);
+				DemoTreeNodeGenericTreeElementWithGenericContentPanel.this
+					.onTableDoubleLeftClick(event);
 			}
 
 			protected void onDoubleMiddleClick(MouseEvent event)
 			{
 				super.onDoubleMiddleClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleMiddleClick(event);
+				DemoTreeNodeGenericTreeElementWithGenericContentPanel.this
+					.onTableDoubleMiddleClick(event);
 			}
 
 			protected void onDoubleRightClick(MouseEvent event)
 			{
 				super.onDoubleRightClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleRightClick(event);
+				DemoTreeNodeGenericTreeElementWithGenericContentPanel.this
+					.onTableDoubleRightClick(event);
 			}
 		};
 		return table;
@@ -143,8 +149,6 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	{
 		TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = model.getObject();
 		TreeModel treeModel;
-
-		// treeModel = new TreeNodeModel(parentTreeNode);
 
 		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
 
@@ -202,7 +206,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	 * @param model
 	 */
 	@Override
-	protected GenericTableModel newTableModel(TreeNode<GenericTreeElement<List<Permission>>> model)
+	protected GenericTableModel<Permission> newTableModel(
+		TreeNode<GenericTreeElement<List<Permission>>> model)
 	{
 		GenericTreeElement<List<Permission>> parentTreeNode = model.getValue();
 		List<Permission> permissions = parentTreeNode.getDefaultContent();
@@ -291,17 +296,18 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 			if (option == JOptionPane.OK_OPTION)
 			{
-				boolean allowsChildren = nodePanel.getCbxNode().isSelected();
-				String userObject = nodePanel.getTxtName().getText();
+				NodeModelBean modelObject = nodePanel.getModelObject();
+				boolean node = modelObject.isNode();
+				String name = modelObject.getName();
 				GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
-					.<List<Permission>> builder().name(userObject).parent(parentTreeNode.getValue())
-					.node(allowsChildren).build();
+					.<List<Permission>> builder().name(name).parent(parentTreeNode.getValue())
+					.node(node).build();
 				TreeNode<GenericTreeElement<List<Permission>>> newTreeNode = TreeNode
 					.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-					.parent(parentTreeNode).displayValue(userObject).node(allowsChildren).build();
+					.parent(parentTreeNode).displayValue(name).node(node).build();
 
 				DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode,
-					allowsChildren);
+					node);
 				selectedTreeNode.add(newChild);
 				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
 				tree.treeDidChange();
@@ -317,6 +323,46 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	protected void onEditSelectedTreeNode()
 	{
 		System.out.println("onEditSelectedTreeNode");
+
+		DefaultMutableTreeNode selectedTreeNode = getSelectedTreeNode();
+		if (selectedTreeNode != null)
+		{
+			TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
+				.getUserObject();
+			NodePanel nodePanel = new NodePanel(BaseModel.of(NodeModelBean.builder()
+					.name(parentTreeNode.getValue().getName())
+					.node(parentTreeNode.getValue().isNode())
+				.build()));
+			JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.OK_CANCEL_OPTION);
+			JDialog dialog = pane.createDialog(null, "Edit node");
+			dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
+			dialog.pack();
+			dialog.setLocationRelativeTo(null);
+			dialog.setVisible(true);
+			int option = JOptionPaneExtensions.getSelectedOption(pane);
+
+			if (option == JOptionPane.OK_OPTION)
+			{
+				NodeModelBean modelObject = nodePanel.getModelObject();
+				boolean node = modelObject.isNode();
+				String name = modelObject.getName();
+				parentTreeNode.setNode(node);
+				parentTreeNode.setDisplayValue(name);
+
+				if(parentTreeNode.getValue().isNode() != node) {
+					// set to leaf only if the node has no children
+					if((node) || !node && 0 == selectedTreeNode.getChildCount()) {
+						parentTreeNode.getValue().setNode(node);
+					}
+				}
+
+				parentTreeNode.getValue().setName(name);
+
+				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
+				tree.treeDidChange();
+			}
+		}
 	}
 
 	/**
@@ -344,12 +390,89 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	/**
 	 * The callback method on the table single right click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTableSingleRightClick(MouseEvent event)
+	protected void onTableSingleRightClick(MouseEvent mouseEvent)
 	{
-		System.out.println("onTableSingleRightClick");
+		int x = mouseEvent.getX();
+		int y = mouseEvent.getY();
+
+		List<Permission> allSelectedRowData = getTblTreeEntryTable().getAllSelectedRowData();
+
+		JPopupMenu popup = MenuFactory.newJPopupMenu();
+
+		popup.add(MenuFactory.newJMenuItem("add permission...",
+			actionEvent -> this.onAddNewPermission()));
+
+		JMenuItem menuItem = MenuFactory.newJMenuItem("delete",
+			actionEvent -> this.onDeletePermission());
+		menuItem.setEnabled(!allSelectedRowData.isEmpty());
+		popup.add(menuItem);
+
+		JMenuItem edit = MenuFactory.newJMenuItem("edit", actionEvent -> this.onEditPermission());
+		edit.setEnabled(!allSelectedRowData.isEmpty() && allSelectedRowData.size() == 1);
+		popup.add(edit);
+
+		popup.show(getTblTreeEntryTable(), x, y);
+
+	}
+
+	protected void onEditPermission()
+	{
+		getTblTreeEntryTable().getSingleSelectedRowData().ifPresent(permission -> {
+			PermissionPanel editNodePanel = new PermissionPanel(BaseModel.of(permission));
+			JOptionPane pane = new JOptionPane(editNodePanel, JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.OK_CANCEL_OPTION);
+			JDialog dialog = pane.createDialog(null, "New permission");
+			dialog.addWindowFocusListener(new RequestFocusListener(editNodePanel.getTxtName()));
+			dialog.pack();
+			dialog.setLocationRelativeTo(null);
+			dialog.setVisible(true);
+			int option = JOptionPaneExtensions.getSelectedOption(pane);
+
+			if (option == JOptionPane.OK_OPTION)
+			{
+				List<Permission> data = getTblTreeEntryTable().getGenericTableModel().getData();
+				int index = data.indexOf(permission);
+				data.remove(permission);
+				Permission perm = editNodePanel.getModelObject();
+
+				data.add(index, perm);
+				getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
+			}
+		});
+	}
+
+	protected void onDeletePermission()
+	{
+		getTblTreeEntryTable().getAllSelectedRowData().forEach(permission -> {
+			getTblTreeEntryTable().getGenericTableModel().remove(permission);
+		});
+		getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
+	}
+
+	protected void onAddNewPermission()
+	{
+		PermissionPanel addNodePanel = new PermissionPanel();
+		JOptionPane pane = new JOptionPane(addNodePanel, JOptionPane.INFORMATION_MESSAGE,
+			JOptionPane.OK_CANCEL_OPTION);
+		JDialog dialog = pane.createDialog(null, "New permission");
+		dialog.addWindowFocusListener(new RequestFocusListener(addNodePanel.getTxtName()));
+		dialog.pack();
+		dialog.setLocationRelativeTo(null);
+		dialog.setVisible(true);
+		int option = JOptionPaneExtensions.getSelectedOption(pane);
+
+		if (option == JOptionPane.OK_OPTION)
+		{
+			Permission permission = Permission.builder()
+				.description(addNodePanel.getTxtDescription().getText())
+				.name(addNodePanel.getTxtName().getText())
+				.shortcut(addNodePanel.getTxtShortcut().getText()).build();
+			getTblTreeEntryTable().getGenericTableModel().add(permission);
+			getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
+		}
 	}
 
 	/**

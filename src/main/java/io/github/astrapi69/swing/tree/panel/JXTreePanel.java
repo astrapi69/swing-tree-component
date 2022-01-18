@@ -26,6 +26,7 @@ package io.github.astrapi69.swing.tree.panel;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.Optional;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -303,14 +304,15 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 */
 	protected void onDeleteSelectedTreeNode()
 	{
-		DefaultMutableTreeNode selectedTreeNode = getSelectedTreeNode();
-		int selectedNodeIndex = selectedTreeNode.getParent().getIndex(selectedTreeNode);
-		selectedTreeNode.removeAllChildren();
-		((DefaultMutableTreeNode)selectedTreeNode.getParent()).remove(selectedNodeIndex);
-		((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
-		tree.treeDidChange();
-		tree.treeDidChange();
-		this.repaint();
+		JTreeExtensions.getSelectedTreeNode(tree).ifPresent(selectedTreeNode -> {
+			int selectedNodeIndex = selectedTreeNode.getParent().getIndex(selectedTreeNode);
+			selectedTreeNode.removeAllChildren();
+			((DefaultMutableTreeNode)selectedTreeNode.getParent()).remove(selectedNodeIndex);
+			((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
+			tree.treeDidChange();
+			tree.treeDidChange();
+			this.repaint();
+		});
 	}
 
 	/**
@@ -320,6 +322,6 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 */
 	protected DefaultMutableTreeNode getSelectedTreeNode()
 	{
-		return JTreeExtensions.getSelectedTreeNode(tree);
+		return Optional.ofNullable(JTreeExtensions.getSelectedTreeNode(tree).get()).orElse(null);
 	}
 }

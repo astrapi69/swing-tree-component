@@ -115,16 +115,42 @@ public class JTreeExtensions
 	}
 
 	/**
+	 * Gets the selected user object from the given {@link JTree} object
+	 *
+	 * @param tree
+	 *            the tree
+	 */
+	public static <T> Optional<T> getSelectedUserObject(final @NonNull JTree tree)
+	{
+		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedTreeNode(tree);
+		if (selectedTreeNode.isPresent())
+		{
+			DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
+			Object userObject = defaultMutableTreeNode.getUserObject();
+			if (userObject != null)
+			{
+				T uo = (T)userObject;
+				return Optional.of(uo);
+			}
+		}
+		return Optional.empty();
+	}
+
+	/**
 	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
 	 *
 	 * @param tree
 	 *            the tree
 	 */
-	public static DefaultMutableTreeNode getSelectedTreeNode(final @NonNull JTree tree)
+	public static Optional<DefaultMutableTreeNode> getSelectedTreeNode(final @NonNull JTree tree)
 	{
 		DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)tree
 			.getLastSelectedPathComponent();
-		return selectedTreeNode;
+		if (selectedTreeNode != null)
+		{
+			return Optional.of(selectedTreeNode);
+		}
+		return Optional.empty();
 	}
 
 	/**
@@ -139,15 +165,12 @@ public class JTreeExtensions
 	public static List<Object> getTreeNodes(final @NonNull TreeNode treeNode)
 	{
 		List<Object> treeNodes = new ArrayList<>();
-		if (treeNode != null)
+		treeNodes.add(treeNode);
+		TreeNode parenTreeNode = treeNode.getParent();
+		while (parenTreeNode != null)
 		{
-			treeNodes.add(treeNode);
-			TreeNode parenTreeNode = treeNode.getParent();
-			while (parenTreeNode != null)
-			{
-				treeNodes.add(0, parenTreeNode);
-				parenTreeNode = parenTreeNode.getParent();
-			}
+			treeNodes.add(0, parenTreeNode);
+			parenTreeNode = parenTreeNode.getParent();
 		}
 		return treeNodes;
 	}

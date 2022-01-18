@@ -224,6 +224,7 @@ dependencies {
     testImplementation("io.github.astrapi69:throw-able:$throwAbleVersion")
     testImplementation("org.freedesktop.tango:tango-icon-theme:$tangoIconThemeVersion")
     testImplementation("io.github.astrapi69:silk-icon-theme:$silkIconThemeVersion")
+    testImplementation("io.github.astrapi69:swing-components:$swingComponentsVersion")
     testImplementation("io.github.astrapi69:test-objects:$testObjectsVersion")
     testImplementation("org.meanbean:meanbean:$meanbeanVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
