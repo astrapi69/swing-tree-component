@@ -148,52 +148,11 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 		final Model<TreeNode<GenericTreeElement<List<Permission>>>> model)
 	{
 		TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = model.getObject();
-		TreeModel treeModel;
 
 		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
 
-		treeModel = new DefaultTreeModel(rootNode, true);
+		TreeModel treeModel = new DefaultTreeModel(rootNode, true);
 
-		treeModel.addTreeModelListener(new TreeModelListener()
-		{
-			@Override
-			public void treeNodesChanged(TreeModelEvent e)
-			{
-				Object lastPathComponent = e.getTreePath().getLastPathComponent();
-				DefaultMutableTreeNode node;
-				node = (DefaultMutableTreeNode)lastPathComponent;
-				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)node
-					.getUserObject();
-				newTableModel(selectedTreeNode);
-			}
-
-			@Override
-			public void treeNodesInserted(TreeModelEvent e)
-			{
-				Object lastPathComponent = e.getTreePath().getLastPathComponent();
-				DefaultMutableTreeNode node;
-				node = (DefaultMutableTreeNode)lastPathComponent;
-				System.err.println(node);
-			}
-
-			@Override
-			public void treeNodesRemoved(TreeModelEvent e)
-			{
-				Object lastPathComponent = e.getTreePath().getLastPathComponent();
-				DefaultMutableTreeNode node;
-				node = (DefaultMutableTreeNode)lastPathComponent;
-				System.err.println(node);
-			}
-
-			@Override
-			public void treeStructureChanged(TreeModelEvent e)
-			{
-				Object lastPathComponent = e.getTreePath().getLastPathComponent();
-				DefaultMutableTreeNode node;
-				node = (DefaultMutableTreeNode)lastPathComponent;
-				System.err.println(node);
-			}
-		});
 		return treeModel;
 	}
 
