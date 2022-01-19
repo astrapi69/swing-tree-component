@@ -25,11 +25,14 @@
 package io.github.astrapi69.swing.tree.content.panel;
 
 import java.awt.*;
+import java.util.Optional;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 
+import io.github.astrapi69.swing.tree.JTreeExtensions;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.api.Model;
@@ -62,16 +65,14 @@ public abstract class PreferencesPanel<T> extends JXTreePanel<T>
 
 	protected Component getSelectedComponent()
 	{
-		Object o = tree.getLastSelectedPathComponent();
-		if (o instanceof ComponentTreeNode)
-		{
-			return ((ComponentTreeNode)o).getComponent();
+		Optional<DefaultMutableTreeNode> selectedTreeNode = JTreeExtensions.getSelectedTreeNode(
+			tree);
+		if(selectedTreeNode.isPresent()){
+			DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
+			Component component = (Component)defaultMutableTreeNode.getUserObject();
+			return component;
 		}
-		else
-		{
-			return null;
-		}
-
+		return null;
 	}
 
 	protected JSplitPane newJSplitPane()

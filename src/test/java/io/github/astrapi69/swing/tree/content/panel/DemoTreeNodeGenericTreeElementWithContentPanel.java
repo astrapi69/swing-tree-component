@@ -34,10 +34,9 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreePath;
 
-import io.github.astrapi69.swing.tree.panel.NodeModelBean;
-import io.github.astrapi69.swing.tree.panel.NodePanel;
+import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
+import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.panel.PermissionPanel;
 import org.jdesktop.swingx.JXTree;
 
@@ -231,20 +230,20 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	}
 
 	@Override
-	protected void onTreeSingleRightClick(MouseEvent mouseEvent)
+	protected void onTreeSingleRightClick(final MouseEvent mouseEvent)
 	{
 		int x = mouseEvent.getX();
 		int y = mouseEvent.getY();
 		//		TreePath selectionPath = tree.getPathForLocation(mouseEvent.getX(), mouseEvent.getY());
-		Optional<TreeNode<GenericTreeElement<List<Permission>>>> selectedUserObject =
+		Optional<TreeNode<GenericTreeElement<List<Permission>>>> optionalSelectedUserObject =
 			JTreeExtensions.getSelectedUserObject(mouseEvent, tree);
-		selectedUserObject.ifPresent(parentTreeNode -> {
+		optionalSelectedUserObject.ifPresent(parentTreeNode -> {
 			JPopupMenu popup = MenuFactory.newJPopupMenu();
 
 			if (parentTreeNode.isNode())
 			{
 				popup.add(MenuFactory.newJMenuItem("add node...",
-					actionEvent -> this.onAddNewChildTreeNode()));
+					actionEvent -> this.onAddNewChildTreeNode(mouseEvent)));
 			}
 
 			if (!parentTreeNode.isRoot())
@@ -254,7 +253,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 			}
 
 			popup.add(MenuFactory.newJMenuItem("Edit node...",
-				actionEvent -> this.onEditSelectedTreeNode()));
+				actionEvent -> this.onEditSelectedTreeNode(mouseEvent)));
 
 			popup.add(MenuFactory.newJMenuItem("Copy node",
 				actionEvent -> this.onCopySelectedTreeNode()));
@@ -308,11 +307,9 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 //		}
 	}
 
-	protected void onAddNewChildTreeNode()
+	protected void onAddNewChildTreeNode(MouseEvent mouseEvent)
 	{
-		DefaultMutableTreeNode selectedTreeNode = getSelectedTreeNode();
-		if (selectedTreeNode != null)
-		{
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree).ifPresent(selectedTreeNode -> {
 			TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
 				.getUserObject();
 			NodePanel nodePanel = new NodePanel();
@@ -343,7 +340,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
 				tree.treeDidChange();
 			}
-		}
+		});
 	}
 
 	protected void onCopySelectedTreeNode()
@@ -351,18 +348,15 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 		System.out.println("onCopySelectedTreeNode");
 	}
 
-	protected void onEditSelectedTreeNode()
+	protected void onEditSelectedTreeNode(final MouseEvent mouseEvent)
 	{
-		System.out.println("onEditSelectedTreeNode");
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree).ifPresent(selectedTreeNode->{
 
-		DefaultMutableTreeNode selectedTreeNode = getSelectedTreeNode();
-		if (selectedTreeNode != null)
-		{
 			TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
 				.getUserObject();
 			NodePanel nodePanel = new NodePanel(BaseModel.of(NodeModelBean.builder()
-					.name(parentTreeNode.getValue().getName())
-					.node(parentTreeNode.getValue().isNode())
+				.name(parentTreeNode.getValue().getName())
+				.node(parentTreeNode.getValue().isNode())
 				.build()));
 			JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
 				JOptionPane.OK_CANCEL_OPTION);
@@ -393,7 +387,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
 				tree.treeDidChange();
 			}
-		}
+		});
+
 	}
 
 	/**

@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.tree.panel.node;
 
 import java.awt.*;
 
@@ -35,6 +35,10 @@ import lombok.Getter;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.swing.base.BasePanel;
+import net.miginfocom.layout.AC;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 
 @Getter
 public class NodePanel extends BasePanel<NodeModelBean>
@@ -68,17 +72,37 @@ public class NodePanel extends BasePanel<NodeModelBean>
 		txtName.setPropertyModel(LambdaModel.of(modelObject::getName, modelObject::setName));
 		cbxNode.setPropertyModel(LambdaModel.of(modelObject::isNode, modelObject::setNode));
 
-		add(lblName);
-		add(txtName);
-		add(lblNode);
-		add(cbxNode);
 	}
 
 	@Override
 	protected void onInitializeLayout()
 	{
 		super.onInitializeLayout();
+		onInitializeMigLayout();
+	}
+
+	protected void onInitializeGridLayout()
+	{
 		GridLayout layout = new GridLayout(2, 2);
 		this.setLayout(layout);
+
+		add(lblName);
+		add(txtName);
+		add(lblNode);
+		add(cbxNode);
+	}
+
+	protected void onInitializeMigLayout()
+	{
+		MigLayout layout = new MigLayout(
+			new LC().fillX().wrapAfter(2),
+			new AC().align("left").gap("10").grow().fill(),
+			new AC().fill().gap("10"));
+		this.setLayout(layout);
+
+		add(lblName);
+		add(txtName, new CC().grow().width("120px"));
+		add(lblNode, "grow");
+		add(cbxNode, "grow");
 	}
 }

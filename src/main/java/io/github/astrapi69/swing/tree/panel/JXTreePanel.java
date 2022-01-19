@@ -29,11 +29,14 @@ import java.awt.event.MouseEvent;
 import java.util.Optional;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeSelectionModel;
 
+import io.github.astrapi69.swing.tree.content.panel.PreferencesPanel;
 import lombok.Getter;
 
 import org.jdesktop.swingx.JXTree;
@@ -66,6 +69,8 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 
 	/** The decorated {@link JTree}. */
 	protected JTree tree;
+
+	protected DefaultMutableTreeNode selectedTreeNode;
 
 	/**
 	 * Instantiates a new {@link JXTreePanel} object.
@@ -116,6 +121,17 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 		// if setEditable is set to true, tree element names are editable with double click
 		tree.setEditable(false);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+
+		tree.addTreeSelectionListener(new TreeSelectionListener()
+		{
+			@Override
+			public void valueChanged(TreeSelectionEvent e)
+			{
+				DefaultMutableTreeNode lastPathComponent = (DefaultMutableTreeNode)e.getPath()
+					.getLastPathComponent();
+				JXTreePanel.this.selectedTreeNode = lastPathComponent;
+			}
+		});
 
 		tree.addMouseListener(new MouseDoubleClickListener()
 		{

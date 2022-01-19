@@ -123,6 +123,24 @@ public class JTreeExtensions
 	public static <T> Optional<T> getSelectedUserObject(final @NonNull MouseEvent mouseEvent, final @NonNull JTree tree)
 	{
 		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedDefaultMutableTreeNode(mouseEvent, tree);
+		return getOptionalTreeNode(selectedTreeNode);
+	}
+
+	/**
+	 * Gets the selected user object from the given {@link JTree} object
+	 *
+	 * @param tree
+	 *            the tree
+	 */
+	public static <T> Optional<T> getSelectedUserObject(final @NonNull JTree tree)
+	{
+		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedTreeNode(tree);
+		return getOptionalTreeNode(selectedTreeNode);
+	}
+
+	private static <T> Optional<T> getOptionalTreeNode(
+		Optional<DefaultMutableTreeNode> selectedTreeNode)
+	{
 		if (selectedTreeNode.isPresent())
 		{
 			DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
@@ -142,9 +160,9 @@ public class JTreeExtensions
 	 * @param tree
 	 *            the tree
 	 */
-	public static Optional<DefaultMutableTreeNode> getSelectedTreeNode(final @NonNull JTree tree)
+	public static<T extends DefaultMutableTreeNode> Optional<T> getSelectedTreeNode(final @NonNull JTree tree)
 	{
-		DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)tree
+		T selectedTreeNode = (T)tree
 			.getLastSelectedPathComponent();
 		if (selectedTreeNode != null)
 		{
