@@ -29,12 +29,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.table.TableModel;
 
-import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
-import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import lombok.Getter;
+import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
 import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
+import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 
 @Getter
 public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>
@@ -48,6 +49,7 @@ public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>
 
 	public JXTreeWithContentPanel()
 	{
+		this(BaseModel.of());
 	}
 
 	public JXTreeWithContentPanel(final Model<T> model)
