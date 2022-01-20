@@ -24,6 +24,7 @@
  */
 package io.github.astrapi69.swing.tree;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -36,6 +37,7 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import lombok.NonNull;
+import io.github.astrapi69.swing.robot.MouseExtensions;
 
 /**
  * The class {@link JTreeExtensions}.
@@ -45,23 +47,40 @@ public class JTreeExtensions
 
 	/**
 	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
-	 * 
+	 *
 	 * @param mouseEvent
 	 *            the mouse event
 	 * @param tree
 	 *            the tree
 	 * @return the selected tree node
 	 */
-	public static Optional<DefaultMutableTreeNode> getSelectedDefaultMutableTreeNode(
+	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
 		@NonNull MouseEvent mouseEvent, @NonNull JTree tree)
 	{
-		TreePath selectionPath = tree.getPathForLocation(mouseEvent.getX(), mouseEvent.getY());
+		return getSelectedDefaultMutableTreeNode(tree, mouseEvent.getX(), mouseEvent.getY());
+	}
+
+	/**
+	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
+	 *
+	 * @param tree
+	 *            the tree
+	 * @param x
+	 *            the horizontal x position
+	 * @param y
+	 *            the vertical y position
+	 * @return the selected tree node
+	 */
+	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
+		@NonNull JTree tree, int x, int y)
+	{
+		TreePath selectionPath = tree.getPathForLocation(x, y);
 		if (selectionPath == null)
 		{
 			return Optional.empty();
 		}
 		Object lastPathComponent = selectionPath.getLastPathComponent();
-		return Optional.of((DefaultMutableTreeNode)lastPathComponent);
+		return Optional.of((T)lastPathComponent);
 	}
 
 	/**
@@ -120,9 +139,11 @@ public class JTreeExtensions
 	 * @param tree
 	 *            the tree
 	 */
-	public static <T> Optional<T> getSelectedUserObject(final @NonNull MouseEvent mouseEvent, final @NonNull JTree tree)
+	public static <T> Optional<T> getSelectedUserObject(final @NonNull MouseEvent mouseEvent,
+		final @NonNull JTree tree)
 	{
-		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedDefaultMutableTreeNode(mouseEvent, tree);
+		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedDefaultMutableTreeNode(
+			mouseEvent, tree);
 		return getOptionalTreeNode(selectedTreeNode);
 	}
 
@@ -160,13 +181,21 @@ public class JTreeExtensions
 	 * @param tree
 	 *            the tree
 	 */
-	public static<T extends DefaultMutableTreeNode> Optional<T> getSelectedTreeNode(final @NonNull JTree tree)
+	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedTreeNode(
+		final @NonNull JTree tree)
 	{
-		T selectedTreeNode = (T)tree
-			.getLastSelectedPathComponent();
+		T selectedTreeNode = (T)tree.getLastSelectedPathComponent();
 		if (selectedTreeNode != null)
 		{
 			return Optional.of(selectedTreeNode);
+		}
+		else
+		{
+			if (MouseExtensions.isMouseWithin(tree))
+			{
+				Point location = MouseInfo.getPointerInfo().getLocation();
+				return getSelectedDefaultMutableTreeNode(tree, location.x, location.y);
+			}
 		}
 		return Optional.empty();
 	}
@@ -205,5 +234,4 @@ public class JTreeExtensions
 		List<Object> treeNodes = getTreeNodes(treeNode);
 		return treeNodes.isEmpty() ? null : new TreePath(treeNodes.toArray());
 	}
-
 }

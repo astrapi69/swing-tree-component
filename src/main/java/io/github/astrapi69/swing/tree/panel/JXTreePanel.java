@@ -36,7 +36,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeSelectionModel;
 
-import io.github.astrapi69.swing.tree.content.panel.PreferencesPanel;
 import lombok.Getter;
 
 import org.jdesktop.swingx.JXTree;
@@ -280,6 +279,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 
 	/**
 	 * The callback method on add a new child tree node
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
 	 */
 	protected void onAddNewChildTreeNode(MouseEvent mouseEvent)
 	{
@@ -287,6 +289,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 
 	/**
 	 * The callback method on copy an existing tree node
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
 	 */
 	protected void onCopySelectedTreeNode(MouseEvent mouseEvent)
 	{
@@ -294,6 +299,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 
 	/**
 	 * The callback method on editing the selected tree node
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
 	 */
 	protected void onEditSelectedTreeNode(MouseEvent mouseEvent)
 	{
@@ -301,6 +309,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 
 	/**
 	 * The callback method on expand the selected tree node
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
 	 */
 	protected void onExpandSelectedTreeNode(MouseEvent mouseEvent)
 	{
@@ -320,6 +331,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 
 	/**
 	 * The callback method on delete the selected tree node
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
 	 */
 	protected void onDeleteSelectedTreeNode(MouseEvent mouseEvent)
 	{

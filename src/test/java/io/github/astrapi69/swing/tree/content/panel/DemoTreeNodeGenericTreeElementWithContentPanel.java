@@ -29,15 +29,10 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.swing.*;
-import javax.swing.event.TreeModelEvent;
-import javax.swing.event.TreeModelListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
-import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
-import io.github.astrapi69.swing.tree.panel.node.NodePanel;
-import io.github.astrapi69.swing.tree.panel.PermissionPanel;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
@@ -52,12 +47,16 @@ import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.swing.tree.panel.PermissionPanel;
+import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
+import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.GenericTreeNodeCellRenderer;
 import io.github.astrapi69.test.objects.Permission;
 import io.github.astrapi69.tree.TreeNode;
 
 public class DemoTreeNodeGenericTreeElementWithContentPanel
-	extends TreeNodeGenericTreeElementWithContentPanel<List<Permission>, Permission>
+	extends
+		TreeNodeGenericTreeElementWithContentPanel<List<Permission>, Permission>
 {
 
 	private static final long serialVersionUID = 1L;
@@ -92,43 +91,37 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 			protected void onSingleLeftClick(MouseEvent event)
 			{
 				super.onSingleLeftClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this
-					.onTableSingleLeftClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleLeftClick(event);
 			}
 
 			protected void onSingleMiddleClick(MouseEvent event)
 			{
 				super.onSingleMiddleClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this
-					.onTableSingleMiddleClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleMiddleClick(event);
 			}
 
 			protected void onSingleRightClick(MouseEvent event)
 			{
 				super.onSingleRightClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this
-					.onTableSingleRightClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleRightClick(event);
 			}
 
 			protected void onDoubleLeftClick(MouseEvent event)
 			{
 				super.onDoubleLeftClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this
-					.onTableDoubleLeftClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleLeftClick(event);
 			}
 
 			protected void onDoubleMiddleClick(MouseEvent event)
 			{
 				super.onDoubleMiddleClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this
-					.onTableDoubleMiddleClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleMiddleClick(event);
 			}
 
 			protected void onDoubleRightClick(MouseEvent event)
 			{
 				super.onDoubleRightClick(event);
-				DemoTreeNodeGenericTreeElementWithContentPanel.this
-					.onTableDoubleRightClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleRightClick(event);
 			}
 		};
 	}
@@ -193,19 +186,19 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	{
 		int x = mouseEvent.getX();
 		int y = mouseEvent.getY();
-		//		TreePath selectionPath = tree.getPathForLocation(mouseEvent.getX(), mouseEvent.getY());
-		Optional<TreeNode<GenericTreeElement<List<Permission>>>> optionalSelectedUserObject =
-			JTreeExtensions.getSelectedUserObject(mouseEvent, tree);
-		optionalSelectedUserObject.ifPresent(parentTreeNode -> {
+		// TreePath selectionPath = tree.getPathForLocation(mouseEvent.getX(), mouseEvent.getY());
+		Optional<TreeNode<GenericTreeElement<List<Permission>>>> optionalSelectedUserObject = JTreeExtensions
+			.getSelectedUserObject(mouseEvent, tree);
+		optionalSelectedUserObject.ifPresent(selectedTreeNode -> {
 			JPopupMenu popup = MenuFactory.newJPopupMenu();
 
-			if (parentTreeNode.isNode())
+			if (selectedTreeNode.isNode())
 			{
 				popup.add(MenuFactory.newJMenuItem("add node...",
 					actionEvent -> this.onAddNewChildTreeNode(mouseEvent)));
 			}
 
-			if (!parentTreeNode.isRoot())
+			if (!selectedTreeNode.isRoot())
 			{
 				popup.add(MenuFactory.newJMenuItem("delete",
 					actionEvent -> this.onDeleteSelectedTreeNode(mouseEvent)));
@@ -215,7 +208,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 				actionEvent -> this.onEditSelectedTreeNode(mouseEvent)));
 
 			popup.add(MenuFactory.newJMenuItem("Copy node",
-				actionEvent -> this.onCopySelectedTreeNode()));
+				actionEvent -> this.onCopySelectedTreeNode(mouseEvent)));
 
 			popup.add(MenuFactory.newJMenuItem("Collapse node",
 				actionEvent -> this.onCollapseSelectedTreeNode(mouseEvent)));
@@ -225,129 +218,120 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 			popup.show(tree, x, y);
 		});
-//		if (selectionPath != null)
-//		{
-//			tree.getSelectionModel().setSelectionPath(selectionPath);
-//
-//			Object lastPathComponent = selectionPath.getLastPathComponent();
-//			DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)lastPathComponent;
-//			TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode;
-//
-//			parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
-//				.getUserObject();
-//
-//			JPopupMenu popup = MenuFactory.newJPopupMenu();
-//
-//			if (parentTreeNode.isNode())
-//			{
-//				popup.add(MenuFactory.newJMenuItem("add node...",
-//					actionEvent -> this.onAddNewChildTreeNode()));
-//			}
-//
-//			if (!parentTreeNode.isRoot())
-//			{
-//				popup.add(MenuFactory.newJMenuItem("delete",
-//					actionEvent -> this.onDeleteSelectedTreeNode()));
-//			}
-//
-//			popup.add(MenuFactory.newJMenuItem("Edit node...",
-//				actionEvent -> this.onEditSelectedTreeNode()));
-//
-//			popup.add(MenuFactory.newJMenuItem("Copy node",
-//				actionEvent -> this.onCopySelectedTreeNode()));
-//
-//			popup.add(MenuFactory.newJMenuItem("Collapse node",
-//				actionEvent -> this.onCollapseSelectedTreeNode()));
-//
-//			popup.add(MenuFactory.newJMenuItem("Expand node",
-//				actionEvent -> this.onExpandSelectedTreeNode()));
-//
-//			popup.show(tree, x, y);
-//		}
 	}
 
 	protected void onAddNewChildTreeNode(MouseEvent mouseEvent)
 	{
-		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree).ifPresent(selectedTreeNode -> {
-			TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
-				.getUserObject();
-			NodePanel nodePanel = new NodePanel();
-			JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
-				JOptionPane.OK_CANCEL_OPTION);
-			JDialog dialog = pane.createDialog(null, "New node");
-			dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
-			dialog.pack();
-			dialog.setLocationRelativeTo(null);
-			dialog.setVisible(true);
-			int option = JOptionPaneExtensions.getSelectedOption(pane);
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
+			.ifPresent(selectedDefaultMutableTreeNode -> {
+				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
+					.getUserObject();
+				NodePanel nodePanel = new NodePanel();
+				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
+					JOptionPane.OK_CANCEL_OPTION);
+				JDialog dialog = pane.createDialog(null, "New node");
+				dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
+				dialog.pack();
+				dialog.setLocationRelativeTo(null);
+				dialog.setVisible(true);
+				int option = JOptionPaneExtensions.getSelectedOption(pane);
 
-			if (option == JOptionPane.OK_OPTION)
-			{
-				NodeModelBean modelObject = nodePanel.getModelObject();
-				boolean node = modelObject.isNode();
-				String name = modelObject.getName();
-				GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
-					.<List<Permission>> builder().name(name).parent(parentTreeNode.getValue())
-					.node(node).build();
-				TreeNode<GenericTreeElement<List<Permission>>> newTreeNode = TreeNode
-					.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-					.parent(parentTreeNode).displayValue(name).node(node).build();
+				if (option == JOptionPane.OK_OPTION)
+				{
+					NodeModelBean modelObject = nodePanel.getModelObject();
+					boolean node = modelObject.isNode();
+					String name = modelObject.getName();
+					GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
+						.<List<Permission>> builder().name(name).parent(selectedTreeNode.getValue())
+						.node(node).build();
+					TreeNode<GenericTreeElement<List<Permission>>> newTreeNode = TreeNode
+						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
+						.parent(selectedTreeNode).displayValue(name).node(node).build();
 
-				DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode,
-					node);
-				selectedTreeNode.add(newChild);
-				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
-				tree.treeDidChange();
-			}
-		});
+					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode, node);
+					selectedDefaultMutableTreeNode.add(newChild);
+					((DefaultTreeModel)tree.getModel()).reload(selectedDefaultMutableTreeNode);
+					tree.treeDidChange();
+				}
+			});
 	}
 
-	protected void onCopySelectedTreeNode()
+	protected void onCopySelectedTreeNode(final MouseEvent mouseEvent)
 	{
-		System.out.println("onCopySelectedTreeNode");
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
+			.ifPresent(selectedDefaultMutableTreeNode -> {
+
+				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
+					.getUserObject();
+				String displayValueCopy = selectedTreeNode.getDisplayValue() + "Copy";
+				TreeNode<GenericTreeElement<List<Permission>>> clonedTreeNode = TreeNode
+					.<GenericTreeElement<List<Permission>>> builder()
+					.children(selectedTreeNode.getChildren()).displayValue(displayValueCopy)
+					.parent(selectedTreeNode.getParent()).value(selectedTreeNode.getValue())
+					.node(selectedTreeNode.isNode()).build();
+
+				DefaultMutableTreeNode parentTreeNode = (DefaultMutableTreeNode)selectedDefaultMutableTreeNode
+					.getParent();
+
+				DefaultMutableTreeNode clonedDefaultMutableTreeNode = TreeNodeFactory
+					.newDefaultMutableTreeNode(parentTreeNode, clonedTreeNode);
+
+				TreeNodeFactory.copyDefaultMutableTreeNode(clonedDefaultMutableTreeNode,
+					selectedDefaultMutableTreeNode);
+
+				((DefaultTreeModel)tree.getModel()).reload(parentTreeNode);
+				tree.treeDidChange();
+			});
 	}
 
+	/**
+	 * The callback method on edit the selected tree node
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
+	 */
 	protected void onEditSelectedTreeNode(final MouseEvent mouseEvent)
 	{
-		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree).ifPresent(selectedTreeNode->{
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
+			.ifPresent(selectedDefaultMutableTreeNode -> {
 
-			TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
-				.getUserObject();
-			NodePanel nodePanel = new NodePanel(BaseModel.of(NodeModelBean.builder()
-				.name(parentTreeNode.getValue().getName())
-				.node(parentTreeNode.getValue().isNode())
-				.build()));
-			JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
-				JOptionPane.OK_CANCEL_OPTION);
-			JDialog dialog = pane.createDialog(null, "Edit node");
-			dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
-			dialog.pack();
-			dialog.setLocationRelativeTo(null);
-			dialog.setVisible(true);
-			int option = JOptionPaneExtensions.getSelectedOption(pane);
+				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
+					.getUserObject();
+				NodePanel nodePanel = new NodePanel(
+					BaseModel.of(NodeModelBean.builder().name(selectedTreeNode.getValue().getName())
+						.node(selectedTreeNode.getValue().isNode()).build()));
+				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
+					JOptionPane.OK_CANCEL_OPTION);
+				JDialog dialog = pane.createDialog(null, "Edit node");
+				dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
+				dialog.pack();
+				dialog.setLocationRelativeTo(null);
+				dialog.setVisible(true);
+				int option = JOptionPaneExtensions.getSelectedOption(pane);
 
-			if (option == JOptionPane.OK_OPTION)
-			{
-				NodeModelBean modelObject = nodePanel.getModelObject();
-				boolean node = modelObject.isNode();
-				String name = modelObject.getName();
-				parentTreeNode.setNode(node);
-				parentTreeNode.setDisplayValue(name);
+				if (option == JOptionPane.OK_OPTION)
+				{
+					NodeModelBean modelObject = nodePanel.getModelObject();
+					boolean node = modelObject.isNode();
+					String name = modelObject.getName();
+					selectedTreeNode.setNode(node);
+					selectedTreeNode.setDisplayValue(name);
 
-				if(parentTreeNode.getValue().isNode() != node) {
-					// set to leaf only if the node has no children
-					if((node) || !node && 0 == selectedTreeNode.getChildCount()) {
-						parentTreeNode.getValue().setNode(node);
+					if (selectedTreeNode.getValue().isNode() != node)
+					{
+						// set to leaf only if the node has no children
+						if ((node) || 0 == selectedDefaultMutableTreeNode.getChildCount())
+						{
+							selectedTreeNode.getValue().setNode(node);
+						}
 					}
+
+					selectedTreeNode.getValue().setName(name);
+
+					((DefaultTreeModel)tree.getModel()).reload(selectedDefaultMutableTreeNode);
+					tree.treeDidChange();
 				}
-
-				parentTreeNode.getValue().setName(name);
-
-				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
-				tree.treeDidChange();
-			}
-		});
-
+			});
 	}
 
 	/**

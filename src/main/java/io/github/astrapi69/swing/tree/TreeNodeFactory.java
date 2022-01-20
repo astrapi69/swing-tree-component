@@ -61,6 +61,34 @@ public class TreeNodeFactory
 	}
 
 	/**
+	 * Copies the given source {@link DefaultMutableTreeNode} object to the given target
+	 * {@link DefaultMutableTreeNode} object
+	 *
+	 * @param target
+	 *            the target {@link DefaultMutableTreeNode} object
+	 * @param source
+	 *            the source {@link DefaultMutableTreeNode} object
+	 *
+	 * @return the copied target {@link DefaultMutableTreeNode} object
+	 */
+	public static DefaultMutableTreeNode copyDefaultMutableTreeNode(DefaultMutableTreeNode target,
+		DefaultMutableTreeNode source)
+	{
+		if (source == null)
+		{
+			return target;
+		}
+		for (int i = 0; i < source.getChildCount(); i++)
+		{
+			DefaultMutableTreeNode child = (DefaultMutableTreeNode)source.getChildAt(i);
+			DefaultMutableTreeNode clone = new DefaultMutableTreeNode(child.getUserObject());
+			target.add(clone);
+			copyDefaultMutableTreeNode(clone, child);
+		}
+		return target;
+	}
+
+	/**
 	 * Traverses through the given {@link TreeNode} object and return the root
 	 * {@link DefaultMutableTreeNode} object
 	 *
@@ -103,8 +131,25 @@ public class TreeNodeFactory
 	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
 		DefaultMutableTreeNode parent, T userObject)
 	{
+		return newDefaultMutableTreeNode(parent, userObject, true);
+	}
+
+	/**
+	 * Factory method that creates a new {@link DefaultMutableTreeNode} object
+	 *
+	 * @param parent
+	 *            the parent {@link DefaultMutableTreeNode} object
+	 * @param userObject
+	 *            the user object
+	 * @param <T>
+	 *            the generic type of the given user object
+	 * @return the new {@link DefaultMutableTreeNode} object
+	 */
+	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
+		DefaultMutableTreeNode parent, T userObject, boolean addToParent)
+	{
 		DefaultMutableTreeNode node = new DefaultMutableTreeNode(userObject);
-		if (parent != null)
+		if (parent != null && addToParent)
 		{
 			parent.add(node);
 		}
