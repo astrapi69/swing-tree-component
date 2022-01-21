@@ -24,7 +24,6 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Optional;
@@ -274,8 +273,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 				TreeNodeFactory.copyOf(selectedDefaultMutableTreeNode, clonedTreeNode);
 
-				((DefaultTreeModel)tree.getModel()).reload(selectedDefaultMutableTreeNode
-					.getParent());
+				((DefaultTreeModel)tree.getModel())
+					.reload(selectedDefaultMutableTreeNode.getParent());
 				tree.treeDidChange();
 			});
 	}
@@ -338,6 +337,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	 */
 	protected void onTableSingleLeftClick(MouseEvent event)
 	{
+		System.out.println(
+			"DemoTreeNodeGenericTreeElementWithContentPanel#\n" + "\tonTableSingleLeftClick");
 	}
 
 	/**
@@ -348,7 +349,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	 */
 	protected void onTableSingleMiddleClick(MouseEvent event)
 	{
-		System.out.println("onTableSingleMiddleClick");
+		System.out.println(
+			"DemoTreeNodeGenericTreeElementWithContentPanel#\n" + "\tonTableSingleMiddleClick");
 	}
 
 	/**
@@ -418,11 +420,11 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 	protected void onAddNewPermission()
 	{
-		PermissionPanel addNodePanel = new PermissionPanel();
-		JOptionPane pane = new JOptionPane(addNodePanel, JOptionPane.INFORMATION_MESSAGE,
+		PermissionPanel permissionPanel = new PermissionPanel();
+		JOptionPane pane = new JOptionPane(permissionPanel, JOptionPane.INFORMATION_MESSAGE,
 			JOptionPane.OK_CANCEL_OPTION);
 		JDialog dialog = pane.createDialog(null, "New permission");
-		dialog.addWindowFocusListener(new RequestFocusListener(addNodePanel.getTxtName()));
+		dialog.addWindowFocusListener(new RequestFocusListener(permissionPanel.getTxtName()));
 		dialog.pack();
 		dialog.setLocationRelativeTo(null);
 		dialog.setVisible(true);
@@ -431,9 +433,9 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 		if (option == JOptionPane.OK_OPTION)
 		{
 			Permission permission = Permission.builder()
-				.description(addNodePanel.getTxtDescription().getText())
-				.name(addNodePanel.getTxtName().getText())
-				.shortcut(addNodePanel.getTxtShortcut().getText()).build();
+				.description(permissionPanel.getTxtDescription().getText())
+				.name(permissionPanel.getTxtName().getText())
+				.shortcut(permissionPanel.getTxtShortcut().getText()).build();
 			getTblTreeEntryTable().getGenericTableModel().add(permission);
 			getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
 		}
@@ -447,7 +449,19 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	 */
 	protected void onTableDoubleLeftClick(MouseEvent event)
 	{
-		System.out.println("onTableDoubleLeftClick");
+		getTblTreeEntryTable().getSingleSelectedRowData().ifPresent(permission -> {
+			PermissionPanel permissionPanel = new PermissionPanel(BaseModel.of(permission));
+			permissionPanel.getTxtName().setEnabled(false);
+			permissionPanel.getTxtDescription().setEnabled(false);
+			permissionPanel.getTxtShortcut().setEnabled(false);
+			JOptionPane pane = new JOptionPane(permissionPanel, JOptionPane.INFORMATION_MESSAGE,
+				JOptionPane.OK_CANCEL_OPTION);
+			JDialog dialog = pane.createDialog(null, "New permission");
+			dialog.pack();
+			dialog.setLocationRelativeTo(null);
+			dialog.setVisible(true);
+
+		});
 	}
 
 	/**
@@ -458,7 +472,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	 */
 	protected void onTableDoubleMiddleClick(MouseEvent event)
 	{
-		System.out.println("onTableDoubleMiddleClick");
+		System.out.println(
+			"DemoTreeNodeGenericTreeElementWithContentPanel#\n" + "\tonTableDoubleMiddleClick");
 	}
 
 	/**
@@ -469,7 +484,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	 */
 	protected void onTableDoubleRightClick(MouseEvent event)
 	{
-		System.out.println("onTableDoubleRightClick");
+		System.out.println(
+			"DemoTreeNodeGenericTreeElementWithContentPanel#\n" + "\tonTableDoubleRightClick");
 	}
 
 }

@@ -28,16 +28,13 @@ import java.awt.*;
 import java.util.Optional;
 
 import javax.swing.*;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import io.github.astrapi69.swing.tree.JTreeExtensions;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.api.Model;
 import io.github.astrapi69.swing.component.factory.JComponentFactory;
-import io.github.astrapi69.swing.tree.node.ComponentTreeNode;
+import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 
 public abstract class PreferencesPanel<T> extends JXTreePanel<T>
@@ -65,12 +62,12 @@ public abstract class PreferencesPanel<T> extends JXTreePanel<T>
 
 	protected Component getSelectedComponent()
 	{
-		Optional<DefaultMutableTreeNode> selectedTreeNode = JTreeExtensions.getSelectedTreeNode(
-			tree);
-		if(selectedTreeNode.isPresent()){
+		Optional<DefaultMutableTreeNode> selectedTreeNode = JTreeExtensions
+			.getSelectedTreeNode(tree);
+		if (selectedTreeNode.isPresent())
+		{
 			DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
-			Component component = (Component)defaultMutableTreeNode.getUserObject();
-			return component;
+			return (Component)defaultMutableTreeNode.getUserObject();
 		}
 		return null;
 	}
@@ -102,14 +99,8 @@ public abstract class PreferencesPanel<T> extends JXTreePanel<T>
 	{
 		JXTree tree = super.newTree();
 
-		tree.addTreeSelectionListener(new TreeSelectionListener()
-		{
-			@Override
-			public void valueChanged(TreeSelectionEvent e)
-			{
-				splitPane.setRightComponent(PreferencesPanel.this.getSelectedComponent());
-			}
-		});
+		tree.addTreeSelectionListener(treeSelectionEvent -> splitPane
+			.setRightComponent(PreferencesPanel.this.getSelectedComponent()));
 
 		return tree;
 	}

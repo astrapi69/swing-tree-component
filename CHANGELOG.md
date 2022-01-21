@@ -10,6 +10,7 @@ ADDED:
 - new class GenericTreeNodeCellRenderer created
 - new class TreeNodeGenericTreeElementWithContentPanel created
 - new method for get the selected user object from a given JTree object
+- new method for get the selected DefaultMutableTreeNode from a given Point object
 - new method for copy the selected DefaultMutableTreeNode object
 - new method factory method for create DefaultMutableTreeNode object 
 - new test dependency for icons org.freedesktop.tango:tango-icon-theme in patch version 0.8.90 

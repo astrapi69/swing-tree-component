@@ -330,15 +330,16 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 */
 	protected void onDeleteSelectedTreeNode(MouseEvent mouseEvent)
 	{
-		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree).ifPresent(selectedTreeNode -> {
-			int selectedNodeIndex = selectedTreeNode.getParent().getIndex(selectedTreeNode);
-			selectedTreeNode.removeAllChildren();
-			((DefaultMutableTreeNode)selectedTreeNode.getParent()).remove(selectedNodeIndex);
-			((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
-			tree.treeDidChange();
-			tree.treeDidChange();
-			this.repaint();
-		});
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
+			.ifPresent(selectedTreeNode -> {
+				int selectedNodeIndex = selectedTreeNode.getParent().getIndex(selectedTreeNode);
+				selectedTreeNode.removeAllChildren();
+				((DefaultMutableTreeNode)selectedTreeNode.getParent()).remove(selectedNodeIndex);
+				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
+				tree.treeDidChange();
+				tree.treeDidChange();
+				this.repaint();
+			});
 	}
 
 	/**

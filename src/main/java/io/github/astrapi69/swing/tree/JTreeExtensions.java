@@ -61,6 +61,22 @@ public class JTreeExtensions
 	}
 
 	/**
+	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object from the given
+	 * {@link Point} object
+	 *
+	 * @param tree
+	 *            the tree
+	 * @param point
+	 *            the point
+	 * @return the selected tree node
+	 */
+	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
+		@NonNull JTree tree, @NonNull Point point)
+	{
+		return getSelectedDefaultMutableTreeNode(tree, point.x, point.y);
+	}
+
+	/**
 	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
 	 *
 	 * @param tree
