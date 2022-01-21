@@ -103,40 +103,40 @@ public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>
 			}
 		})
 		{
-			protected void onSingleLeftClick(MouseEvent event)
+			protected void onSingleLeftClick(MouseEvent mouseEvent)
 			{
-				super.onSingleLeftClick(event);
-				JXTreeWithContentPanel.this.onTableSingleLeftClick(event);
+				super.onSingleLeftClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableSingleLeftClick(mouseEvent);
 			}
 
-			protected void onSingleMiddleClick(MouseEvent event)
+			protected void onSingleMiddleClick(MouseEvent mouseEvent)
 			{
-				super.onSingleMiddleClick(event);
-				JXTreeWithContentPanel.this.onTableSingleMiddleClick(event);
+				super.onSingleMiddleClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableSingleMiddleClick(mouseEvent);
 			}
 
-			protected void onSingleRightClick(MouseEvent event)
+			protected void onSingleRightClick(MouseEvent mouseEvent)
 			{
-				super.onSingleRightClick(event);
-				JXTreeWithContentPanel.this.onTableSingleRightClick(event);
+				super.onSingleRightClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableSingleRightClick(mouseEvent);
 			}
 
-			protected void onDoubleLeftClick(MouseEvent event)
+			protected void onDoubleLeftClick(MouseEvent mouseEvent)
 			{
-				super.onDoubleLeftClick(event);
-				JXTreeWithContentPanel.this.onTableDoubleLeftClick(event);
+				super.onDoubleLeftClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableDoubleLeftClick(mouseEvent);
 			}
 
-			protected void onDoubleMiddleClick(MouseEvent event)
+			protected void onDoubleMiddleClick(MouseEvent mouseEvent)
 			{
-				super.onDoubleMiddleClick(event);
-				JXTreeWithContentPanel.this.onTableDoubleMiddleClick(event);
+				super.onDoubleMiddleClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableDoubleMiddleClick(mouseEvent);
 			}
 
-			protected void onDoubleRightClick(MouseEvent event)
+			protected void onDoubleRightClick(MouseEvent mouseEvent)
 			{
-				super.onDoubleRightClick(event);
-				JXTreeWithContentPanel.this.onTableDoubleRightClick(event);
+				super.onDoubleRightClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableDoubleRightClick(mouseEvent);
 			}
 		};
 	}
@@ -160,60 +160,60 @@ public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>
 	/**
 	 * The callback method on the table single left click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTableSingleLeftClick(MouseEvent event)
+	protected void onTableSingleLeftClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on the table single middle click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTableSingleMiddleClick(MouseEvent event)
+	protected void onTableSingleMiddleClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on the table single right click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTableSingleRightClick(MouseEvent event)
+	protected void onTableSingleRightClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on the table double left click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTableDoubleLeftClick(MouseEvent event)
+	protected void onTableDoubleLeftClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on the table double middle click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTableDoubleMiddleClick(MouseEvent event)
+	protected void onTableDoubleMiddleClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on the table double right click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTableDoubleRightClick(MouseEvent event)
+	protected void onTableDoubleRightClick(MouseEvent mouseEvent)
 	{
 	}
 

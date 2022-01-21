@@ -188,30 +188,30 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	/**
 	 * The callback method on double left click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTreeDoubleLeftClick(MouseEvent event)
+	protected void onTreeDoubleLeftClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on double middle click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTreeDoubleMiddleClick(MouseEvent event)
+	protected void onTreeDoubleMiddleClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on double right click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTreeDoubleRightClick(MouseEvent event)
+	protected void onTreeDoubleRightClick(MouseEvent mouseEvent)
 	{
 	}
 
@@ -242,30 +242,30 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	/**
 	 * The callback method on single left click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTreeSingleLeftClick(MouseEvent event)
+	protected void onTreeSingleLeftClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on single middle click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTreeSingleMiddleClick(MouseEvent event)
+	protected void onTreeSingleMiddleClick(MouseEvent mouseEvent)
 	{
 	}
 
 	/**
 	 * The callback method on single right click.
 	 *
-	 * @param event
+	 * @param mouseEvent
 	 *            the mouse event
 	 */
-	protected void onTreeSingleRightClick(MouseEvent event)
+	protected void onTreeSingleRightClick(MouseEvent mouseEvent)
 	{
 	}
 
@@ -314,6 +314,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 
 	/**
 	 * The callback method on collapse the selected tree node
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
 	 */
 	protected void onCollapseSelectedTreeNode(MouseEvent mouseEvent)
 	{
