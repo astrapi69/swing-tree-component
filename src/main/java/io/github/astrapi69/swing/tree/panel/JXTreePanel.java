@@ -29,8 +29,6 @@ import java.awt.event.MouseEvent;
 import java.util.Optional;
 
 import javax.swing.*;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
@@ -121,15 +119,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 		tree.setEditable(false);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 
-		tree.addTreeSelectionListener(new TreeSelectionListener()
-		{
-			@Override
-			public void valueChanged(TreeSelectionEvent e)
-			{
-				DefaultMutableTreeNode lastPathComponent = (DefaultMutableTreeNode)e.getPath()
-					.getLastPathComponent();
-				JXTreePanel.this.selectedTreeNode = lastPathComponent;
-			}
+		tree.addTreeSelectionListener(treeSelectionEvent -> {
+			JXTreePanel.this.selectedTreeNode = (DefaultMutableTreeNode)treeSelectionEvent.getPath()
+				.getLastPathComponent();
 		});
 
 		tree.addMouseListener(new MouseDoubleClickListener()
@@ -315,7 +307,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 */
 	protected void onExpandSelectedTreeNode(MouseEvent mouseEvent)
 	{
-		JTreeExtensions.expandAll(tree, JTreeExtensions.getTreePath(getSelectedTreeNode()), true);
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
+			.ifPresent(selectedTreeNode -> JTreeExtensions.expandAll(tree,
+				JTreeExtensions.getTreePath(selectedTreeNode), true));
 	}
 
 	/**
@@ -323,10 +317,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 */
 	protected void onCollapseSelectedTreeNode(MouseEvent mouseEvent)
 	{
-		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree).ifPresent(selectedTreeNode ->{
-			JTreeExtensions.expandAll(tree, JTreeExtensions.getTreePath(selectedTreeNode), false);
-			});
-		JTreeExtensions.expandAll(tree, JTreeExtensions.getTreePath(getSelectedTreeNode()), false);
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
+			.ifPresent(selectedTreeNode -> JTreeExtensions.expandAll(tree,
+				JTreeExtensions.getTreePath(selectedTreeNode), false));
 	}
 
 	/**
@@ -355,6 +348,13 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 */
 	protected DefaultMutableTreeNode getSelectedTreeNode()
 	{
-		return Optional.ofNullable(JTreeExtensions.getSelectedTreeNode(tree).get()).orElse(null);
+		Optional<DefaultMutableTreeNode> optionalSelectedTreeNode = JTreeExtensions
+			.getSelectedTreeNode(tree);
+		if (optionalSelectedTreeNode.isPresent())
+		{
+			DefaultMutableTreeNode defaultMutableTreeNode = optionalSelectedTreeNode.get();
+			return defaultMutableTreeNode;
+		}
+		return null;
 	}
 }

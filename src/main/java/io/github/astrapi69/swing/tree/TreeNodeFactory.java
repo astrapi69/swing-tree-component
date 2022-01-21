@@ -55,24 +55,45 @@ public class TreeNodeFactory
 		{
 			rootNode = (TreeNode<T>)treeNode.getRoot();
 		}
-		DefaultMutableTreeNode rootDefaultMutableTreeNode = traverseAndAdd(null, rootNode);
+		return traverseAndAdd(null, rootNode);
+	}
 
-		return rootDefaultMutableTreeNode;
+	/**
+	 * Makes a exact copy of the given {@link DefaultMutableTreeNode} object with the copy of the
+	 * given user object and all descendants {@link DefaultMutableTreeNode} objects
+	 * 
+	 * @param selectedDefaultMutableTreeNode
+	 *            the {@link DefaultMutableTreeNode} object to copy
+	 * @param copyOfUserObject
+	 *            a copy of the user object
+	 * @param <T>
+	 *            the generic type of the given user object
+	 */
+	public static <T> void copyOf(DefaultMutableTreeNode selectedDefaultMutableTreeNode,
+		T copyOfUserObject)
+	{
+		// get parent
+		DefaultMutableTreeNode parentTreeNode = (DefaultMutableTreeNode)selectedDefaultMutableTreeNode
+			.getParent();
+		// create a copy of the given selectedDefaultMutableTreeNode with the parent
+		DefaultMutableTreeNode copyDefaultMutableTreeNode = TreeNodeFactory
+			.newDefaultMutableTreeNode(parentTreeNode, copyOfUserObject);
+		// copy all tree structure
+		TreeNodeFactory.copy(selectedDefaultMutableTreeNode, copyDefaultMutableTreeNode);
 	}
 
 	/**
 	 * Copies the given source {@link DefaultMutableTreeNode} object to the given target
 	 * {@link DefaultMutableTreeNode} object
 	 *
-	 * @param target
-	 *            the target {@link DefaultMutableTreeNode} object
 	 * @param source
 	 *            the source {@link DefaultMutableTreeNode} object
+	 * @param target
+	 *            the target {@link DefaultMutableTreeNode} object
 	 *
 	 * @return the copied target {@link DefaultMutableTreeNode} object
 	 */
-	public static DefaultMutableTreeNode copyDefaultMutableTreeNode(DefaultMutableTreeNode target,
-		DefaultMutableTreeNode source)
+	public static <T extends DefaultMutableTreeNode> T copy(T source, T target)
 	{
 		if (source == null)
 		{
@@ -83,7 +104,7 @@ public class TreeNodeFactory
 			DefaultMutableTreeNode child = (DefaultMutableTreeNode)source.getChildAt(i);
 			DefaultMutableTreeNode clone = new DefaultMutableTreeNode(child.getUserObject());
 			target.add(clone);
-			copyDefaultMutableTreeNode(clone, child);
+			copy(child, clone);
 		}
 		return target;
 	}

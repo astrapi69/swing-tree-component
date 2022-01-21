@@ -24,6 +24,7 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Optional;
@@ -144,9 +145,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
 
-		TreeModel treeModel = new DefaultTreeModel(rootNode, true);
-
-		return treeModel;
+		return new DefaultTreeModel(rootNode, true);
 	}
 
 	/**
@@ -207,8 +206,11 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 			popup.add(MenuFactory.newJMenuItem("Edit node...",
 				actionEvent -> this.onEditSelectedTreeNode(mouseEvent)));
 
-			popup.add(MenuFactory.newJMenuItem("Copy node",
-				actionEvent -> this.onCopySelectedTreeNode(mouseEvent)));
+			if (!selectedTreeNode.isRoot())
+			{
+				popup.add(MenuFactory.newJMenuItem("Copy node",
+					actionEvent -> this.onCopySelectedTreeNode(mouseEvent)));
+			}
 
 			popup.add(MenuFactory.newJMenuItem("Collapse node",
 				actionEvent -> this.onCollapseSelectedTreeNode(mouseEvent)));
@@ -270,16 +272,10 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 					.parent(selectedTreeNode.getParent()).value(selectedTreeNode.getValue())
 					.node(selectedTreeNode.isNode()).build();
 
-				DefaultMutableTreeNode parentTreeNode = (DefaultMutableTreeNode)selectedDefaultMutableTreeNode
-					.getParent();
+				TreeNodeFactory.copyOf(selectedDefaultMutableTreeNode, clonedTreeNode);
 
-				DefaultMutableTreeNode clonedDefaultMutableTreeNode = TreeNodeFactory
-					.newDefaultMutableTreeNode(parentTreeNode, clonedTreeNode);
-
-				TreeNodeFactory.copyDefaultMutableTreeNode(clonedDefaultMutableTreeNode,
-					selectedDefaultMutableTreeNode);
-
-				((DefaultTreeModel)tree.getModel()).reload(parentTreeNode);
+				((DefaultTreeModel)tree.getModel()).reload(selectedDefaultMutableTreeNode
+					.getParent());
 				tree.treeDidChange();
 			});
 	}
