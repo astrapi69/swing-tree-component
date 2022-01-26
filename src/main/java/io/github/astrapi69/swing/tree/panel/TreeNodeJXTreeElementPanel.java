@@ -25,7 +25,7 @@
 package io.github.astrapi69.swing.tree.panel;
 
 import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
@@ -54,7 +54,7 @@ public abstract class TreeNodeJXTreeElementPanel extends GenericTreeNodePanel<JX
 	 * @param model
 	 *            the model
 	 */
-	public TreeNodeJXTreeElementPanel(final Model<TreeNode<JXTreeElement>> model)
+	public TreeNodeJXTreeElementPanel(final IModel<TreeNode<JXTreeElement>> model)
 	{
 		super(model);
 	}

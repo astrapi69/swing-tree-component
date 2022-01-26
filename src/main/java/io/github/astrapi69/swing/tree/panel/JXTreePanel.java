@@ -38,7 +38,7 @@ import lombok.Getter;
 
 import org.jdesktop.swingx.JXTree;
 
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.base.BasePanel;
 import io.github.astrapi69.swing.component.factory.DimensionFactory;
 import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
@@ -82,7 +82,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 * @param model
 	 *            the model
 	 */
-	public JXTreePanel(final Model<T> model)
+	public JXTreePanel(final IModel<T> model)
 	{
 		super(model);
 	}
@@ -171,7 +171,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 *            the model
 	 * @return the tree model
 	 */
-	protected abstract TreeModel newTreeModel(final Model<T> model);
+	protected abstract TreeModel newTreeModel(final IModel<T> model);
 
 	/**
 	 * Factory method for creating the new {@link JScrollPane}. This method is invoked in the

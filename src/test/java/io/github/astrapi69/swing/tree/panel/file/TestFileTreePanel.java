@@ -40,7 +40,7 @@ import io.github.astrapi69.file.create.FileFactory;
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
 import io.github.astrapi69.file.system.SystemFileExtensions;
 import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
@@ -55,13 +55,13 @@ public class TestFileTreePanel extends JXTreePanel<File>
 		this(BaseModel.of(SystemFileExtensions.getUserHomeDir()));
 	}
 
-	public TestFileTreePanel(final Model<File> model)
+	public TestFileTreePanel(final IModel<File> model)
 	{
 		super(model);
 	}
 
 	@Override
-	protected TreeModel newTreeModel(final Model<File> model)
+	protected TreeModel newTreeModel(final IModel<File> model)
 	{
 		final TreeModel treeModel = new FileTreeNodeModel(model.getObject());
 

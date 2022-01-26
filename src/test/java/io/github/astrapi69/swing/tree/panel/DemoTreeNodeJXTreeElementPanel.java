@@ -36,7 +36,7 @@ import javax.swing.tree.TreePath;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
 import io.github.astrapi69.swing.robot.MouseExtensions;
@@ -60,7 +60,7 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 		this(BaseModel.of(new TreeNode<>()));
 	}
 
-	public DemoTreeNodeJXTreeElementPanel(final Model<TreeNode<JXTreeElement>> model)
+	public DemoTreeNodeJXTreeElementPanel(final IModel<TreeNode<JXTreeElement>> model)
 	{
 		super(model);
 	}
@@ -74,7 +74,7 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 	}
 
 	@Override
-	protected TreeModel newTreeModel(final Model<TreeNode<JXTreeElement>> model)
+	protected TreeModel newTreeModel(final IModel<TreeNode<JXTreeElement>> model)
 	{
 		TreeNode<JXTreeElement> parentTreeNode = model.getObject();
 		TreeModel treeModel;

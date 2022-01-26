@@ -29,8 +29,8 @@ import javax.swing.*;
 import lombok.Getter;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.LambdaModel;
-import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.JMTextField;
+import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.swing.component.JMTextField;
 import io.github.astrapi69.swing.base.BasePanel;
 import io.github.astrapi69.test.objects.Permission;
 
@@ -49,7 +49,7 @@ public class PermissionPanel extends BasePanel<Permission>
 		this(BaseModel.of(Permission.builder().build()));
 	}
 
-	public PermissionPanel(final Model<Permission> model)
+	public PermissionPanel(final IModel<Permission> model)
 	{
 		super(model);
 	}

@@ -25,7 +25,7 @@
 package io.github.astrapi69.swing.tree.content.panel;
 
 import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
@@ -57,7 +57,7 @@ public abstract class TreeNodeGenericTreeElementWithContentPanel<T, C>
 	 *            the model
 	 */
 	public TreeNodeGenericTreeElementWithContentPanel(
-		final Model<TreeNode<GenericTreeElement<T>>> model)
+		final IModel<TreeNode<GenericTreeElement<T>>> model)
 	{
 		super(model);
 	}

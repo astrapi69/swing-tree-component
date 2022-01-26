@@ -32,7 +32,7 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.node.ComponentTreeNode;
 import io.github.astrapi69.tree.TreeElement;
@@ -45,13 +45,13 @@ public class ApplicationPreferencesPanel extends PreferencesPanel<TreeElement>
 		this(BaseModel.of(TreeElement.builder().build()));
 	}
 
-	public ApplicationPreferencesPanel(Model<TreeElement> model)
+	public ApplicationPreferencesPanel(IModel<TreeElement> model)
 	{
 		super(model);
 	}
 
 	@Override
-	protected TreeModel newTreeModel(Model<TreeElement> model)
+	protected TreeModel newTreeModel(IModel<TreeElement> model)
 	{
 		ComponentTreeNode rootNode = new ComponentTreeNode(new JLabel("Main Preferences"),
 			"Preferences");

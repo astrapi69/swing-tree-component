@@ -31,7 +31,7 @@ import javax.swing.table.TableModel;
 
 import lombok.Getter;
 import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
 import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
@@ -52,7 +52,7 @@ public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>
 		this(BaseModel.of());
 	}
 
-	public JXTreeWithContentPanel(final Model<T> model)
+	public JXTreeWithContentPanel(final IModel<T> model)
 	{
 		super(model);
 	}

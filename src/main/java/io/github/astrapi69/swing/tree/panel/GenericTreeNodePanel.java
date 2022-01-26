@@ -28,7 +28,7 @@ import javax.swing.tree.TreeModel;
 
 import org.jdesktop.swingx.JXTree;
 
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 
@@ -55,7 +55,7 @@ public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
 	 * @param model
 	 *            the model
 	 */
-	public GenericTreeNodePanel(final Model<TreeNode<T>> model)
+	public GenericTreeNodePanel(final IModel<TreeNode<T>> model)
 	{
 		super(model);
 	}
@@ -74,7 +74,7 @@ public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected abstract TreeModel newTreeModel(final Model<TreeNode<T>> model);
+	protected abstract TreeModel newTreeModel(final IModel<TreeNode<T>> model);
 
 	/**
 	 * On initialize group layout.

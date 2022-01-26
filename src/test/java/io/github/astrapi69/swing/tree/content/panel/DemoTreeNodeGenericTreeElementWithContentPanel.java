@@ -36,7 +36,7 @@ import javax.swing.tree.TreeModel;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.Model;
+import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
 import io.github.astrapi69.swing.menu.MenuFactory;
@@ -67,7 +67,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	}
 
 	public DemoTreeNodeGenericTreeElementWithContentPanel(
-		final Model<TreeNode<GenericTreeElement<List<Permission>>>> model)
+		final IModel<TreeNode<GenericTreeElement<List<Permission>>>> model)
 	{
 		super(model);
 	}
@@ -138,7 +138,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 	@Override
 	protected TreeModel newTreeModel(
-		final Model<TreeNode<GenericTreeElement<List<Permission>>>> model)
+		final IModel<TreeNode<GenericTreeElement<List<Permission>>>> model)
 	{
 		TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = model.getObject();
 

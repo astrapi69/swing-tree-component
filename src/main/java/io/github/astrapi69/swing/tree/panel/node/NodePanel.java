@@ -35,9 +35,9 @@ import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.LambdaModel;
-import io.github.astrapi69.model.api.Model;
-import io.github.astrapi69.swing.JMCheckBox;
-import io.github.astrapi69.swing.JMTextField;
+import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.swing.component.JMCheckBox;
+import io.github.astrapi69.swing.component.JMTextField;
 import io.github.astrapi69.swing.base.BasePanel;
 
 @Getter
@@ -53,7 +53,7 @@ public class NodePanel extends BasePanel<NodeModelBean>
 		this(BaseModel.of(NodeModelBean.builder().build()));
 	}
 
-	public NodePanel(final Model<NodeModelBean> model)
+	public NodePanel(final IModel<NodeModelBean> model)
 	{
 		super(model);
 	}
