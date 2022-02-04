@@ -1,7 +1,7 @@
 ## Change log
 ----------------------
 
-Version 1.1-SNAPSHOT
+Version 1.1
 -------------
 
 ADDED:
@@ -19,8 +19,10 @@ ADDED:
 CHANGED:
 
 - update of gradle version to 7.3.3
-- update of gradle-plugin dependency com.github.ben-manes.versions.gradle.plugin to new version 0.41.0
-- update of dependency swing-base-components to new version 1.1
+- update of gradle-plugin dependency com.github.ben-manes.versions.gradle.plugin to new version 0.42.0
+- update of dependency swing-base-components to new version 1.2
+- update of dependency swing-table-components to new version 1.1
+- update of dependency swing-components to new version 6
 - moved PreferencesPanel from swing-components to this repository
 
 Version 1
