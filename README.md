@@ -1,6 +1,7 @@
 # Overview
 
 <div style="text-align: center">
+
 [![Java CI with Gradle](https://github.com/astrapi69/swing-tree-component/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/swing-tree-component/actions/workflows/gradle.yml)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/swing-tree-component.svg?style=flat)](https://github.com/astrapi69/swing-tree-component/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/swing-tree-component/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/swing-tree-component)
