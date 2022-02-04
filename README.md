@@ -1,14 +1,14 @@
 # Overview
 
 <div style="text-align: center">
-
-[![Build Status](https://travis-ci.com/astrapi69/swing-tree-component.svg?branch=master)](https://travis-ci.com/github/astrapi69/swing-tree-component)
-[![Coverage Status](https://codecov.io/gh/astrapi69/swing-tree-component/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/swing-tree-component)
+[![Java CI with Gradle](https://github.com/astrapi69/swing-tree-component/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/swing-tree-component/actions/workflows/gradle.yml)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/swing-tree-component.svg?style=flat)](https://github.com/astrapi69/swing-tree-component/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/swing-tree-component/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/swing-tree-component)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/swing-tree-component.svg)](http://www.javadoc.io/doc/io.github.astrapi69/swing-tree-component)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
+[![Hits Of Code](https://hitsofcode.com/github/astrapi69/swing-tree-component?branch=main)](https://hitsofcode.com/github/astrapi69/swing-tree-component/view?branch=main)
+[![Lines Of Code](https://tokei.rs/b1/github/astrapi69/swing-tree-component)](https://github.com/astrapi69/swing-tree-component)
 
 </div>
 
@@ -35,6 +35,29 @@ No animals were harmed in the making of this library.
 
 The source code comes under the liberal MIT License, making swing-tree-component great for all types of applications.
 
+## gradle dependency
+
+You can first define the version in the ext section and add than the following gradle dependency to your
+project `build.gradle` if you want to import the core functionality of swing-tree-component:
+
+define version in file gradle.properties
+
+```
+swingTreeComponentVersion=1.1
+```
+
+or in build.gradle ext area
+
+```
+    swingTreeComponentVersion = "1.1"
+```
+
+then add the dependency to the dependencies area
+
+```
+    implementation("io.github.astrapi69:swing-tree-component:$swingTreeComponentVersion")
+```
+
 ## Maven dependency
 
 Maven dependency is now on sonatype. Check
@@ -49,7 +72,7 @@ Than you can add the dependency to your dependencies:
     <properties>
             ...
         <!-- swing-tree-component version -->
-        <swing-tree-component.version>1</swing-tree-component.version>
+        <swing-tree-component.version>1.1</swing-tree-component.version>
             ...
     </properties>
             ...
@@ -63,37 +86,6 @@ Than you can add the dependency to your dependencies:
             </dependency>
             ...
         </dependencies>
-
-## gradle dependency
-
-You can first define the version in the ext section and add than the following gradle dependency to your
-project `build.gradle` if you want to import the core functionality of swing-tree-component:
-
-define version in file gradle.properties
-
-```
-swingTreeComponentVersion=1
-```
-
-or in build.gradle ext area
-
-```
-ext {
-            ...
-    swingTreeComponentVersion = "1"
-            ...
-}
-```
-
-then add the dependency to the dependencies area
-
-```
-dependencies {
-            ...
-    implementation("io.github.astrapi69:swing-tree-component:$swingTreeComponentVersion")
-            ...
-}
-```
 
 # Donations
 
