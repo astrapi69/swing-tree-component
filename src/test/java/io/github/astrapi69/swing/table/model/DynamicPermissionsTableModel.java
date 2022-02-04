@@ -32,25 +32,29 @@ import lombok.NonNull;
 /**
  * The class DynamicPermissionsTableModel
  */
-public class DynamicPermissionsTableModel extends DynamicTableModel<Permission> {
+public class DynamicPermissionsTableModel extends DynamicTableModel<Permission>
+{
 
-    public DynamicPermissionsTableModel(@NonNull DynamicTableColumnsModel<Permission> columnsModel) {
-        super(columnsModel);
-    }
+	public DynamicPermissionsTableModel(@NonNull DynamicTableColumnsModel<Permission> columnsModel)
+	{
+		super(columnsModel);
+	}
 
-    @Override
-    public Object getValueAt(final int row, final int col) {
-        final Permission permission = getData().get(row);
-        switch (col) {
-            case 0:
-                return permission.getName();
-            case 1:
-                return permission.getDescription();
-            case 3:
-                return permission.getDescription();
-            default:
-                return null;
-        }
-    }
+	@Override
+	public Object getValueAt(final int row, final int col)
+	{
+		final Permission permission = getData().get(row);
+		switch (col)
+		{
+			case 0 :
+				return permission.getName();
+			case 1 :
+				return permission.getDescription();
+			case 3 :
+				return permission.getDescription();
+			default :
+				return null;
+		}
+	}
 
 }

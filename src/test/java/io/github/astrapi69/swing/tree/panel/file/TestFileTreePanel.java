@@ -48,125 +48,147 @@ import javax.swing.tree.TreePath;
 import java.awt.event.MouseEvent;
 import java.io.File;
 
-public class TestFileTreePanel extends JXTreePanel<File> {
+public class TestFileTreePanel extends JXTreePanel<File>
+{
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public TestFileTreePanel() {
+	public TestFileTreePanel()
+	{
 
-        this(BaseModel.of(SystemFileExtensions.getUserHomeDir()));
-    }
+		this(BaseModel.of(SystemFileExtensions.getUserHomeDir()));
+	}
 
-    public TestFileTreePanel(final IModel<File> model) {
-        super(model);
-    }
+	public TestFileTreePanel(final IModel<File> model)
+	{
+		super(model);
+	}
 
-    @Override
-    protected TreeModel newTreeModel(final IModel<File> model) {
-        final TreeModel treeModel = new FileTreeNodeModel(model.getObject());
+	@Override
+	protected TreeModel newTreeModel(final IModel<File> model)
+	{
+		final TreeModel treeModel = new FileTreeNodeModel(model.getObject());
 
-        treeModel.addTreeModelListener(new TreeModelListener() {
-            @Override
-            public void treeNodesChanged(TreeModelEvent e) {
-                FileTreeNodeModel node;
-                node = (FileTreeNodeModel) (e.getTreePath().getLastPathComponent());
-                int index = e.getChildIndices()[0];
-                node = (FileTreeNodeModel) (node.getChild(node, index));
-            }
+		treeModel.addTreeModelListener(new TreeModelListener()
+		{
+			@Override
+			public void treeNodesChanged(TreeModelEvent e)
+			{
+				FileTreeNodeModel node;
+				node = (FileTreeNodeModel)(e.getTreePath().getLastPathComponent());
+				int index = e.getChildIndices()[0];
+				node = (FileTreeNodeModel)(node.getChild(node, index));
+			}
 
-            @Override
-            public void treeNodesInserted(TreeModelEvent e) {
-            }
+			@Override
+			public void treeNodesInserted(TreeModelEvent e)
+			{
+			}
 
-            @Override
-            public void treeNodesRemoved(TreeModelEvent e) {
-            }
+			@Override
+			public void treeNodesRemoved(TreeModelEvent e)
+			{
+			}
 
-            @Override
-            public void treeStructureChanged(TreeModelEvent e) {
-            }
-        });
-        return treeModel;
-    }
+			@Override
+			public void treeStructureChanged(TreeModelEvent e)
+			{
+			}
+		});
+		return treeModel;
+	}
 
-    protected void onInitializeGroupLayout() {
-        GroupLayout layout = new GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addContainerGap()
-                        .addComponent(scrTree, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addContainerGap()
-                        .addComponent(scrTree, GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
-                        .addContainerGap()));
-    }
+	protected void onInitializeGroupLayout()
+	{
+		GroupLayout layout = new GroupLayout(this);
+		this.setLayout(layout);
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+			.addGroup(layout.createSequentialGroup().addContainerGap()
+				.addComponent(scrTree, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+			.addGroup(layout.createSequentialGroup().addContainerGap()
+				.addComponent(scrTree, GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+				.addContainerGap()));
+	}
 
-    @Override
-    protected void onInitializeLayout() {
-        super.onInitializeLayout();
-        onInitializeGroupLayout();
-    }
+	@Override
+	protected void onInitializeLayout()
+	{
+		super.onInitializeLayout();
+		onInitializeGroupLayout();
+	}
 
-    @Override
-    protected void onTreeSingleLeftClick(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        TreePath selectionPath = tree.getPathForLocation(e.getX(), e.getY());
+	@Override
+	protected void onTreeSingleLeftClick(MouseEvent e)
+	{
+		int x = e.getX();
+		int y = e.getY();
+		TreePath selectionPath = tree.getPathForLocation(e.getX(), e.getY());
 
-        JPopupMenu popup = new JPopupMenu();
-        JMenuItem addChild = new JMenuItem("add File...");
-        addChild.addActionListener(le -> {
-            JTextField textField1 = new JTextField();
-            final JCheckBox checkBox = new JCheckBox();
+		JPopupMenu popup = new JPopupMenu();
+		JMenuItem addChild = new JMenuItem("add File...");
+		addChild.addActionListener(le -> {
+			JTextField textField1 = new JTextField();
+			final JCheckBox checkBox = new JCheckBox();
 
-            checkBox.addChangeListener(new ChangeListener() {
-                @Override
-                public void stateChanged(ChangeEvent e) {
-                    if (e.getSource() == checkBox) {
-                        if (checkBox.isSelected()) {
+			checkBox.addChangeListener(new ChangeListener()
+			{
+				@Override
+				public void stateChanged(ChangeEvent e)
+				{
+					if (e.getSource() == checkBox)
+					{
+						if (checkBox.isSelected())
+						{
 
-                        } else {
+						}
+						else
+						{
 
-                        }
-                    }
-                }
-            });
-            Object[] inputFields = {"Enter name for File", textField1, "Is File", checkBox};
+						}
+					}
+				}
+			});
+			Object[] inputFields = { "Enter name for File", textField1, "Is File", checkBox };
 
-            int option = JOptionPane.showConfirmDialog(this, inputFields, "Multiple Inputs",
-                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+			int option = JOptionPane.showConfirmDialog(this, inputFields, "Multiple Inputs",
+				JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
-            if (option == JOptionPane.OK_OPTION) {
-                Object lpc = selectionPath.getLastPathComponent();
-                File selectedPathComponent = (File) lpc;
+			if (option == JOptionPane.OK_OPTION)
+			{
+				Object lpc = selectionPath.getLastPathComponent();
+				File selectedPathComponent = (File)lpc;
 
-                String newFilename = textField1.getText();
-                File file = new File(selectedPathComponent, newFilename);
-                FileCreationState fileCreationState;
-                if (!checkBox.isSelected()) {
-                    fileCreationState = FileFactory.newDirectory(file);
-                } else {
-                    fileCreationState = RuntimeExceptionDecorator
-                            .decorate(() -> FileFactory.newFile(file));
-                }
+				String newFilename = textField1.getText();
+				File file = new File(selectedPathComponent, newFilename);
+				FileCreationState fileCreationState;
+				if (!checkBox.isSelected())
+				{
+					fileCreationState = FileFactory.newDirectory(file);
+				}
+				else
+				{
+					fileCreationState = RuntimeExceptionDecorator
+						.decorate(() -> FileFactory.newFile(file));
+				}
 
 
-                tree.treeDidChange();
-            }
+				tree.treeDidChange();
+			}
 
-        });
-        popup.add(addChild);
+		});
+		popup.add(addChild);
 
-        JMenuItem deleteNode = new JMenuItem("delete");
-        deleteNode.addActionListener(le -> {
-            Object lpc = selectionPath.getLastPathComponent();
-            File selectedPathComponent = (File) lpc;
-            RuntimeExceptionDecorator
-                    .decorate(() -> DeleteFileExtensions.delete(selectedPathComponent));
-            tree.treeDidChange();
-        });
-        popup.add(deleteNode);
-        popup.show(tree, x, y);
-    }
+		JMenuItem deleteNode = new JMenuItem("delete");
+		deleteNode.addActionListener(le -> {
+			Object lpc = selectionPath.getLastPathComponent();
+			File selectedPathComponent = (File)lpc;
+			RuntimeExceptionDecorator
+				.decorate(() -> DeleteFileExtensions.delete(selectedPathComponent));
+			tree.treeDidChange();
+		});
+		popup.add(deleteNode);
+		popup.show(tree, x, y);
+	}
 }

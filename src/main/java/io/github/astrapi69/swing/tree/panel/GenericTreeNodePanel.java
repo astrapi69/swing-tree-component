@@ -35,68 +35,74 @@ import javax.swing.tree.TreeModel;
  * The abstract class {@link GenericTreeNodePanel} a given {@link TreeNode} parameterized with
  * {@link TreeElement}
  */
-public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>> {
+public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
+{
 
-    /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = 1L;
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * Instantiates a new {@link GenericTreeNodePanel}
-     */
-    public GenericTreeNodePanel() {
-    }
+	/**
+	 * Instantiates a new {@link GenericTreeNodePanel}
+	 */
+	public GenericTreeNodePanel()
+	{
+	}
 
-    /**
-     * Instantiates a new t{@link GenericTreeNodePanel}
-     *
-     * @param model
-     *            the model
-     */
-    public GenericTreeNodePanel(final IModel<TreeNode<T>> model) {
-        super(model);
-    }
+	/**
+	 * Instantiates a new t{@link GenericTreeNodePanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public GenericTreeNodePanel(final IModel<TreeNode<T>> model)
+	{
+		super(model);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected JXTree newTree() {
-        JXTree tree = super.newTree();
-        return tree;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected JXTree newTree()
+	{
+		JXTree tree = super.newTree();
+		return tree;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected abstract TreeModel newTreeModel(final IModel<TreeNode<T>> model);
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected abstract TreeModel newTreeModel(final IModel<TreeNode<T>> model);
 
-    /**
-     * On initialize group layout.
-     */
-    protected void onInitializeGroupLayout() {
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup().addContainerGap()
-                                .addComponent(scrTree, javax.swing.GroupLayout.PREFERRED_SIZE, 384,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-        layout.setVerticalGroup(layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addContainerGap()
-                        .addComponent(scrTree, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
-                        .addContainerGap()));
-    }
+	/**
+	 * On initialize group layout.
+	 */
+	protected void onInitializeGroupLayout()
+	{
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+		this.setLayout(layout);
+		layout.setHorizontalGroup(
+			layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup().addContainerGap()
+					.addComponent(scrTree, javax.swing.GroupLayout.PREFERRED_SIZE, 384,
+						javax.swing.GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		layout.setVerticalGroup(layout
+			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+			.addGroup(layout.createSequentialGroup().addContainerGap()
+				.addComponent(scrTree, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+				.addContainerGap()));
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onInitializeLayout() {
-        super.onInitializeLayout();
-        onInitializeGroupLayout();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitializeLayout()
+	{
+		super.onInitializeLayout();
+		onInitializeGroupLayout();
+	}
 
 }

@@ -36,22 +36,24 @@ import java.awt.Frame;
 /**
  * The test class for {@link JXTreePanel}
  */
-public class TestTreeNodeJXTreeElementPanel {
+public class TestTreeNodeJXTreeElementPanel
+{
 
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
-    public static void main(final String[] args) {
-        final Frame frame = new Frame("JXTreePanel");
-        frame.addWindowListener(new CloseWindow());
-        IModel<TreeNode<JXTreeElement>> parentModel = BaseModel
-                .of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
-        frame.add(new DemoTreeNodeJXTreeElementPanel(parentModel));
-        frame.pack();
-        frame.setVisible(true);
-    }
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
+	public static void main(final String[] args)
+	{
+		final Frame frame = new Frame("JXTreePanel");
+		frame.addWindowListener(new CloseWindow());
+		IModel<TreeNode<JXTreeElement>> parentModel = BaseModel
+			.of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
+		frame.add(new DemoTreeNodeJXTreeElementPanel(parentModel));
+		frame.pack();
+		frame.setVisible(true);
+	}
 
 }

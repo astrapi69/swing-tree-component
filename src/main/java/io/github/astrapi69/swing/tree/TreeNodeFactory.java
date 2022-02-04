@@ -34,211 +34,236 @@ import javax.swing.tree.DefaultMutableTreeNode;
 /**
  * Factory class for generate {@link DefaultMutableTreeNode} from {@link TreeNode}
  */
-public class TreeNodeFactory {
+public class TreeNodeFactory
+{
 
-    /**
-     * Creates a new {@link DefaultMutableTreeNode} object from the given {@link TreeNode} object
-     *
-     * @param treeNode
-     *            the {@link TreeNode} object
-     * @param <T>
-     *            the generic type of the given {@link TreeNode} object
-     * @return the new {@link DefaultMutableTreeNode} object generated from the given
-     *         {@link TreeNode} object
-     */
-    public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
-            @NonNull TreeNode<T> treeNode) {
-        TreeNode<T> rootNode = treeNode;
-        if (!treeNode.isRoot()) {
-            rootNode = (TreeNode<T>) treeNode.getRoot();
-        }
-        return traverseAndAdd(null, rootNode);
-    }
+	/**
+	 * Creates a new {@link DefaultMutableTreeNode} object from the given {@link TreeNode} object
+	 *
+	 * @param treeNode
+	 *            the {@link TreeNode} object
+	 * @param <T>
+	 *            the generic type of the given {@link TreeNode} object
+	 * @return the new {@link DefaultMutableTreeNode} object generated from the given
+	 *         {@link TreeNode} object
+	 */
+	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
+		@NonNull TreeNode<T> treeNode)
+	{
+		TreeNode<T> rootNode = treeNode;
+		if (!treeNode.isRoot())
+		{
+			rootNode = (TreeNode<T>)treeNode.getRoot();
+		}
+		return traverseAndAdd(null, rootNode);
+	}
 
-    /**
-     * Makes a exact copy of the given {@link DefaultMutableTreeNode} object with the copy of the
-     * given user object and all descendants {@link DefaultMutableTreeNode} objects
-     *
-     * @param selectedDefaultMutableTreeNode
-     *            the {@link DefaultMutableTreeNode} object to copy
-     * @param copyOfUserObject
-     *            a copy of the user object
-     * @param <T>
-     *            the generic type of the given user object
-     */
-    public static <T> void copyOf(DefaultMutableTreeNode selectedDefaultMutableTreeNode,
-                                  T copyOfUserObject) {
-        // get parent
-        DefaultMutableTreeNode parentTreeNode = (DefaultMutableTreeNode) selectedDefaultMutableTreeNode
-                .getParent();
-        // create a copy of the given selectedDefaultMutableTreeNode with the parent
-        DefaultMutableTreeNode copyDefaultMutableTreeNode = TreeNodeFactory
-                .newDefaultMutableTreeNode(parentTreeNode, copyOfUserObject);
-        // copy all tree structure
-        TreeNodeFactory.copy(selectedDefaultMutableTreeNode, copyDefaultMutableTreeNode);
-    }
+	/**
+	 * Makes a exact copy of the given {@link DefaultMutableTreeNode} object with the copy of the
+	 * given user object and all descendants {@link DefaultMutableTreeNode} objects
+	 *
+	 * @param selectedDefaultMutableTreeNode
+	 *            the {@link DefaultMutableTreeNode} object to copy
+	 * @param copyOfUserObject
+	 *            a copy of the user object
+	 * @param <T>
+	 *            the generic type of the given user object
+	 */
+	public static <T> void copyOf(DefaultMutableTreeNode selectedDefaultMutableTreeNode,
+		T copyOfUserObject)
+	{
+		// get parent
+		DefaultMutableTreeNode parentTreeNode = (DefaultMutableTreeNode)selectedDefaultMutableTreeNode
+			.getParent();
+		// create a copy of the given selectedDefaultMutableTreeNode with the parent
+		DefaultMutableTreeNode copyDefaultMutableTreeNode = TreeNodeFactory
+			.newDefaultMutableTreeNode(parentTreeNode, copyOfUserObject);
+		// copy all tree structure
+		TreeNodeFactory.copy(selectedDefaultMutableTreeNode, copyDefaultMutableTreeNode);
+	}
 
-    /**
-     * Copies the given source {@link DefaultMutableTreeNode} object to the given target
-     * {@link DefaultMutableTreeNode} object
-     *
-     * @param source
-     *            the source {@link DefaultMutableTreeNode} object
-     * @param target
-     *            the target {@link DefaultMutableTreeNode} object
-     *
-     * @return the copied target {@link DefaultMutableTreeNode} object
-     */
-    public static <T extends DefaultMutableTreeNode> T copy(T source, T target) {
-        if (source == null) {
-            return target;
-        }
-        for (int i = 0; i < source.getChildCount(); i++) {
-            DefaultMutableTreeNode child = (DefaultMutableTreeNode) source.getChildAt(i);
-            DefaultMutableTreeNode clone = new DefaultMutableTreeNode(child.getUserObject());
-            target.add(clone);
-            copy(child, clone);
-        }
-        return target;
-    }
+	/**
+	 * Copies the given source {@link DefaultMutableTreeNode} object to the given target
+	 * {@link DefaultMutableTreeNode} object
+	 *
+	 * @param source
+	 *            the source {@link DefaultMutableTreeNode} object
+	 * @param target
+	 *            the target {@link DefaultMutableTreeNode} object
+	 *
+	 * @return the copied target {@link DefaultMutableTreeNode} object
+	 */
+	public static <T extends DefaultMutableTreeNode> T copy(T source, T target)
+	{
+		if (source == null)
+		{
+			return target;
+		}
+		for (int i = 0; i < source.getChildCount(); i++)
+		{
+			DefaultMutableTreeNode child = (DefaultMutableTreeNode)source.getChildAt(i);
+			DefaultMutableTreeNode clone = new DefaultMutableTreeNode(child.getUserObject());
+			target.add(clone);
+			copy(child, clone);
+		}
+		return target;
+	}
 
-    /**
-     * Traverses through the given {@link TreeNode} object and return the root
-     * {@link DefaultMutableTreeNode} object
-     *
-     * @param rootDefaultMutableTreeNode
-     *            the {@link DefaultMutableTreeNode} object
-     * @param treeNode
-     *            the {@link TreeNode} object
-     * @param <T>
-     *            the generic type of the given {@link TreeNode} object
-     * @return the root {@link DefaultMutableTreeNode} object
-     */
-    public static <T> DefaultMutableTreeNode traverseAndAdd(
-            DefaultMutableTreeNode rootDefaultMutableTreeNode, @NonNull TreeNode<T> treeNode) {
-        DefaultMutableTreeNode parent = rootDefaultMutableTreeNode;
-        if (rootDefaultMutableTreeNode == null) {
-            parent = newDefaultMutableTreeNode(null, treeNode);
-        }
-        for (final ITreeNode<T> data : treeNode.getChildren()) {
-            DefaultMutableTreeNode node = new DefaultMutableTreeNode(data);
-            parent.add(node);
-            traverseAndAdd(node, (TreeNode<TreeElement>) data);
-        }
-        return parent;
-    }
+	/**
+	 * Traverses through the given {@link TreeNode} object and return the root
+	 * {@link DefaultMutableTreeNode} object
+	 *
+	 * @param rootDefaultMutableTreeNode
+	 *            the {@link DefaultMutableTreeNode} object
+	 * @param treeNode
+	 *            the {@link TreeNode} object
+	 * @param <T>
+	 *            the generic type of the given {@link TreeNode} object
+	 * @return the root {@link DefaultMutableTreeNode} object
+	 */
+	public static <T> DefaultMutableTreeNode traverseAndAdd(
+		DefaultMutableTreeNode rootDefaultMutableTreeNode, @NonNull TreeNode<T> treeNode)
+	{
+		DefaultMutableTreeNode parent = rootDefaultMutableTreeNode;
+		if (rootDefaultMutableTreeNode == null)
+		{
+			parent = newDefaultMutableTreeNode(null, treeNode);
+		}
+		for (final ITreeNode<T> data : treeNode.getChildren())
+		{
+			DefaultMutableTreeNode node = new DefaultMutableTreeNode(data);
+			parent.add(node);
+			traverseAndAdd(node, (TreeNode<TreeElement>)data);
+		}
+		return parent;
+	}
 
-    /**
-     * Factory method that creates a new {@link DefaultMutableTreeNode} object
-     *
-     * @param parent
-     *            the parent {@link DefaultMutableTreeNode} object
-     * @param userObject
-     *            the user object
-     * @param <T>
-     *            the generic type of the given user object
-     * @return the new {@link DefaultMutableTreeNode} object
-     */
-    public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
-            DefaultMutableTreeNode parent, T userObject) {
-        return newDefaultMutableTreeNode(parent, userObject, true);
-    }
+	/**
+	 * Factory method that creates a new {@link DefaultMutableTreeNode} object
+	 *
+	 * @param parent
+	 *            the parent {@link DefaultMutableTreeNode} object
+	 * @param userObject
+	 *            the user object
+	 * @param <T>
+	 *            the generic type of the given user object
+	 * @return the new {@link DefaultMutableTreeNode} object
+	 */
+	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
+		DefaultMutableTreeNode parent, T userObject)
+	{
+		return newDefaultMutableTreeNode(parent, userObject, true);
+	}
 
-    /**
-     * Factory method that creates a new {@link DefaultMutableTreeNode} object
-     *
-     * @param parent
-     *            the parent {@link DefaultMutableTreeNode} object
-     * @param userObject
-     *            the user object
-     * @param <T>
-     *            the generic type of the given user object
-     * @return the new {@link DefaultMutableTreeNode} object
-     */
-    public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
-            DefaultMutableTreeNode parent, T userObject, boolean addToParent) {
-        DefaultMutableTreeNode node = new DefaultMutableTreeNode(userObject);
-        if (parent != null && addToParent) {
-            parent.add(node);
-        }
-        return node;
-    }
+	/**
+	 * Factory method that creates a new {@link DefaultMutableTreeNode} object
+	 *
+	 * @param parent
+	 *            the parent {@link DefaultMutableTreeNode} object
+	 * @param userObject
+	 *            the user object
+	 * @param <T>
+	 *            the generic type of the given user object
+	 * @return the new {@link DefaultMutableTreeNode} object
+	 */
+	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
+		DefaultMutableTreeNode parent, T userObject, boolean addToParent)
+	{
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(userObject);
+		if (parent != null && addToParent)
+		{
+			parent.add(node);
+		}
+		return node;
+	}
 
-    /**
-     * Factory method that creates a new {@link TreeNode} object from the given {@link TreeElement}
-     * object
-     *
-     * @param treeElement
-     *            the {@link TreeElement} object
-     * @param parentTreeNode
-     *            the parent object
-     * @return the new {@link TreeNode} object
-     */
-    public static TreeNode<TreeElement> initializeTreeNodeWithTreeElement(
-            final TreeElement treeElement, TreeNode<TreeElement> parentTreeNode) {
-        TreeNode<TreeElement> treeNode;
-        treeNode = new TreeNode<TreeElement>(treeElement) {
-            @Override
-            public boolean isNode() {
-                return treeElement.isNode();
-            }
-        };
-        treeNode.setDisplayValue(treeElement.getName());
-        if (parentTreeNode != null) {
-            parentTreeNode.addChild(treeNode);
-        }
-        return treeNode;
-    }
+	/**
+	 * Factory method that creates a new {@link TreeNode} object from the given {@link TreeElement}
+	 * object
+	 *
+	 * @param treeElement
+	 *            the {@link TreeElement} object
+	 * @param parentTreeNode
+	 *            the parent object
+	 * @return the new {@link TreeNode} object
+	 */
+	public static TreeNode<TreeElement> initializeTreeNodeWithTreeElement(
+		final TreeElement treeElement, TreeNode<TreeElement> parentTreeNode)
+	{
+		TreeNode<TreeElement> treeNode;
+		treeNode = new TreeNode<TreeElement>(treeElement)
+		{
+			@Override
+			public boolean isNode()
+			{
+				return treeElement.isNode();
+			}
+		};
+		treeNode.setDisplayValue(treeElement.getName());
+		if (parentTreeNode != null)
+		{
+			parentTreeNode.addChild(treeNode);
+		}
+		return treeNode;
+	}
 
-    /**
-     * Factory method that creates a new {@link TreeNode} object from the given {@link TreeElement}
-     * object
-     *
-     * @param treeElement
-     *            the {@link TreeElement} object
-     * @param parentTreeNode
-     *            the parent object
-     * @return the new {@link TreeNode} object
-     */
-    public static TreeNode<JXTreeElement> initializeTreeNodeWithTreeElement(
-            final JXTreeElement treeElement, TreeNode<JXTreeElement> parentTreeNode) {
-        TreeNode<JXTreeElement> treeNode;
-        treeNode = new TreeNode<JXTreeElement>(treeElement) {
-            @Override
-            public boolean isNode() {
-                return treeElement.isNode();
-            }
-        };
-        treeNode.setDisplayValue(treeElement.getName());
-        if (parentTreeNode != null) {
-            parentTreeNode.addChild(treeNode);
-        }
-        return treeNode;
-    }
+	/**
+	 * Factory method that creates a new {@link TreeNode} object from the given {@link TreeElement}
+	 * object
+	 *
+	 * @param treeElement
+	 *            the {@link TreeElement} object
+	 * @param parentTreeNode
+	 *            the parent object
+	 * @return the new {@link TreeNode} object
+	 */
+	public static TreeNode<JXTreeElement> initializeTreeNodeWithTreeElement(
+		final JXTreeElement treeElement, TreeNode<JXTreeElement> parentTreeNode)
+	{
+		TreeNode<JXTreeElement> treeNode;
+		treeNode = new TreeNode<JXTreeElement>(treeElement)
+		{
+			@Override
+			public boolean isNode()
+			{
+				return treeElement.isNode();
+			}
+		};
+		treeNode.setDisplayValue(treeElement.getName());
+		if (parentTreeNode != null)
+		{
+			parentTreeNode.addChild(treeNode);
+		}
+		return treeNode;
+	}
 
-    /**
-     * Factory method that creates a new {@link TreeNode} object from the given {@link TreeElement}
-     * object
-     *
-     * @param treeElement
-     *            the {@link TreeElement} object
-     * @param parentTreeNode
-     *            the parent object
-     * @return the new {@link TreeNode} object
-     */
-    public static <T> TreeNode<GenericTreeElement<T>> initializeTreeNodeWithTreeElement(
-            final GenericTreeElement<T> treeElement, TreeNode<GenericTreeElement<T>> parentTreeNode) {
-        TreeNode<GenericTreeElement<T>> treeNode = new TreeNode<GenericTreeElement<T>>(treeElement) {
-            @Override
-            public boolean isNode() {
-                return treeElement.isNode();
-            }
-        };
-        treeNode.setDisplayValue(treeElement.getName());
-        if (parentTreeNode != null) {
-            parentTreeNode.addChild(treeNode);
-        }
-        return treeNode;
-    }
+	/**
+	 * Factory method that creates a new {@link TreeNode} object from the given {@link TreeElement}
+	 * object
+	 *
+	 * @param treeElement
+	 *            the {@link TreeElement} object
+	 * @param parentTreeNode
+	 *            the parent object
+	 * @return the new {@link TreeNode} object
+	 */
+	public static <T> TreeNode<GenericTreeElement<T>> initializeTreeNodeWithTreeElement(
+		final GenericTreeElement<T> treeElement, TreeNode<GenericTreeElement<T>> parentTreeNode)
+	{
+		TreeNode<GenericTreeElement<T>> treeNode = new TreeNode<GenericTreeElement<T>>(treeElement)
+		{
+			@Override
+			public boolean isNode()
+			{
+				return treeElement.isNode();
+			}
+		};
+		treeNode.setDisplayValue(treeElement.getName());
+		if (parentTreeNode != null)
+		{
+			parentTreeNode.addChild(treeNode);
+		}
+		return treeNode;
+	}
 
 }

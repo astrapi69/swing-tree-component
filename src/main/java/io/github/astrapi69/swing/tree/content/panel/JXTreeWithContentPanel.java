@@ -38,161 +38,183 @@ import javax.swing.table.TableModel;
 import java.awt.event.MouseEvent;
 
 @Getter
-public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T> {
+public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>
+{
 
-    /** The serialVersionUID. */
-    private static final long serialVersionUID = 1L;
+	/** The serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
-    protected JScrollPane scrTreeEntryTable;
-    protected GenericJXTable<C> tblTreeEntryTable;
+	protected JScrollPane scrTreeEntryTable;
+	protected GenericJXTable<C> tblTreeEntryTable;
 
-    public JXTreeWithContentPanel() {
-        this(BaseModel.of());
-    }
+	public JXTreeWithContentPanel()
+	{
+		this(BaseModel.of());
+	}
 
-    public JXTreeWithContentPanel(final IModel<T> model) {
-        super(model);
-    }
+	public JXTreeWithContentPanel(final IModel<T> model)
+	{
+		super(model);
+	}
 
-    /**
-     * Abstract factory callback method that have to be overwritten to provide the specific
-     * {@link TableModel} for the {@link JTable}
-     *
-     * @param model
-     *            the model
-     * @return the table model
-     */
-    protected abstract GenericTableModel<C> newTableModel(T model);
+	/**
+	 * Abstract factory callback method that have to be overwritten to provide the specific
+	 * {@link TableModel} for the {@link JTable}
+	 *
+	 * @param model
+	 *            the model
+	 * @return the table model
+	 */
+	protected abstract GenericTableModel<C> newTableModel(T model);
 
-    /**
-     * Factory method for creating the new {@link JScrollPane}. This method is invoked in the
-     * constructor from the derived classes and can be overridden so users can provide their own
-     * version of a {@link JScrollPane}
-     *
-     * @return the new {@link JScrollPane}
-     */
-    protected JScrollPane newTableScrollPane() {
-        return SwingContainerFactory.newScrollPane();
-    }
+	/**
+	 * Factory method for creating the new {@link JScrollPane}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a {@link JScrollPane}
+	 *
+	 * @return the new {@link JScrollPane}
+	 */
+	protected JScrollPane newTableScrollPane()
+	{
+		return SwingContainerFactory.newScrollPane();
+	}
 
-    /**
-     * Factory method for creating the new {@link JTable}. This method is invoked in the constructor
-     * from the derived classes and can be overridden so users can provide their own version of a
-     * {@link JTable}
-     *
-     * @return the new {@link JTable}
-     */
-    protected GenericJXTable<C> newJTable() {
-        return new GenericJXTable<C>(new GenericTableModel<C>() {
-            @Override
-            public int getColumnCount() {
-                return 0;
-            }
+	/**
+	 * Factory method for creating the new {@link JTable}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * {@link JTable}
+	 *
+	 * @return the new {@link JTable}
+	 */
+	protected GenericJXTable<C> newJTable()
+	{
+		return new GenericJXTable<C>(new GenericTableModel<C>()
+		{
+			@Override
+			public int getColumnCount()
+			{
+				return 0;
+			}
 
-            @Override
-            public Object getValueAt(int rowIndex, int columnIndex) {
-                return null;
-            }
-        }) {
-            protected void onSingleLeftClick(MouseEvent mouseEvent) {
-                super.onSingleLeftClick(mouseEvent);
-                JXTreeWithContentPanel.this.onTableSingleLeftClick(mouseEvent);
-            }
+			@Override
+			public Object getValueAt(int rowIndex, int columnIndex)
+			{
+				return null;
+			}
+		})
+		{
+			protected void onSingleLeftClick(MouseEvent mouseEvent)
+			{
+				super.onSingleLeftClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableSingleLeftClick(mouseEvent);
+			}
 
-            protected void onSingleMiddleClick(MouseEvent mouseEvent) {
-                super.onSingleMiddleClick(mouseEvent);
-                JXTreeWithContentPanel.this.onTableSingleMiddleClick(mouseEvent);
-            }
+			protected void onSingleMiddleClick(MouseEvent mouseEvent)
+			{
+				super.onSingleMiddleClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableSingleMiddleClick(mouseEvent);
+			}
 
-            protected void onSingleRightClick(MouseEvent mouseEvent) {
-                super.onSingleRightClick(mouseEvent);
-                JXTreeWithContentPanel.this.onTableSingleRightClick(mouseEvent);
-            }
+			protected void onSingleRightClick(MouseEvent mouseEvent)
+			{
+				super.onSingleRightClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableSingleRightClick(mouseEvent);
+			}
 
-            protected void onDoubleLeftClick(MouseEvent mouseEvent) {
-                super.onDoubleLeftClick(mouseEvent);
-                JXTreeWithContentPanel.this.onTableDoubleLeftClick(mouseEvent);
-            }
+			protected void onDoubleLeftClick(MouseEvent mouseEvent)
+			{
+				super.onDoubleLeftClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableDoubleLeftClick(mouseEvent);
+			}
 
-            protected void onDoubleMiddleClick(MouseEvent mouseEvent) {
-                super.onDoubleMiddleClick(mouseEvent);
-                JXTreeWithContentPanel.this.onTableDoubleMiddleClick(mouseEvent);
-            }
+			protected void onDoubleMiddleClick(MouseEvent mouseEvent)
+			{
+				super.onDoubleMiddleClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableDoubleMiddleClick(mouseEvent);
+			}
 
-            protected void onDoubleRightClick(MouseEvent mouseEvent) {
-                super.onDoubleRightClick(mouseEvent);
-                JXTreeWithContentPanel.this.onTableDoubleRightClick(mouseEvent);
-            }
-        };
-    }
+			protected void onDoubleRightClick(MouseEvent mouseEvent)
+			{
+				super.onDoubleRightClick(mouseEvent);
+				JXTreeWithContentPanel.this.onTableDoubleRightClick(mouseEvent);
+			}
+		};
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onInitializeComponents() {
-        scrTreeEntryTable = newTableScrollPane();
-        tblTreeEntryTable = newJTable();
-        scrTree = newTreeScrollPane();
-        tree = newTree();
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitializeComponents()
+	{
+		scrTreeEntryTable = newTableScrollPane();
+		tblTreeEntryTable = newJTable();
+		scrTree = newTreeScrollPane();
+		tree = newTree();
 
-        setPreferredSize(newPreferredSize(1000, 780));
-        scrTree.setViewportView(tree);
-        scrTreeEntryTable.setViewportView(tblTreeEntryTable);
-    }
+		setPreferredSize(newPreferredSize(1000, 780));
+		scrTree.setViewportView(tree);
+		scrTreeEntryTable.setViewportView(tblTreeEntryTable);
+	}
 
-    /**
-     * The callback method on the table single left click.
-     *
-     * @param mouseEvent
-     *            the mouse event
-     */
-    protected void onTableSingleLeftClick(MouseEvent mouseEvent) {
-    }
+	/**
+	 * The callback method on the table single left click.
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
+	 */
+	protected void onTableSingleLeftClick(MouseEvent mouseEvent)
+	{
+	}
 
-    /**
-     * The callback method on the table single middle click.
-     *
-     * @param mouseEvent
-     *            the mouse event
-     */
-    protected void onTableSingleMiddleClick(MouseEvent mouseEvent) {
-    }
+	/**
+	 * The callback method on the table single middle click.
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
+	 */
+	protected void onTableSingleMiddleClick(MouseEvent mouseEvent)
+	{
+	}
 
-    /**
-     * The callback method on the table single right click.
-     *
-     * @param mouseEvent
-     *            the mouse event
-     */
-    protected void onTableSingleRightClick(MouseEvent mouseEvent) {
-    }
+	/**
+	 * The callback method on the table single right click.
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
+	 */
+	protected void onTableSingleRightClick(MouseEvent mouseEvent)
+	{
+	}
 
-    /**
-     * The callback method on the table double left click.
-     *
-     * @param mouseEvent
-     *            the mouse event
-     */
-    protected void onTableDoubleLeftClick(MouseEvent mouseEvent) {
-    }
+	/**
+	 * The callback method on the table double left click.
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
+	 */
+	protected void onTableDoubleLeftClick(MouseEvent mouseEvent)
+	{
+	}
 
-    /**
-     * The callback method on the table double middle click.
-     *
-     * @param mouseEvent
-     *            the mouse event
-     */
-    protected void onTableDoubleMiddleClick(MouseEvent mouseEvent) {
-    }
+	/**
+	 * The callback method on the table double middle click.
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
+	 */
+	protected void onTableDoubleMiddleClick(MouseEvent mouseEvent)
+	{
+	}
 
-    /**
-     * The callback method on the table double right click.
-     *
-     * @param mouseEvent
-     *            the mouse event
-     */
-    protected void onTableDoubleRightClick(MouseEvent mouseEvent) {
-    }
+	/**
+	 * The callback method on the table double right click.
+	 *
+	 * @param mouseEvent
+	 *            the mouse event
+	 */
+	protected void onTableDoubleRightClick(MouseEvent mouseEvent)
+	{
+	}
 
 }

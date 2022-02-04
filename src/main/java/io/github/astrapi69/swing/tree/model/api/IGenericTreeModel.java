@@ -33,6 +33,7 @@ import java.io.Serializable;
  * @param <T>
  *            the generic type
  */
-public interface IGenericTreeModel<T> extends TreeModel, Serializable {
+public interface IGenericTreeModel<T> extends TreeModel, Serializable
+{
 
 }

@@ -42,7 +42,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class NodeModelBean {
-    boolean node;
-    String name;
+public class NodeModelBean
+{
+	boolean node;
+	String name;
 }

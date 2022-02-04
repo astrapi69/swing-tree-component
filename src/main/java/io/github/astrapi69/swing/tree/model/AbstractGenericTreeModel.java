@@ -32,9 +32,10 @@ import io.github.astrapi69.swing.tree.model.api.IGenericTreeModel;
  * @param <T>
  *            the generic type of the model
  */
-public abstract class AbstractGenericTreeModel<T> implements IGenericTreeModel<T> {
+public abstract class AbstractGenericTreeModel<T> implements IGenericTreeModel<T>
+{
 
-    /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = 1L;
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
 }

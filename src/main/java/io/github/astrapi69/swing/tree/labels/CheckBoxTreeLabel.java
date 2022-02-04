@@ -34,11 +34,12 @@ import javax.swing.JLabel;
 @NoArgsConstructor
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CheckBoxTreeLabel extends JLabel {
-    @SuppressWarnings("unused")
-    boolean focused;
+public class CheckBoxTreeLabel extends JLabel
+{
+	@SuppressWarnings("unused")
+	boolean focused;
 
-    @SuppressWarnings("unused")
-    boolean selected;
+	@SuppressWarnings("unused")
+	boolean selected;
 
 }

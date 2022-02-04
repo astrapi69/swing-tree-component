@@ -39,26 +39,28 @@ import java.util.List;
 /**
  * The test class for {@link JXTreePanel}
  */
-public class TestTreeNodeGenericTreeElementWithGenericContentPanel {
+public class TestTreeNodeGenericTreeElementWithGenericContentPanel
+{
 
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
-    public static void main(final String[] args) {
-        final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
-        frame.addWindowListener(new CloseWindow());
-        TreeNode<GenericTreeElement<List<Permission>>> genericTreeElementTreeNode = TestTreeNodeFactory
-                .initializeTestGenericTreeNodeElement();
-        IModel<TreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
-                .of(genericTreeElementTreeNode);
-        DemoTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithContentPanel(
-                treeNodeModel);
-        frame.add(treeNodeGenericTreeElementWithContentPanelTest);
-        frame.pack();
-        frame.setVisible(true);
-    }
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
+	public static void main(final String[] args)
+	{
+		final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
+		frame.addWindowListener(new CloseWindow());
+		TreeNode<GenericTreeElement<List<Permission>>> genericTreeElementTreeNode = TestTreeNodeFactory
+			.initializeTestGenericTreeNodeElement();
+		IModel<TreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
+			.of(genericTreeElementTreeNode);
+		DemoTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithContentPanel(
+			treeNodeModel);
+		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
+		frame.pack();
+		frame.setVisible(true);
+	}
 
 }

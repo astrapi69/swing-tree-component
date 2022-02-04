@@ -33,52 +33,65 @@ import org.apache.commons.lang3.StringUtils;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
-public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<GenericTreeElement<T>> {
+public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<GenericTreeElement<T>>
+{
 
-    protected JLabel initialize(TreeNode<GenericTreeElement<T>> userObject) {
-        TreeNode<GenericTreeElement<T>> treeNode = userObject;
-        String displayValue = treeNode.getDisplayValue();
-        GenericTreeElement<T> value = treeNode.getValue();
-        if (value != null) {
-            String iconPath = value.getIconPath();
-            if (StringUtils.isNotEmpty(iconPath)) {
-                Icon customTreeIcon;
-                try {
-                    customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
-                } catch (Exception e) {
-                    customTreeIcon = new StringIcon(treeLabel, iconPath);
-                }
-                if (value.isWithText()) {
-                    treeLabel.setText(displayValue);
-                } else {
-                    treeLabel.setText("");
-                }
-                treeLabel.setToolTipText(displayValue);
-                treeLabel.setIcon(customTreeIcon);
-                return treeLabel;
-            }
-        }
-        return super.initialize(userObject);
-    }
+	protected JLabel initialize(TreeNode<GenericTreeElement<T>> userObject)
+	{
+		TreeNode<GenericTreeElement<T>> treeNode = userObject;
+		String displayValue = treeNode.getDisplayValue();
+		GenericTreeElement<T> value = treeNode.getValue();
+		if (value != null)
+		{
+			String iconPath = value.getIconPath();
+			if (StringUtils.isNotEmpty(iconPath))
+			{
+				Icon customTreeIcon;
+				try
+				{
+					customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
+				}
+				catch (Exception e)
+				{
+					customTreeIcon = new StringIcon(treeLabel, iconPath);
+				}
+				if (value.isWithText())
+				{
+					treeLabel.setText(displayValue);
+				}
+				else
+				{
+					treeLabel.setText("");
+				}
+				treeLabel.setToolTipText(displayValue);
+				treeLabel.setIcon(customTreeIcon);
+				return treeLabel;
+			}
+		}
+		return super.initialize(userObject);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public Icon getOpenIcon() {
-        return renderer.getOpenIcon();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public Icon getOpenIcon()
+	{
+		return renderer.getOpenIcon();
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public Icon getLeafIcon() {
-        return renderer.getLeafIcon();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public Icon getLeafIcon()
+	{
+		return renderer.getLeafIcon();
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public Icon getClosedIcon() {
-        return renderer.getClosedIcon();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public Icon getClosedIcon()
+	{
+		return renderer.getClosedIcon();
+	}
 }

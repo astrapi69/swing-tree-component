@@ -35,15 +35,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-public class TreeNodeFactoryTest {
+public class TreeNodeFactoryTest
+{
 
-    @Test
-    public void testNewDefaultMutableTreeNode() {
-        TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
-                .initializeTestTreeNodeElement();
-        DefaultMutableTreeNode rootNode = TreeNodeFactory
-                .newDefaultMutableTreeNode(treeElementTreeNode);
-        assertNotNull(rootNode);
-        assertEquals(rootNode.getChildCount(), 2);
-    }
+	@Test
+	public void testNewDefaultMutableTreeNode()
+	{
+		TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
+			.initializeTestTreeNodeElement();
+		DefaultMutableTreeNode rootNode = TreeNodeFactory
+			.newDefaultMutableTreeNode(treeElementTreeNode);
+		assertNotNull(rootNode);
+		assertEquals(rootNode.getChildCount(), 2);
+	}
 }

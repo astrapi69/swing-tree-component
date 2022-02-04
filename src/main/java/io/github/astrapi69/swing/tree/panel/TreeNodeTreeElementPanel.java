@@ -33,26 +33,29 @@ import io.github.astrapi69.tree.TreeNode;
  * The abstract class {@link TreeNodeTreeElementPanel} a given {@link TreeNode} parameterized with
  * {@link TreeElement}
  */
-public abstract class TreeNodeTreeElementPanel extends GenericTreeNodePanel<TreeElement> {
+public abstract class TreeNodeTreeElementPanel extends GenericTreeNodePanel<TreeElement>
+{
 
-    /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = 1L;
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * Instantiates a new {@link TreeNodeTreeElementPanel}
-     */
-    public TreeNodeTreeElementPanel() {
-        this(BaseModel.of(TreeNode.<TreeElement>builder().build()));
-    }
+	/**
+	 * Instantiates a new {@link TreeNodeTreeElementPanel}
+	 */
+	public TreeNodeTreeElementPanel()
+	{
+		this(BaseModel.of(TreeNode.<TreeElement> builder().build()));
+	}
 
-    /**
-     * Instantiates a new t{@link TreeNodeTreeElementPanel}
-     *
-     * @param model
-     *            the model
-     */
-    public TreeNodeTreeElementPanel(final IModel<TreeNode<TreeElement>> model) {
-        super(model);
-    }
+	/**
+	 * Instantiates a new t{@link TreeNodeTreeElementPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public TreeNodeTreeElementPanel(final IModel<TreeNode<TreeElement>> model)
+	{
+		super(model);
+	}
 
 }

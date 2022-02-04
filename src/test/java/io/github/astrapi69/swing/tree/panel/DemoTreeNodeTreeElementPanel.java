@@ -53,152 +53,172 @@ import javax.swing.tree.TreePath;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 
-public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel {
+public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
+{
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public DemoTreeNodeTreeElementPanel() {
-        this(BaseModel.of(new TreeNode<>()));
-    }
+	public DemoTreeNodeTreeElementPanel()
+	{
+		this(BaseModel.of(new TreeNode<>()));
+	}
 
-    public DemoTreeNodeTreeElementPanel(final IModel<TreeNode<TreeElement>> model) {
-        super(model);
-    }
+	public DemoTreeNodeTreeElementPanel(final IModel<TreeNode<TreeElement>> model)
+	{
+		super(model);
+	}
 
-    @Override
-    protected JXTree newTree() {
-        JXTree tree = super.newTree();
-        tree.setCellRenderer(new TreeNodeCellRenderer<TreeElement>());
-        return tree;
-    }
+	@Override
+	protected JXTree newTree()
+	{
+		JXTree tree = super.newTree();
+		tree.setCellRenderer(new TreeNodeCellRenderer<TreeElement>());
+		return tree;
+	}
 
-    @Override
-    protected TreeModel newTreeModel(final IModel<TreeNode<TreeElement>> model) {
-        TreeNode<TreeElement> parentTreeNode = model.getObject();
-        TreeModel treeModel;
+	@Override
+	protected TreeModel newTreeModel(final IModel<TreeNode<TreeElement>> model)
+	{
+		TreeNode<TreeElement> parentTreeNode = model.getObject();
+		TreeModel treeModel;
 
-        // treeModel = new TreeNodeModel(parentTreeNode);
+		// treeModel = new TreeNodeModel(parentTreeNode);
 
-        DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
+		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
 
-        treeModel = new DefaultTreeModel(rootNode, true);
+		treeModel = new DefaultTreeModel(rootNode, true);
 
-        treeModel.addTreeModelListener(new TreeModelListener() {
-            @Override
-            public void treeNodesChanged(TreeModelEvent e) {
-                Object lastPathComponent = e.getTreePath().getLastPathComponent();
-                DefaultMutableTreeNode node;
-                node = (DefaultMutableTreeNode) lastPathComponent;
-                int index = e.getChildIndices()[0];
-                node = (DefaultMutableTreeNode) (node.getChildAt(index));
-            }
+		treeModel.addTreeModelListener(new TreeModelListener()
+		{
+			@Override
+			public void treeNodesChanged(TreeModelEvent e)
+			{
+				Object lastPathComponent = e.getTreePath().getLastPathComponent();
+				DefaultMutableTreeNode node;
+				node = (DefaultMutableTreeNode)lastPathComponent;
+				int index = e.getChildIndices()[0];
+				node = (DefaultMutableTreeNode)(node.getChildAt(index));
+			}
 
-            @Override
-            public void treeNodesInserted(TreeModelEvent e) {
-                Object lastPathComponent = e.getTreePath().getLastPathComponent();
-                DefaultMutableTreeNode node;
-                node = (DefaultMutableTreeNode) lastPathComponent;
-                System.err.println(node);
-            }
+			@Override
+			public void treeNodesInserted(TreeModelEvent e)
+			{
+				Object lastPathComponent = e.getTreePath().getLastPathComponent();
+				DefaultMutableTreeNode node;
+				node = (DefaultMutableTreeNode)lastPathComponent;
+				System.err.println(node);
+			}
 
-            @Override
-            public void treeNodesRemoved(TreeModelEvent e) {
-                Object lastPathComponent = e.getTreePath().getLastPathComponent();
-                DefaultMutableTreeNode node;
-                node = (DefaultMutableTreeNode) lastPathComponent;
-                System.err.println(node);
-            }
+			@Override
+			public void treeNodesRemoved(TreeModelEvent e)
+			{
+				Object lastPathComponent = e.getTreePath().getLastPathComponent();
+				DefaultMutableTreeNode node;
+				node = (DefaultMutableTreeNode)lastPathComponent;
+				System.err.println(node);
+			}
 
-            @Override
-            public void treeStructureChanged(TreeModelEvent e) {
-                Object lastPathComponent = e.getTreePath().getLastPathComponent();
-                DefaultMutableTreeNode node;
-                node = (DefaultMutableTreeNode) lastPathComponent;
-                System.err.println(node);
-            }
-        });
-        return treeModel;
-    }
+			@Override
+			public void treeStructureChanged(TreeModelEvent e)
+			{
+				Object lastPathComponent = e.getTreePath().getLastPathComponent();
+				DefaultMutableTreeNode node;
+				node = (DefaultMutableTreeNode)lastPathComponent;
+				System.err.println(node);
+			}
+		});
+		return treeModel;
+	}
 
-    @Override
-    protected void onTreeSingleRightClick(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        TreePath selectionPath = tree.getPathForLocation(e.getX(), e.getY());
-        tree.getSelectionModel().setSelectionPath(selectionPath);
+	@Override
+	protected void onTreeSingleRightClick(MouseEvent e)
+	{
+		int x = e.getX();
+		int y = e.getY();
+		TreePath selectionPath = tree.getPathForLocation(e.getX(), e.getY());
+		tree.getSelectionModel().setSelectionPath(selectionPath);
 
-        Object lastPathComponent = selectionPath.getLastPathComponent();
-        DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode) lastPathComponent;
-        TreeNode<TreeElement> parentTreeNode = (TreeNode<TreeElement>) selectedTreeNode
-                .getUserObject();
+		Object lastPathComponent = selectionPath.getLastPathComponent();
+		DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)lastPathComponent;
+		TreeNode<TreeElement> parentTreeNode = (TreeNode<TreeElement>)selectedTreeNode
+			.getUserObject();
 
-        JPopupMenu popup = new JPopupMenu();
-        if (parentTreeNode.isNode()) {
-            JMenuItem addChild = new JMenuItem("add node...");
-            addChild.addActionListener(le -> {
-                JTextField textField1 = new JTextField();
-                final JCheckBox checkBox = new JCheckBox();
+		JPopupMenu popup = new JPopupMenu();
+		if (parentTreeNode.isNode())
+		{
+			JMenuItem addChild = new JMenuItem("add node...");
+			addChild.addActionListener(le -> {
+				JTextField textField1 = new JTextField();
+				final JCheckBox checkBox = new JCheckBox();
 
-                checkBox.addChangeListener(new ChangeListener() {
-                    @Override
-                    public void stateChanged(ChangeEvent e) {
-                        if (e.getSource() == checkBox) {
-                            if (checkBox.isSelected()) {
+				checkBox.addChangeListener(new ChangeListener()
+				{
+					@Override
+					public void stateChanged(ChangeEvent e)
+					{
+						if (e.getSource() == checkBox)
+						{
+							if (checkBox.isSelected())
+							{
 
-                            } else {
+							}
+							else
+							{
 
-                            }
-                        }
-                    }
-                });
-                JPanel panel = new JPanel(new GridLayout(2, 2));
-                panel.add(new JLabel("Enter name for node:"));
-                panel.add(textField1);
-                panel.add(new JLabel("Is leaf:"));
-                panel.add(checkBox);
+							}
+						}
+					}
+				});
+				JPanel panel = new JPanel(new GridLayout(2, 2));
+				panel.add(new JLabel("Enter name for node:"));
+				panel.add(textField1);
+				panel.add(new JLabel("Is leaf:"));
+				panel.add(checkBox);
 
-                JOptionPane pane = new JOptionPane(panel, JOptionPane.INFORMATION_MESSAGE,
-                        JOptionPane.OK_CANCEL_OPTION);
-                JDialog dialog = pane.createDialog(null, "New node");
-                dialog.addWindowFocusListener(new RequestFocusListener(textField1));
-                dialog.pack();
-                dialog.setLocationRelativeTo(null);
-                dialog.setVisible(true);
-                int option = JOptionPaneExtensions.getSelectedOption(pane);
+				JOptionPane pane = new JOptionPane(panel, JOptionPane.INFORMATION_MESSAGE,
+					JOptionPane.OK_CANCEL_OPTION);
+				JDialog dialog = pane.createDialog(null, "New node");
+				dialog.addWindowFocusListener(new RequestFocusListener(textField1));
+				dialog.pack();
+				dialog.setLocationRelativeTo(null);
+				dialog.setVisible(true);
+				int option = JOptionPaneExtensions.getSelectedOption(pane);
 
-                if (option == JOptionPane.OK_OPTION) {
-                    boolean allowsChildren = !checkBox.isSelected();
-                    String userObject = textField1.getText();
-                    TreeElement treeElement = TreeElement.builder().name(userObject)
-                            .parent(parentTreeNode.getValue()).node(allowsChildren).build();
-                    TreeNode<TreeElement> newTreeNode = TreeNode.<TreeElement>builder()
-                            .value(treeElement).parent(parentTreeNode).displayValue(userObject)
-                            .node(allowsChildren).build();
+				if (option == JOptionPane.OK_OPTION)
+				{
+					boolean allowsChildren = !checkBox.isSelected();
+					String userObject = textField1.getText();
+					TreeElement treeElement = TreeElement.builder().name(userObject)
+						.parent(parentTreeNode.getValue()).node(allowsChildren).build();
+					TreeNode<TreeElement> newTreeNode = TreeNode.<TreeElement> builder()
+						.value(treeElement).parent(parentTreeNode).displayValue(userObject)
+						.node(allowsChildren).build();
 
-                    DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode,
-                            allowsChildren);
-                    selectedTreeNode.add(newChild);
-                    ((DefaultTreeModel) tree.getModel()).reload(selectedTreeNode);
-                    tree.treeDidChange();
-                }
+					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode,
+						allowsChildren);
+					selectedTreeNode.add(newChild);
+					((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
+					tree.treeDidChange();
+				}
 
-            });
-            popup.add(addChild);
-        }
+			});
+			popup.add(addChild);
+		}
 
-        if (!parentTreeNode.isRoot()) {
-            JMenuItem deleteNode = new JMenuItem("delete");
-            deleteNode.addActionListener(le -> {
-                int selectedNodeIndex = selectedTreeNode.getParent().getIndex(selectedTreeNode);
-                selectedTreeNode.removeAllChildren();
-                ((DefaultMutableTreeNode) selectedTreeNode.getParent()).remove(selectedNodeIndex);
-                ((DefaultTreeModel) tree.getModel()).reload(selectedTreeNode);
-                tree.treeDidChange();
-                tree.treeDidChange();
-                this.repaint();
-            });
-            popup.add(deleteNode);
-        }
-        popup.show(tree, x, y);
-    }
+		if (!parentTreeNode.isRoot())
+		{
+			JMenuItem deleteNode = new JMenuItem("delete");
+			deleteNode.addActionListener(le -> {
+				int selectedNodeIndex = selectedTreeNode.getParent().getIndex(selectedTreeNode);
+				selectedTreeNode.removeAllChildren();
+				((DefaultMutableTreeNode)selectedTreeNode.getParent()).remove(selectedNodeIndex);
+				((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
+				tree.treeDidChange();
+				tree.treeDidChange();
+				this.repaint();
+			});
+			popup.add(deleteNode);
+		}
+		popup.show(tree, x, y);
+	}
 }
