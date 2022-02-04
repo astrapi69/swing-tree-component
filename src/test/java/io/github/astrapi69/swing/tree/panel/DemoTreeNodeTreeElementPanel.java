@@ -24,15 +24,8 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
-import io.github.astrapi69.swing.listener.RequestFocusListener;
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.swing.tree.renderer.TreeNodeCellRenderer;
-import io.github.astrapi69.tree.TreeElement;
-import io.github.astrapi69.tree.TreeNode;
-import org.jdesktop.swingx.JXTree;
+import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -50,8 +43,17 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
+
+import org.jdesktop.swingx.JXTree;
+
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
+import io.github.astrapi69.swing.listener.RequestFocusListener;
+import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.swing.tree.renderer.TreeNodeCellRenderer;
+import io.github.astrapi69.tree.TreeElement;
+import io.github.astrapi69.tree.TreeNode;
 
 public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 {

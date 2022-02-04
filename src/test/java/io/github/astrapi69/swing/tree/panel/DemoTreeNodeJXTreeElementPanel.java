@@ -24,6 +24,20 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import java.awt.event.MouseEvent;
+import java.util.List;
+
+import javax.swing.JDialog;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
+
+import org.jdesktop.swingx.JXTree;
+
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
@@ -38,18 +52,6 @@ import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
 import io.github.astrapi69.test.objects.Permission;
 import io.github.astrapi69.tree.TreeNode;
-import org.jdesktop.swingx.JXTree;
-
-import javax.swing.JDialog;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreePath;
-import java.awt.event.MouseEvent;
-import java.util.List;
 
 public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 {

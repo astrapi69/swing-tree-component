@@ -24,13 +24,6 @@
  */
 package io.github.astrapi69.swing.tree;
 
-import io.github.astrapi69.swing.robot.MouseExtensions;
-import lombok.NonNull;
-
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -38,6 +31,14 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
+
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
+
+import lombok.NonNull;
+import io.github.astrapi69.swing.robot.MouseExtensions;
 
 /**
  * The class {@link JTreeExtensions}.

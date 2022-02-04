@@ -24,6 +24,20 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
+import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.Optional;
+
+import javax.swing.JDialog;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+
+import org.jdesktop.swingx.JXTree;
+
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.DialogExtensions;
@@ -43,18 +57,6 @@ import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.GenericTreeNodeCellRenderer;
 import io.github.astrapi69.test.objects.Permission;
 import io.github.astrapi69.tree.TreeNode;
-import org.jdesktop.swingx.JXTree;
-
-import javax.swing.JDialog;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
-import java.awt.event.MouseEvent;
-import java.util.List;
-import java.util.Optional;
 
 public class DemoTreeNodeGenericTreeElementWithContentPanel
 	extends

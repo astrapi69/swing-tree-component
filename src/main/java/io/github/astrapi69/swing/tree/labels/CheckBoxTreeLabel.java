@@ -24,12 +24,12 @@
  */
 package io.github.astrapi69.swing.tree.labels;
 
+import javax.swing.JLabel;
+
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-
-import javax.swing.JLabel;
 
 @NoArgsConstructor
 @Setter

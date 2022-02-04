@@ -24,14 +24,14 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import java.awt.Frame;
+
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.test.instances.TestTreeNodeFactory;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
-
-import java.awt.Frame;
 
 /**
  * The test class for {@link JXTreePanel}

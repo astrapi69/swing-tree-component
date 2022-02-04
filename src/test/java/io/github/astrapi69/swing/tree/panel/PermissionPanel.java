@@ -24,16 +24,16 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import javax.swing.GroupLayout;
+import javax.swing.JLabel;
+
+import lombok.Getter;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.LambdaModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.base.BasePanel;
 import io.github.astrapi69.swing.component.JMTextField;
 import io.github.astrapi69.test.objects.Permission;
-import lombok.Getter;
-
-import javax.swing.GroupLayout;
-import javax.swing.JLabel;
 
 @Getter
 public class PermissionPanel extends BasePanel<Permission>

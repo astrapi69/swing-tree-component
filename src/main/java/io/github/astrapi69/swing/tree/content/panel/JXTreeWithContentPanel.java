@@ -24,18 +24,19 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
+import java.awt.event.MouseEvent;
+
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
+
+import lombok.Getter;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
 import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
-import lombok.Getter;
-
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.TableModel;
-import java.awt.event.MouseEvent;
 
 @Getter
 public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>

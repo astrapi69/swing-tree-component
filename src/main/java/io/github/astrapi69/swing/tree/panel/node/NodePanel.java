@@ -24,20 +24,21 @@
  */
 package io.github.astrapi69.swing.tree.panel.node;
 
+import java.awt.GridLayout;
+
+import javax.swing.JLabel;
+
+import lombok.Getter;
+import net.miginfocom.layout.AC;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.LambdaModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.base.BasePanel;
 import io.github.astrapi69.swing.component.JMCheckBox;
 import io.github.astrapi69.swing.component.JMTextField;
-import lombok.Getter;
-import net.miginfocom.layout.AC;
-import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
-import net.miginfocom.swing.MigLayout;
-
-import javax.swing.JLabel;
-import java.awt.GridLayout;
 
 @Getter
 public class NodePanel extends BasePanel<NodeModelBean>

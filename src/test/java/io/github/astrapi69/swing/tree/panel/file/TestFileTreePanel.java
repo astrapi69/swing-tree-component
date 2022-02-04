@@ -24,14 +24,8 @@
  */
 package io.github.astrapi69.swing.tree.panel.file;
 
-import io.github.astrapi69.file.create.FileCreationState;
-import io.github.astrapi69.file.create.FileFactory;
-import io.github.astrapi69.file.delete.DeleteFileExtensions;
-import io.github.astrapi69.file.system.SystemFileExtensions;
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.tree.panel.JXTreePanel;
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
+import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.GroupLayout;
 import javax.swing.JCheckBox;
@@ -45,8 +39,15 @@ import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.event.MouseEvent;
-import java.io.File;
+
+import io.github.astrapi69.file.create.FileCreationState;
+import io.github.astrapi69.file.create.FileFactory;
+import io.github.astrapi69.file.delete.DeleteFileExtensions;
+import io.github.astrapi69.file.system.SystemFileExtensions;
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.swing.tree.panel.JXTreePanel;
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 public class TestFileTreePanel extends JXTreePanel<File>
 {

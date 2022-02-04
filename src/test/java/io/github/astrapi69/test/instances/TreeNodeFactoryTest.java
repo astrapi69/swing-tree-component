@@ -24,15 +24,16 @@
  */
 package io.github.astrapi69.test.instances;
 
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.tree.TreeElement;
-import io.github.astrapi69.tree.TreeNode;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+
+import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.tree.TreeElement;
+import io.github.astrapi69.tree.TreeNode;
 
 
 public class TreeNodeFactoryTest

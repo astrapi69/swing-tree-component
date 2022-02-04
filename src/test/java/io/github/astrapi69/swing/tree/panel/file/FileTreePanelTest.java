@@ -24,10 +24,10 @@
  */
 package io.github.astrapi69.swing.tree.panel.file;
 
+import java.awt.Frame;
+
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import io.github.astrapi69.window.adapter.CloseWindow;
-
-import java.awt.Frame;
 
 /**
  * The test class for {@link JXTreePanel}

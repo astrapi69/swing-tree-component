@@ -24,14 +24,15 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
-import io.github.astrapi69.tree.TreeNode;
+import java.awt.Component;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import java.awt.Component;
+
+import io.github.astrapi69.tree.TreeNode;
 
 public class TreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
 {

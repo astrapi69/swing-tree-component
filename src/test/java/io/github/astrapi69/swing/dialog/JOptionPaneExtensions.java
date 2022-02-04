@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.swing.dialog;
 
-import lombok.NonNull;
-
 import javax.swing.JOptionPane;
+
+import lombok.NonNull;
 
 /**
  * The class {@link JOptionPaneExtensions} provides extension methods for the {@link JOptionPane}

@@ -24,14 +24,15 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
+import javax.swing.Icon;
+import javax.swing.JLabel;
+
+import org.apache.commons.lang3.StringUtils;
+
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.tree.TreeNode;
-import org.apache.commons.lang3.StringUtils;
-
-import javax.swing.Icon;
-import javax.swing.JLabel;
 
 public class JXTreeNodeCellRenderer extends TreeNodeCellRenderer<JXTreeElement>
 {

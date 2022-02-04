@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
-import io.github.astrapi69.window.adapter.CloseWindow;
-
 import java.awt.Frame;
+
+import io.github.astrapi69.window.adapter.CloseWindow;
 
 public class TestApplicationPreferencesPanel
 {

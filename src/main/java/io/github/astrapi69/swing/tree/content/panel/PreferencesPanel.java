@@ -24,17 +24,19 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.util.Optional;
+
+import javax.swing.JSplitPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import org.jdesktop.swingx.JXTree;
+
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.component.factory.JComponentFactory;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
-import org.jdesktop.swingx.JXTree;
-
-import javax.swing.JSplitPane;
-import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.util.Optional;
 
 public abstract class PreferencesPanel<T> extends JXTreePanel<T>
 {

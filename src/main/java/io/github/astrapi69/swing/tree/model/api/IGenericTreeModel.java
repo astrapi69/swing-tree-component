@@ -24,8 +24,9 @@
  */
 package io.github.astrapi69.swing.tree.model.api;
 
-import javax.swing.tree.TreeModel;
 import java.io.Serializable;
+
+import javax.swing.tree.TreeModel;
 
 /**
  * The Interface IGenericTreeModel.

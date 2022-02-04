@@ -24,12 +24,13 @@
  */
 package io.github.astrapi69.swing.tree.node;
 
+import java.awt.Component;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.Component;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
