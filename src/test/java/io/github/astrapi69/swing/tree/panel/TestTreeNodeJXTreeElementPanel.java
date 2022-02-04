@@ -24,8 +24,6 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.*;
-
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JXTreeElement;
@@ -33,27 +31,27 @@ import io.github.astrapi69.test.instances.TestTreeNodeFactory;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
+import java.awt.Frame;
+
 /**
  * The test class for {@link JXTreePanel}
  */
-public class TestTreeNodeJXTreeElementPanel
-{
+public class TestTreeNodeJXTreeElementPanel {
 
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(final String[] args)
-	{
-		final Frame frame = new Frame("JXTreePanel");
-		frame.addWindowListener(new CloseWindow());
-		IModel<TreeNode<JXTreeElement>> parentModel = BaseModel
-			.of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
-		frame.add(new DemoTreeNodeJXTreeElementPanel(parentModel));
-		frame.pack();
-		frame.setVisible(true);
-	}
+    /**
+     * The main method.
+     *
+     * @param args
+     *            the arguments
+     */
+    public static void main(final String[] args) {
+        final Frame frame = new Frame("JXTreePanel");
+        frame.addWindowListener(new CloseWindow());
+        IModel<TreeNode<JXTreeElement>> parentModel = BaseModel
+                .of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
+        frame.add(new DemoTreeNodeJXTreeElementPanel(parentModel));
+        frame.pack();
+        frame.setVisible(true);
+    }
 
 }

@@ -24,83 +24,75 @@
  */
 package io.github.astrapi69.swing.tree.panel.node;
 
-import java.awt.*;
-
-import javax.swing.*;
-
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.LambdaModel;
+import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.swing.base.BasePanel;
+import io.github.astrapi69.swing.component.JMCheckBox;
+import io.github.astrapi69.swing.component.JMTextField;
 import lombok.Getter;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.LambdaModel;
-import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.component.JMCheckBox;
-import io.github.astrapi69.swing.component.JMTextField;
-import io.github.astrapi69.swing.base.BasePanel;
+
+import javax.swing.JLabel;
+import java.awt.GridLayout;
 
 @Getter
-public class NodePanel extends BasePanel<NodeModelBean>
-{
-	JMCheckBox cbxNode;
-	JMTextField txtName;
-	JLabel lblName;
-	JLabel lblNode;
+public class NodePanel extends BasePanel<NodeModelBean> {
+    JMCheckBox cbxNode;
+    JMTextField txtName;
+    JLabel lblName;
+    JLabel lblNode;
 
-	public NodePanel()
-	{
-		this(BaseModel.of(NodeModelBean.builder().build()));
-	}
+    public NodePanel() {
+        this(BaseModel.of(NodeModelBean.builder().build()));
+    }
 
-	public NodePanel(final IModel<NodeModelBean> model)
-	{
-		super(model);
-	}
+    public NodePanel(final IModel<NodeModelBean> model) {
+        super(model);
+    }
 
-	@Override
-	protected void onInitializeComponents()
-	{
-		super.onInitializeComponents();
-		lblName = new JLabel("Enter name for node:");
-		txtName = new JMTextField();
-		lblNode = new JLabel("Is node:");
-		cbxNode = new JMCheckBox();
+    @Override
+    protected void onInitializeComponents() {
+        super.onInitializeComponents();
+        lblName = new JLabel("Enter name for node:");
+        txtName = new JMTextField();
+        lblNode = new JLabel("Is node:");
+        cbxNode = new JMCheckBox();
 
-		NodeModelBean modelObject = getModelObject();
+        NodeModelBean modelObject = getModelObject();
 
-		txtName.setPropertyModel(LambdaModel.of(modelObject::getName, modelObject::setName));
-		cbxNode.setPropertyModel(LambdaModel.of(modelObject::isNode, modelObject::setNode));
+        txtName.setPropertyModel(LambdaModel.of(modelObject::getName, modelObject::setName));
+        cbxNode.setPropertyModel(LambdaModel.of(modelObject::isNode, modelObject::setNode));
 
-	}
+    }
 
-	@Override
-	protected void onInitializeLayout()
-	{
-		super.onInitializeLayout();
-		onInitializeMigLayout();
-	}
+    @Override
+    protected void onInitializeLayout() {
+        super.onInitializeLayout();
+        onInitializeMigLayout();
+    }
 
-	protected void onInitializeGridLayout()
-	{
-		GridLayout layout = new GridLayout(2, 2);
-		this.setLayout(layout);
+    protected void onInitializeGridLayout() {
+        GridLayout layout = new GridLayout(2, 2);
+        this.setLayout(layout);
 
-		add(lblName);
-		add(txtName);
-		add(lblNode);
-		add(cbxNode);
-	}
+        add(lblName);
+        add(txtName);
+        add(lblNode);
+        add(cbxNode);
+    }
 
-	protected void onInitializeMigLayout()
-	{
-		MigLayout layout = new MigLayout(new LC().fillX().wrapAfter(2),
-			new AC().align("left").gap("10").grow().fill(), new AC().fill().gap("10"));
-		this.setLayout(layout);
+    protected void onInitializeMigLayout() {
+        MigLayout layout = new MigLayout(new LC().fillX().wrapAfter(2),
+                new AC().align("left").gap("10").grow().fill(), new AC().fill().gap("10"));
+        this.setLayout(layout);
 
-		add(lblName);
-		add(txtName, new CC().grow().width("120px"));
-		add(lblNode, "grow");
-		add(cbxNode, "grow");
-	}
+        add(lblName);
+        add(txtName, new CC().grow().width("120px"));
+        add(lblNode, "grow");
+        add(cbxNode, "grow");
+    }
 }

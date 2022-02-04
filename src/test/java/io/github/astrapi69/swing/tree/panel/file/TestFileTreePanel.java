@@ -24,17 +24,6 @@
  */
 package io.github.astrapi69.swing.tree.panel.file;
 
-import java.awt.event.MouseEvent;
-import java.io.File;
-
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.TreeModelEvent;
-import javax.swing.event.TreeModelListener;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreePath;
-
 import io.github.astrapi69.file.create.FileCreationState;
 import io.github.astrapi69.file.create.FileFactory;
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
@@ -44,147 +33,140 @@ import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
-public class TestFileTreePanel extends JXTreePanel<File>
-{
+import javax.swing.GroupLayout;
+import javax.swing.JCheckBox;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.TreeModelEvent;
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
+import java.awt.event.MouseEvent;
+import java.io.File;
 
-	private static final long serialVersionUID = 1L;
+public class TestFileTreePanel extends JXTreePanel<File> {
 
-	public TestFileTreePanel()
-	{
+    private static final long serialVersionUID = 1L;
 
-		this(BaseModel.of(SystemFileExtensions.getUserHomeDir()));
-	}
+    public TestFileTreePanel() {
 
-	public TestFileTreePanel(final IModel<File> model)
-	{
-		super(model);
-	}
+        this(BaseModel.of(SystemFileExtensions.getUserHomeDir()));
+    }
 
-	@Override
-	protected TreeModel newTreeModel(final IModel<File> model)
-	{
-		final TreeModel treeModel = new FileTreeNodeModel(model.getObject());
+    public TestFileTreePanel(final IModel<File> model) {
+        super(model);
+    }
 
-		treeModel.addTreeModelListener(new TreeModelListener()
-		{
-			@Override
-			public void treeNodesChanged(TreeModelEvent e)
-			{
-				FileTreeNodeModel node;
-				node = (FileTreeNodeModel)(e.getTreePath().getLastPathComponent());
-				int index = e.getChildIndices()[0];
-				node = (FileTreeNodeModel)(node.getChild(node, index));
-			}
+    @Override
+    protected TreeModel newTreeModel(final IModel<File> model) {
+        final TreeModel treeModel = new FileTreeNodeModel(model.getObject());
 
-			@Override
-			public void treeNodesInserted(TreeModelEvent e)
-			{
-			}
+        treeModel.addTreeModelListener(new TreeModelListener() {
+            @Override
+            public void treeNodesChanged(TreeModelEvent e) {
+                FileTreeNodeModel node;
+                node = (FileTreeNodeModel) (e.getTreePath().getLastPathComponent());
+                int index = e.getChildIndices()[0];
+                node = (FileTreeNodeModel) (node.getChild(node, index));
+            }
 
-			@Override
-			public void treeNodesRemoved(TreeModelEvent e)
-			{
-			}
+            @Override
+            public void treeNodesInserted(TreeModelEvent e) {
+            }
 
-			@Override
-			public void treeStructureChanged(TreeModelEvent e)
-			{
-			}
-		});
-		return treeModel;
-	}
+            @Override
+            public void treeNodesRemoved(TreeModelEvent e) {
+            }
 
-	protected void onInitializeGroupLayout()
-	{
-		GroupLayout layout = new GroupLayout(this);
-		this.setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-			.addGroup(layout.createSequentialGroup().addContainerGap()
-				.addComponent(scrTree, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-			.addGroup(layout.createSequentialGroup().addContainerGap()
-				.addComponent(scrTree, GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
-				.addContainerGap()));
-	}
+            @Override
+            public void treeStructureChanged(TreeModelEvent e) {
+            }
+        });
+        return treeModel;
+    }
 
-	@Override
-	protected void onInitializeLayout()
-	{
-		super.onInitializeLayout();
-		onInitializeGroupLayout();
-	}
+    protected void onInitializeGroupLayout() {
+        GroupLayout layout = new GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup().addContainerGap()
+                        .addComponent(scrTree, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup().addContainerGap()
+                        .addComponent(scrTree, GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                        .addContainerGap()));
+    }
 
-	@Override
-	protected void onTreeSingleLeftClick(MouseEvent e)
-	{
-		int x = e.getX();
-		int y = e.getY();
-		TreePath selectionPath = tree.getPathForLocation(e.getX(), e.getY());
+    @Override
+    protected void onInitializeLayout() {
+        super.onInitializeLayout();
+        onInitializeGroupLayout();
+    }
 
-		JPopupMenu popup = new JPopupMenu();
-		JMenuItem addChild = new JMenuItem("add File...");
-		addChild.addActionListener(le -> {
-			JTextField textField1 = new JTextField();
-			final JCheckBox checkBox = new JCheckBox();
+    @Override
+    protected void onTreeSingleLeftClick(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+        TreePath selectionPath = tree.getPathForLocation(e.getX(), e.getY());
 
-			checkBox.addChangeListener(new ChangeListener()
-			{
-				@Override
-				public void stateChanged(ChangeEvent e)
-				{
-					if (e.getSource() == checkBox)
-					{
-						if (checkBox.isSelected())
-						{
+        JPopupMenu popup = new JPopupMenu();
+        JMenuItem addChild = new JMenuItem("add File...");
+        addChild.addActionListener(le -> {
+            JTextField textField1 = new JTextField();
+            final JCheckBox checkBox = new JCheckBox();
 
-						}
-						else
-						{
+            checkBox.addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    if (e.getSource() == checkBox) {
+                        if (checkBox.isSelected()) {
 
-						}
-					}
-				}
-			});
-			Object[] inputFields = { "Enter name for File", textField1, "Is File", checkBox };
+                        } else {
 
-			int option = JOptionPane.showConfirmDialog(this, inputFields, "Multiple Inputs",
-				JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
+                }
+            });
+            Object[] inputFields = {"Enter name for File", textField1, "Is File", checkBox};
 
-			if (option == JOptionPane.OK_OPTION)
-			{
-				Object lpc = selectionPath.getLastPathComponent();
-				File selectedPathComponent = (File)lpc;
+            int option = JOptionPane.showConfirmDialog(this, inputFields, "Multiple Inputs",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
-				String newFilename = textField1.getText();
-				File file = new File(selectedPathComponent, newFilename);
-				FileCreationState fileCreationState;
-				if (!checkBox.isSelected())
-				{
-					fileCreationState = FileFactory.newDirectory(file);
-				}
-				else
-				{
-					fileCreationState = RuntimeExceptionDecorator
-						.decorate(() -> FileFactory.newFile(file));
-				}
+            if (option == JOptionPane.OK_OPTION) {
+                Object lpc = selectionPath.getLastPathComponent();
+                File selectedPathComponent = (File) lpc;
+
+                String newFilename = textField1.getText();
+                File file = new File(selectedPathComponent, newFilename);
+                FileCreationState fileCreationState;
+                if (!checkBox.isSelected()) {
+                    fileCreationState = FileFactory.newDirectory(file);
+                } else {
+                    fileCreationState = RuntimeExceptionDecorator
+                            .decorate(() -> FileFactory.newFile(file));
+                }
 
 
-				tree.treeDidChange();
-			}
+                tree.treeDidChange();
+            }
 
-		});
-		popup.add(addChild);
+        });
+        popup.add(addChild);
 
-		JMenuItem deleteNode = new JMenuItem("delete");
-		deleteNode.addActionListener(le -> {
-			Object lpc = selectionPath.getLastPathComponent();
-			File selectedPathComponent = (File)lpc;
-			RuntimeExceptionDecorator
-				.decorate(() -> DeleteFileExtensions.delete(selectedPathComponent));
-			tree.treeDidChange();
-		});
-		popup.add(deleteNode);
-		popup.show(tree, x, y);
-	}
+        JMenuItem deleteNode = new JMenuItem("delete");
+        deleteNode.addActionListener(le -> {
+            Object lpc = selectionPath.getLastPathComponent();
+            File selectedPathComponent = (File) lpc;
+            RuntimeExceptionDecorator
+                    .decorate(() -> DeleteFileExtensions.delete(selectedPathComponent));
+            tree.treeDidChange();
+        });
+        popup.add(deleteNode);
+        popup.show(tree, x, y);
+    }
 }

@@ -24,37 +24,33 @@
  */
 package io.github.astrapi69.swing.table.model;
 
-import lombok.NonNull;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableModel;
 import io.github.astrapi69.test.objects.Permission;
+import lombok.NonNull;
 
 /**
  * The class DynamicPermissionsTableModel
  */
-public class DynamicPermissionsTableModel extends DynamicTableModel<Permission>
-{
+public class DynamicPermissionsTableModel extends DynamicTableModel<Permission> {
 
-	public DynamicPermissionsTableModel(@NonNull DynamicTableColumnsModel<Permission> columnsModel)
-	{
-		super(columnsModel);
-	}
+    public DynamicPermissionsTableModel(@NonNull DynamicTableColumnsModel<Permission> columnsModel) {
+        super(columnsModel);
+    }
 
-	@Override
-	public Object getValueAt(final int row, final int col)
-	{
-		final Permission permission = getData().get(row);
-		switch (col)
-		{
-			case 0 :
-				return permission.getName();
-			case 1 :
-				return permission.getDescription();
-			case 3 :
-				return permission.getDescription();
-			default :
-				return null;
-		}
-	}
+    @Override
+    public Object getValueAt(final int row, final int col) {
+        final Permission permission = getData().get(row);
+        switch (col) {
+            case 0:
+                return permission.getName();
+            case 1:
+                return permission.getDescription();
+            case 3:
+                return permission.getDescription();
+            default:
+                return null;
+        }
+    }
 
 }

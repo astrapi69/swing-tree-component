@@ -24,17 +24,6 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.event.MouseEvent;
-import java.util.List;
-
-import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreePath;
-
-import org.jdesktop.swingx.JXTree;
-
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
@@ -49,133 +38,133 @@ import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
 import io.github.astrapi69.test.objects.Permission;
 import io.github.astrapi69.tree.TreeNode;
+import org.jdesktop.swingx.JXTree;
 
-public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
-{
+import javax.swing.JDialog;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
-	private static final long serialVersionUID = 1L;
+public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel {
 
-	public DemoTreeNodeJXTreeElementPanel()
-	{
-		this(BaseModel.of(new TreeNode<>()));
-	}
+    private static final long serialVersionUID = 1L;
 
-	public DemoTreeNodeJXTreeElementPanel(final IModel<TreeNode<JXTreeElement>> model)
-	{
-		super(model);
-	}
+    public DemoTreeNodeJXTreeElementPanel() {
+        this(BaseModel.of(new TreeNode<>()));
+    }
 
-	@Override
-	protected JXTree newTree()
-	{
-		JXTree tree = super.newTree();
-		tree.setCellRenderer(new JXTreeNodeCellRenderer());
-		return tree;
-	}
+    public DemoTreeNodeJXTreeElementPanel(final IModel<TreeNode<JXTreeElement>> model) {
+        super(model);
+    }
 
-	@Override
-	protected TreeModel newTreeModel(final IModel<TreeNode<JXTreeElement>> model)
-	{
-		TreeNode<JXTreeElement> parentTreeNode = model.getObject();
-		TreeModel treeModel;
+    @Override
+    protected JXTree newTree() {
+        JXTree tree = super.newTree();
+        tree.setCellRenderer(new JXTreeNodeCellRenderer());
+        return tree;
+    }
 
-		// treeModel = new TreeNodeModel(parentTreeNode);
+    @Override
+    protected TreeModel newTreeModel(final IModel<TreeNode<JXTreeElement>> model) {
+        TreeNode<JXTreeElement> parentTreeNode = model.getObject();
+        TreeModel treeModel;
 
-		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
+        // treeModel = new TreeNodeModel(parentTreeNode);
 
-		return new DefaultTreeModel(rootNode, true);
-	}
+        DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
 
-	@Override
-	protected void onTreeSingleRightClick(MouseEvent mouseEvent)
-	{
-		int x = mouseEvent.getX();
-		int y = mouseEvent.getY();
-		TreePath selectionPath = tree.getPathForLocation(mouseEvent.getX(), mouseEvent.getY());
-		tree.getSelectionModel().setSelectionPath(selectionPath);
+        return new DefaultTreeModel(rootNode, true);
+    }
 
-		Object lastPathComponent = selectionPath.getLastPathComponent();
-		DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)lastPathComponent;
-		TreeNode<JXTreeElement> parentTreeNode = (TreeNode<JXTreeElement>)selectedTreeNode
-			.getUserObject();
+    @Override
+    protected void onTreeSingleRightClick(MouseEvent mouseEvent) {
+        int x = mouseEvent.getX();
+        int y = mouseEvent.getY();
+        TreePath selectionPath = tree.getPathForLocation(mouseEvent.getX(), mouseEvent.getY());
+        tree.getSelectionModel().setSelectionPath(selectionPath);
 
-		JPopupMenu popup = new JPopupMenu();
-		if (parentTreeNode.isNode())
-		{
-			JMenuItem menuItemAddChild = new JMenuItem("add node...");
-			menuItemAddChild.addActionListener(actionEvent -> this.onAddNewChildTreeNode());
-			popup.add(menuItemAddChild);
-		}
+        Object lastPathComponent = selectionPath.getLastPathComponent();
+        DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode) lastPathComponent;
+        TreeNode<JXTreeElement> parentTreeNode = (TreeNode<JXTreeElement>) selectedTreeNode
+                .getUserObject();
 
-		if (!parentTreeNode.isRoot())
-		{
-			JMenuItem deleteNode = new JMenuItem("delete");
-			deleteNode.addActionListener(actionEvent -> this.onDeleteSelectedTreeNode(mouseEvent));
-			popup.add(deleteNode);
-		}
+        JPopupMenu popup = new JPopupMenu();
+        if (parentTreeNode.isNode()) {
+            JMenuItem menuItemAddChild = new JMenuItem("add node...");
+            menuItemAddChild.addActionListener(actionEvent -> this.onAddNewChildTreeNode());
+            popup.add(menuItemAddChild);
+        }
 
-		JMenuItem menuItemEdit = new JMenuItem("Edit node...");
-		menuItemEdit.addActionListener(actionEvent -> this.onEditSelectedTreeNode());
-		popup.add(menuItemEdit);
+        if (!parentTreeNode.isRoot()) {
+            JMenuItem deleteNode = new JMenuItem("delete");
+            deleteNode.addActionListener(actionEvent -> this.onDeleteSelectedTreeNode(mouseEvent));
+            popup.add(deleteNode);
+        }
 
-		JMenuItem menuItemCopy = new JMenuItem("Copy node");
-		menuItemCopy.addActionListener(actionEvent -> this.onCopySelectedTreeNode());
-		popup.add(menuItemCopy);
+        JMenuItem menuItemEdit = new JMenuItem("Edit node...");
+        menuItemEdit.addActionListener(actionEvent -> this.onEditSelectedTreeNode());
+        popup.add(menuItemEdit);
 
-		JMenuItem menuItemCollapse = new JMenuItem("Collapse node");
-		menuItemCollapse
-			.addActionListener(actionEvent -> this.onCollapseSelectedTreeNode(mouseEvent));
-		popup.add(menuItemCollapse);
+        JMenuItem menuItemCopy = new JMenuItem("Copy node");
+        menuItemCopy.addActionListener(actionEvent -> this.onCopySelectedTreeNode());
+        popup.add(menuItemCopy);
 
-		JMenuItem menuItemExpand = new JMenuItem("Expand node");
-		menuItemExpand.addActionListener(actionEvent -> this.onExpandSelectedTreeNode(mouseEvent));
-		popup.add(menuItemExpand);
+        JMenuItem menuItemCollapse = new JMenuItem("Collapse node");
+        menuItemCollapse
+                .addActionListener(actionEvent -> this.onCollapseSelectedTreeNode(mouseEvent));
+        popup.add(menuItemCollapse);
 
-		popup.show(tree, x, y);
-	}
+        JMenuItem menuItemExpand = new JMenuItem("Expand node");
+        menuItemExpand.addActionListener(actionEvent -> this.onExpandSelectedTreeNode(mouseEvent));
+        popup.add(menuItemExpand);
 
-	protected void onAddNewChildTreeNode()
-	{
-		JTreeExtensions.getSelectedDefaultMutableTreeNode(tree, MouseExtensions.getMousePosition())
-			.ifPresent(selectedDefaultMutableTreeNode -> {
-				TreeNode<GenericTreeElement<java.util.List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<java.util.List<Permission>>>)selectedDefaultMutableTreeNode
-					.getUserObject();
-				NodePanel nodePanel = new NodePanel();
-				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
-					JOptionPane.OK_CANCEL_OPTION);
-				JDialog dialog = pane.createDialog(null, "New node");
-				dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
-				dialog.pack();
-				dialog.setLocationRelativeTo(null);
-				dialog.setVisible(true);
-				int option = JOptionPaneExtensions.getSelectedOption(pane);
+        popup.show(tree, x, y);
+    }
 
-				if (option == JOptionPane.OK_OPTION)
-				{
-					NodeModelBean modelObject = nodePanel.getModelObject();
-					boolean node = modelObject.isNode();
-					String name = modelObject.getName();
-					GenericTreeElement<java.util.List<Permission>> treeElement = GenericTreeElement.<java.util.List<Permission>> builder()
-						.name(name).parent(selectedTreeNode.getValue()).node(node).build();
-					TreeNode<GenericTreeElement<java.util.List<Permission>>> newTreeNode = TreeNode
-						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-						.parent(selectedTreeNode).displayValue(name).node(node).build();
+    protected void onAddNewChildTreeNode() {
+        JTreeExtensions.getSelectedDefaultMutableTreeNode(tree, MouseExtensions.getMousePosition())
+                .ifPresent(selectedDefaultMutableTreeNode -> {
+                    TreeNode<GenericTreeElement<java.util.List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<java.util.List<Permission>>>) selectedDefaultMutableTreeNode
+                            .getUserObject();
+                    NodePanel nodePanel = new NodePanel();
+                    JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
+                            JOptionPane.OK_CANCEL_OPTION);
+                    JDialog dialog = pane.createDialog(null, "New node");
+                    dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
+                    dialog.pack();
+                    dialog.setLocationRelativeTo(null);
+                    dialog.setVisible(true);
+                    int option = JOptionPaneExtensions.getSelectedOption(pane);
 
-					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode, node);
-					selectedDefaultMutableTreeNode.add(newChild);
-					((DefaultTreeModel)tree.getModel()).reload(selectedDefaultMutableTreeNode);
-					tree.treeDidChange();
-				}
-			});
-	}
+                    if (option == JOptionPane.OK_OPTION) {
+                        NodeModelBean modelObject = nodePanel.getModelObject();
+                        boolean node = modelObject.isNode();
+                        String name = modelObject.getName();
+                        GenericTreeElement<java.util.List<Permission>> treeElement = GenericTreeElement.<java.util.List<Permission>>builder()
+                                .name(name).parent(selectedTreeNode.getValue()).node(node).build();
+                        TreeNode<GenericTreeElement<java.util.List<Permission>>> newTreeNode = TreeNode
+                                .<GenericTreeElement<List<Permission>>>builder().value(treeElement)
+                                .parent(selectedTreeNode).displayValue(name).node(node).build();
 
-	protected void onCopySelectedTreeNode()
-	{
-		System.out.println("onCopySelectedTreeNode");
-	}
+                        DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode, node);
+                        selectedDefaultMutableTreeNode.add(newChild);
+                        ((DefaultTreeModel) tree.getModel()).reload(selectedDefaultMutableTreeNode);
+                        tree.treeDidChange();
+                    }
+                });
+    }
 
-	protected void onEditSelectedTreeNode()
-	{
-		System.out.println("onEditSelectedTreeNode");
-	}
+    protected void onCopySelectedTreeNode() {
+        System.out.println("onCopySelectedTreeNode");
+    }
+
+    protected void onEditSelectedTreeNode() {
+        System.out.println("onEditSelectedTreeNode");
+    }
 }

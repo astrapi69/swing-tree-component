@@ -35,31 +35,28 @@ import io.github.astrapi69.tree.TreeNode;
  * parameterized with {@link TreeElement}
  */
 public abstract class TreeNodeGenericTreeElementWithContentPanel<T, C>
-	extends
-		GenericTreeNodeWithContentPanel<GenericTreeElement<T>, C>
-{
+        extends
+        GenericTreeNodeWithContentPanel<GenericTreeElement<T>, C> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new {@link TreeNodeGenericTreeElementWithContentPanel}
-	 */
-	public TreeNodeGenericTreeElementWithContentPanel()
-	{
-		this(BaseModel.of(TreeNode.<GenericTreeElement<T>> builder().build()));
-	}
+    /**
+     * Instantiates a new {@link TreeNodeGenericTreeElementWithContentPanel}
+     */
+    public TreeNodeGenericTreeElementWithContentPanel() {
+        this(BaseModel.of(TreeNode.<GenericTreeElement<T>>builder().build()));
+    }
 
-	/**
-	 * Instantiates a new t{@link TreeNodeGenericTreeElementWithContentPanel}
-	 *
-	 * @param model
-	 *            the model
-	 */
-	public TreeNodeGenericTreeElementWithContentPanel(
-		final IModel<TreeNode<GenericTreeElement<T>>> model)
-	{
-		super(model);
-	}
+    /**
+     * Instantiates a new t{@link TreeNodeGenericTreeElementWithContentPanel}
+     *
+     * @param model
+     *            the model
+     */
+    public TreeNodeGenericTreeElementWithContentPanel(
+            final IModel<TreeNode<GenericTreeElement<T>>> model) {
+        super(model);
+    }
 
 }

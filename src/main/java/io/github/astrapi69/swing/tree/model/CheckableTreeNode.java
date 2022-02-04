@@ -24,63 +24,52 @@
  */
 package io.github.astrapi69.swing.tree.model;
 
-import java.util.Enumeration;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeNode;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeNode;
+import java.util.Enumeration;
+
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CheckableTreeNode extends DefaultMutableTreeNode
-{
+public class CheckableTreeNode extends DefaultMutableTreeNode {
 
-	boolean selected;
+    boolean selected;
 
-	public CheckableTreeNode()
-	{
-		this(null);
-	}
+    public CheckableTreeNode() {
+        this(null);
+    }
 
-	public CheckableTreeNode(Object userObject)
-	{
-		this(userObject, true, false);
-	}
+    public CheckableTreeNode(Object userObject) {
+        this(userObject, true, false);
+    }
 
-	public CheckableTreeNode(Object userObject, boolean allowsChildren, boolean isSelected)
-	{
-		super(userObject, allowsChildren);
-		this.selected = isSelected;
-	}
+    public CheckableTreeNode(Object userObject, boolean allowsChildren, boolean isSelected) {
+        super(userObject, allowsChildren);
+        this.selected = isSelected;
+    }
 
-	@SuppressWarnings("unchecked")
-	public void setSelected(boolean selected)
-	{
-		this.selected = selected;
-		Enumeration<TreeNode> e = children.elements();
-		while (e.hasMoreElements())
-		{
-			CheckableTreeNode node = (CheckableTreeNode)e.nextElement();
-			node.setSelected(selected);
-		}
-	}
+    @SuppressWarnings("unchecked")
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+        Enumeration<TreeNode> e = children.elements();
+        while (e.hasMoreElements()) {
+            CheckableTreeNode node = (CheckableTreeNode) e.nextElement();
+            node.setSelected(selected);
+        }
+    }
 
-	@Override
-	public void setUserObject(Object obj)
-	{
-		if (obj instanceof Boolean)
-		{
-			setSelected(((Boolean)obj).booleanValue());
-		}
-		else
-		{
-			super.setUserObject(obj);
-		}
-	}
+    @Override
+    public void setUserObject(Object obj) {
+        if (obj instanceof Boolean) {
+            setSelected(((Boolean) obj).booleanValue());
+        } else {
+            super.setUserObject(obj);
+        }
+    }
 
 }

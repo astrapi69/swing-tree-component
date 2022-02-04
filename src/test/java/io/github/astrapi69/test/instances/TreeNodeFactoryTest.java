@@ -24,29 +24,26 @@
  */
 package io.github.astrapi69.test.instances;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import org.junit.jupiter.api.Test;
-
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
+import org.junit.jupiter.api.Test;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-public class TreeNodeFactoryTest
-{
+public class TreeNodeFactoryTest {
 
-	@Test
-	public void testNewDefaultMutableTreeNode()
-	{
-		TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
-			.initializeTestTreeNodeElement();
-		DefaultMutableTreeNode rootNode = TreeNodeFactory
-			.newDefaultMutableTreeNode(treeElementTreeNode);
-		assertNotNull(rootNode);
-		assertEquals(rootNode.getChildCount(), 2);
-	}
+    @Test
+    public void testNewDefaultMutableTreeNode() {
+        TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
+                .initializeTestTreeNodeElement();
+        DefaultMutableTreeNode rootNode = TreeNodeFactory
+                .newDefaultMutableTreeNode(treeElementTreeNode);
+        assertNotNull(rootNode);
+        assertEquals(rootNode.getChildCount(), 2);
+    }
 }

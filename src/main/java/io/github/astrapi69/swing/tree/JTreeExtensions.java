@@ -24,230 +24,204 @@
  */
 package io.github.astrapi69.swing.tree;
 
-import java.awt.*;
+import io.github.astrapi69.swing.robot.MouseExtensions;
+import lombok.NonNull;
+
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
-
-import lombok.NonNull;
-import io.github.astrapi69.swing.robot.MouseExtensions;
-
 /**
  * The class {@link JTreeExtensions}.
  */
-public class JTreeExtensions
-{
+public class JTreeExtensions {
 
-	/**
-	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
-	 *
-	 * @param mouseEvent
-	 *            the mouse event
-	 * @param tree
-	 *            the tree
-	 * @return the selected tree node
-	 */
-	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
-		@NonNull MouseEvent mouseEvent, @NonNull JTree tree)
-	{
-		return getSelectedDefaultMutableTreeNode(tree, mouseEvent.getX(), mouseEvent.getY());
-	}
+    /**
+     * Gets the selected tree node as {@link DefaultMutableTreeNode} object
+     *
+     * @param mouseEvent
+     *            the mouse event
+     * @param tree
+     *            the tree
+     * @return the selected tree node
+     */
+    public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
+            @NonNull MouseEvent mouseEvent, @NonNull JTree tree) {
+        return getSelectedDefaultMutableTreeNode(tree, mouseEvent.getX(), mouseEvent.getY());
+    }
 
-	/**
-	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object from the given
-	 * {@link Point} object
-	 *
-	 * @param tree
-	 *            the tree
-	 * @param point
-	 *            the point
-	 * @return the selected tree node
-	 */
-	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
-		@NonNull JTree tree, @NonNull Point point)
-	{
-		return getSelectedDefaultMutableTreeNode(tree, point.x, point.y);
-	}
+    /**
+     * Gets the selected tree node as {@link DefaultMutableTreeNode} object from the given
+     * {@link Point} object
+     *
+     * @param tree
+     *            the tree
+     * @param point
+     *            the point
+     * @return the selected tree node
+     */
+    public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
+            @NonNull JTree tree, @NonNull Point point) {
+        return getSelectedDefaultMutableTreeNode(tree, point.x, point.y);
+    }
 
-	/**
-	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
-	 *
-	 * @param tree
-	 *            the tree
-	 * @param x
-	 *            the horizontal x position
-	 * @param y
-	 *            the vertical y position
-	 * @return the selected tree node
-	 */
-	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
-		@NonNull JTree tree, int x, int y)
-	{
-		TreePath selectionPath = tree.getPathForLocation(x, y);
-		if (selectionPath == null)
-		{
-			return Optional.empty();
-		}
-		Object lastPathComponent = selectionPath.getLastPathComponent();
-		return Optional.of((T)lastPathComponent);
-	}
+    /**
+     * Gets the selected tree node as {@link DefaultMutableTreeNode} object
+     *
+     * @param tree
+     *            the tree
+     * @param x
+     *            the horizontal x position
+     * @param y
+     *            the vertical y position
+     * @return the selected tree node
+     */
+    public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
+            @NonNull JTree tree, int x, int y) {
+        TreePath selectionPath = tree.getPathForLocation(x, y);
+        if (selectionPath == null) {
+            return Optional.empty();
+        }
+        Object lastPathComponent = selectionPath.getLastPathComponent();
+        return Optional.of((T) lastPathComponent);
+    }
 
-	/**
-	 * Expand all nodes recursive
-	 *
-	 * @param tree
-	 *            the tree
-	 * @param path
-	 *            the path
-	 * @param expand
-	 *            the flag to expand or collapse
-	 */
-	public static void expandAll(@NonNull JTree tree, @NonNull TreePath path, boolean expand)
-	{
-		TreeNode node = (TreeNode)path.getLastPathComponent();
+    /**
+     * Expand all nodes recursive
+     *
+     * @param tree
+     *            the tree
+     * @param path
+     *            the path
+     * @param expand
+     *            the flag to expand or collapse
+     */
+    public static void expandAll(@NonNull JTree tree, @NonNull TreePath path, boolean expand) {
+        TreeNode node = (TreeNode) path.getLastPathComponent();
 
-		if (node.getChildCount() >= 0)
-		{
-			Enumeration<?> enumeration = node.children();
-			while (enumeration.hasMoreElements())
-			{
-				TreeNode n = (TreeNode)enumeration.nextElement();
-				TreePath p = path.pathByAddingChild(n);
+        if (node.getChildCount() >= 0) {
+            Enumeration<?> enumeration = node.children();
+            while (enumeration.hasMoreElements()) {
+                TreeNode n = (TreeNode) enumeration.nextElement();
+                TreePath p = path.pathByAddingChild(n);
 
-				expandAll(tree, p, expand);
-			}
-		}
+                expandAll(tree, p, expand);
+            }
+        }
 
-		if (expand)
-		{
-			tree.expandPath(path);
-		}
-		else
-		{
-			tree.collapsePath(path);
-		}
-	}
+        if (expand) {
+            tree.expandPath(path);
+        } else {
+            tree.collapsePath(path);
+        }
+    }
 
-	/**
-	 * Expand all nodes but non-recursive
-	 *
-	 * @param tree
-	 *            the tree
-	 */
-	public static void expandNodes(final @NonNull JTree tree)
-	{
-		for (int i = 0; i < tree.getRowCount(); i++)
-		{
-			tree.expandRow(i);
-		}
-	}
+    /**
+     * Expand all nodes but non-recursive
+     *
+     * @param tree
+     *            the tree
+     */
+    public static void expandNodes(final @NonNull JTree tree) {
+        for (int i = 0; i < tree.getRowCount(); i++) {
+            tree.expandRow(i);
+        }
+    }
 
-	/**
-	 * Gets the selected user object from the given {@link JTree} object
-	 *
-	 * @param tree
-	 *            the tree
-	 */
-	public static <T> Optional<T> getSelectedUserObject(final @NonNull MouseEvent mouseEvent,
-		final @NonNull JTree tree)
-	{
-		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedDefaultMutableTreeNode(
-			mouseEvent, tree);
-		return getOptionalTreeNode(selectedTreeNode);
-	}
+    /**
+     * Gets the selected user object from the given {@link JTree} object
+     *
+     * @param tree
+     *            the tree
+     */
+    public static <T> Optional<T> getSelectedUserObject(final @NonNull MouseEvent mouseEvent,
+                                                        final @NonNull JTree tree) {
+        Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedDefaultMutableTreeNode(
+                mouseEvent, tree);
+        return getOptionalTreeNode(selectedTreeNode);
+    }
 
-	/**
-	 * Gets the selected user object from the given {@link JTree} object
-	 *
-	 * @param tree
-	 *            the tree
-	 */
-	public static <T> Optional<T> getSelectedUserObject(final @NonNull JTree tree)
-	{
-		Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedTreeNode(tree);
-		return getOptionalTreeNode(selectedTreeNode);
-	}
+    /**
+     * Gets the selected user object from the given {@link JTree} object
+     *
+     * @param tree
+     *            the tree
+     */
+    public static <T> Optional<T> getSelectedUserObject(final @NonNull JTree tree) {
+        Optional<DefaultMutableTreeNode> selectedTreeNode = getSelectedTreeNode(tree);
+        return getOptionalTreeNode(selectedTreeNode);
+    }
 
-	private static <T> Optional<T> getOptionalTreeNode(
-		Optional<DefaultMutableTreeNode> selectedTreeNode)
-	{
-		if (selectedTreeNode.isPresent())
-		{
-			DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
-			Object userObject = defaultMutableTreeNode.getUserObject();
-			if (userObject != null)
-			{
-				T uo = (T)userObject;
-				return Optional.of(uo);
-			}
-		}
-		return Optional.empty();
-	}
+    private static <T> Optional<T> getOptionalTreeNode(
+            Optional<DefaultMutableTreeNode> selectedTreeNode) {
+        if (selectedTreeNode.isPresent()) {
+            DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
+            Object userObject = defaultMutableTreeNode.getUserObject();
+            if (userObject != null) {
+                T uo = (T) userObject;
+                return Optional.of(uo);
+            }
+        }
+        return Optional.empty();
+    }
 
-	/**
-	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
-	 *
-	 * @param tree
-	 *            the tree
-	 */
-	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedTreeNode(
-		final @NonNull JTree tree)
-	{
-		T selectedTreeNode = (T)tree.getLastSelectedPathComponent();
-		if (selectedTreeNode != null)
-		{
-			return Optional.of(selectedTreeNode);
-		}
-		else
-		{
-			if (MouseExtensions.isMouseWithin(tree))
-			{
-				Point location = MouseInfo.getPointerInfo().getLocation();
-				return getSelectedDefaultMutableTreeNode(tree, location.x, location.y);
-			}
-		}
-		return Optional.empty();
-	}
+    /**
+     * Gets the selected tree node as {@link DefaultMutableTreeNode} object
+     *
+     * @param tree
+     *            the tree
+     */
+    public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedTreeNode(
+            final @NonNull JTree tree) {
+        T selectedTreeNode = (T) tree.getLastSelectedPathComponent();
+        if (selectedTreeNode != null) {
+            return Optional.of(selectedTreeNode);
+        } else {
+            if (MouseExtensions.isMouseWithin(tree)) {
+                Point location = MouseInfo.getPointerInfo().getLocation();
+                return getSelectedDefaultMutableTreeNode(tree, location.x, location.y);
+            }
+        }
+        return Optional.empty();
+    }
 
-	/**
-	 * Creates a {@link List} object with all parent and the given {@link TreeNode} object in the
-	 * parent child order
-	 *
-	 * @param treeNode
-	 *            the tree node
-	 * @return the {@link List} object with all parent and the given {@link TreeNode} object in the
-	 *         parent child order
-	 */
-	public static List<Object> getTreeNodes(final @NonNull TreeNode treeNode)
-	{
-		List<Object> treeNodes = new ArrayList<>();
-		treeNodes.add(treeNode);
-		TreeNode parenTreeNode = treeNode.getParent();
-		while (parenTreeNode != null)
-		{
-			treeNodes.add(0, parenTreeNode);
-			parenTreeNode = parenTreeNode.getParent();
-		}
-		return treeNodes;
-	}
+    /**
+     * Creates a {@link List} object with all parent and the given {@link TreeNode} object in the
+     * parent child order
+     *
+     * @param treeNode
+     *            the tree node
+     * @return the {@link List} object with all parent and the given {@link TreeNode} object in the
+     *         parent child order
+     */
+    public static List<Object> getTreeNodes(final @NonNull TreeNode treeNode) {
+        List<Object> treeNodes = new ArrayList<>();
+        treeNodes.add(treeNode);
+        TreeNode parenTreeNode = treeNode.getParent();
+        while (parenTreeNode != null) {
+            treeNodes.add(0, parenTreeNode);
+            parenTreeNode = parenTreeNode.getParent();
+        }
+        return treeNodes;
+    }
 
-	/**
-	 * Creates a {@link TreePath} object from the given {@link TreeNode} object
-	 *
-	 * @param treeNode
-	 *            the tree node
-	 * @return the {@link TreePath} object from the given {@link TreeNode} object
-	 */
-	public static TreePath getTreePath(TreeNode treeNode)
-	{
-		List<Object> treeNodes = getTreeNodes(treeNode);
-		return treeNodes.isEmpty() ? null : new TreePath(treeNodes.toArray());
-	}
+    /**
+     * Creates a {@link TreePath} object from the given {@link TreeNode} object
+     *
+     * @param treeNode
+     *            the tree node
+     * @return the {@link TreePath} object from the given {@link TreeNode} object
+     */
+    public static TreePath getTreePath(TreeNode treeNode) {
+        List<Object> treeNodes = getTreeNodes(treeNode);
+        return treeNodes.isEmpty() ? null : new TreePath(treeNodes.toArray());
+    }
 }

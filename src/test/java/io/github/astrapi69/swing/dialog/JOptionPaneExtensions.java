@@ -24,40 +24,36 @@
  */
 package io.github.astrapi69.swing.dialog;
 
-import javax.swing.*;
-
 import lombok.NonNull;
+
+import javax.swing.JOptionPane;
 
 /**
  * The class {@link JOptionPaneExtensions} provides extension methods for the {@link JOptionPane}
  */
-public class JOptionPaneExtensions
-{
+public class JOptionPaneExtensions {
 
-	/**
-	 * Gets the selected option from the {@link JOptionPane}
-	 *
-	 * @param optionPane
-	 *            the option pane
-	 * @return the selected option
-	 */
-	public static int getSelectedOption(final @NonNull JOptionPane optionPane)
-	{
-		Object selectedOption = optionPane.getValue();
-		if (selectedOption == null)
-			return -1;
-		Object[] options = optionPane.getOptions();
-		if (options == null)
-		{
-			if (selectedOption instanceof Integer)
-				return ((Integer)selectedOption).intValue();
-			return -1;
-		}
-		for (int counter = 0, maxCounter = options.length; counter < maxCounter; counter++)
-		{
-			if (options[counter].equals(selectedOption))
-				return counter;
-		}
-		return -1;
-	}
+    /**
+     * Gets the selected option from the {@link JOptionPane}
+     *
+     * @param optionPane
+     *            the option pane
+     * @return the selected option
+     */
+    public static int getSelectedOption(final @NonNull JOptionPane optionPane) {
+        Object selectedOption = optionPane.getValue();
+        if (selectedOption == null)
+            return -1;
+        Object[] options = optionPane.getOptions();
+        if (options == null) {
+            if (selectedOption instanceof Integer)
+                return ((Integer) selectedOption).intValue();
+            return -1;
+        }
+        for (int counter = 0, maxCounter = options.length; counter < maxCounter; counter++) {
+            if (options[counter].equals(selectedOption))
+                return counter;
+        }
+        return -1;
+    }
 }

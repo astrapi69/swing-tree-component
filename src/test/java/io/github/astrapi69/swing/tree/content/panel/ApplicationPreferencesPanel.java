@@ -24,82 +24,75 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
-import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
-
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.node.ComponentTreeNode;
 import io.github.astrapi69.tree.TreeElement;
 
-public class ApplicationPreferencesPanel extends PreferencesPanel<TreeElement>
-{
-	public ApplicationPreferencesPanel()
-	{
+import javax.swing.JLabel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 
-		this(BaseModel.of(TreeElement.builder().build()));
-	}
+public class ApplicationPreferencesPanel extends PreferencesPanel<TreeElement> {
+    public ApplicationPreferencesPanel() {
 
-	public ApplicationPreferencesPanel(IModel<TreeElement> model)
-	{
-		super(model);
-	}
+        this(BaseModel.of(TreeElement.builder().build()));
+    }
 
-	@Override
-	protected TreeModel newTreeModel(IModel<TreeElement> model)
-	{
-		ComponentTreeNode rootNode = new ComponentTreeNode(new JLabel("Main Preferences"),
-			"Preferences");
-		rootNode.add(new ComponentTreeNode(new JLabel("Test 1"), "Test 1"));
-		rootNode.add(new ComponentTreeNode(new JLabel("Test 2"), "Test 2"));
-		TreeModel treeModel = new DefaultTreeModel(rootNode, true);
+    public ApplicationPreferencesPanel(IModel<TreeElement> model) {
+        super(model);
+    }
 
-		return treeModel;
-	}
+    @Override
+    protected TreeModel newTreeModel(IModel<TreeElement> model) {
+        ComponentTreeNode rootNode = new ComponentTreeNode(new JLabel("Main Preferences"),
+                "Preferences");
+        rootNode.add(new ComponentTreeNode(new JLabel("Test 1"), "Test 1"));
+        rootNode.add(new ComponentTreeNode(new JLabel("Test 2"), "Test 2"));
+        TreeModel treeModel = new DefaultTreeModel(rootNode, true);
 
-	@Override
-	protected void onAfterInitialize()
-	{
-		super.onAfterInitialize();
-		TreeNode root = (TreeNode)tree.getModel().getRoot();
-		JTreeExtensions.expandAll(tree, new TreePath(root), true);
-		DefaultMutableTreeNode firstLeaf = ((DefaultMutableTreeNode)tree.getModel().getRoot())
-			.getFirstLeaf();
-		tree.setSelectionPath(new TreePath(firstLeaf.getPath()));
-		// dont show root
-		tree.setRootVisible(false);
-	}
+        return treeModel;
+    }
 
-	@Override
-	protected void onInitializeComponents()
-	{
-		super.onInitializeComponents();
+    @Override
+    protected void onAfterInitialize() {
+        super.onAfterInitialize();
+        TreeNode root = (TreeNode) tree.getModel().getRoot();
+        JTreeExtensions.expandAll(tree, new TreePath(root), true);
+        DefaultMutableTreeNode firstLeaf = ((DefaultMutableTreeNode) tree.getModel().getRoot())
+                .getFirstLeaf();
+        tree.setSelectionPath(new TreePath(firstLeaf.getPath()));
+        // dont show root
+        tree.setRootVisible(false);
+    }
 
-	}
+    @Override
+    protected void onInitializeComponents() {
+        super.onInitializeComponents();
 
-	@Override
-	protected void onInitializeLayout()
-	{
-		super.onInitializeLayout();
+    }
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-		this.setLayout(layout);
-		layout.setHorizontalGroup(
-			layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addContainerGap()
-					.addComponent(splitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 700,
-						javax.swing.GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout
-			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(layout.createSequentialGroup().addContainerGap()
-				.addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-				.addContainerGap()));
-	}
+    @Override
+    protected void onInitializeLayout() {
+        super.onInitializeLayout();
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup().addContainerGap()
+                                .addComponent(splitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 700,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        layout.setVerticalGroup(layout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup().addContainerGap()
+                        .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                        .addContainerGap()));
+    }
 
 }

@@ -32,6 +32,5 @@ import javax.swing.tree.TreeNode;
  * @param <T>
  *            the generic type
  */
-public interface IGenericTreeNode<T> extends TreeNode
-{
+public interface IGenericTreeNode<T> extends TreeNode {
 }

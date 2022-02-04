@@ -24,74 +24,61 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
-import javax.swing.*;
-
-import org.apache.commons.lang3.StringUtils;
-
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.TreeNode;
+import org.apache.commons.lang3.StringUtils;
 
-public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<GenericTreeElement<T>>
-{
+import javax.swing.Icon;
+import javax.swing.JLabel;
 
-	protected JLabel initialize(TreeNode<GenericTreeElement<T>> userObject)
-	{
-		TreeNode<GenericTreeElement<T>> treeNode = userObject;
-		String displayValue = treeNode.getDisplayValue();
-		GenericTreeElement<T> value = treeNode.getValue();
-		if (value != null)
-		{
-			String iconPath = value.getIconPath();
-			if (StringUtils.isNotEmpty(iconPath))
-			{
-				Icon customTreeIcon;
-				try
-				{
-					customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
-				}
-				catch (Exception e)
-				{
-					customTreeIcon = new StringIcon(treeLabel, iconPath);
-				}
-				if (value.isWithText())
-				{
-					treeLabel.setText(displayValue);
-				}
-				else
-				{
-					treeLabel.setText("");
-				}
-				treeLabel.setToolTipText(displayValue);
-				treeLabel.setIcon(customTreeIcon);
-				return treeLabel;
-			}
-		}
-		return super.initialize(userObject);
-	}
+public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<GenericTreeElement<T>> {
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Icon getOpenIcon()
-	{
-		return renderer.getOpenIcon();
-	}
+    protected JLabel initialize(TreeNode<GenericTreeElement<T>> userObject) {
+        TreeNode<GenericTreeElement<T>> treeNode = userObject;
+        String displayValue = treeNode.getDisplayValue();
+        GenericTreeElement<T> value = treeNode.getValue();
+        if (value != null) {
+            String iconPath = value.getIconPath();
+            if (StringUtils.isNotEmpty(iconPath)) {
+                Icon customTreeIcon;
+                try {
+                    customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
+                } catch (Exception e) {
+                    customTreeIcon = new StringIcon(treeLabel, iconPath);
+                }
+                if (value.isWithText()) {
+                    treeLabel.setText(displayValue);
+                } else {
+                    treeLabel.setText("");
+                }
+                treeLabel.setToolTipText(displayValue);
+                treeLabel.setIcon(customTreeIcon);
+                return treeLabel;
+            }
+        }
+        return super.initialize(userObject);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Icon getLeafIcon()
-	{
-		return renderer.getLeafIcon();
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public Icon getOpenIcon() {
+        return renderer.getOpenIcon();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Icon getClosedIcon()
-	{
-		return renderer.getClosedIcon();
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public Icon getLeafIcon() {
+        return renderer.getLeafIcon();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Icon getClosedIcon() {
+        return renderer.getClosedIcon();
+    }
 }

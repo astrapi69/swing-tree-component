@@ -24,41 +24,36 @@
  */
 package io.github.astrapi69.swing.tree.node;
 
-import java.awt.*;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.Component;
+
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class ComponentTreeNode extends DefaultMutableTreeNode
-{
+public class ComponentTreeNode extends DefaultMutableTreeNode {
 
-	private static final long serialVersionUID = 1L;
-	Component component;
-	String label;
+    private static final long serialVersionUID = 1L;
+    Component component;
+    String label;
 
-	public ComponentTreeNode(final Component userObject, final String label)
-	{
-		super(userObject);
-		this.component = userObject;
-		this.label = label;
-	}
+    public ComponentTreeNode(final Component userObject, final String label) {
+        super(userObject);
+        this.component = userObject;
+        this.label = label;
+    }
 
-	public ComponentTreeNode(final Component userObject, boolean allowsChildren, final String label)
-	{
-		super(userObject, allowsChildren);
-		this.component = userObject;
-		this.label = label;
-	}
+    public ComponentTreeNode(final Component userObject, boolean allowsChildren, final String label) {
+        super(userObject, allowsChildren);
+        this.component = userObject;
+        this.label = label;
+    }
 
-	@Override
-	public String toString()
-	{
-		return label;
-	}
+    @Override
+    public String toString() {
+        return label;
+    }
 
 }

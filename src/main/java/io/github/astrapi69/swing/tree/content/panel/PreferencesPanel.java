@@ -24,110 +24,100 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
-import java.awt.*;
-import java.util.Optional;
-
-import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import org.jdesktop.swingx.JXTree;
-
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.component.factory.JComponentFactory;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
+import org.jdesktop.swingx.JXTree;
 
-public abstract class PreferencesPanel<T> extends JXTreePanel<T>
-{
+import javax.swing.JSplitPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.util.Optional;
 
-	/** The serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+public abstract class PreferencesPanel<T> extends JXTreePanel<T> {
 
-	/**
-	 * The {@link JSplitPane} for the tree in the left side and the corresponding value at teh right
-	 * side.
-	 */
-	protected JSplitPane splitPane;
+    /** The serialVersionUID. */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new {@link PreferencesPanel} object panel
-	 *
-	 * @param model
-	 *            the model
-	 */
-	public PreferencesPanel(final IModel<T> model)
-	{
-		super(model);
-	}
+    /**
+     * The {@link JSplitPane} for the tree in the left side and the corresponding value at teh right
+     * side.
+     */
+    protected JSplitPane splitPane;
 
-	protected Component getSelectedComponent()
-	{
-		Optional<DefaultMutableTreeNode> selectedTreeNode = JTreeExtensions
-			.getSelectedTreeNode(tree);
-		if (selectedTreeNode.isPresent())
-		{
-			DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
-			return (Component)defaultMutableTreeNode.getUserObject();
-		}
-		return null;
-	}
+    /**
+     * Instantiates a new {@link PreferencesPanel} object panel
+     *
+     * @param model
+     *            the model
+     */
+    public PreferencesPanel(final IModel<T> model) {
+        super(model);
+    }
 
-	protected JSplitPane newJSplitPane()
-	{
-		return JComponentFactory.newJSplitPane(scrTree, getSelectedComponent());
-	}
+    protected Component getSelectedComponent() {
+        Optional<DefaultMutableTreeNode> selectedTreeNode = JTreeExtensions
+                .getSelectedTreeNode(tree);
+        if (selectedTreeNode.isPresent()) {
+            DefaultMutableTreeNode defaultMutableTreeNode = selectedTreeNode.get();
+            return (Component) defaultMutableTreeNode.getUserObject();
+        }
+        return null;
+    }
 
-	/**
-	 *
-	 * Factory method for creating the new {@link Dimension}. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can provide their own
-	 * version of a {@link Dimension}
-	 *
-	 * @param width
-	 *            the width
-	 * @param height
-	 *            the height
-	 *
-	 * @return the new {@link Dimension}
-	 */
-	protected Dimension newPreferredSize(int width, int height)
-	{
-		return new Dimension(width, height);
-	}
+    protected JSplitPane newJSplitPane() {
+        return JComponentFactory.newJSplitPane(scrTree, getSelectedComponent());
+    }
 
-	protected JXTree newTree()
-	{
-		JXTree tree = super.newTree();
+    /**
+     *
+     * Factory method for creating the new {@link Dimension}. This method is invoked in the
+     * constructor from the derived classes and can be overridden so users can provide their own
+     * version of a {@link Dimension}
+     *
+     * @param width
+     *            the width
+     * @param height
+     *            the height
+     *
+     * @return the new {@link Dimension}
+     */
+    protected Dimension newPreferredSize(int width, int height) {
+        return new Dimension(width, height);
+    }
 
-		tree.addTreeSelectionListener(treeSelectionEvent -> splitPane
-			.setRightComponent(PreferencesPanel.this.getSelectedComponent()));
+    protected JXTree newTree() {
+        JXTree tree = super.newTree();
 
-		return tree;
-	}
+        tree.addTreeSelectionListener(treeSelectionEvent -> splitPane
+                .setRightComponent(PreferencesPanel.this.getSelectedComponent()));
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitializeComponents()
-	{
-		super.onInitializeComponents();
+        return tree;
+    }
 
-		scrTree = newTreeScrollPane();
-		tree = newTree();
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onInitializeComponents() {
+        super.onInitializeComponents();
 
-		setPreferredSize(newPreferredSize(1000, 780));
-		scrTree.setViewportView(tree);
-		splitPane = newJSplitPane();
-	}
+        scrTree = newTreeScrollPane();
+        tree = newTree();
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitializeLayout()
-	{
-		super.onInitializeLayout();
-	}
+        setPreferredSize(newPreferredSize(1000, 780));
+        scrTree.setViewportView(tree);
+        splitPane = newJSplitPane();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onInitializeLayout() {
+        super.onInitializeLayout();
+    }
 
 }

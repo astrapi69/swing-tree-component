@@ -24,22 +24,21 @@
  */
 package io.github.astrapi69.swing.tree.labels;
 
-import javax.swing.*;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import javax.swing.JLabel;
+
 @NoArgsConstructor
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CheckBoxTreeLabel extends JLabel
-{
-	@SuppressWarnings("unused")
-	boolean focused;
+public class CheckBoxTreeLabel extends JLabel {
+    @SuppressWarnings("unused")
+    boolean focused;
 
-	@SuppressWarnings("unused")
-	boolean selected;
+    @SuppressWarnings("unused")
+    boolean selected;
 
 }

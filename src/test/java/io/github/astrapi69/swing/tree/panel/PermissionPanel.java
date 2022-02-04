@@ -24,107 +24,103 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import javax.swing.*;
-
-import lombok.Getter;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.LambdaModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.component.JMTextField;
 import io.github.astrapi69.swing.base.BasePanel;
+import io.github.astrapi69.swing.component.JMTextField;
 import io.github.astrapi69.test.objects.Permission;
+import lombok.Getter;
+
+import javax.swing.GroupLayout;
+import javax.swing.JLabel;
 
 @Getter
-public class PermissionPanel extends BasePanel<Permission>
-{
-	private JLabel lblDescription;
-	private JLabel lblName;
-	private JLabel lblShortcut;
-	private JMTextField txtDescription;
-	private JMTextField txtName;
-	private JMTextField txtShortcut;
+public class PermissionPanel extends BasePanel<Permission> {
+    private JLabel lblDescription;
+    private JLabel lblName;
+    private JLabel lblShortcut;
+    private JMTextField txtDescription;
+    private JMTextField txtName;
+    private JMTextField txtShortcut;
 
-	public PermissionPanel()
-	{
-		this(BaseModel.of(Permission.builder().build()));
-	}
+    public PermissionPanel() {
+        this(BaseModel.of(Permission.builder().build()));
+    }
 
-	public PermissionPanel(final IModel<Permission> model)
-	{
-		super(model);
-	}
+    public PermissionPanel(final IModel<Permission> model) {
+        super(model);
+    }
 
 
-	@Override
-	protected void onInitializeComponents()
-	{
-		super.onInitializeComponents();
-		lblName = new JLabel();
-		lblDescription = new JLabel();
-		lblShortcut = new JLabel();
-		Permission modelObject = getModelObject();
+    @Override
+    protected void onInitializeComponents() {
+        super.onInitializeComponents();
+        lblName = new JLabel();
+        lblDescription = new JLabel();
+        lblShortcut = new JLabel();
+        Permission modelObject = getModelObject();
 
-		txtName = new JMTextField();
-		txtShortcut = new JMTextField();
-		txtDescription = new JMTextField();
+        txtName = new JMTextField();
+        txtShortcut = new JMTextField();
+        txtDescription = new JMTextField();
 
-		txtName.setPropertyModel(LambdaModel.of(modelObject::getName, modelObject::setName));
-		txtShortcut
-			.setPropertyModel(LambdaModel.of(modelObject::getShortcut, modelObject::setShortcut));
-		txtDescription.setPropertyModel(
-			LambdaModel.of(modelObject::getDescription, modelObject::setDescription));
+        txtName.setPropertyModel(LambdaModel.of(modelObject::getName, modelObject::setName));
+        txtShortcut
+                .setPropertyModel(LambdaModel.of(modelObject::getShortcut, modelObject::setShortcut));
+        txtDescription.setPropertyModel(
+                LambdaModel.of(modelObject::getDescription, modelObject::setDescription));
 
-		lblName.setText("Name");
+        lblName.setText("Name");
 
-		lblDescription.setText("Description");
+        lblDescription.setText("Description");
 
-		lblShortcut.setText("Shortcut");
+        lblShortcut.setText("Shortcut");
 
-	}
+    }
 
-	@Override
-	protected void onInitializeLayout()
-	{
-		super.onInitializeLayout();
+    @Override
+    protected void onInitializeLayout() {
+        super.onInitializeLayout();
 
-		GroupLayout layout = new GroupLayout(this);
-		this.setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-			.addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout
-				.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup()
-					.addComponent(lblName, GroupLayout.PREFERRED_SIZE, 120,
-						GroupLayout.PREFERRED_SIZE)
-					.addGap(18, 18, 18).addComponent(txtName, GroupLayout.PREFERRED_SIZE, 220,
-						GroupLayout.PREFERRED_SIZE))
-				.addGroup(layout.createSequentialGroup()
-					.addComponent(lblDescription, GroupLayout.PREFERRED_SIZE, 120,
-						GroupLayout.PREFERRED_SIZE)
-					.addGap(18, 18, 18).addComponent(txtDescription, GroupLayout.PREFERRED_SIZE,
-						220, GroupLayout.PREFERRED_SIZE))
-				.addGroup(layout.createSequentialGroup()
-					.addComponent(lblShortcut, GroupLayout.PREFERRED_SIZE, 120,
-						GroupLayout.PREFERRED_SIZE)
-					.addGap(18, 18, 18).addComponent(txtShortcut, GroupLayout.PREFERRED_SIZE, 220,
-						GroupLayout.PREFERRED_SIZE)))
-				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout
-			.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addContainerGap()
-					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-						.addComponent(lblName).addComponent(txtName, GroupLayout.PREFERRED_SIZE,
-							GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18, 18, 18)
-					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-						.addComponent(lblShortcut)
-						.addComponent(txtShortcut, GroupLayout.PREFERRED_SIZE,
-							GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18, 18, 18)
-					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-						.addComponent(lblDescription).addComponent(txtDescription,
-							GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-							GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-	}
+        GroupLayout layout = new GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout
+                                .createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblName, GroupLayout.PREFERRED_SIZE, 120,
+                                                GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18).addComponent(txtName, GroupLayout.PREFERRED_SIZE, 220,
+                                                GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblDescription, GroupLayout.PREFERRED_SIZE, 120,
+                                                GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18).addComponent(txtDescription, GroupLayout.PREFERRED_SIZE,
+                                                220, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblShortcut, GroupLayout.PREFERRED_SIZE, 120,
+                                                GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18).addComponent(txtShortcut, GroupLayout.PREFERRED_SIZE, 220,
+                                                GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        layout
+                .setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup().addContainerGap()
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblName).addComponent(txtName, GroupLayout.PREFERRED_SIZE,
+                                                GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblShortcut)
+                                        .addComponent(txtShortcut, GroupLayout.PREFERRED_SIZE,
+                                                GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblDescription).addComponent(txtDescription,
+                                                GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+                                                GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+    }
 
 }

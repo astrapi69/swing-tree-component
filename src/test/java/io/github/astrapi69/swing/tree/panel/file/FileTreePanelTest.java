@@ -24,30 +24,28 @@
  */
 package io.github.astrapi69.swing.tree.panel.file;
 
-import java.awt.*;
-
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import io.github.astrapi69.window.adapter.CloseWindow;
+
+import java.awt.Frame;
 
 /**
  * The test class for {@link JXTreePanel}
  */
-public class FileTreePanelTest
-{
+public class FileTreePanelTest {
 
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(final String[] args)
-	{
-		final Frame frame = new Frame("JXTreePanel");
-		frame.addWindowListener(new CloseWindow());
-		frame.add(new TestFileTreePanel());
-		frame.pack();
-		frame.setVisible(true);
-	}
+    /**
+     * The main method.
+     *
+     * @param args
+     *            the arguments
+     */
+    public static void main(final String[] args) {
+        final Frame frame = new Frame("JXTreePanel");
+        frame.addWindowListener(new CloseWindow());
+        frame.add(new TestFileTreePanel());
+        frame.pack();
+        frame.setVisible(true);
+    }
 
 }

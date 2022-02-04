@@ -24,28 +24,26 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
-import java.awt.*;
-
 import io.github.astrapi69.window.adapter.CloseWindow;
 
-public class TestApplicationPreferencesPanel
-{
+import java.awt.Frame;
+
+public class TestApplicationPreferencesPanel {
 
 
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(final String[] args)
-	{
-		final Frame frame = new Frame("ApplicationPreferencesPanel");
-		frame.addWindowListener(new CloseWindow());
-		frame.add(new ApplicationPreferencesPanel());
+    /**
+     * The main method.
+     *
+     * @param args
+     *            the arguments
+     */
+    public static void main(final String[] args) {
+        final Frame frame = new Frame("ApplicationPreferencesPanel");
+        frame.addWindowListener(new CloseWindow());
+        frame.add(new ApplicationPreferencesPanel());
 
-		frame.setBounds(100, 100, 730, 350);
-		frame.setVisible(true);
-	}
+        frame.setBounds(100, 100, 730, 350);
+        frame.setVisible(true);
+    }
 
 }

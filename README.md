@@ -12,7 +12,7 @@
 
 </div>
 
-This project holds a tree component for swing applications. 
+This project holds a tree component for swing applications.
 
 > Please support this project by simply putting a Github <!-- Place this tag where you want the button to render. -->
 <a class="github-button" href="https://github.com/astrapi69/swing-tree-component" data-icon="octicon-star" aria-label="Star astrapi69/swing-tree-component on GitHub">Star ⭐</a>
@@ -21,11 +21,11 @@ This project holds a tree component for swing applications.
 >
 > If you love this project [![donation](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 
-
 # Template from this project
 
 You can derive your java library project from this you can easily and adapt to your specific project if you follow the
-instruction from this [medium blog](https://asterios-raptis.medium.com/new-github-template-repository-feature-ec09afe261b8)
+instruction from
+this [medium blog](https://asterios-raptis.medium.com/new-github-template-repository-feature-ec09afe261b8)
 
 ## Note
 
@@ -37,38 +37,40 @@ The source code comes under the liberal MIT License, making swing-tree-component
 
 ## Maven dependency
 
-Maven dependency is now on sonatype.
-Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~swing-tree-component~~~) for latest snapshots and releases.
+Maven dependency is now on sonatype. Check
+out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~swing-tree-component~~~)
+for latest snapshots and releases.
 
-Add the following maven dependency to your project `pom.xml` if you want to import the core 
-functionality of swing-tree-component:
+Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of
+swing-tree-component:
 
 Than you can add the dependency to your dependencies:
 
-	<properties>
-			...
-		<!-- swing-tree-component version -->
-		<swing-tree-component.version>1</swing-tree-component.version>
-			...
-	</properties>
-			...
-		<dependencies>
-			...
-			<!-- swing-tree-component DEPENDENCY -->
-			<dependency>
-				<groupId>io.github.astrapi69</groupId>
-				<artifactId>swing-tree-component</artifactId>
-				<version>${swing-tree-component.version}</version>
-			</dependency>
-			...
-		</dependencies>
+    <properties>
+            ...
+        <!-- swing-tree-component version -->
+        <swing-tree-component.version>1</swing-tree-component.version>
+            ...
+    </properties>
+            ...
+        <dependencies>
+            ...
+            <!-- swing-tree-component DEPENDENCY -->
+            <dependency>
+                <groupId>io.github.astrapi69</groupId>
+                <artifactId>swing-tree-component</artifactId>
+                <version>${swing-tree-component.version}</version>
+            </dependency>
+            ...
+        </dependencies>
 
 ## gradle dependency
 
-You can first define the version in the ext section and add than the following gradle dependency to
-your project `build.gradle` if you want to import the core functionality of swing-tree-component:
+You can first define the version in the ext section and add than the following gradle dependency to your
+project `build.gradle` if you want to import the core functionality of swing-tree-component:
 
 define version in file gradle.properties
+
 ```
 swingTreeComponentVersion=1
 ```
@@ -77,9 +79,9 @@ or in build.gradle ext area
 
 ```
 ext {
-			...
+            ...
     swingTreeComponentVersion = "1"
-			...
+            ...
 }
 ```
 
@@ -87,25 +89,25 @@ then add the dependency to the dependencies area
 
 ```
 dependencies {
-			...
+            ...
     implementation("io.github.astrapi69:swing-tree-component:$swingTreeComponentVersion")
-			...
+            ...
 }
 ```
 
 # Donations
 
-This project is kept as an open source product and relies on contributions to remain being
-developed. If you like this library, please consider a donation
+This project is kept as an open source product and relies on contributions to remain being developed. If you like this
+library, please consider a donation
 
 over paypal:
 <br>
 <br>
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MJ7V43GU2H386" target="_blank">
-    <img src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif"
-         alt="PayPal this"
-         title="PayPal – The safer, easier way to pay online!"
-         style="border: none" />
+<img src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif"
+alt="PayPal this"
+title="PayPal – The safer, easier way to pay online!"
+style="border: none" />
 </a>
 <br>
 <br>
@@ -113,42 +115,48 @@ or over bitcoin(BTC) with this address:
 
 bc1ql2y99q7e8psndhcc3gferk03esw3qqf677rhjy
 
-<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/bc1ql2y99q7e8psndhcc3gferk03esw3qqf677rhjy.png"
+<img
+src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/bc1ql2y99q7e8psndhcc3gferk03esw3qqf677rhjy.png"
 alt="Donation Bitcoin Wallet" width="250"/>
 
 or over FIO with this address:
 
 FIO7tFMUVAA9cHiPPqKMfMXiSxHrbpiFyRYqTketNuM67aULuwjop
 
-<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/FIO7tFMUVAA9cHiPPqKMfMXiSxHrbpiFyRYqTketNuM67aULuwjop.png"
+<img
+src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/FIO7tFMUVAA9cHiPPqKMfMXiSxHrbpiFyRYqTketNuM67aULuwjop.png"
 alt="Donation FIO Wallet" width="250"/>
 
 or over Ethereum(ETH) with:
 
 0xc057D159D3C8f3311E73568b334FF6fE82EB2b7D
 
-<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/0xc057D159D3C8f3311E73568b334FF6fE82EB2b7D.png"
+<img
+src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/0xc057D159D3C8f3311E73568b334FF6fE82EB2b7D.png"
 alt="Donation Ethereum Wallet" width="250"/>
 
 or over Ethereum Classic(ETC) with:
 
 0xF708cA86D86C246B69c3F4BAe431eBbe0c2bfddD
 
-<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/0xF708cA86D86C246B69c3F4BAe431eBbe0c2bfddD.png"
+<img
+src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/0xF708cA86D86C246B69c3F4BAe431eBbe0c2bfddD.png"
 alt="Donation Ethereum Classic Wallet" width="250"/>
 
 or over Dogecoin(DOGE) with:
 
 D5yi4Um8cpakd6yPRm2hGWuQ5nrVzhSSW1
 
-<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/D5yi4Um8cpakd6yPRm2hGWuQ5nrVzhSSW1.png"
+<img
+src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/D5yi4Um8cpakd6yPRm2hGWuQ5nrVzhSSW1.png"
 alt="Donation Dogecoin Wallet" width="250"/>
 
 or over Monero(XMR) with:
 
 49bqeRQ7Bf49oJFVC72pqpe5hFbb62pfXDYPdLsadGGF81KZW2ZfrPZ8PbAVu5X2v1TYAspeczMya3cYQysNS4usRRPQHVw
 
-<img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/49bqeRQ7Bf49oJFVC72pqpe5hFbb62pfXDYPdLsadGGF81KZW2ZfrPZ8PbAVu5X2v1TYAspeczMya3cYQysNS4usRRPQHVw.png"
+<img
+src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/49bqeRQ7Bf49oJFVC72pqpe5hFbb62pfXDYPdLsadGGF81KZW2ZfrPZ8PbAVu5X2v1TYAspeczMya3cYQysNS4usRRPQHVw.png"
 alt="Donation Monero Wallet" width="250"/>
 
 or over the donation buttons at the top.
@@ -161,7 +169,8 @@ Release version numbers will be incremented in the following format:
 
 `<major>.<minor>.<patch>`
 
-For detailed information on versioning you can visit the [wiki page](https://github.com/lightblueseas/mvn-parent-projects/wiki/Semantic-Versioning).
+For detailed information on versioning you can visit
+the [wiki page](https://github.com/lightblueseas/mvn-parent-projects/wiki/Semantic-Versioning).
 
 ## Want to Help and improve it? ###
 
@@ -175,10 +184,12 @@ Don't forget to add new units tests on your changes.
 
 ## Contacting the Developers
 
-Do not hesitate to contact the swing-tree-component developers with your questions, concerns, comments, bug reports, or feature requests.
-- Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/swing-tree-component/issues).
+Do not hesitate to contact the swing-tree-component developers with your questions, concerns, comments, bug reports, or
+feature requests.
+
+- Feature requests, questions and bug reports can be reported at
+  the [issues page](https://github.com/astrapi69/swing-tree-component/issues).
 
 ## Similar projects
 
 ## Credits
-
