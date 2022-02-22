@@ -36,6 +36,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
+import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeExtensions;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
@@ -275,7 +276,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 					.parent(selectedTreeNode.getParent()).value(selectedTreeNode.getValue())
 					.node(selectedTreeNode.isNode()).build();
 
-				TreeNodeFactory.copyOf(selectedDefaultMutableTreeNode, clonedTreeNode);
+				DefaultMutableTreeNodeExtensions.copyOf(selectedDefaultMutableTreeNode,
+					clonedTreeNode);
 
 				((DefaultTreeModel)tree.getModel())
 					.reload(selectedDefaultMutableTreeNode.getParent());

@@ -44,6 +44,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
+import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
@@ -196,9 +197,8 @@ public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 						.value(treeElement).parent(parentTreeNode).displayValue(userObject)
 						.node(allowsChildren).build();
 
-					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode,
-						allowsChildren);
-					selectedTreeNode.add(newChild);
+					DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(selectedTreeNode,
+						newTreeNode, allowsChildren, true);
 					((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
 					tree.treeDidChange();
 				}

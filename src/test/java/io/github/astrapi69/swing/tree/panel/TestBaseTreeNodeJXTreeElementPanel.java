@@ -29,14 +29,16 @@ import java.awt.Frame;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JXTreeElement;
+import io.github.astrapi69.test.instances.TestBaseTreeNodeFactory;
 import io.github.astrapi69.test.instances.TestTreeNodeFactory;
+import io.github.astrapi69.tree.BaseTreeNode;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
  * The test class for {@link JXTreePanel}
  */
-public class TestTreeNodeJXTreeElementPanel
+public class TestBaseTreeNodeJXTreeElementPanel
 {
 
 	/**
@@ -47,11 +49,11 @@ public class TestTreeNodeJXTreeElementPanel
 	 */
 	public static void main(final String[] args)
 	{
-		final Frame frame = new Frame("DemoTreeNodeJXTreeElementPanel");
+		final Frame frame = new Frame("DemoBaseTreeNodeJXTreeElementPanel");
 		frame.addWindowListener(new CloseWindow());
-		IModel<TreeNode<JXTreeElement>> parentModel = BaseModel
-			.of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
-		frame.add(new DemoTreeNodeJXTreeElementPanel(parentModel));
+		IModel<BaseTreeNode<JXTreeElement>> parentModel = BaseModel
+			.of(TestBaseTreeNodeFactory.initializeTestJXTreeNodeElement());
+		frame.add(new DemoBaseTreeNodeJXTreeElementPanel(parentModel));
 		frame.pack();
 		frame.setVisible(true);
 	}

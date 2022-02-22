@@ -24,36 +24,40 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.Frame;
-
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JXTreeElement;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
+import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
- * The test class for {@link JXTreePanel}
+ * The abstract class {@link BaseTreeNodeJXTreeElementPanel} a given {@link TreeNode} parameterized
+ * with {@link TreeElement}
  */
-public class TestTreeNodeJXTreeElementPanel
+public abstract class BaseTreeNodeJXTreeElementPanel extends GenericBaseTreeNodePanel<JXTreeElement>
 {
 
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
 	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
+	 * Instantiates a new {@link BaseTreeNodeJXTreeElementPanel}
 	 */
-	public static void main(final String[] args)
+	public BaseTreeNodeJXTreeElementPanel()
 	{
-		final Frame frame = new Frame("DemoTreeNodeJXTreeElementPanel");
-		frame.addWindowListener(new CloseWindow());
-		IModel<TreeNode<JXTreeElement>> parentModel = BaseModel
-			.of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
-		frame.add(new DemoTreeNodeJXTreeElementPanel(parentModel));
-		frame.pack();
-		frame.setVisible(true);
+		this(BaseModel.of(BaseTreeNode.<JXTreeElement> builder().build()));
+	}
+
+	/**
+	 * Instantiates a new t{@link BaseTreeNodeJXTreeElementPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public BaseTreeNodeJXTreeElementPanel(final IModel<BaseTreeNode<JXTreeElement>> model)
+	{
+		super(model);
 	}
 
 }

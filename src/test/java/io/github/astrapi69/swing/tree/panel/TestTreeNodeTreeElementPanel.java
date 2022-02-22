@@ -47,7 +47,7 @@ public class TestTreeNodeTreeElementPanel
 	 */
 	public static void main(final String[] args)
 	{
-		final Frame frame = new Frame("JXTreePanel");
+		final Frame frame = new Frame("DemoTreeNodeTreeElementPanel");
 		frame.addWindowListener(new CloseWindow());
 		IModel<TreeNode<TreeElement>> parentModel = BaseModel
 			.of(TestTreeNodeFactory.initializeTestTreeNodeElement());

@@ -36,7 +36,10 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
+import io.github.astrapi69.swing.tree.BaseTreeNodeFactory;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
+import io.github.astrapi69.swing.tree.renderer.JXBaseTreeNodeCellRenderer;
+import io.github.astrapi69.tree.BaseTreeNode;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
@@ -54,17 +57,17 @@ import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
 import io.github.astrapi69.test.objects.Permission;
 import io.github.astrapi69.tree.TreeNode;
 
-public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
+public class DemoBaseTreeNodeJXTreeElementPanel extends BaseTreeNodeJXTreeElementPanel
 {
 
 	private static final long serialVersionUID = 1L;
 
-	public DemoTreeNodeJXTreeElementPanel()
+	public DemoBaseTreeNodeJXTreeElementPanel()
 	{
-		this(BaseModel.of(new TreeNode<>()));
+		this(BaseModel.of(new BaseTreeNode<>()));
 	}
 
-	public DemoTreeNodeJXTreeElementPanel(final IModel<TreeNode<JXTreeElement>> model)
+	public DemoBaseTreeNodeJXTreeElementPanel(final IModel<BaseTreeNode<JXTreeElement>> model)
 	{
 		super(model);
 	}
@@ -73,19 +76,16 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 	protected JXTree newTree()
 	{
 		JXTree tree = super.newTree();
-		tree.setCellRenderer(new JXTreeNodeCellRenderer());
+		tree.setCellRenderer(new JXBaseTreeNodeCellRenderer());
 		return tree;
 	}
 
 	@Override
-	protected TreeModel newTreeModel(final IModel<TreeNode<JXTreeElement>> model)
+	protected TreeModel newTreeModel(final IModel<BaseTreeNode<JXTreeElement>> model)
 	{
-		TreeNode<JXTreeElement> parentTreeNode = model.getObject();
-		TreeModel treeModel;
-
-		// treeModel = new TreeNodeModel(parentTreeNode);
-
-		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
+		BaseTreeNode<JXTreeElement> parentTreeNode = model.getObject();
+		DefaultMutableTreeNode rootNode = BaseTreeNodeFactory
+			.newDefaultMutableTreeNode(parentTreeNode);
 
 		return new DefaultTreeModel(rootNode, true);
 	}
@@ -100,7 +100,7 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 
 		Object lastPathComponent = selectionPath.getLastPathComponent();
 		DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)lastPathComponent;
-		TreeNode<JXTreeElement> parentTreeNode = (TreeNode<JXTreeElement>)selectedTreeNode
+		BaseTreeNode<JXTreeElement> parentTreeNode = (BaseTreeNode<JXTreeElement>)selectedTreeNode
 			.getUserObject();
 
 		JPopupMenu popup = new JPopupMenu();
@@ -143,7 +143,8 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
 			.ifPresent(selectedTreeNode -> {
-				TreeNode<GenericTreeElement<java.util.List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
+
+				BaseTreeNode<JXTreeElement> parentTreeNode = (BaseTreeNode<JXTreeElement>)selectedTreeNode
 					.getUserObject();
 				NodePanel nodePanel = new NodePanel();
 				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
@@ -160,14 +161,15 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 					NodeModelBean modelObject = nodePanel.getModelObject();
 					boolean node = modelObject.isNode();
 					String name = modelObject.getName();
-					GenericTreeElement<java.util.List<Permission>> treeElement = GenericTreeElement.<java.util.List<Permission>> builder()
-						.name(name).parent(parentTreeNode.getValue()).node(node).build();
-					TreeNode<GenericTreeElement<java.util.List<Permission>>> newTreeNode = TreeNode
-						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-						.parent(parentTreeNode).displayValue(name).node(node).build();
-
+					JXTreeElement value = parentTreeNode.getValue();
+					JXTreeElement treeElement = JXTreeElement.<List<Permission>> builder()
+						.name(name).parent(value).node(node).build();
+					BaseTreeNode<JXTreeElement> newTreeNode = BaseTreeNode.<JXTreeElement> builder()
+						.value(treeElement).parent(parentTreeNode).displayValue(name).node(node)
+						.build();
 					DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(selectedTreeNode,
 						newTreeNode, node, true);
+
 					((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
 					tree.treeDidChange();
 				}
