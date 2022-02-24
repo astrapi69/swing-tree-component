@@ -220,15 +220,8 @@ public class TreeNodeFactory
 	public static TreeNode<JXTreeElement> initializeTreeNodeWithTreeElement(
 		final JXTreeElement treeElement, TreeNode<JXTreeElement> parentTreeNode)
 	{
-		TreeNode<JXTreeElement> treeNode;
-		treeNode = new TreeNode<JXTreeElement>(treeElement)
-		{
-			@Override
-			public boolean isNode()
-			{
-				return treeElement.isNode();
-			}
-		};
+		TreeNode<JXTreeElement> treeNode = new TreeNode<>(treeElement);
+		treeNode.setNode(treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
@@ -250,14 +243,8 @@ public class TreeNodeFactory
 	public static <T> TreeNode<GenericTreeElement<T>> initializeTreeNodeWithTreeElement(
 		final GenericTreeElement<T> treeElement, TreeNode<GenericTreeElement<T>> parentTreeNode)
 	{
-		TreeNode<GenericTreeElement<T>> treeNode = new TreeNode<GenericTreeElement<T>>(treeElement)
-		{
-			@Override
-			public boolean isNode()
-			{
-				return treeElement.isNode();
-			}
-		};
+		TreeNode<GenericTreeElement<T>> treeNode = new TreeNode<>(treeElement);
+		treeNode.setNode(treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{

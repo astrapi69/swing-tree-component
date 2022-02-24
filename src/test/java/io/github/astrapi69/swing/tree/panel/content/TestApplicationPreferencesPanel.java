@@ -22,25 +22,15 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.content.panel;
+package io.github.astrapi69.swing.tree.panel.content;
 
 import java.awt.Frame;
-import java.util.List;
 
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.swing.tree.panel.JXTreePanel;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
-import io.github.astrapi69.test.objects.Permission;
-import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
-/**
- * The test class for {@link JXTreePanel}
- */
-public class TestTreeNodeGenericTreeElementWithGenericContentPanel
+public class TestApplicationPreferencesPanel
 {
+
 
 	/**
 	 * The main method.
@@ -50,16 +40,11 @@ public class TestTreeNodeGenericTreeElementWithGenericContentPanel
 	 */
 	public static void main(final String[] args)
 	{
-		final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
+		final Frame frame = new Frame("ApplicationPreferencesPanel");
 		frame.addWindowListener(new CloseWindow());
-		TreeNode<GenericTreeElement<List<Permission>>> genericTreeElementTreeNode = TestTreeNodeFactory
-			.initializeTestGenericTreeNodeElement();
-		IModel<TreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
-			.of(genericTreeElementTreeNode);
-		DemoTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithContentPanel(
-			treeNodeModel);
-		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
-		frame.pack();
+		frame.add(new ApplicationPreferencesPanel());
+
+		frame.setBounds(100, 100, 730, 350);
 		frame.setVisible(true);
 	}
 

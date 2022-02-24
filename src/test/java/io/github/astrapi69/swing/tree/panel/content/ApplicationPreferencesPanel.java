@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.content.panel;
+package io.github.astrapi69.swing.tree.panel.content;
 
 import javax.swing.JLabel;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -35,6 +35,7 @@ import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.node.ComponentTreeNode;
+import io.github.astrapi69.swing.tree.panel.content.PreferencesPanel;
 import io.github.astrapi69.tree.TreeElement;
 
 public class ApplicationPreferencesPanel extends PreferencesPanel<TreeElement>
@@ -57,9 +58,8 @@ public class ApplicationPreferencesPanel extends PreferencesPanel<TreeElement>
 			"Preferences");
 		rootNode.add(new ComponentTreeNode(new JLabel("Test 1"), "Test 1"));
 		rootNode.add(new ComponentTreeNode(new JLabel("Test 2"), "Test 2"));
-		TreeModel treeModel = new DefaultTreeModel(rootNode, true);
 
-		return treeModel;
+		return new DefaultTreeModel(rootNode, true);
 	}
 
 	@Override
