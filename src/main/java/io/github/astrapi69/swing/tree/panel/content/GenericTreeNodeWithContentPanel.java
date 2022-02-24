@@ -32,7 +32,7 @@ import io.github.astrapi69.tree.TreeNode;
 
 public abstract class GenericTreeNodeWithContentPanel<T, C>
 	extends
-        JXTreeWithContentPanel<TreeNode<T>, C>
+		JXTreeWithContentPanel<TreeNode<T>, C>
 {
 
 	/**

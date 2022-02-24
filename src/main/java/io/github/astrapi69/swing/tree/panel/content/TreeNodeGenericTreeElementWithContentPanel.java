@@ -36,7 +36,7 @@ import io.github.astrapi69.tree.TreeNode;
  */
 public abstract class TreeNodeGenericTreeElementWithContentPanel<T, C>
 	extends
-        GenericTreeNodeWithContentPanel<GenericTreeElement<T>, C>
+		GenericTreeNodeWithContentPanel<GenericTreeElement<T>, C>
 {
 
 	/** The Constant serialVersionUID. */
