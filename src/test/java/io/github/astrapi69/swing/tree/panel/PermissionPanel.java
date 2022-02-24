@@ -33,7 +33,7 @@ import io.github.astrapi69.model.LambdaModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.base.BasePanel;
 import io.github.astrapi69.swing.component.JMTextField;
-import io.github.astrapi69.test.objects.Permission;
+import io.github.astrapi69.test.object.Permission;
 
 @Getter
 public class PermissionPanel extends BasePanel<Permission>

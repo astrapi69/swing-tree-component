@@ -9,7 +9,6 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 [![Hits Of Code](https://hitsofcode.com/github/astrapi69/swing-tree-component?branch=main)](https://hitsofcode.com/github/astrapi69/swing-tree-component/view?branch=main)
-[![Lines Of Code](https://tokei.rs/b1/github/astrapi69/swing-tree-component)](https://github.com/astrapi69/swing-tree-component)
 
 </div>
 
@@ -176,7 +175,3 @@ feature requests.
 
 - Feature requests, questions and bug reports can be reported at
   the [issues page](https://github.com/astrapi69/swing-tree-component/issues).
-
-## Similar projects
-
-## Credits
