@@ -32,9 +32,9 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
-import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.tree.ParentIdTreeNode;
 
-public class BaseTreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
+public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
 	protected final JLabel treeLabel = new JLabel("init-tree-label");
@@ -43,26 +43,26 @@ public class BaseTreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
 		boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
-		if (value instanceof BaseTreeNode)
+		if (value instanceof ParentIdTreeNode)
 		{
-			return initialize((BaseTreeNode<T>)value);
+			return initialize((ParentIdTreeNode<T, K>)value);
 		}
 		if (value instanceof DefaultMutableTreeNode)
 		{
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode)value;
 			Object userObject = node.getUserObject();
-			if (userObject instanceof BaseTreeNode)
+			if (userObject instanceof ParentIdTreeNode)
 			{
-				return initialize((BaseTreeNode<T>)userObject);
+				return initialize((ParentIdTreeNode<T, K>)userObject);
 			}
 		}
 		return renderer.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row,
 			hasFocus);
 	}
 
-	protected JLabel initialize(BaseTreeNode<T> userObject)
+	protected JLabel initialize(ParentIdTreeNode<T, K> userObject)
 	{
-		BaseTreeNode<T> treeNode = userObject;
+		ParentIdTreeNode<T, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		treeLabel.setText(displayValue);
 		if (treeNode.isLeaf())

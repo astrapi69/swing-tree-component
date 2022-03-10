@@ -56,7 +56,7 @@ import io.github.astrapi69.swing.tree.panel.PermissionPanel;
 import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.GenericTreeNodeCellRenderer;
-import io.github.astrapi69.test.objects.Permission;
+import io.github.astrapi69.test.object.Permission;
 import io.github.astrapi69.tree.TreeNode;
 
 public class DemoTreeNodeGenericTreeElementWithContentPanel

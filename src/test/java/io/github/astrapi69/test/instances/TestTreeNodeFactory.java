@@ -31,7 +31,8 @@ import java.util.List;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.test.objects.Permission;
+import io.github.astrapi69.test.instance.TestPermissionFactory;
+import io.github.astrapi69.test.object.Permission;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 

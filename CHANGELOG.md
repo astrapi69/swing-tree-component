@@ -5,6 +5,9 @@ Version 1.2-SNAPSHOT
 -------------
 
 
+CHANGED:
+
+- update of gradle version to 7.4.1
 
 Version 1.1
 -------------

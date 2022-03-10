@@ -132,14 +132,8 @@ public class TreeNodeFactory
 		final JXTreeElement treeElement, TreeNode<JXTreeElement> parentTreeNode)
 	{
 		TreeNode<JXTreeElement> treeNode;
-		treeNode = new TreeNode<JXTreeElement>(treeElement)
-		{
-			@Override
-			public boolean isNode()
-			{
-				return treeElement.isNode();
-			}
-		};
+		treeNode = new TreeNode<JXTreeElement>(treeElement);
+		treeNode.setNode(treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
