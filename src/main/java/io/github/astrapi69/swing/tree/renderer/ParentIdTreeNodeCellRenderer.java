@@ -24,54 +24,63 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
+import java.awt.Component;
+
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 
-import org.apache.commons.lang3.StringUtils;
-
-import io.github.astrapi69.icon.ImageIconFactory;
-import io.github.astrapi69.icon.StringIcon;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.ParentIdTreeNode;
 
-public class GenericBaseTreeNodeCellRenderer<T, K>
-	extends
-		BaseTreeNodeCellRenderer<GenericTreeElement<T>, K>
+public class ParentIdTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
+	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
+	protected final JLabel treeLabel = new JLabel("init-tree-label");
 
-	protected JLabel initialize(ParentIdTreeNode<GenericTreeElement<T>, K> userObject)
+	@Override
+	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
+		boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
-		ParentIdTreeNode<GenericTreeElement<T>, K> treeNode = userObject;
-		String displayValue = treeNode.getDisplayValue();
-		GenericTreeElement<T> value = treeNode.getValue();
-		if (value != null)
+		if (value instanceof ParentIdTreeNode)
 		{
-			String iconPath = value.getIconPath();
-			if (StringUtils.isNotEmpty(iconPath))
+			return initialize((ParentIdTreeNode<T, K>)value);
+		}
+		if (value instanceof DefaultMutableTreeNode)
+		{
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)value;
+			Object userObject = node.getUserObject();
+			if (userObject instanceof ParentIdTreeNode)
 			{
-				Icon customTreeIcon;
-				try
-				{
-					customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
-				}
-				catch (Exception e)
-				{
-					customTreeIcon = new StringIcon(treeLabel, iconPath);
-				}
-				if (value.isWithText())
-				{
-					treeLabel.setText(displayValue);
-				}
-				else
-				{
-					treeLabel.setText("");
-				}
-				treeLabel.setToolTipText(displayValue);
-				treeLabel.setIcon(customTreeIcon);
-				return treeLabel;
+				return initialize((ParentIdTreeNode<T, K>)userObject);
 			}
 		}
-		return super.initialize(userObject);
+		return renderer.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row,
+			hasFocus);
+	}
+
+	protected JLabel initialize(ParentIdTreeNode<T, K> userObject)
+	{
+		ParentIdTreeNode<T, K> treeNode = userObject;
+		String displayValue = treeNode.getDisplayValue();
+		treeLabel.setText(displayValue);
+		if (treeNode.isLeaf())
+		{
+			treeLabel.setIcon(getLeafIcon());
+		}
+		else
+		{
+			if (treeNode.hasChildren())
+			{
+				treeLabel.setIcon(getOpenIcon());
+			}
+			else
+			{
+				treeLabel.setIcon(getClosedIcon());
+			}
+		}
+		return treeLabel;
 	}
 
 	/**
@@ -97,4 +106,6 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 	{
 		return renderer.getClosedIcon();
 	}
+
+
 }
