@@ -26,6 +26,7 @@ package io.github.astrapi69.swing.tree;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import lombok.NonNull;
 import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
@@ -59,57 +60,6 @@ public class TreeNodeFactory
 	}
 
 	/**
-	 * Makes a exact copy of the given {@link DefaultMutableTreeNode} object with the copy of the
-	 * given user object and all descendants {@link DefaultMutableTreeNode} objects
-	 *
-	 * @param selectedDefaultMutableTreeNode
-	 *            the {@link DefaultMutableTreeNode} object to copy
-	 * @param copyOfUserObject
-	 *            a copy of the user object
-	 * @param <T>
-	 *            the generic type of the given user object
-	 */
-	public static <T> void copyOf(DefaultMutableTreeNode selectedDefaultMutableTreeNode,
-		T copyOfUserObject)
-	{
-		// get parent
-		DefaultMutableTreeNode parentTreeNode = (DefaultMutableTreeNode)selectedDefaultMutableTreeNode
-			.getParent();
-		// create a copy of the given selectedDefaultMutableTreeNode with the parent
-		DefaultMutableTreeNode copyDefaultMutableTreeNode = TreeNodeFactory
-			.newDefaultMutableTreeNode(parentTreeNode, copyOfUserObject);
-		// copy all tree structure
-		TreeNodeFactory.copy(selectedDefaultMutableTreeNode, copyDefaultMutableTreeNode);
-	}
-
-	/**
-	 * Copies the given source {@link DefaultMutableTreeNode} object to the given target
-	 * {@link DefaultMutableTreeNode} object
-	 *
-	 * @param source
-	 *            the source {@link DefaultMutableTreeNode} object
-	 * @param target
-	 *            the target {@link DefaultMutableTreeNode} object
-	 *
-	 * @return the copied target {@link DefaultMutableTreeNode} object
-	 */
-	public static <T extends DefaultMutableTreeNode> T copy(T source, T target)
-	{
-		if (source == null)
-		{
-			return target;
-		}
-		for (int i = 0; i < source.getChildCount(); i++)
-		{
-			DefaultMutableTreeNode child = (DefaultMutableTreeNode)source.getChildAt(i);
-			DefaultMutableTreeNode clone = new DefaultMutableTreeNode(child.getUserObject());
-			target.add(clone);
-			copy(child, clone);
-		}
-		return target;
-	}
-
-	/**
 	 * Traverses through the given {@link TreeNode} object and return the root
 	 * {@link DefaultMutableTreeNode} object
 	 *
@@ -127,7 +77,7 @@ public class TreeNodeFactory
 		DefaultMutableTreeNode parent = rootDefaultMutableTreeNode;
 		if (rootDefaultMutableTreeNode == null)
 		{
-			parent = newDefaultMutableTreeNode(null, treeNode);
+			parent = DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(null, treeNode);
 		}
 		for (final ITreeNode<T> data : treeNode.getChildren())
 		{
@@ -136,45 +86,6 @@ public class TreeNodeFactory
 			traverseAndAdd(node, (TreeNode<TreeElement>)data);
 		}
 		return parent;
-	}
-
-	/**
-	 * Factory method that creates a new {@link DefaultMutableTreeNode} object
-	 *
-	 * @param parent
-	 *            the parent {@link DefaultMutableTreeNode} object
-	 * @param userObject
-	 *            the user object
-	 * @param <T>
-	 *            the generic type of the given user object
-	 * @return the new {@link DefaultMutableTreeNode} object
-	 */
-	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
-		DefaultMutableTreeNode parent, T userObject)
-	{
-		return newDefaultMutableTreeNode(parent, userObject, true);
-	}
-
-	/**
-	 * Factory method that creates a new {@link DefaultMutableTreeNode} object
-	 *
-	 * @param parent
-	 *            the parent {@link DefaultMutableTreeNode} object
-	 * @param userObject
-	 *            the user object
-	 * @param <T>
-	 *            the generic type of the given user object
-	 * @return the new {@link DefaultMutableTreeNode} object
-	 */
-	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
-		DefaultMutableTreeNode parent, T userObject, boolean addToParent)
-	{
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(userObject);
-		if (parent != null && addToParent)
-		{
-			parent.add(node);
-		}
-		return node;
 	}
 
 	/**
@@ -191,14 +102,8 @@ public class TreeNodeFactory
 		final TreeElement treeElement, TreeNode<TreeElement> parentTreeNode)
 	{
 		TreeNode<TreeElement> treeNode;
-		treeNode = new TreeNode<TreeElement>(treeElement)
-		{
-			@Override
-			public boolean isNode()
-			{
-				return treeElement.isNode();
-			}
-		};
+		treeNode = new TreeNode<>(treeElement);
+		treeNode.setNode(treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
@@ -220,7 +125,8 @@ public class TreeNodeFactory
 	public static TreeNode<JXTreeElement> initializeTreeNodeWithTreeElement(
 		final JXTreeElement treeElement, TreeNode<JXTreeElement> parentTreeNode)
 	{
-		TreeNode<JXTreeElement> treeNode = new TreeNode<>(treeElement);
+		TreeNode<JXTreeElement> treeNode;
+		treeNode = new TreeNode<>(treeElement);
 		treeNode.setNode(treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)

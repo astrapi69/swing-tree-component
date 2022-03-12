@@ -4,6 +4,11 @@
 Version 1.2-SNAPSHOT
 -------------
 
+ADDED:
+
+- new factory class DefaultMutableTreeNodeFactory for create new DefaultMutableTreeNode objects
+- new extension class DefaultMutableTreeNodeExtensions that can make copies of DefaultMutableTreeNode objects
+
 CHANGED:
 
 - update of gradle version to 7.4
@@ -13,6 +18,7 @@ CHANGED:
 - update of dependency icon-img-extensions to new minor version 1.2
 - update of test dependency file-worker to new minor version 8.2
 - update of test dependency test-objects to new major version 6
+- moved package 'io.github.astrapi69.swing.tree.content.panel' to 'io.github.astrapi69.swing.tree.panel.content'
 
 Version 1.1
 -------------
