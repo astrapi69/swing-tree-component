@@ -176,7 +176,3 @@ feature requests.
 
 - Feature requests, questions and bug reports can be reported at
   the [issues page](https://github.com/astrapi69/swing-tree-component/issues).
-
-## Similar projects
-
-## Credits
