@@ -30,7 +30,8 @@ import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.BaseTreeNode;
 
 /**
- * The abstract class {@link BaseTreeNodeGenericTreeElementWithContentPanel} a given {@link GenericTreeElement}
+ * The abstract class {@link BaseTreeNodeGenericTreeElementWithContentPanel} a given
+ * {@link GenericTreeElement}
  */
 public abstract class BaseTreeNodeGenericTreeElementWithContentPanel<T, C>
 	extends

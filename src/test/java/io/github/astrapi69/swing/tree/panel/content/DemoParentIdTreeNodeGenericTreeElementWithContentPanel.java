@@ -96,37 +96,43 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 			protected void onSingleLeftClick(MouseEvent event)
 			{
 				super.onSingleLeftClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleLeftClick(event);
+				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this
+					.onTableSingleLeftClick(event);
 			}
 
 			protected void onSingleMiddleClick(MouseEvent event)
 			{
 				super.onSingleMiddleClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleMiddleClick(event);
+				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this
+					.onTableSingleMiddleClick(event);
 			}
 
 			protected void onSingleRightClick(MouseEvent event)
 			{
 				super.onSingleRightClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleRightClick(event);
+				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this
+					.onTableSingleRightClick(event);
 			}
 
 			protected void onDoubleLeftClick(MouseEvent event)
 			{
 				super.onDoubleLeftClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleLeftClick(event);
+				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this
+					.onTableDoubleLeftClick(event);
 			}
 
 			protected void onDoubleMiddleClick(MouseEvent event)
 			{
 				super.onDoubleMiddleClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleMiddleClick(event);
+				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this
+					.onTableDoubleMiddleClick(event);
 			}
 
 			protected void onDoubleRightClick(MouseEvent event)
 			{
 				super.onDoubleRightClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleRightClick(event);
+				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this
+					.onTableDoubleRightClick(event);
 			}
 		};
 	}
@@ -143,9 +149,11 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 	protected TreeModel newTreeModel(
 		final IModel<ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>> model)
 	{
-		ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> parentTreeNode = model.getObject();
+		ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> parentTreeNode = model
+			.getObject();
 
-		DefaultMutableTreeNode rootNode = ParentIdTreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
+		DefaultMutableTreeNode rootNode = ParentIdTreeNodeFactory
+			.newDefaultMutableTreeNode(parentTreeNode);
 
 		return new DefaultTreeModel(rootNode, true);
 	}
@@ -157,7 +165,7 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 	 */
 	@Override
 	protected GenericTableModel<Permission> newTableModel(
-			ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> model)
+		ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> model)
 	{
 		GenericTreeElement<List<Permission>> parentTreeNode = model.getValue();
 		List<Permission> permissions = parentTreeNode.getDefaultContent();

@@ -30,7 +30,8 @@ import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.ParentIdTreeNode;
 
 /**
- * The abstract class {@link ParentIdTreeNodeGenericTreeElementWithContentPanel} a given {@link GenericTreeElement}
+ * The abstract class {@link ParentIdTreeNodeGenericTreeElementWithContentPanel} a given
+ * {@link GenericTreeElement}
  */
 public abstract class ParentIdTreeNodeGenericTreeElementWithContentPanel<T, C, K>
 	extends
@@ -45,7 +46,7 @@ public abstract class ParentIdTreeNodeGenericTreeElementWithContentPanel<T, C, K
 	 */
 	public ParentIdTreeNodeGenericTreeElementWithContentPanel()
 	{
-		this(BaseModel.of(ParentIdTreeNode.<GenericTreeElement<T>, K>builder().build()));
+		this(BaseModel.of(ParentIdTreeNode.<GenericTreeElement<T>, K> builder().build()));
 	}
 
 	/**

@@ -40,7 +40,7 @@ public abstract class GenericParentIdTreeNodeWithContentPanel<T, C, K>
 	 */
 	public GenericParentIdTreeNodeWithContentPanel()
 	{
-		this(BaseModel.of(ParentIdTreeNode.<T, K>builder().build()));
+		this(BaseModel.of(ParentIdTreeNode.<T, K> builder().build()));
 	}
 
 	/**

@@ -52,10 +52,10 @@ public class ParentIdTreeNodeFactory
 		@NonNull ParentIdTreeNode<T, K> treeNode)
 	{
 		ParentIdTreeNode<T, K> rootNode = treeNode;
-//		if (!treeNode.isRoot())
-//		{
-//			rootNode = (ParentIdTreeNode<T, K>)treeNode.getRoot();
-//		}
+		// if (!treeNode.isRoot())
+		// {
+		// rootNode = (ParentIdTreeNode<T, K>)treeNode.getRoot();
+		// }
 		return traverseAndAdd(null, rootNode);
 	}
 
@@ -147,10 +147,10 @@ public class ParentIdTreeNodeFactory
 	 * @return the new {@link ParentIdTreeNode} object
 	 */
 	public static <T, K> ParentIdTreeNode<GenericTreeElement<T>, K> initializeTreeNodeWithTreeElement(
-		final GenericTreeElement<T> treeElement, ParentIdTreeNode<GenericTreeElement<T>, K> parentTreeNode)
+		final GenericTreeElement<T> treeElement,
+		ParentIdTreeNode<GenericTreeElement<T>, K> parentTreeNode)
 	{
-		ParentIdTreeNode<GenericTreeElement<T>, K> treeNode = new ParentIdTreeNode<>(
-			treeElement);
+		ParentIdTreeNode<GenericTreeElement<T>, K> treeNode = new ParentIdTreeNode<>(treeElement);
 		treeElement.setNode(treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)

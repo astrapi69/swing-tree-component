@@ -34,7 +34,9 @@ import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.BaseTreeNode;
 
-public class GenericBaseTreeNodeCellRenderer<T> extends BaseTreeNodeCellRenderer<GenericTreeElement<T>>
+public class GenericBaseTreeNodeCellRenderer<T>
+	extends
+		BaseTreeNodeCellRenderer<GenericTreeElement<T>>
 {
 
 	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>> userObject)

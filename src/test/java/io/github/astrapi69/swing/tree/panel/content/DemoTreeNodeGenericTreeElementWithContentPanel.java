@@ -61,7 +61,7 @@ import io.github.astrapi69.tree.TreeNode;
 
 public class DemoTreeNodeGenericTreeElementWithContentPanel
 	extends
-        TreeNodeGenericTreeElementWithContentPanel<List<Permission>, Permission>
+		TreeNodeGenericTreeElementWithContentPanel<List<Permission>, Permission>
 {
 
 	private static final long serialVersionUID = 1L;
