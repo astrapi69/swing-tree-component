@@ -24,40 +24,28 @@
  */
 package io.github.astrapi69.swing.tree.panel.content;
 
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.tree.ParentIdTreeNode;
+import java.awt.Frame;
 
-/**
- * The abstract class {@link ParentIdTreeNodeGenericTreeElementWithContentPanel} a given {@link GenericTreeElement}
- */
-public abstract class ParentIdTreeNodeGenericTreeElementWithContentPanel<T, C, K>
-	extends
-		GenericParentIdTreeNodeWithContentPanel<GenericTreeElement<T>, C, K>
+import io.github.astrapi69.window.adapter.CloseWindow;
+
+public class TestApplicationPreferencesPanel
 {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new {@link ParentIdTreeNodeGenericTreeElementWithContentPanel}
-	 */
-	public ParentIdTreeNodeGenericTreeElementWithContentPanel()
-	{
-		this(BaseModel.of(ParentIdTreeNode.<GenericTreeElement<T>, K>builder().build()));
-	}
-
-	/**
-	 * Instantiates a new t{@link ParentIdTreeNodeGenericTreeElementWithContentPanel}
+	 * The main method.
 	 *
-	 * @param model
-	 *            the model
+	 * @param args
+	 *            the arguments
 	 */
-	public ParentIdTreeNodeGenericTreeElementWithContentPanel(
-		final IModel<ParentIdTreeNode<GenericTreeElement<T>, K>> model)
+	public static void main(final String[] args)
 	{
-		super(model);
+		final Frame frame = new Frame("ApplicationPreferencesPanel");
+		frame.addWindowListener(new CloseWindow());
+		frame.add(new ApplicationPreferencesPanel());
+
+		frame.setBounds(100, 100, 730, 350);
+		frame.setVisible(true);
 	}
 
 }

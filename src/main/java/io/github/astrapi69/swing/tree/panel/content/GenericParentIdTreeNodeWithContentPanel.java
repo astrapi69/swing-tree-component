@@ -28,28 +28,28 @@ import javax.swing.GroupLayout;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.tree.ParentIdTreeNode;
 
-public abstract class GenericBaseTreeNodeWithContentPanel<T, C>
+public abstract class GenericParentIdTreeNodeWithContentPanel<T, C, K>
 	extends
-		JXTreeWithContentPanel<BaseTreeNode<T>, C>
+		JXTreeWithContentPanel<ParentIdTreeNode<T, K>, C>
 {
 
 	/**
-	 * Instantiates a new {@link GenericBaseTreeNodeWithContentPanel}
+	 * Instantiates a new {@link GenericParentIdTreeNodeWithContentPanel}
 	 */
-	public GenericBaseTreeNodeWithContentPanel()
+	public GenericParentIdTreeNodeWithContentPanel()
 	{
-		this(BaseModel.of(new BaseTreeNode<>()));
+		this(BaseModel.of(ParentIdTreeNode.<T, K>builder().build()));
 	}
 
 	/**
-	 * Instantiates a new t{@link GenericBaseTreeNodeWithContentPanel}
+	 * Instantiates a new t{@link GenericParentIdTreeNodeWithContentPanel}
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public GenericBaseTreeNodeWithContentPanel(final IModel<BaseTreeNode<T>> model)
+	public GenericParentIdTreeNodeWithContentPanel(final IModel<ParentIdTreeNode<T, K>> model)
 	{
 		super(model);
 	}

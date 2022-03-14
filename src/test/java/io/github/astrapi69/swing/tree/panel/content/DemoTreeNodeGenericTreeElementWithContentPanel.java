@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.content.panel;
+package io.github.astrapi69.swing.tree.panel.content;
 
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -36,9 +36,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
-import io.github.astrapi69.swing.tree.ParentIdTreeNodeFactory;
-import io.github.astrapi69.swing.tree.panel.content.ParentIdTreeNodeGenericTreeElementWithContentPanel;
-import io.github.astrapi69.swing.tree.renderer.GenericParentIdTreeNodeCellRenderer;
+import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeExtensions;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
@@ -53,27 +51,28 @@ import io.github.astrapi69.swing.table.model.GenericTableModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
-import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeExtensions;
+import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.swing.tree.panel.PermissionPanel;
 import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
+import io.github.astrapi69.swing.tree.renderer.GenericTreeNodeCellRenderer;
 import io.github.astrapi69.test.object.Permission;
-import io.github.astrapi69.tree.ParentIdTreeNode;
+import io.github.astrapi69.tree.TreeNode;
 
-public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
+public class DemoTreeNodeGenericTreeElementWithContentPanel
 	extends
-		ParentIdTreeNodeGenericTreeElementWithContentPanel<List<Permission>, Permission, Long>
+        TreeNodeGenericTreeElementWithContentPanel<List<Permission>, Permission>
 {
 
 	private static final long serialVersionUID = 1L;
 
-	public DemoParentIdTreeNodeGenericTreeElementWithContentPanel()
+	public DemoTreeNodeGenericTreeElementWithContentPanel()
 	{
-		this(BaseModel.of(new ParentIdTreeNode<>()));
+		this(BaseModel.of(new TreeNode<>()));
 	}
 
-	public DemoParentIdTreeNodeGenericTreeElementWithContentPanel(
-		final IModel<ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>> model)
+	public DemoTreeNodeGenericTreeElementWithContentPanel(
+		final IModel<TreeNode<GenericTreeElement<List<Permission>>>> model)
 	{
 		super(model);
 	}
@@ -82,7 +81,7 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 	protected JXTree newTree()
 	{
 		JXTree tree = super.newTree();
-		tree.setCellRenderer(new GenericParentIdTreeNodeCellRenderer<List<Permission>, Long>());
+		tree.setCellRenderer(new GenericTreeNodeCellRenderer<List<Permission>>());
 		return tree;
 	}
 
@@ -97,37 +96,37 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 			protected void onSingleLeftClick(MouseEvent event)
 			{
 				super.onSingleLeftClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleLeftClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleLeftClick(event);
 			}
 
 			protected void onSingleMiddleClick(MouseEvent event)
 			{
 				super.onSingleMiddleClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleMiddleClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleMiddleClick(event);
 			}
 
 			protected void onSingleRightClick(MouseEvent event)
 			{
 				super.onSingleRightClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleRightClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableSingleRightClick(event);
 			}
 
 			protected void onDoubleLeftClick(MouseEvent event)
 			{
 				super.onDoubleLeftClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleLeftClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleLeftClick(event);
 			}
 
 			protected void onDoubleMiddleClick(MouseEvent event)
 			{
 				super.onDoubleMiddleClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleMiddleClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleMiddleClick(event);
 			}
 
 			protected void onDoubleRightClick(MouseEvent event)
 			{
 				super.onDoubleRightClick(event);
-				DemoParentIdTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleRightClick(event);
+				DemoTreeNodeGenericTreeElementWithContentPanel.this.onTableDoubleRightClick(event);
 			}
 		};
 	}
@@ -137,16 +136,18 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 	{
 		super.onAfterInitializeComponents();
 		// set root
-		getTblTreeEntryTable().setModel(newTableModel(getModelObject()));
+		TreeNode<GenericTreeElement<List<Permission>>> root = (TreeNode<GenericTreeElement<List<Permission>>>)getModelObject()
+			.getRoot();
+		getTblTreeEntryTable().setModel(newTableModel(root));
 	}
 
 	@Override
 	protected TreeModel newTreeModel(
-		final IModel<ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>> model)
+		final IModel<TreeNode<GenericTreeElement<List<Permission>>>> model)
 	{
-		ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> parentTreeNode = model.getObject();
+		TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = model.getObject();
 
-		DefaultMutableTreeNode rootNode = ParentIdTreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
+		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
 
 		return new DefaultTreeModel(rootNode, true);
 	}
@@ -158,7 +159,7 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 	 */
 	@Override
 	protected GenericTableModel<Permission> newTableModel(
-			ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> model)
+		TreeNode<GenericTreeElement<List<Permission>>> model)
 	{
 		GenericTreeElement<List<Permission>> parentTreeNode = model.getValue();
 		List<Permission> permissions = parentTreeNode.getDefaultContent();
@@ -171,11 +172,11 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 	@Override
 	protected void onTreeSingleLeftClick(MouseEvent mouseEvent)
 	{
-		Optional<ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>> optionalSelectedTreeNodeElement = JTreeExtensions
+		Optional<TreeNode<GenericTreeElement<List<Permission>>>> optionalSelectedTreeNodeElement = JTreeExtensions
 			.getSelectedUserObject(mouseEvent, tree);
 		if (optionalSelectedTreeNodeElement.isPresent())
 		{
-			ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNodeElement = optionalSelectedTreeNodeElement
+			TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNodeElement = optionalSelectedTreeNodeElement
 				.get();
 			GenericTableModel<Permission> tableModel = newTableModel(selectedTreeNodeElement);
 
@@ -189,7 +190,7 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 		int x = mouseEvent.getX();
 		int y = mouseEvent.getY();
 		// TreePath selectionPath = tree.getPathForLocation(mouseEvent.getX(), mouseEvent.getY());
-		Optional<ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>> optionalSelectedUserObject = JTreeExtensions
+		Optional<TreeNode<GenericTreeElement<List<Permission>>>> optionalSelectedUserObject = JTreeExtensions
 			.getSelectedUserObject(mouseEvent, tree);
 		optionalSelectedUserObject.ifPresent(selectedTreeNode -> {
 			JPopupMenu popup = MenuFactory.newJPopupMenu();
@@ -229,7 +230,7 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
 			.ifPresent(selectedDefaultMutableTreeNode -> {
-				ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>)selectedDefaultMutableTreeNode
+				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
 					.getUserObject();
 				NodePanel nodePanel = new NodePanel();
 				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
@@ -249,9 +250,9 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 					GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
 						.<List<Permission>> builder().name(name).parent(selectedTreeNode.getValue())
 						.node(node).build();
-					ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> newTreeNode = ParentIdTreeNode
-						.<GenericTreeElement<List<Permission>>, Long> builder().value(treeElement)
-						.parentId(selectedTreeNode.getId()).displayValue(name).node(node).build();
+					TreeNode<GenericTreeElement<List<Permission>>> newTreeNode = TreeNode
+						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
+						.parent(selectedTreeNode).displayValue(name).node(node).build();
 
 					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode, node);
 					selectedDefaultMutableTreeNode.add(newChild);
@@ -266,13 +267,13 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
 			.ifPresent(selectedDefaultMutableTreeNode -> {
 
-				ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>)selectedDefaultMutableTreeNode
+				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
 					.getUserObject();
 				String displayValueCopy = selectedTreeNode.getDisplayValue() + "Copy";
-				ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> clonedTreeNode = ParentIdTreeNode
-					.<GenericTreeElement<List<Permission>>, Long> builder()
+				TreeNode<GenericTreeElement<List<Permission>>> clonedTreeNode = TreeNode
+					.<GenericTreeElement<List<Permission>>> builder()
 					.children(selectedTreeNode.getChildren()).displayValue(displayValueCopy)
-					.parentId(selectedTreeNode.getParentId()).value(selectedTreeNode.getValue())
+					.parent(selectedTreeNode.getParent()).value(selectedTreeNode.getValue())
 					.node(selectedTreeNode.isNode()).build();
 
 				DefaultMutableTreeNodeExtensions.copyOf(selectedDefaultMutableTreeNode,
@@ -295,7 +296,7 @@ public class DemoParentIdTreeNodeGenericTreeElementWithContentPanel
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
 			.ifPresent(selectedDefaultMutableTreeNode -> {
 
-				ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>)selectedDefaultMutableTreeNode
+				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
 					.getUserObject();
 				NodePanel nodePanel = new NodePanel(
 					BaseModel.of(NodeModelBean.builder().name(selectedTreeNode.getValue().getName())

@@ -22,45 +22,42 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.content.panel;
-
-import java.awt.Frame;
-import java.util.List;
+package io.github.astrapi69.swing.tree.panel.content;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.swing.tree.panel.JXTreePanel;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
-import io.github.astrapi69.test.object.Permission;
-import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.window.adapter.CloseWindow;
+import io.github.astrapi69.tree.BaseTreeNode;
 
 /**
- * The test class for {@link JXTreePanel}
+ * The abstract class {@link BaseTreeNodeGenericTreeElementWithContentPanel} a given {@link GenericTreeElement}
  */
-public class TestTreeNodeGenericTreeElementWithGenericContentPanel
+public abstract class BaseTreeNodeGenericTreeElementWithContentPanel<T, C>
+	extends
+		GenericBaseTreeNodeWithContentPanel<GenericTreeElement<T>, C>
 {
 
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
 	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
+	 * Instantiates a new {@link BaseTreeNodeGenericTreeElementWithContentPanel}
 	 */
-	public static void main(final String[] args)
+	public BaseTreeNodeGenericTreeElementWithContentPanel()
 	{
-		final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
-		frame.addWindowListener(new CloseWindow());
-		TreeNode<GenericTreeElement<List<Permission>>> genericTreeElementTreeNode = TestTreeNodeFactory
-			.initializeTestGenericTreeNodeElement();
-		IModel<TreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
-			.of(genericTreeElementTreeNode);
-		DemoTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithContentPanel(
-			treeNodeModel);
-		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
-		frame.pack();
-		frame.setVisible(true);
+		this(BaseModel.of(BaseTreeNode.<GenericTreeElement<T>> builder().build()));
+	}
+
+	/**
+	 * Instantiates a new t{@link BaseTreeNodeGenericTreeElementWithContentPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public BaseTreeNodeGenericTreeElementWithContentPanel(
+		final IModel<BaseTreeNode<GenericTreeElement<T>>> model)
+	{
+		super(model);
 	}
 
 }

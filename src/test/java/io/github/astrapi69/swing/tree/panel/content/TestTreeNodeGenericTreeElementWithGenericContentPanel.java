@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.content.panel;
+package io.github.astrapi69.swing.tree.panel.content;
 
 import java.awt.Frame;
 import java.util.List;
@@ -31,15 +31,15 @@ import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
-import io.github.astrapi69.test.instances.TestBaseTreeNodeFactory;
+import io.github.astrapi69.test.instances.TestTreeNodeFactory;
 import io.github.astrapi69.test.object.Permission;
-import io.github.astrapi69.tree.ParentIdTreeNode;
+import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
  * The test class for {@link JXTreePanel}
  */
-public class TestParentIdTreeNodeGenericTreeElementWithGenericContentPanel
+public class TestTreeNodeGenericTreeElementWithGenericContentPanel
 {
 
 	/**
@@ -52,11 +52,11 @@ public class TestParentIdTreeNodeGenericTreeElementWithGenericContentPanel
 	{
 		final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
 		frame.addWindowListener(new CloseWindow());
-		ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> genericTreeElementTreeNode = TestBaseTreeNodeFactory
+		TreeNode<GenericTreeElement<List<Permission>>> genericTreeElementTreeNode = TestTreeNodeFactory
 			.initializeTestGenericTreeNodeElement();
-		IModel<ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>> treeNodeModel = BaseModel
+		IModel<TreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
 			.of(genericTreeElementTreeNode);
-		DemoParentIdTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoParentIdTreeNodeGenericTreeElementWithContentPanel(
+		DemoTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoTreeNodeGenericTreeElementWithContentPanel(
 			treeNodeModel);
 		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
 		frame.pack();

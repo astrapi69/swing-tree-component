@@ -22,30 +22,42 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.content.panel;
+package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.Frame;
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.swing.tree.JXTreeElement;
+import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.tree.TreeElement;
+import io.github.astrapi69.tree.TreeNode;
 
-import io.github.astrapi69.window.adapter.CloseWindow;
-
-public class TestApplicationPreferencesPanel
+/**
+ * The abstract class {@link BaseTreeNodeJXTreeElementPanel} a given {@link TreeNode} parameterized
+ * with {@link TreeElement}
+ */
+public abstract class BaseTreeNodeJXTreeElementPanel extends GenericBaseTreeNodePanel<JXTreeElement>
 {
 
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
+	 * Instantiates a new {@link BaseTreeNodeJXTreeElementPanel}
 	 */
-	public static void main(final String[] args)
+	public BaseTreeNodeJXTreeElementPanel()
 	{
-		final Frame frame = new Frame("ApplicationPreferencesPanel");
-		frame.addWindowListener(new CloseWindow());
-		frame.add(new ApplicationPreferencesPanel());
+		this(BaseModel.of(BaseTreeNode.<JXTreeElement> builder().build()));
+	}
 
-		frame.setBounds(100, 100, 730, 350);
-		frame.setVisible(true);
+	/**
+	 * Instantiates a new t{@link BaseTreeNodeJXTreeElementPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public BaseTreeNodeJXTreeElementPanel(final IModel<BaseTreeNode<JXTreeElement>> model)
+	{
+		super(model);
 	}
 
 }
