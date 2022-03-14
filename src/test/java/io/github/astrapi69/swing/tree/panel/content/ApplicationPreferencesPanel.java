@@ -35,7 +35,6 @@ import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.node.ComponentTreeNode;
-import io.github.astrapi69.swing.tree.panel.content.PreferencesPanel;
 import io.github.astrapi69.tree.TreeElement;
 
 public class ApplicationPreferencesPanel extends PreferencesPanel<TreeElement>
