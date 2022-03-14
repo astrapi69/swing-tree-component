@@ -11,12 +11,13 @@ ADDED:
 
 CHANGED:
 
-- update of gradle version to 7.4
+- update of gradle version to 7.4.1
 - update of gradle-plugin dependency com.diffplug.spotless:spotless-plugin-gradle to new minor version 6.3.0
 - update of gradle-plugin dependency io.freefair.gradle:lombok-plugin to new patch version 6.4.1
 - update of dependency gen-tree to new minor version 5.3
 - update of dependency icon-img-extensions to new minor version 1.2
 - update of test dependency file-worker to new minor version 8.2
+- update of test dependency silly-io to new minor version 1.9
 - update of test dependency test-objects to new major version 6
 - moved package 'io.github.astrapi69.swing.tree.content.panel' to 'io.github.astrapi69.swing.tree.panel.content'
 
