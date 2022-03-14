@@ -40,7 +40,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import io.github.astrapi69.swing.component.factory.DimensionFactory;
-import io.github.astrapi69.swing.tree.labels.CheckBoxTreeLabel;
+import io.github.astrapi69.swing.tree.label.CheckBoxTreeLabel;
 import io.github.astrapi69.swing.tree.model.CheckableTreeNode;
 
 @Getter

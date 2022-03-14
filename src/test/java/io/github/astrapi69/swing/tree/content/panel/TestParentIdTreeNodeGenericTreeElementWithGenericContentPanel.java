@@ -24,40 +24,43 @@
  */
 package io.github.astrapi69.swing.tree.content.panel;
 
+import java.awt.Frame;
+import java.util.List;
+
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.tree.panel.JXTreePanel;
+import io.github.astrapi69.test.instances.TestBaseTreeNodeFactory;
+import io.github.astrapi69.test.object.Permission;
 import io.github.astrapi69.tree.ParentIdTreeNode;
+import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
- * The abstract class {@link BaseTreeNodeGenericTreeElementWithContentPanel} a given {@link GenericTreeElement}
+ * The test class for {@link JXTreePanel}
  */
-public abstract class BaseTreeNodeGenericTreeElementWithContentPanel<T, C, K>
-	extends
-		GenericBaseTreeNodeWithContentPanel<GenericTreeElement<T>, C, K>
+public class TestParentIdTreeNodeGenericTreeElementWithGenericContentPanel
 {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-
 	/**
-	 * Instantiates a new {@link BaseTreeNodeGenericTreeElementWithContentPanel}
-	 */
-	public BaseTreeNodeGenericTreeElementWithContentPanel()
-	{
-		this(BaseModel.of(ParentIdTreeNode.<GenericTreeElement<T>, K>builder().build()));
-	}
-
-	/**
-	 * Instantiates a new t{@link BaseTreeNodeGenericTreeElementWithContentPanel}
+	 * The main method.
 	 *
-	 * @param model
-	 *            the model
+	 * @param args
+	 *            the arguments
 	 */
-	public BaseTreeNodeGenericTreeElementWithContentPanel(
-		final IModel<ParentIdTreeNode<GenericTreeElement<T>, K>> model)
+	public static void main(final String[] args)
 	{
-		super(model);
+		final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
+		frame.addWindowListener(new CloseWindow());
+		ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long> genericTreeElementTreeNode = TestBaseTreeNodeFactory
+			.initializeTestGenericTreeNodeElement();
+		IModel<ParentIdTreeNode<GenericTreeElement<List<Permission>>, Long>> treeNodeModel = BaseModel
+			.of(genericTreeElementTreeNode);
+		DemoParentIdTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoParentIdTreeNodeGenericTreeElementWithContentPanel(
+			treeNodeModel);
+		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
+		frame.pack();
+		frame.setVisible(true);
 	}
 
 }

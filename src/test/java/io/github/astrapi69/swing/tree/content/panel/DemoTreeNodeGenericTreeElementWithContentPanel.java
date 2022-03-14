@@ -37,6 +37,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeExtensions;
+import io.github.astrapi69.swing.tree.panel.content.TreeNodeGenericTreeElementWithContentPanel;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
@@ -61,7 +62,7 @@ import io.github.astrapi69.tree.TreeNode;
 
 public class DemoTreeNodeGenericTreeElementWithContentPanel
 	extends
-		TreeNodeGenericTreeElementWithContentPanel<List<Permission>, Permission>
+        TreeNodeGenericTreeElementWithContentPanel<List<Permission>, Permission>
 {
 
 	private static final long serialVersionUID = 1L;

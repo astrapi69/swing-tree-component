@@ -22,35 +22,34 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.content.panel;
+package io.github.astrapi69.swing.tree.panel.content;
 
 import javax.swing.GroupLayout;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.tree.ParentIdTreeNode;
 import io.github.astrapi69.tree.TreeNode;
 
-public abstract class GenericBaseTreeNodeWithContentPanel<T, C, K>
+public abstract class GenericTreeNodeWithContentPanel<T, C>
 	extends
-		JXTreeWithContentPanel<ParentIdTreeNode<T, K>, C>
+		JXTreeWithContentPanel<TreeNode<T>, C>
 {
 
 	/**
-	 * Instantiates a new {@link GenericBaseTreeNodeWithContentPanel}
+	 * Instantiates a new {@link GenericTreeNodeWithContentPanel}
 	 */
-	public GenericBaseTreeNodeWithContentPanel()
+	public GenericTreeNodeWithContentPanel()
 	{
-		this(BaseModel.of(ParentIdTreeNode.<T, K>builder().build()));
+		this(BaseModel.of(new TreeNode<>()));
 	}
 
 	/**
-	 * Instantiates a new t{@link GenericBaseTreeNodeWithContentPanel}
+	 * Instantiates a new t{@link GenericTreeNodeWithContentPanel}
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public GenericBaseTreeNodeWithContentPanel(final IModel<ParentIdTreeNode<T, K>> model)
+	public GenericTreeNodeWithContentPanel(final IModel<TreeNode<T>> model)
 	{
 		super(model);
 	}

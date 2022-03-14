@@ -22,42 +22,40 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.content.panel;
+package io.github.astrapi69.swing.tree.panel.content;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.tree.TreeElement;
-import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.tree.ParentIdTreeNode;
 
 /**
- * The abstract class {@link TreeNodeGenericTreeElementWithContentPanel} a given {@link TreeNode}
- * parameterized with {@link TreeElement}
+ * The abstract class {@link ParentIdTreeNodeGenericTreeElementWithContentPanel} a given {@link GenericTreeElement}
  */
-public abstract class TreeNodeGenericTreeElementWithContentPanel<T, C>
+public abstract class ParentIdTreeNodeGenericTreeElementWithContentPanel<T, C, K>
 	extends
-		GenericTreeNodeWithContentPanel<GenericTreeElement<T>, C>
+		GenericBaseTreeNodeWithContentPanel<GenericTreeElement<T>, C, K>
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new {@link TreeNodeGenericTreeElementWithContentPanel}
+	 * Instantiates a new {@link ParentIdTreeNodeGenericTreeElementWithContentPanel}
 	 */
-	public TreeNodeGenericTreeElementWithContentPanel()
+	public ParentIdTreeNodeGenericTreeElementWithContentPanel()
 	{
-		this(BaseModel.of(TreeNode.<GenericTreeElement<T>> builder().build()));
+		this(BaseModel.of(ParentIdTreeNode.<GenericTreeElement<T>, K>builder().build()));
 	}
 
 	/**
-	 * Instantiates a new t{@link TreeNodeGenericTreeElementWithContentPanel}
+	 * Instantiates a new t{@link ParentIdTreeNodeGenericTreeElementWithContentPanel}
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public TreeNodeGenericTreeElementWithContentPanel(
-		final IModel<TreeNode<GenericTreeElement<T>>> model)
+	public ParentIdTreeNodeGenericTreeElementWithContentPanel(
+		final IModel<ParentIdTreeNode<GenericTreeElement<T>, K>> model)
 	{
 		super(model);
 	}
