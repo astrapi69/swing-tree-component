@@ -26,9 +26,11 @@ package io.github.astrapi69.swing.tree.factory;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class DefaultMutableTreeNodeFactory
+public final class DefaultMutableTreeNodeFactory
 {
-
+	private DefaultMutableTreeNodeFactory()
+	{
+	}
 
 	/**
 	 * Factory method that creates a new {@link DefaultMutableTreeNode} object

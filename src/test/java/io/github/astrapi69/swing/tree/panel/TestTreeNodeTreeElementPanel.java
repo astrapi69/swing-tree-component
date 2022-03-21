@@ -29,7 +29,7 @@ import java.awt.Frame;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.test.instances.TestTreeNodeFactory;
-import io.github.astrapi69.tree.TreeElement;
+import io.github.astrapi69.tree.element.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
 

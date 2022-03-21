@@ -30,7 +30,7 @@ import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.tree.BaseTreeNode;
-import io.github.astrapi69.tree.TreeElement;
+import io.github.astrapi69.tree.element.TreeElement;
 
 /**
  * The abstract class {@link GenericBaseTreeNodePanel} a given {@link BaseTreeNode} parameterized

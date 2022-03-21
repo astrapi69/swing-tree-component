@@ -29,7 +29,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import lombok.NonNull;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.tree.BaseTreeNode;
-import io.github.astrapi69.tree.TreeElement;
+import io.github.astrapi69.tree.element.TreeElement;
 
 /**
  * Factory class for generate {@link DefaultMutableTreeNode} from {@link BaseTreeNode}
@@ -102,14 +102,8 @@ public class BaseTreeNodeFactory
 		final TreeElement treeElement, BaseTreeNode<TreeElement> parentTreeNode)
 	{
 		BaseTreeNode<TreeElement> treeNode;
-		treeNode = new BaseTreeNode<TreeElement>(treeElement)
-		{
-			@Override
-			public boolean isNode()
-			{
-				return treeElement.isNode();
-			}
-		};
+		treeNode = new BaseTreeNode<>(treeElement);
+		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
@@ -132,14 +126,8 @@ public class BaseTreeNodeFactory
 		final JXTreeElement treeElement, BaseTreeNode<JXTreeElement> parentTreeNode)
 	{
 		BaseTreeNode<JXTreeElement> treeNode;
-		treeNode = new BaseTreeNode<JXTreeElement>(treeElement)
-		{
-			@Override
-			public boolean isNode()
-			{
-				return treeElement.isNode();
-			}
-		};
+		treeNode = new BaseTreeNode<>(treeElement);
+		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
@@ -161,15 +149,8 @@ public class BaseTreeNodeFactory
 	public static <T> BaseTreeNode<GenericTreeElement<T>> initializeTreeNodeWithTreeElement(
 		final GenericTreeElement<T> treeElement, BaseTreeNode<GenericTreeElement<T>> parentTreeNode)
 	{
-		BaseTreeNode<GenericTreeElement<T>> treeNode = new BaseTreeNode<GenericTreeElement<T>>(
-			treeElement)
-		{
-			@Override
-			public boolean isNode()
-			{
-				return treeElement.isNode();
-			}
-		};
+		BaseTreeNode<GenericTreeElement<T>> treeNode = new BaseTreeNode<>(treeElement);
+		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
