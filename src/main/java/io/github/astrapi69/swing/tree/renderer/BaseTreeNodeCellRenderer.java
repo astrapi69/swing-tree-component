@@ -34,7 +34,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import io.github.astrapi69.tree.BaseTreeNode;
 
-public class BaseTreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
+public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
 	protected final JLabel treeLabel = new JLabel("init-tree-label");
@@ -45,7 +45,7 @@ public class BaseTreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
 	{
 		if (value instanceof BaseTreeNode)
 		{
-			return initialize((BaseTreeNode<T>)value);
+			return initialize((BaseTreeNode<T, K>)value);
 		}
 		if (value instanceof DefaultMutableTreeNode)
 		{
@@ -53,16 +53,16 @@ public class BaseTreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
 			Object userObject = node.getUserObject();
 			if (userObject instanceof BaseTreeNode)
 			{
-				return initialize((BaseTreeNode<T>)userObject);
+				return initialize((BaseTreeNode<T, K>)userObject);
 			}
 		}
 		return renderer.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row,
 			hasFocus);
 	}
 
-	protected JLabel initialize(BaseTreeNode<T> userObject)
+	protected JLabel initialize(BaseTreeNode<T, K> userObject)
 	{
-		BaseTreeNode<T> treeNode = userObject;
+		BaseTreeNode<T, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		treeLabel.setText(displayValue);
 		if (treeNode.isLeaf())

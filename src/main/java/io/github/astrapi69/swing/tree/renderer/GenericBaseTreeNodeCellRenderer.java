@@ -34,14 +34,14 @@ import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.BaseTreeNode;
 
-public class GenericBaseTreeNodeCellRenderer<T>
+public class GenericBaseTreeNodeCellRenderer<T, K>
 	extends
-		BaseTreeNodeCellRenderer<GenericTreeElement<T>>
+		BaseTreeNodeCellRenderer<GenericTreeElement<T>, K>
 {
 
-	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>> userObject)
+	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>, K> userObject)
 	{
-		BaseTreeNode<GenericTreeElement<T>> treeNode = userObject;
+		BaseTreeNode<GenericTreeElement<T>, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		GenericTreeElement<T> value = treeNode.getValue();
 		if (value != null)

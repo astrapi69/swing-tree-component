@@ -37,16 +37,16 @@ import io.github.astrapi69.tree.element.TreeElement;
 public class TestBaseTreeNodeFactory
 {
 
-	public static BaseTreeNode<TreeElement> initializeTestTreeNodeElement()
+	public static BaseTreeNode<TreeElement, Long> initializeTestTreeNodeElement()
 	{
-		BaseTreeNode<TreeElement> firstChildTreeNode;
-		BaseTreeNode<TreeElement> firstGrandChildTreeNodeLeaf;
-		BaseTreeNode<TreeElement> secondGrandChildTreeNodeLeaf;
+		BaseTreeNode<TreeElement, Long> firstChildTreeNode;
+		BaseTreeNode<TreeElement, Long> firstGrandChildTreeNodeLeaf;
+		BaseTreeNode<TreeElement, Long> secondGrandChildTreeNodeLeaf;
 		TreeElement firstGrandGrandChild;
-		BaseTreeNode<TreeElement> firstGrandGrandChildTreeNode;
-		BaseTreeNode<TreeElement> parentTreeNode;
-		BaseTreeNode<TreeElement> secondChildTreeNode;
-		List<BaseTreeNode<TreeElement>> list;
+		BaseTreeNode<TreeElement, Long> firstGrandGrandChildTreeNode;
+		BaseTreeNode<TreeElement, Long> parentTreeNode;
+		BaseTreeNode<TreeElement, Long> secondChildTreeNode;
+		List<BaseTreeNode<TreeElement, Long>> list;
 		TreeElement parent;
 		TreeElement firstChild;
 		TreeElement firstGrandChild;
@@ -80,19 +80,19 @@ public class TestBaseTreeNodeFactory
 	}
 
 
-	public static BaseTreeNode<JXTreeElement> initializeTestJXTreeNodeElement()
+	public static BaseTreeNode<JXTreeElement, Long> initializeTestJXTreeNodeElement()
 	{
 		// 1. Create a list with data.
 		final List<Permission> permissions;
 		List<Permission> permissions1;
-		BaseTreeNode<JXTreeElement> firstChildTreeNode;
-		BaseTreeNode<JXTreeElement> firstGrandChildTreeNodeLeaf;
-		BaseTreeNode<JXTreeElement> secondGrandChildTreeNodeLeaf;
+		BaseTreeNode<JXTreeElement, Long> firstChildTreeNode;
+		BaseTreeNode<JXTreeElement, Long> firstGrandChildTreeNodeLeaf;
+		BaseTreeNode<JXTreeElement, Long> secondGrandChildTreeNodeLeaf;
 		JXTreeElement firstGrandGrandChild;
-		BaseTreeNode<JXTreeElement> firstGrandGrandChildTreeNode;
-		BaseTreeNode<JXTreeElement> parentTreeNode;
-		BaseTreeNode<JXTreeElement> secondChildTreeNode;
-		List<BaseTreeNode<JXTreeElement>> list;
+		BaseTreeNode<JXTreeElement, Long> firstGrandGrandChildTreeNode;
+		BaseTreeNode<JXTreeElement, Long> parentTreeNode;
+		BaseTreeNode<JXTreeElement, Long> secondChildTreeNode;
+		List<BaseTreeNode<JXTreeElement, Long>> list;
 		JXTreeElement parent;
 		JXTreeElement firstChild;
 		JXTreeElement firstGrandChild;
@@ -135,23 +135,23 @@ public class TestBaseTreeNodeFactory
 		return parentTreeNode;
 	}
 
-	public static BaseTreeNode<GenericTreeElement<List<Permission>>> initializeTestGenericTreeNodeElement()
+	public static BaseTreeNode<GenericTreeElement<List<Permission>>, Long> initializeTestGenericTreeNodeElement()
 	{
 		return initializeTestGenericTreeNodeElement(TestPermissionFactory.getPermissionsInGerman(),
 			TestPermissionFactory.getPermissions());
 	}
 
-	public static <T> BaseTreeNode<GenericTreeElement<List<T>>> initializeTestGenericTreeNodeElement(
+	public static <T, K> BaseTreeNode<GenericTreeElement<List<T>>, K> initializeTestGenericTreeNodeElement(
 		List<T> first, List<T> second)
 	{
-		BaseTreeNode<GenericTreeElement<List<T>>> parentTreeNode;
-		BaseTreeNode<GenericTreeElement<List<T>>> firstChildTreeNode;
-		BaseTreeNode<GenericTreeElement<List<T>>> firstGrandChildTreeNodeLeaf;
-		BaseTreeNode<GenericTreeElement<List<T>>> secondGrandChildTreeNodeLeaf;
+		BaseTreeNode<GenericTreeElement<List<T>>, K> parentTreeNode;
+		BaseTreeNode<GenericTreeElement<List<T>>, K> firstChildTreeNode;
+		BaseTreeNode<GenericTreeElement<List<T>>, K> firstGrandChildTreeNodeLeaf;
+		BaseTreeNode<GenericTreeElement<List<T>>, K> secondGrandChildTreeNodeLeaf;
 		GenericTreeElement<List<T>> firstGrandGrandChild;
-		BaseTreeNode<GenericTreeElement<List<T>>> firstGrandGrandChildTreeNode;
-		BaseTreeNode<GenericTreeElement<List<T>>> secondChildTreeNode;
-		List<BaseTreeNode<GenericTreeElement<List<T>>>> list;
+		BaseTreeNode<GenericTreeElement<List<T>>, K> firstGrandGrandChildTreeNode;
+		BaseTreeNode<GenericTreeElement<List<T>>, K> secondChildTreeNode;
+		List<BaseTreeNode<GenericTreeElement<List<T>>, K>> list;
 		GenericTreeElement<List<T>> parent;
 		GenericTreeElement<List<T>> firstChild;
 		GenericTreeElement<List<T>> firstGrandChild;

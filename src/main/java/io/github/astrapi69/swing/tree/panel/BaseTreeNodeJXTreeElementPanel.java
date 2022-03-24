@@ -35,7 +35,9 @@ import io.github.astrapi69.tree.TreeNode;
  * The abstract class {@link BaseTreeNodeJXTreeElementPanel} a given {@link TreeNode} parameterized
  * with {@link TreeElement}
  */
-public abstract class BaseTreeNodeJXTreeElementPanel extends GenericBaseTreeNodePanel<JXTreeElement>
+public abstract class BaseTreeNodeJXTreeElementPanel
+	extends
+		GenericBaseTreeNodePanel<JXTreeElement, Long>
 {
 
 	/** The Constant serialVersionUID. */
@@ -46,7 +48,7 @@ public abstract class BaseTreeNodeJXTreeElementPanel extends GenericBaseTreeNode
 	 */
 	public BaseTreeNodeJXTreeElementPanel()
 	{
-		this(BaseModel.of(BaseTreeNode.<JXTreeElement> builder().build()));
+		this(BaseModel.of(BaseTreeNode.<JXTreeElement, Long> builder().build()));
 	}
 
 	/**
@@ -55,7 +57,7 @@ public abstract class BaseTreeNodeJXTreeElementPanel extends GenericBaseTreeNode
 	 * @param model
 	 *            the model
 	 */
-	public BaseTreeNodeJXTreeElementPanel(final IModel<BaseTreeNode<JXTreeElement>> model)
+	public BaseTreeNodeJXTreeElementPanel(final IModel<BaseTreeNode<JXTreeElement, Long>> model)
 	{
 		super(model);
 	}

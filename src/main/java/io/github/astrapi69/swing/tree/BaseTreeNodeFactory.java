@@ -48,13 +48,13 @@ public class BaseTreeNodeFactory
 	 * @return the new {@link DefaultMutableTreeNode} object generated from the given
 	 *         {@link BaseTreeNode} object
 	 */
-	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(
-		@NonNull BaseTreeNode<T> treeNode)
+	public static <T, K> DefaultMutableTreeNode newDefaultMutableTreeNode(
+		@NonNull BaseTreeNode<T, K> treeNode)
 	{
-		BaseTreeNode<T> rootNode = treeNode;
+		BaseTreeNode<T, K> rootNode = treeNode;
 		if (!treeNode.isRoot())
 		{
-			rootNode = (BaseTreeNode<T>)treeNode.getRoot();
+			rootNode = (BaseTreeNode<T, K>)treeNode.getRoot();
 		}
 		return traverseAndAdd(null, rootNode);
 	}
@@ -71,19 +71,20 @@ public class BaseTreeNodeFactory
 	 *            the generic type of the given {@link BaseTreeNode} object
 	 * @return the root {@link DefaultMutableTreeNode} object
 	 */
-	public static <T> DefaultMutableTreeNode traverseAndAdd(
-		DefaultMutableTreeNode rootDefaultMutableTreeNode, @NonNull BaseTreeNode<T> treeNode)
+	public static <T, K> DefaultMutableTreeNode traverseAndAdd(
+		DefaultMutableTreeNode rootDefaultMutableTreeNode, @NonNull BaseTreeNode<T, K> treeNode)
 	{
 		DefaultMutableTreeNode parent = rootDefaultMutableTreeNode;
 		if (rootDefaultMutableTreeNode == null)
 		{
 			parent = DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(null, treeNode);
 		}
-		for (final BaseTreeNode<T> data : treeNode.getChildren())
+		for (final BaseTreeNode<T, K> data : treeNode.getChildren())
 		{
-			DefaultMutableTreeNode node = new DefaultMutableTreeNode(data);
+			DefaultMutableTreeNode node = DefaultMutableTreeNodeFactory
+				.newDefaultMutableTreeNode(data);
 			parent.add(node);
-			traverseAndAdd(node, (BaseTreeNode<TreeElement>)data);
+			traverseAndAdd(node, (BaseTreeNode<TreeElement, K>)data);
 		}
 		return parent;
 	}
@@ -98,13 +99,12 @@ public class BaseTreeNodeFactory
 	 *            the parent object
 	 * @return the new {@link BaseTreeNode} object
 	 */
-	public static BaseTreeNode<TreeElement> initializeTreeNodeWithTreeElement(
-		final TreeElement treeElement, BaseTreeNode<TreeElement> parentTreeNode)
+	public static <K> BaseTreeNode<TreeElement, K> initializeTreeNodeWithTreeElement(
+		final TreeElement treeElement, BaseTreeNode<TreeElement, K> parentTreeNode)
 	{
-		BaseTreeNode<TreeElement> treeNode;
-		treeNode = new BaseTreeNode<>(treeElement);
-		treeNode.setLeaf(!treeElement.isNode());
-		treeNode.setDisplayValue(treeElement.getName());
+		BaseTreeNode<TreeElement, K> treeNode = BaseTreeNode.<TreeElement, K> builder()
+			.value(treeElement).leaf(!treeElement.isNode()).displayValue(treeElement.getName())
+			.build();
 		if (parentTreeNode != null)
 		{
 			parentTreeNode.addChild(treeNode);
@@ -122,13 +122,12 @@ public class BaseTreeNodeFactory
 	 *            the parent object
 	 * @return the new {@link BaseTreeNode} object
 	 */
-	public static BaseTreeNode<JXTreeElement> initializeTreeNodeWithTreeElement(
-		final JXTreeElement treeElement, BaseTreeNode<JXTreeElement> parentTreeNode)
+	public static <K> BaseTreeNode<JXTreeElement, K> initializeTreeNodeWithTreeElement(
+		final JXTreeElement treeElement, BaseTreeNode<JXTreeElement, K> parentTreeNode)
 	{
-		BaseTreeNode<JXTreeElement> treeNode;
-		treeNode = new BaseTreeNode<>(treeElement);
-		treeNode.setLeaf(!treeElement.isNode());
-		treeNode.setDisplayValue(treeElement.getName());
+		BaseTreeNode<JXTreeElement, K> treeNode = BaseTreeNode.<JXTreeElement, K> builder()
+			.value(treeElement).leaf(!treeElement.isNode()).displayValue(treeElement.getName())
+			.build();
 		if (parentTreeNode != null)
 		{
 			parentTreeNode.addChild(treeNode);
@@ -146,12 +145,13 @@ public class BaseTreeNodeFactory
 	 *            the parent object
 	 * @return the new {@link BaseTreeNode} object
 	 */
-	public static <T> BaseTreeNode<GenericTreeElement<T>> initializeTreeNodeWithTreeElement(
-		final GenericTreeElement<T> treeElement, BaseTreeNode<GenericTreeElement<T>> parentTreeNode)
+	public static <T, K> BaseTreeNode<GenericTreeElement<T>, K> initializeTreeNodeWithTreeElement(
+		final GenericTreeElement<T> treeElement,
+		BaseTreeNode<GenericTreeElement<T>, K> parentTreeNode)
 	{
-		BaseTreeNode<GenericTreeElement<T>> treeNode = new BaseTreeNode<>(treeElement);
-		treeNode.setLeaf(!treeElement.isNode());
-		treeNode.setDisplayValue(treeElement.getName());
+		BaseTreeNode<GenericTreeElement<T>, K> treeNode = BaseTreeNode
+			.<GenericTreeElement<T>, K> builder().value(treeElement).leaf(!treeElement.isNode())
+			.displayValue(treeElement.getName()).build();
 		if (parentTreeNode != null)
 		{
 			parentTreeNode.addChild(treeNode);

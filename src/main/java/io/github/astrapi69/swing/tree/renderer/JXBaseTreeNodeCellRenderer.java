@@ -34,12 +34,12 @@ import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.tree.BaseTreeNode;
 
-public class JXBaseTreeNodeCellRenderer extends BaseTreeNodeCellRenderer<JXTreeElement>
+public class JXBaseTreeNodeCellRenderer extends BaseTreeNodeCellRenderer<JXTreeElement, Long>
 {
 
-	protected JLabel initialize(BaseTreeNode<JXTreeElement> userObject)
+	protected JLabel initialize(BaseTreeNode<JXTreeElement, Long> userObject)
 	{
-		BaseTreeNode<JXTreeElement> treeNode = userObject;
+		BaseTreeNode<JXTreeElement, Long> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		JXTreeElement value = treeNode.getValue();
 		if (value != null)

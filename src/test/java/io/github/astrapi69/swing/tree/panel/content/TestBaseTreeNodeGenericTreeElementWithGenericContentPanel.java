@@ -52,9 +52,9 @@ public class TestBaseTreeNodeGenericTreeElementWithGenericContentPanel
 	{
 		final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
 		frame.addWindowListener(new CloseWindow());
-		BaseTreeNode<GenericTreeElement<List<Permission>>> genericTreeElementTreeNode = TestBaseTreeNodeFactory
+		BaseTreeNode<GenericTreeElement<List<Permission>>, Long> genericTreeElementTreeNode = TestBaseTreeNodeFactory
 			.initializeTestGenericTreeNodeElement();
-		IModel<BaseTreeNode<GenericTreeElement<List<Permission>>>> treeNodeModel = BaseModel
+		IModel<BaseTreeNode<GenericTreeElement<List<Permission>>, Long>> treeNodeModel = BaseModel
 			.of(genericTreeElementTreeNode);
 		DemoBaseTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoBaseTreeNodeGenericTreeElementWithContentPanel(
 			treeNodeModel);

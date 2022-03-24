@@ -33,9 +33,9 @@ import io.github.astrapi69.tree.BaseTreeNode;
  * The abstract class {@link BaseTreeNodeGenericTreeElementWithContentPanel} a given
  * {@link GenericTreeElement}
  */
-public abstract class BaseTreeNodeGenericTreeElementWithContentPanel<T, C>
+public abstract class BaseTreeNodeGenericTreeElementWithContentPanel<T, K, C>
 	extends
-		GenericBaseTreeNodeWithContentPanel<GenericTreeElement<T>, C>
+		GenericBaseTreeNodeWithContentPanel<GenericTreeElement<T>, K, C>
 {
 
 	/** The Constant serialVersionUID. */
@@ -46,7 +46,7 @@ public abstract class BaseTreeNodeGenericTreeElementWithContentPanel<T, C>
 	 */
 	public BaseTreeNodeGenericTreeElementWithContentPanel()
 	{
-		this(BaseModel.of(BaseTreeNode.<GenericTreeElement<T>> builder().build()));
+		this(BaseModel.of(BaseTreeNode.<GenericTreeElement<T>, K> builder().build()));
 	}
 
 	/**
@@ -56,7 +56,7 @@ public abstract class BaseTreeNodeGenericTreeElementWithContentPanel<T, C>
 	 *            the model
 	 */
 	public BaseTreeNodeGenericTreeElementWithContentPanel(
-		final IModel<BaseTreeNode<GenericTreeElement<T>>> model)
+		final IModel<BaseTreeNode<GenericTreeElement<T>, K>> model)
 	{
 		super(model);
 	}

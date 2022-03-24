@@ -90,7 +90,7 @@ public final class DefaultMutableTreeNodeFactory
 
 	/**
 	 * Factory method that creates a new {@link DefaultMutableTreeNode} object
-	 * 
+	 *
 	 * @param userObject
 	 *            the user object
 	 * @param allowsChildren
@@ -105,4 +105,19 @@ public final class DefaultMutableTreeNodeFactory
 	{
 		return new DefaultMutableTreeNode(userObject, allowsChildren);
 	}
+
+	/**
+	 * Factory method that creates a new {@link DefaultMutableTreeNode} object
+	 *
+	 * @param userObject
+	 *            the user object
+	 * @param <T>
+	 *            the generic type of the given user object
+	 * @return the new {@link DefaultMutableTreeNode} object
+	 */
+	public static <T> DefaultMutableTreeNode newDefaultMutableTreeNode(T userObject)
+	{
+		return new DefaultMutableTreeNode(userObject);
+	}
+
 }

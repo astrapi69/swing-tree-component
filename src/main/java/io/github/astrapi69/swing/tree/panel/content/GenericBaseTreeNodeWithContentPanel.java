@@ -30,9 +30,9 @@ import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.tree.BaseTreeNode;
 
-public abstract class GenericBaseTreeNodeWithContentPanel<T, C>
+public abstract class GenericBaseTreeNodeWithContentPanel<T, K, C>
 	extends
-		JXTreeWithContentPanel<BaseTreeNode<T>, C>
+		JXTreeWithContentPanel<BaseTreeNode<T, K>, C>
 {
 
 	/**
@@ -49,7 +49,7 @@ public abstract class GenericBaseTreeNodeWithContentPanel<T, C>
 	 * @param model
 	 *            the model
 	 */
-	public GenericBaseTreeNodeWithContentPanel(final IModel<BaseTreeNode<T>> model)
+	public GenericBaseTreeNodeWithContentPanel(final IModel<BaseTreeNode<T, K>> model)
 	{
 		super(model);
 	}
