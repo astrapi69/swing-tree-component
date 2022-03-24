@@ -29,8 +29,8 @@ import javax.swing.tree.TreeModel;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.tree.element.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.tree.element.TreeElement;
 
 /**
  * The abstract class {@link GenericTreeNodePanel} a given {@link TreeNode} parameterized with

@@ -28,9 +28,9 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import lombok.NonNull;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
-import io.github.astrapi69.tree.element.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.tree.api.ITreeNode;
+import io.github.astrapi69.tree.element.TreeElement;
 
 /**
  * Factory class for generate {@link DefaultMutableTreeNode} from {@link TreeNode}
