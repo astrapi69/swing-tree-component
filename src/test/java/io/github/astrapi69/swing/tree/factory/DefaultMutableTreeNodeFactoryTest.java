@@ -22,31 +22,15 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.test.instances;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import javax.swing.tree.DefaultMutableTreeNode;
+package io.github.astrapi69.swing.tree.factory;
 
 import org.junit.jupiter.api.Test;
 
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.element.TreeElement;
-
-
-public class TreeNodeFactoryTest
+class DefaultMutableTreeNodeFactoryTest
 {
 
 	@Test
-	public void testNewDefaultMutableTreeNode()
+	void newDefaultMutableTreeNode()
 	{
-		TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
-			.initializeTestTreeNodeElement();
-		DefaultMutableTreeNode rootNode = TreeNodeFactory
-			.newDefaultMutableTreeNode(treeElementTreeNode);
-		assertNotNull(rootNode);
-		assertEquals(rootNode.getChildCount(), 2);
 	}
 }

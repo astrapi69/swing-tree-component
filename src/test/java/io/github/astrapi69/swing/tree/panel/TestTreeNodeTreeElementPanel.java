@@ -29,8 +29,8 @@ import java.awt.Frame;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.test.instances.TestTreeNodeFactory;
-import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.tree.element.TreeElement;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
@@ -47,7 +47,7 @@ public class TestTreeNodeTreeElementPanel
 	 */
 	public static void main(final String[] args)
 	{
-		final Frame frame = new Frame("JXTreePanel");
+		final Frame frame = new Frame("DemoTreeNodeTreeElementPanel");
 		frame.addWindowListener(new CloseWindow());
 		IModel<TreeNode<TreeElement>> parentModel = BaseModel
 			.of(TestTreeNodeFactory.initializeTestTreeNodeElement());

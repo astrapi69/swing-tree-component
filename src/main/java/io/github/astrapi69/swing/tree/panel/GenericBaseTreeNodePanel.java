@@ -29,33 +29,33 @@ import javax.swing.tree.TreeModel;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.tree.BaseTreeNode;
 import io.github.astrapi69.tree.element.TreeElement;
 
 /**
- * The abstract class {@link GenericTreeNodePanel} a given {@link TreeNode} parameterized with
- * {@link TreeElement}
+ * The abstract class {@link GenericBaseTreeNodePanel} a given {@link BaseTreeNode} parameterized
+ * with {@link TreeElement}
  */
-public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
+public abstract class GenericBaseTreeNodePanel<T, K> extends JXTreePanel<BaseTreeNode<T, K>>
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new {@link GenericTreeNodePanel}
+	 * Instantiates a new {@link GenericBaseTreeNodePanel}
 	 */
-	public GenericTreeNodePanel()
+	public GenericBaseTreeNodePanel()
 	{
 	}
 
 	/**
-	 * Instantiates a new t{@link GenericTreeNodePanel}
+	 * Instantiates a new t{@link GenericBaseTreeNodePanel}
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public GenericTreeNodePanel(final IModel<TreeNode<T>> model)
+	public GenericBaseTreeNodePanel(final IModel<BaseTreeNode<T, K>> model)
 	{
 		super(model);
 	}
@@ -74,7 +74,7 @@ public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected abstract TreeModel newTreeModel(final IModel<TreeNode<T>> model);
+	protected abstract TreeModel newTreeModel(final IModel<BaseTreeNode<T, K>> model);
 
 	/**
 	 * On initialize group layout.

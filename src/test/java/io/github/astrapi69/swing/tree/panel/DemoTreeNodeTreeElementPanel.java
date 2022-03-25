@@ -51,9 +51,10 @@ import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.swing.tree.renderer.TreeNodeCellRenderer;
-import io.github.astrapi69.tree.TreeElement;
 import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.tree.element.TreeElement;
 
 public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 {
@@ -196,9 +197,8 @@ public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 						.value(treeElement).parent(parentTreeNode).displayValue(userObject)
 						.node(allowsChildren).build();
 
-					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode,
-						allowsChildren);
-					selectedTreeNode.add(newChild);
+					DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(selectedTreeNode,
+						newTreeNode, allowsChildren, true);
 					((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
 					tree.treeDidChange();
 				}

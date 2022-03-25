@@ -22,31 +22,44 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.test.instances;
+package io.github.astrapi69.swing.tree.panel;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import org.junit.jupiter.api.Test;
-
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.swing.tree.JXTreeElement;
+import io.github.astrapi69.tree.BaseTreeNode;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.tree.element.TreeElement;
 
-
-public class TreeNodeFactoryTest
+/**
+ * The abstract class {@link BaseTreeNodeJXTreeElementPanel} a given {@link TreeNode} parameterized
+ * with {@link TreeElement}
+ */
+public abstract class BaseTreeNodeJXTreeElementPanel
+	extends
+		GenericBaseTreeNodePanel<JXTreeElement, Long>
 {
 
-	@Test
-	public void testNewDefaultMutableTreeNode()
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Instantiates a new {@link BaseTreeNodeJXTreeElementPanel}
+	 */
+	public BaseTreeNodeJXTreeElementPanel()
 	{
-		TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
-			.initializeTestTreeNodeElement();
-		DefaultMutableTreeNode rootNode = TreeNodeFactory
-			.newDefaultMutableTreeNode(treeElementTreeNode);
-		assertNotNull(rootNode);
-		assertEquals(rootNode.getChildCount(), 2);
+		this(BaseModel.of(BaseTreeNode.<JXTreeElement, Long> builder().build()));
 	}
+
+	/**
+	 * Instantiates a new t{@link BaseTreeNodeJXTreeElementPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public BaseTreeNodeJXTreeElementPanel(final IModel<BaseTreeNode<JXTreeElement, Long>> model)
+	{
+		super(model);
+	}
+
 }

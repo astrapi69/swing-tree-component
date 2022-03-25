@@ -42,11 +42,11 @@ import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
-import io.github.astrapi69.swing.robot.MouseExtensions;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
@@ -106,7 +106,8 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 		if (parentTreeNode.isNode())
 		{
 			JMenuItem menuItemAddChild = new JMenuItem("add node...");
-			menuItemAddChild.addActionListener(actionEvent -> this.onAddNewChildTreeNode());
+			menuItemAddChild
+				.addActionListener(actionEvent -> this.onAddNewChildTreeNode(mouseEvent));
 			popup.add(menuItemAddChild);
 		}
 
@@ -137,11 +138,11 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 		popup.show(tree, x, y);
 	}
 
-	protected void onAddNewChildTreeNode()
+	protected void onAddNewChildTreeNode(MouseEvent mouseEvent)
 	{
-		JTreeExtensions.getSelectedDefaultMutableTreeNode(tree, MouseExtensions.getMousePosition())
-			.ifPresent(selectedDefaultMutableTreeNode -> {
-				TreeNode<GenericTreeElement<java.util.List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<java.util.List<Permission>>>)selectedDefaultMutableTreeNode
+		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
+			.ifPresent(selectedTreeNode -> {
+				TreeNode<GenericTreeElement<java.util.List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
 					.getUserObject();
 				NodePanel nodePanel = new NodePanel();
 				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
@@ -159,14 +160,14 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 					boolean node = modelObject.isNode();
 					String name = modelObject.getName();
 					GenericTreeElement<java.util.List<Permission>> treeElement = GenericTreeElement.<java.util.List<Permission>> builder()
-						.name(name).parent(selectedTreeNode.getValue()).node(node).build();
+						.name(name).parent(parentTreeNode.getValue()).node(node).build();
 					TreeNode<GenericTreeElement<java.util.List<Permission>>> newTreeNode = TreeNode
 						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-						.parent(selectedTreeNode).displayValue(name).node(node).build();
+						.parent(parentTreeNode).displayValue(name).node(node).build();
 
-					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode, node);
-					selectedDefaultMutableTreeNode.add(newChild);
-					((DefaultTreeModel)tree.getModel()).reload(selectedDefaultMutableTreeNode);
+					DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(selectedTreeNode,
+						newTreeNode, node, true);
+					((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
 					tree.treeDidChange();
 				}
 			});

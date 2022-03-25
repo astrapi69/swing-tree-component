@@ -22,78 +22,61 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.tree.panel.content;
 
-import javax.swing.tree.TreeModel;
+import javax.swing.GroupLayout;
 
-import org.jdesktop.swingx.JXTree;
-
+import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.element.TreeElement;
+import io.github.astrapi69.tree.BaseTreeNode;
 
-/**
- * The abstract class {@link GenericTreeNodePanel} a given {@link TreeNode} parameterized with
- * {@link TreeElement}
- */
-public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
+public abstract class GenericBaseTreeNodeWithContentPanel<T, K, C>
+	extends
+		JXTreeWithContentPanel<BaseTreeNode<T, K>, C>
 {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-
 	/**
-	 * Instantiates a new {@link GenericTreeNodePanel}
+	 * Instantiates a new {@link GenericBaseTreeNodeWithContentPanel}
 	 */
-	public GenericTreeNodePanel()
+	public GenericBaseTreeNodeWithContentPanel()
 	{
+		this(BaseModel.of(new BaseTreeNode<>()));
 	}
 
 	/**
-	 * Instantiates a new t{@link GenericTreeNodePanel}
+	 * Instantiates a new t{@link GenericBaseTreeNodeWithContentPanel}
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public GenericTreeNodePanel(final IModel<TreeNode<T>> model)
+	public GenericBaseTreeNodeWithContentPanel(final IModel<BaseTreeNode<T, K>> model)
 	{
 		super(model);
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected JXTree newTree()
-	{
-		JXTree tree = super.newTree();
-		return tree;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected abstract TreeModel newTreeModel(final IModel<TreeNode<T>> model);
 
 	/**
 	 * On initialize group layout.
 	 */
 	protected void onInitializeGroupLayout()
 	{
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+		GroupLayout layout = new GroupLayout(this);
 		this.setLayout(layout);
-		layout.setHorizontalGroup(
-			layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addContainerGap()
-					.addComponent(scrTree, javax.swing.GroupLayout.PREFERRED_SIZE, 384,
-						javax.swing.GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout
-			.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 			.addGroup(layout.createSequentialGroup().addContainerGap()
-				.addComponent(scrTree, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+				.addComponent(scrTree, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+				.addGap(18, 18, 18)
+				.addComponent(scrTreeEntryTable, GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
 				.addContainerGap()));
+		layout
+			.setVerticalGroup(
+				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					.addGroup(
+						layout.createSequentialGroup().addContainerGap()
+							.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+								.addComponent(scrTree, GroupLayout.DEFAULT_SIZE, 756,
+									Short.MAX_VALUE)
+								.addComponent(scrTreeEntryTable))
+							.addContainerGap()));
 	}
 
 	/**
@@ -105,5 +88,4 @@ public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
 		super.onInitializeLayout();
 		onInitializeGroupLayout();
 	}
-
 }

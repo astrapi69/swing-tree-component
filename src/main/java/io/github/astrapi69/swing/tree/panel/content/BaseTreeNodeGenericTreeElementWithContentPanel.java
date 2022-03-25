@@ -22,31 +22,43 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.test.instances;
+package io.github.astrapi69.swing.tree.panel.content;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import io.github.astrapi69.model.BaseModel;
+import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.tree.BaseTreeNode;
 
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import org.junit.jupiter.api.Test;
-
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.element.TreeElement;
-
-
-public class TreeNodeFactoryTest
+/**
+ * The abstract class {@link BaseTreeNodeGenericTreeElementWithContentPanel} a given
+ * {@link GenericTreeElement}
+ */
+public abstract class BaseTreeNodeGenericTreeElementWithContentPanel<T, K, C>
+	extends
+		GenericBaseTreeNodeWithContentPanel<GenericTreeElement<T>, K, C>
 {
 
-	@Test
-	public void testNewDefaultMutableTreeNode()
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Instantiates a new {@link BaseTreeNodeGenericTreeElementWithContentPanel}
+	 */
+	public BaseTreeNodeGenericTreeElementWithContentPanel()
 	{
-		TreeNode<TreeElement> treeElementTreeNode = TestTreeNodeFactory
-			.initializeTestTreeNodeElement();
-		DefaultMutableTreeNode rootNode = TreeNodeFactory
-			.newDefaultMutableTreeNode(treeElementTreeNode);
-		assertNotNull(rootNode);
-		assertEquals(rootNode.getChildCount(), 2);
+		this(BaseModel.of(BaseTreeNode.<GenericTreeElement<T>, K> builder().build()));
 	}
+
+	/**
+	 * Instantiates a new t{@link BaseTreeNodeGenericTreeElementWithContentPanel}
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public BaseTreeNodeGenericTreeElementWithContentPanel(
+		final IModel<BaseTreeNode<GenericTreeElement<T>, K>> model)
+	{
+		super(model);
+	}
+
 }

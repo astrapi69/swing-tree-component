@@ -22,21 +22,24 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel;
+package io.github.astrapi69.swing.tree.panel.content;
 
 import java.awt.Frame;
+import java.util.List;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.tree.JXTreeElement;
-import io.github.astrapi69.test.instances.TestTreeNodeFactory;
-import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.tree.panel.JXTreePanel;
+import io.github.astrapi69.test.instances.TestBaseTreeNodeFactory;
+import io.github.astrapi69.test.object.Permission;
+import io.github.astrapi69.tree.BaseTreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
  * The test class for {@link JXTreePanel}
  */
-public class TestTreeNodeJXTreeElementPanel
+public class TestBaseTreeNodeGenericTreeElementWithGenericContentPanel
 {
 
 	/**
@@ -47,11 +50,15 @@ public class TestTreeNodeJXTreeElementPanel
 	 */
 	public static void main(final String[] args)
 	{
-		final Frame frame = new Frame("DemoTreeNodeJXTreeElementPanel");
+		final Frame frame = new Frame("TestTreeNodeGenericTreeElementWithGenericContentPanel");
 		frame.addWindowListener(new CloseWindow());
-		IModel<TreeNode<JXTreeElement>> parentModel = BaseModel
-			.of(TestTreeNodeFactory.initializeTestJXTreeNodeElement());
-		frame.add(new DemoTreeNodeJXTreeElementPanel(parentModel));
+		BaseTreeNode<GenericTreeElement<List<Permission>>, Long> genericTreeElementTreeNode = TestBaseTreeNodeFactory
+			.initializeTestGenericTreeNodeElement();
+		IModel<BaseTreeNode<GenericTreeElement<List<Permission>>, Long>> treeNodeModel = BaseModel
+			.of(genericTreeElementTreeNode);
+		DemoBaseTreeNodeGenericTreeElementWithContentPanel treeNodeGenericTreeElementWithContentPanelTest = new DemoBaseTreeNodeGenericTreeElementWithContentPanel(
+			treeNodeModel);
+		frame.add(treeNodeGenericTreeElementWithContentPanelTest);
 		frame.pack();
 		frame.setVisible(true);
 	}
