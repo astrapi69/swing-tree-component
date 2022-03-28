@@ -102,7 +102,7 @@ public class BaseTreeNodeFactory
 	public static <K> BaseTreeNode<TreeElement, K> initializeTreeNodeWithTreeElement(
 		final TreeElement treeElement, BaseTreeNode<TreeElement, K> parentTreeNode)
 	{
-		BaseTreeNode<TreeElement, K> treeNode = initializeTreeNodeWithTreeElement(treeElement,
+		BaseTreeNode<TreeElement, K> treeNode = initializeBaseTreeNodeWithTreeElement(treeElement,
 			parentTreeNode);
 		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
