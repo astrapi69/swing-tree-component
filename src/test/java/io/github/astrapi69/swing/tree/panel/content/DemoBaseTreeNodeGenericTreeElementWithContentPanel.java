@@ -32,6 +32,7 @@ import javax.swing.JDialog;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
@@ -83,6 +84,15 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 		JXTree tree = super.newTree();
 		tree.setCellRenderer(new GenericBaseTreeNodeCellRenderer<List<Permission>, Long>());
 		return tree;
+	}
+
+	@Override
+	protected JScrollPane newTreeScrollPane()
+	{
+		JScrollPane scroller = super.newTreeScrollPane();
+		scroller.getViewport().setOpaque(false);
+		scroller.setOpaque(false);
+		return scroller;
 	}
 
 	@Override
