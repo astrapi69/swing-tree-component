@@ -119,8 +119,8 @@ public class BaseTreeNodeFactory
 	 *            the parent object
 	 * @return the new {@link BaseTreeNode} object
 	 */
-	public static <T, K> BaseTreeNode<T, K> initializeBaseTreeNodeWithTreeElement(final T treeElement,
-		BaseTreeNode<T, K> parentTreeNode)
+	public static <T, K> BaseTreeNode<T, K> initializeBaseTreeNodeWithTreeElement(
+		final T treeElement, BaseTreeNode<T, K> parentTreeNode)
 	{
 		BaseTreeNode<T, K> treeNode = BaseTreeNode.<T, K> builder().value(treeElement).build();
 		if (parentTreeNode != null)
