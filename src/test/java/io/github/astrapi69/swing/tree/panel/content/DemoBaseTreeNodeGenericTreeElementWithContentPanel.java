@@ -152,8 +152,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 	{
 		super.onAfterInitializeComponents();
 		// set root
-		BaseTreeNode<GenericTreeElement<List<Permission>>, Long> root = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)getModelObject()
-			.getRoot();
+		BaseTreeNode<GenericTreeElement<List<Permission>>, Long> root = getModelObject().getRoot();
 		getTblTreeEntryTable().setModel(newTableModel(root));
 	}
 
@@ -247,8 +246,8 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
 			.ifPresent(selectedDefaultMutableTreeNode -> {
-				BaseTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)selectedDefaultMutableTreeNode
-					.getUserObject();
+				Object userObject = selectedDefaultMutableTreeNode.getUserObject();
+				BaseTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)userObject;
 				NodePanel nodePanel = new NodePanel();
 				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
 					JOptionPane.OK_CANCEL_OPTION);
@@ -283,9 +282,8 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
 			.ifPresent(selectedDefaultMutableTreeNode -> {
-
-				BaseTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)selectedDefaultMutableTreeNode
-					.getUserObject();
+				Object userObject = selectedDefaultMutableTreeNode.getUserObject();
+				BaseTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)userObject;
 				String displayValueCopy = selectedTreeNode.getDisplayValue() + "Copy";
 				BaseTreeNode<GenericTreeElement<List<Permission>>, Long> clonedTreeNode = BaseTreeNode
 					.<GenericTreeElement<List<Permission>>, Long> builder()
@@ -312,9 +310,8 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
 			.ifPresent(selectedDefaultMutableTreeNode -> {
-
-				BaseTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)selectedDefaultMutableTreeNode
-					.getUserObject();
+				Object userObject = selectedDefaultMutableTreeNode.getUserObject();
+				BaseTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)userObject;
 				NodePanel nodePanel = new NodePanel(
 					BaseModel.of(NodeModelBean.builder().name(selectedTreeNode.getValue().getName())
 						.node(selectedTreeNode.getValue().isNode()).build()));

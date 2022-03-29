@@ -9,6 +9,9 @@ ADDED:
 - new factory class DefaultMutableTreeNodeFactory for create new DefaultMutableTreeNode objects
 - new extension class DefaultMutableTreeNodeExtensions that can make copies of DefaultMutableTreeNode objects
 - new panels with BaseTreeNode as model
+- new dependency io.github.astrapi69:data-api in version 3.2.1 for the api from id generation
+- new test dependency io.github.astrapi69:id-generate in version 1 for id generation
+- generic id generator to the initialization methods of BaseTreeNode in factory class BaseTreeNodeFactory
 
 CHANGED:
 

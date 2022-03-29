@@ -26,6 +26,7 @@ package io.github.astrapi69.swing.tree;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import io.github.astrapi69.data.identifiable.IdGenerator;
 import lombok.NonNull;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.tree.BaseTreeNode;
@@ -100,10 +101,11 @@ public class BaseTreeNodeFactory
 	 * @return the new {@link BaseTreeNode} object
 	 */
 	public static <K> BaseTreeNode<TreeElement, K> initializeTreeNodeWithTreeElement(
-		final TreeElement treeElement, BaseTreeNode<TreeElement, K> parentTreeNode)
+		final TreeElement treeElement, BaseTreeNode<TreeElement, K> parentTreeNode,
+		final @NonNull IdGenerator<K> idGenerator)
 	{
 		BaseTreeNode<TreeElement, K> treeNode = initializeBaseTreeNodeWithTreeElement(treeElement,
-			parentTreeNode);
+			parentTreeNode, idGenerator);
 		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		return treeNode;
@@ -120,9 +122,11 @@ public class BaseTreeNodeFactory
 	 * @return the new {@link BaseTreeNode} object
 	 */
 	public static <T, K> BaseTreeNode<T, K> initializeBaseTreeNodeWithTreeElement(
-		final T treeElement, BaseTreeNode<T, K> parentTreeNode)
+		final T treeElement, BaseTreeNode<T, K> parentTreeNode,
+		final @NonNull IdGenerator<K> idGenerator)
 	{
-		BaseTreeNode<T, K> treeNode = BaseTreeNode.<T, K> builder().value(treeElement).build();
+		BaseTreeNode<T, K> treeNode = BaseTreeNode.<T, K> builder().id(idGenerator.getNextId())
+			.value(treeElement).build();
 		if (parentTreeNode != null)
 		{
 			parentTreeNode.addChild(treeNode);
@@ -141,10 +145,11 @@ public class BaseTreeNodeFactory
 	 * @return the new {@link BaseTreeNode} object
 	 */
 	public static <K> BaseTreeNode<JXTreeElement, K> initializeTreeNodeWithTreeElement(
-		final JXTreeElement treeElement, BaseTreeNode<JXTreeElement, K> parentTreeNode)
+		final JXTreeElement treeElement, BaseTreeNode<JXTreeElement, K> parentTreeNode,
+		final @NonNull IdGenerator<K> idGenerator)
 	{
 		BaseTreeNode<JXTreeElement, K> treeNode = initializeBaseTreeNodeWithTreeElement(treeElement,
-			parentTreeNode);
+			parentTreeNode, idGenerator);
 		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		return treeNode;
@@ -162,10 +167,11 @@ public class BaseTreeNodeFactory
 	 */
 	public static <T, K> BaseTreeNode<GenericTreeElement<T>, K> initializeTreeNodeWithTreeElement(
 		final GenericTreeElement<T> treeElement,
-		BaseTreeNode<GenericTreeElement<T>, K> parentTreeNode)
+		BaseTreeNode<GenericTreeElement<T>, K> parentTreeNode,
+		final @NonNull IdGenerator<K> idGenerator)
 	{
 		BaseTreeNode<GenericTreeElement<T>, K> treeNode = initializeBaseTreeNodeWithTreeElement(
-			treeElement, parentTreeNode);
+			treeElement, parentTreeNode, idGenerator);
 		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		return treeNode;
