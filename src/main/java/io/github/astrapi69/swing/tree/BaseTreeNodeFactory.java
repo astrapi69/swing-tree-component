@@ -26,8 +26,8 @@ package io.github.astrapi69.swing.tree;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import io.github.astrapi69.data.identifiable.IdGenerator;
 import lombok.NonNull;
+import io.github.astrapi69.data.identifiable.IdGenerator;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.tree.BaseTreeNode;
 import io.github.astrapi69.tree.element.TreeElement;
@@ -55,7 +55,7 @@ public class BaseTreeNodeFactory
 		BaseTreeNode<T, K> rootNode = treeNode;
 		if (!treeNode.isRoot())
 		{
-			rootNode = (BaseTreeNode<T, K>)treeNode.getRoot();
+			rootNode = treeNode.getRoot();
 		}
 		return traverseAndAdd(null, rootNode);
 	}
@@ -85,7 +85,7 @@ public class BaseTreeNodeFactory
 			DefaultMutableTreeNode node = DefaultMutableTreeNodeFactory
 				.newDefaultMutableTreeNode(data);
 			parent.add(node);
-			traverseAndAdd(node, (BaseTreeNode<TreeElement, K>)data);
+			traverseAndAdd(node, data);
 		}
 		return parent;
 	}
