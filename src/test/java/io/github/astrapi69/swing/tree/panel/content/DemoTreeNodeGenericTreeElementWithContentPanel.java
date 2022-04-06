@@ -252,7 +252,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 						.node(node).build();
 					TreeNode<GenericTreeElement<List<Permission>>> newTreeNode = TreeNode
 						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-						.parent(selectedTreeNode).displayValue(name).node(node).build();
+						.parent(selectedTreeNode).displayValue(name).leaf(!node).build();
 
 					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode, node);
 					selectedDefaultMutableTreeNode.add(newChild);
@@ -274,7 +274,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 					.<GenericTreeElement<List<Permission>>> builder()
 					.children(selectedTreeNode.getChildren()).displayValue(displayValueCopy)
 					.parent(selectedTreeNode.getParent()).value(selectedTreeNode.getValue())
-					.node(selectedTreeNode.isNode()).build();
+					.leaf(selectedTreeNode.isLeaf()).build();
 
 				DefaultMutableTreeNodeExtensions.copyOf(selectedDefaultMutableTreeNode,
 					clonedTreeNode);
@@ -315,7 +315,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 					NodeModelBean modelObject = nodePanel.getModelObject();
 					boolean node = modelObject.isNode();
 					String name = modelObject.getName();
-					selectedTreeNode.setNode(node);
+					selectedTreeNode.setLeaf(!node);
 					selectedTreeNode.setDisplayValue(name);
 
 					if (selectedTreeNode.getValue().isNode() != node)

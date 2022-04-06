@@ -29,7 +29,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import lombok.NonNull;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.api.ITreeNode;
 import io.github.astrapi69.tree.element.TreeElement;
 
 /**
@@ -54,7 +53,7 @@ public class TreeNodeFactory
 		TreeNode<T> rootNode = treeNode;
 		if (!treeNode.isRoot())
 		{
-			rootNode = (TreeNode<T>)treeNode.getRoot();
+			rootNode = treeNode.getRoot();
 		}
 		return traverseAndAdd(null, rootNode);
 	}
@@ -79,11 +78,11 @@ public class TreeNodeFactory
 		{
 			parent = DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(null, treeNode);
 		}
-		for (final ITreeNode<T> data : treeNode.getChildren())
+		for (final TreeNode<T> data : treeNode.getChildren())
 		{
 			DefaultMutableTreeNode node = new DefaultMutableTreeNode(data);
 			parent.add(node);
-			traverseAndAdd(node, (TreeNode<TreeElement>)data);
+			traverseAndAdd(node, data);
 		}
 		return parent;
 	}
@@ -103,7 +102,7 @@ public class TreeNodeFactory
 	{
 		TreeNode<TreeElement> treeNode;
 		treeNode = new TreeNode<>(treeElement);
-		treeNode.setNode(treeElement.isNode());
+		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
@@ -127,7 +126,7 @@ public class TreeNodeFactory
 	{
 		TreeNode<JXTreeElement> treeNode;
 		treeNode = new TreeNode<>(treeElement);
-		treeNode.setNode(treeElement.isNode());
+		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
@@ -149,8 +148,8 @@ public class TreeNodeFactory
 	public static <T> TreeNode<GenericTreeElement<T>> initializeTreeNodeWithTreeElement(
 		final GenericTreeElement<T> treeElement, TreeNode<GenericTreeElement<T>> parentTreeNode)
 	{
-		TreeNode<GenericTreeElement<T>> treeNode = new TreeNode<GenericTreeElement<T>>(treeElement);
-		treeNode.setNode(treeElement.isNode());
+		TreeNode<GenericTreeElement<T>> treeNode = new TreeNode<>(treeElement);
+		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{

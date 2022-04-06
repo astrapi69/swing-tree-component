@@ -43,6 +43,7 @@ dependencies {
     implementation("io.github.astrapi69:swing-components:$swingComponentsVersion")
     implementation("io.github.astrapi69:visitor:$designPatternsVersion")
     implementation("io.github.astrapi69:data-api:$dataApiVersion")
+    implementation("io.github.astrapi69:silly-collections:$sillyCollectionsVersion")
     testCompileOnly("org.projectlombok:lombok:$lombokVersion")
     testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
     testImplementation("io.github.astrapi69:id-generate:$idGenerateVersion")

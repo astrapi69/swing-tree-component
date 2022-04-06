@@ -85,8 +85,6 @@ public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 		TreeNode<TreeElement> parentTreeNode = model.getObject();
 		TreeModel treeModel;
 
-		// treeModel = new TreeNodeModel(parentTreeNode);
-
 		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
 
 		treeModel = new DefaultTreeModel(rootNode, true);
@@ -195,7 +193,7 @@ public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 						.parent(parentTreeNode.getValue()).node(allowsChildren).build();
 					TreeNode<TreeElement> newTreeNode = TreeNode.<TreeElement> builder()
 						.value(treeElement).parent(parentTreeNode).displayValue(userObject)
-						.node(allowsChildren).build();
+						.leaf(!allowsChildren).build();
 
 					DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(selectedTreeNode,
 						newTreeNode, allowsChildren, true);

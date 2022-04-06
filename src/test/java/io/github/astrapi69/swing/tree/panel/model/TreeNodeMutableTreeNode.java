@@ -34,6 +34,7 @@ import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.MutableTreeNode;
 
+import io.github.astrapi69.collections.CollectionExtensions;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.tree.api.ITreeNode;
 
@@ -60,7 +61,7 @@ public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, S
 
 	public boolean isLeaf(Object node)
 	{
-		return ((TreeNode)node).isLeaf();
+		return ((TreeNode<T>)node).isLeaf();
 	}
 
 	public int getChildCount(Object parent)
@@ -70,12 +71,12 @@ public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, S
 
 	public Object getChild(Object parent, int index)
 	{
-		return ((TreeNode)parent).getChildren().get(index);
+		return CollectionExtensions.toList(((TreeNode)parent).getChildren()).get(index);
 	}
 
 	public int getIndexOfChild(Object parent, Object child)
 	{
-		return ((TreeNode)parent).getChildren().indexOf(child);
+		return CollectionExtensions.toList(((TreeNode)parent).getChildren()).indexOf(child);
 	}
 
 	public void reload()
