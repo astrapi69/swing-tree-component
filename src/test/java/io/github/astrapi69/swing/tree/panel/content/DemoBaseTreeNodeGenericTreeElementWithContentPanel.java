@@ -264,8 +264,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 					boolean node = modelObject.isNode();
 					String name = modelObject.getName();
 					GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
-						.<List<Permission>> builder().name(name).parent(selectedTreeNode.getValue())
-						.node(node).build();
+						.<List<Permission>> builder().name(name).node(node).build();
 					BaseTreeNode<GenericTreeElement<List<Permission>>, Long> newTreeNode = BaseTreeNode
 						.<GenericTreeElement<List<Permission>>, Long> builder().value(treeElement)
 						.parent(selectedTreeNode).displayValue(name).leaf(!node).build();

@@ -159,20 +159,20 @@ public class TestTreeNodeFactory
 		GenericTreeElement<List<T>> secondGrandChild;
 
 		parent = GenericTreeElement.<List<T>> builder().name("parent")
-			.iconPath("io/github/astrapi69/silk/icons/disk.png").withText(true).parent(null)
-			.node(true).build().setDefaultContent(first);
-		firstChild = GenericTreeElement.<List<T>> builder().name("firstChild/search").parent(parent)
+			.iconPath("io/github/astrapi69/silk/icons/disk.png").withText(true).node(true).build()
+			.setDefaultContent(first);
+		firstChild = GenericTreeElement.<List<T>> builder().name("firstChild/search")
 			.iconPath("io/github/astrapi69/silk/icons/magnifier.png").withText(true).node(true)
 			.build().setDefaultContent(second);
 		firstGrandChild = GenericTreeElement.<List<T>> builder().name("firstGrandChild")
-			.iconPath("io/github/astrapi69/silk/icons/lock.png").withText(false).parent(firstChild)
-			.node(true).build().setDefaultContent(second);
+			.iconPath("io/github/astrapi69/silk/icons/lock.png").withText(false).node(true).build()
+			.setDefaultContent(second);
 		firstGrandGrandChild = GenericTreeElement.<List<T>> builder().name("firstGrandGrandChild")
-			.parent(firstGrandChild).node(false).build().setDefaultContent(second);
-		secondChild = GenericTreeElement.<List<T>> builder().name("secondChild").parent(parent)
-			.node(true).build().setDefaultContent(second);
+			.node(false).build().setDefaultContent(second);
+		secondChild = GenericTreeElement.<List<T>> builder().name("secondChild").node(true).build()
+			.setDefaultContent(second);
 		secondGrandChild = GenericTreeElement.<List<T>> builder().name("secondGrandChild")
-			.parent(firstChild).node(false).build().setDefaultContent(second);
+			.node(false).build().setDefaultContent(second);
 		parentTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(parent, null);
 
 		firstChildTreeNode = TreeNodeFactory.initializeTreeNodeWithTreeElement(firstChild,

@@ -43,8 +43,8 @@ import lombok.experimental.FieldDefaults;
  */
 @Getter
 @Setter
-@EqualsAndHashCode(exclude = { "parent" })
-@ToString(exclude = { "parent" })
+@EqualsAndHashCode
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
@@ -65,8 +65,6 @@ public class GenericTreeElement<T> implements Serializable
 	boolean withText;
 	/** The icon path for a custom tree icon, if not set default icon will be set */
 	String iconPath;
-	/** The parent of this tree element. */
-	GenericTreeElement<T> parent;
 
 	/**
 	 * Gets the default content object from the map

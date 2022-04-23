@@ -158,7 +158,7 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 					boolean node = modelObject.isNode();
 					String name = modelObject.getName();
 					GenericTreeElement<java.util.List<Permission>> treeElement = GenericTreeElement.<java.util.List<Permission>> builder()
-						.name(name).parent(parentTreeNode.getValue()).node(node).build();
+						.name(name).node(node).build();
 					TreeNode<GenericTreeElement<java.util.List<Permission>>> newTreeNode = TreeNode
 						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
 						.parent(parentTreeNode).displayValue(name).leaf(!node).build();
