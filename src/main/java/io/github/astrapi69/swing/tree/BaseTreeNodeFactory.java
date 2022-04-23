@@ -172,7 +172,7 @@ public class BaseTreeNodeFactory
 	{
 		BaseTreeNode<GenericTreeElement<T>, K> treeNode = initializeBaseTreeNodeWithTreeElement(
 			treeElement, parentTreeNode, idGenerator);
-		treeNode.setLeaf(!treeElement.isNode());
+		treeNode.setLeaf(treeElement.isLeaf());
 		treeNode.setDisplayValue(treeElement.getName());
 		return treeNode;
 	}

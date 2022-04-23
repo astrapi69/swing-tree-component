@@ -264,7 +264,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 					boolean node = modelObject.isNode();
 					String name = modelObject.getName();
 					GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
-						.<List<Permission>> builder().name(name).node(node).build();
+						.<List<Permission>> builder().name(name).leaf(!node).build();
 					BaseTreeNode<GenericTreeElement<List<Permission>>, Long> newTreeNode = BaseTreeNode
 						.<GenericTreeElement<List<Permission>>, Long> builder().value(treeElement)
 						.parent(selectedTreeNode).displayValue(name).leaf(!node).build();
@@ -313,7 +313,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 				BaseTreeNode<GenericTreeElement<List<Permission>>, Long> selectedTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)userObject;
 				NodePanel nodePanel = new NodePanel(
 					BaseModel.of(NodeModelBean.builder().name(selectedTreeNode.getValue().getName())
-						.node(selectedTreeNode.getValue().isNode()).build()));
+						.node(!selectedTreeNode.getValue().isLeaf()).build()));
 				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
 					JOptionPane.OK_CANCEL_OPTION);
 				JDialog dialog = pane.createDialog(null, "Edit node");
@@ -331,12 +331,12 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 					selectedTreeNode.setLeaf(!node);
 					selectedTreeNode.setDisplayValue(name);
 
-					if (selectedTreeNode.getValue().isNode() != node)
+					if (!selectedTreeNode.getValue().isLeaf() != node)
 					{
 						// set to leaf only if the node has no children
 						if ((node) || 0 == selectedDefaultMutableTreeNode.getChildCount())
 						{
-							selectedTreeNode.getValue().setNode(node);
+							selectedTreeNode.getValue().setLeaf(!node);
 						}
 					}
 

@@ -60,7 +60,7 @@ public class GenericTreeElement<T> implements Serializable
 	/** The name of this tree element. */
 	String name;
 	/** The flag that indicates if this tree element is a node. */
-	boolean node;
+	boolean leaf;
 	/** The flag that indicates if a text label should shown if an icon exists */
 	boolean withText;
 	/** The icon path for a custom tree icon, if not set default icon will be set */
@@ -83,7 +83,7 @@ public class GenericTreeElement<T> implements Serializable
 	 *            the default content object to set
 	 * @return this object
 	 */
-	public GenericTreeElement setDefaultContent(T defaultContent)
+	public GenericTreeElement<T> setDefaultContent(T defaultContent)
 	{
 		properties.put(DEFAULT_CONTENT_KEY, defaultContent);
 		return this;

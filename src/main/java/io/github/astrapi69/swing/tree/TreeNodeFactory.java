@@ -149,7 +149,7 @@ public class TreeNodeFactory
 		final GenericTreeElement<T> treeElement, TreeNode<GenericTreeElement<T>> parentTreeNode)
 	{
 		TreeNode<GenericTreeElement<T>> treeNode = new TreeNode<>(treeElement);
-		treeNode.setLeaf(!treeElement.isNode());
+		treeNode.setLeaf(treeElement.isLeaf());
 		treeNode.setDisplayValue(treeElement.getName());
 		if (parentTreeNode != null)
 		{
