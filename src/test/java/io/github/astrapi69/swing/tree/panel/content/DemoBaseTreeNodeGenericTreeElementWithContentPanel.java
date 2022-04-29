@@ -33,6 +33,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
+import javax.swing.UIManager;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
@@ -462,6 +463,16 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 				.description(permissionPanel.getTxtDescription().getText())
 				.name(permissionPanel.getTxtName().getText())
 				.shortcut(permissionPanel.getTxtShortcut().getText()).build();
+			DefaultMutableTreeNode selectedTreeNode = getSelectedTreeNode();
+			BaseTreeNode<GenericTreeElement<List<Permission>>, Long> selectedBaseTreeNode;
+			if(selectedTreeNode == null) {
+				selectedBaseTreeNode = getModelObject().getRoot();
+			} else {
+				Object userObject = selectedTreeNode.getUserObject();
+				selectedBaseTreeNode =
+					(BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)userObject;
+			}
+			selectedBaseTreeNode.getValue().getDefaultContent().add(permission);
 			getTblTreeEntryTable().getGenericTableModel().add(permission);
 			getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
 		}

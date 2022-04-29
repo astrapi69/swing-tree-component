@@ -24,6 +24,7 @@
  */
 package io.github.astrapi69.test.instances;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.NonNull;
@@ -171,16 +172,16 @@ public class TestBaseTreeNodeFactory
 			.setDefaultContent(first);
 		firstChild = GenericTreeElement.<List<T>> builder().name("firstChild/search")
 			.iconPath("io/github/astrapi69/silk/icons/magnifier.png").withText(true).build()
-			.setDefaultContent(second);
+			.setDefaultContent(new ArrayList<>(second));
 		firstGrandChild = GenericTreeElement.<List<T>> builder().name("firstGrandChild")
 			.iconPath("io/github/astrapi69/silk/icons/lock.png").withText(false).build()
-			.setDefaultContent(second);
+			.setDefaultContent(new ArrayList<>(second));
 		firstGrandGrandChild = GenericTreeElement.<List<T>> builder().name("firstGrandGrandChild")
-			.leaf(true).build().setDefaultContent(second);
+			.leaf(true).build().setDefaultContent(new ArrayList<>(second));
 		secondChild = GenericTreeElement.<List<T>> builder().name("secondChild").build()
-			.setDefaultContent(second);
+			.setDefaultContent(new ArrayList<>(second));
 		secondGrandChild = GenericTreeElement.<List<T>> builder().name("secondGrandChild")
-			.leaf(true).build().setDefaultContent(second);
+			.leaf(true).build().setDefaultContent(new ArrayList<>(second));
 		parentTreeNode = BaseTreeNodeFactory.initializeTreeNodeWithTreeElement(parent, null,
 			idGenerator);
 
