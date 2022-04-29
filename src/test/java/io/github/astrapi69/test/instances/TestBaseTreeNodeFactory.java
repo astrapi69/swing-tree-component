@@ -168,7 +168,9 @@ public class TestBaseTreeNodeFactory
 		GenericTreeElement<List<T>> secondGrandChild;
 
 		parent = GenericTreeElement.<List<T>> builder().name("parent")
-			.iconPath("io/github/astrapi69/silk/icons/disk.png").withText(true).build()
+			.iconPath("io/github/astrapi69/silk/icons/disk.png")
+			.selectedIconPath("io/github/astrapi69/silk/icons/door_open.png")
+			.withText(true).build()
 			.setDefaultContent(first);
 		firstChild = GenericTreeElement.<List<T>> builder().name("firstChild/search")
 			.iconPath("io/github/astrapi69/silk/icons/magnifier.png").withText(true).build()

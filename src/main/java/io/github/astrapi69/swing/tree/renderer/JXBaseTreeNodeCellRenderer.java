@@ -54,22 +54,22 @@ public class JXBaseTreeNodeCellRenderer extends BaseTreeNodeCellRenderer<JXTreeE
 				}
 				catch (Exception e)
 				{
-					customTreeIcon = new StringIcon(treeLabel, iconPath);
+					customTreeIcon = new StringIcon(this, iconPath);
 				}
 				if (value.isWithText())
 				{
-					treeLabel.setText(displayValue);
+					this.setText(displayValue);
 				}
 				else
 				{
-					treeLabel.setText("");
+					this.setText("");
 				}
-				treeLabel.setToolTipText(displayValue);
-				treeLabel.setIcon(customTreeIcon);
-				return treeLabel;
+				this.setToolTipText(displayValue);
+				this.setIcon(customTreeIcon);
+				return this;
 			}
 		}
-		return super.initialize(userObject);
+		return super.initialize(userObject, selected);
 	}
 
 	/**

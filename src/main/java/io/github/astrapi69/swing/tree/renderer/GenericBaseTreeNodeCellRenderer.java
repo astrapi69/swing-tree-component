@@ -24,7 +24,11 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
+import java.awt.Color;
+import java.awt.Image;
+
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.apache.commons.lang3.StringUtils;
@@ -38,8 +42,23 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 	extends
 		BaseTreeNodeCellRenderer<GenericTreeElement<T>, K>
 {
+	Icon customTreeIcon;
+	Icon selectedTreeIcon;
 
-	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>, K> userObject)
+	protected void onSelected(Object value, boolean selected)
+	{
+		// TODO set selected image
+		if(selected){
+			this.setIcon(selectedTreeIcon);
+		} else {
+			this.setIcon(customTreeIcon);
+		}
+		this.setForeground(selected ? Color.blue : Color.gray);
+		this.setBackground(Color.black);
+
+	}
+
+	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>, K> userObject, boolean selected)
 	{
 		BaseTreeNode<GenericTreeElement<T>, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
@@ -49,29 +68,57 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 			String iconPath = value.getIconPath();
 			if (StringUtils.isNotEmpty(iconPath))
 			{
-				Icon customTreeIcon;
-				try
-				{
-					customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
-				}
-				catch (Exception e)
-				{
-					customTreeIcon = new StringIcon(treeLabel, iconPath);
-				}
+				initializeCustomTreeIcon(value);
+				initializeSelectedTreeIcon(value);
 				if (value.isWithText())
 				{
-					treeLabel.setText(displayValue);
+					this.setText(displayValue);
 				}
 				else
 				{
-					treeLabel.setText("");
+					this.setText("");
 				}
-				treeLabel.setToolTipText(displayValue);
-				treeLabel.setIcon(customTreeIcon);
-				return treeLabel;
+				this.setToolTipText(displayValue);
+				this.setIcon(customTreeIcon);
+				return this;
 			}
 		}
-		return super.initialize(userObject);
+		return super.initialize(userObject,selected);
+	}
+
+	protected void initializeCustomTreeIcon(GenericTreeElement<T> value)
+	{
+		String iconPath = value.getIconPath();
+		if (StringUtils.isNotEmpty(iconPath))
+		{
+			try
+			{
+				customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
+			}
+			catch (Exception e)
+			{
+				customTreeIcon = new StringIcon(this, iconPath);
+			}
+		}
+	}
+
+	protected void initializeSelectedTreeIcon(GenericTreeElement<T> value)
+	{
+		String selectedIconPath = value.getSelectedIconPath();
+		if (StringUtils.isNotEmpty(selectedIconPath))
+		{
+			try
+			{
+				selectedTreeIcon = ImageIconFactory.newImageIcon(selectedIconPath);
+			}
+			catch (Exception e)
+			{
+				JLabel selectedTreeLabel = new JLabel(this.getText());
+				selectedTreeLabel.setForeground(Color.blue);
+				selectedTreeLabel.setBackground(Color.black);
+				selectedTreeIcon = new StringIcon(selectedTreeLabel, selectedIconPath);
+			}
+		}
 	}
 
 	/**
@@ -97,4 +144,5 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 	{
 		return renderer.getClosedIcon();
 	}
+
 }

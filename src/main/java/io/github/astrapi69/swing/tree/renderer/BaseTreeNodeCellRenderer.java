@@ -24,6 +24,7 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.Icon;
@@ -37,7 +38,6 @@ import io.github.astrapi69.tree.BaseTreeNode;
 public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
-	protected final JLabel treeLabel = new JLabel("init-tree-label");
 
 	@Override
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
@@ -45,42 +45,46 @@ public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 	{
 		if (value instanceof BaseTreeNode)
 		{
-			return initialize((BaseTreeNode<T, K>)value);
+			return initialize((BaseTreeNode<T, K>)value, selected);
 		}
+		onSelected(value, selected);
 		if (value instanceof DefaultMutableTreeNode)
 		{
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode)value;
 			Object userObject = node.getUserObject();
 			if (userObject instanceof BaseTreeNode)
 			{
-				return initialize((BaseTreeNode<T, K>)userObject);
+				return initialize((BaseTreeNode<T, K>)userObject, selected);
 			}
 		}
-		return renderer.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row,
-			hasFocus);
+		return this;
 	}
 
-	protected JLabel initialize(BaseTreeNode<T, K> userObject)
+	protected void onSelected(Object value, boolean selected)
+	{
+	}
+
+	protected JLabel initialize(BaseTreeNode<T, K> userObject, boolean selected)
 	{
 		BaseTreeNode<T, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
-		treeLabel.setText(displayValue);
+		this.setText(displayValue);
 		if (treeNode.isLeaf())
 		{
-			treeLabel.setIcon(getLeafIcon());
+			this.setIcon(getLeafIcon());
 		}
 		else
 		{
 			if (treeNode.hasChildren())
 			{
-				treeLabel.setIcon(getOpenIcon());
+				this.setIcon(getOpenIcon());
 			}
 			else
 			{
-				treeLabel.setIcon(getClosedIcon());
+				this.setIcon(getClosedIcon());
 			}
 		}
-		return treeLabel;
+		return this;
 	}
 
 	/**
