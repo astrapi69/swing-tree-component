@@ -28,37 +28,41 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-class TreeCellRendererExpandedStateTest
+class SimpleTreeCellRendererStateTest
 {
 
 	@Test
-	void getRenderState()
+	void getState()
 	{
-		TreeCellRendererExpandedState actual;
-		TreeCellRendererExpandedState expected;
+		SimpleTreeCellRendererState actual;
+		SimpleTreeCellRendererState expected;
 		// new scenario...
-		actual = TreeCellRendererExpandedState.getRenderState(true, false, false, false, false);
-		expected = TreeCellRendererExpandedState.LEAF;
+		actual = SimpleTreeCellRendererState.getState(true, false, false);
+		expected = SimpleTreeCellRendererState.LEAF;
 		assertEquals(expected, actual);
 		// new scenario...
-		actual = TreeCellRendererExpandedState.getRenderState(true, true, false, false, false);
-		expected = TreeCellRendererExpandedState.SELECTED_LEAF;
+		actual = SimpleTreeCellRendererState.getState(true, true, false);
+		expected = SimpleTreeCellRendererState.SELECTED_LEAF;
 		assertEquals(expected, actual);
 		// new scenario...
-		actual = TreeCellRendererExpandedState.getRenderState(true, true, false, true, false);
-		expected = TreeCellRendererExpandedState.SELECTED_FOCUSED_LEAF;
+		actual = SimpleTreeCellRendererState.getState(true, true, true);
+		expected = SimpleTreeCellRendererState.SELECTED_LEAF;
 		assertEquals(expected, actual);
 		// new scenario...
-		actual = TreeCellRendererExpandedState.getRenderState(false, false, false, false, false);
-		expected = TreeCellRendererExpandedState.NODE;
+		actual = SimpleTreeCellRendererState.getState(false, false, false);
+		expected = SimpleTreeCellRendererState.NODE;
 		assertEquals(expected, actual);
 		// new scenario...
-		actual = TreeCellRendererExpandedState.getRenderState(false, true, false, false, false);
-		expected = TreeCellRendererExpandedState.SELECTED_NODE;
+		actual = SimpleTreeCellRendererState.getState(false, true, false);
+		expected = SimpleTreeCellRendererState.SELECTED_NODE;
 		assertEquals(expected, actual);
 		// new scenario...
-		actual = TreeCellRendererExpandedState.getRenderState(false, true, false, false, true);
-		expected = TreeCellRendererExpandedState.SELECTED_NODE_WITH_CHILDREN;
+		actual = SimpleTreeCellRendererState.getState(false, true, true);
+		expected = SimpleTreeCellRendererState.SELECTED_NODE_WITH_CHILDREN;
+		assertEquals(expected, actual);
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getState(false, false, true);
+		expected = SimpleTreeCellRendererState.NODE_WITH_CHILDREN;
 		assertEquals(expected, actual);
 	}
 }

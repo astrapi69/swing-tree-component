@@ -28,70 +28,145 @@ public enum TreeCellRendererState
 {
 
 	/**
-	 * The state that represents a leaf that is not selected
+	 * Represents the state of a leaf that is not selected
 	 */
 	LEAF,
 
 	/**
-	 * The state that represents a selected leaf
+	 * Represents the state of a selected leaf
 	 */
 	SELECTED_LEAF,
 
 	/**
-	 * The state that represents a selected leaf and has the focus
+	 * Represents the state of a selected leaf and has the focus
 	 */
 	SELECTED_FOCUSED_LEAF,
 
 	/**
-	 * The state that represents a node that is not selected and has no children
+	 * Represents the state of a node that is not expanded, not selected but has no focus and has no
+	 * children
 	 */
 	NODE,
 
 	/**
-	 * The state that represents a node that is not selected and has children
+	 * Represents the state of a node that is expanded but not selected but has no focus and has no
+	 * children
+	 */
+	EXPANDED_NODE,
+
+	/**
+	 * Represents the state of a node that is expanded and is selected but has no focus and has no
+	 * children
+	 */
+	EXPANDED_SELECTED_NODE,
+
+	/**
+	 * Represents the state of a node that is expanded and is selected and has children
+	 */
+	EXPANDED_SELECTED_NODE_WITH_CHILDREN,
+
+	/**
+	 * Represents the state of a node that is expanded and is selected and has the focus and has
+	 * children
+	 */
+	EXPANDED_SELECTED_FOCUSED_NODE_WITH_CHILDREN,
+
+	/**
+	 * Represents the state of a node that is expanded and is selected and has the focus but has no
+	 * children
+	 */
+	EXPANDED_SELECTED_FOCUSED_NODE,
+
+	/**
+	 * Represents the state of a node that is not selected and has children
 	 */
 	NODE_WITH_CHILDREN,
 
 	/**
-	 * The state that represents a selected node with no children
+	 * Represents the state of a selected node with no children
 	 */
 	SELECTED_NODE,
 
 	/**
-	 * The state that represents a selected node with children
+	 * Represents the state of a selected node and has the focus with no children
 	 */
-	SELECTED_NODE_WITH_CHILDREN;
+	SELECTED_FOCUSED_NODE,
 
-	public static TreeCellRendererState getState(boolean leaf, boolean selected, boolean children)
+	/**
+	 * Represents the state of a selected node with children
+	 */
+	SELECTED_NODE_WITH_CHILDREN,
+
+	/**
+	 * Represents the state of a node that is expanded but not selected and has children
+	 */
+	EXPANDED_NODE_WITH_CHILDREN,
+
+	/**
+	 * Represents the state of a node that is selected and has the focus with children
+	 */
+	SELECTED_FOCUSED_NODE_WITH_CHILDREN;
+
+	public static TreeCellRendererState getRenderState(boolean leaf, boolean selected,
+		boolean expanded, boolean hasFocus, boolean children)
 	{
 		if (leaf)
 		{
 			if (selected)
 			{
-
+				if (hasFocus)
+				{
+					return SELECTED_FOCUSED_LEAF;
+				}
 				return SELECTED_LEAF;
 			}
 			return LEAF;
 		}
-		else
+		if (expanded)
 		{
 			if (selected)
 			{
+				if (hasFocus)
+				{
+					if (children)
+					{
+						return EXPANDED_SELECTED_FOCUSED_NODE_WITH_CHILDREN;
+					}
+					return EXPANDED_SELECTED_FOCUSED_NODE;
+				}
 				if (children)
 				{
-					return SELECTED_NODE_WITH_CHILDREN;
+					return EXPANDED_SELECTED_NODE_WITH_CHILDREN;
 				}
-				return SELECTED_NODE;
+				return EXPANDED_SELECTED_NODE;
 			}
-			else
+			if (children)
+			{
+				return EXPANDED_NODE_WITH_CHILDREN;
+			}
+			return EXPANDED_NODE;
+		}
+		if (selected)
+		{
+			if(hasFocus)
 			{
 				if (children)
 				{
-					return NODE_WITH_CHILDREN;
+					return SELECTED_FOCUSED_NODE_WITH_CHILDREN;
 				}
-				return NODE;
+				return SELECTED_FOCUSED_NODE;
 			}
+			if (children)
+			{
+				return SELECTED_NODE_WITH_CHILDREN;
+			}
+			return SELECTED_NODE;
 		}
+		if (children)
+		{
+			return NODE_WITH_CHILDREN;
+		}
+		return NODE;
 	}
 
 }
