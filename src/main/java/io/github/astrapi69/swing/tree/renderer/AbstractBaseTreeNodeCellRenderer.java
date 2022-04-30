@@ -27,7 +27,6 @@ package io.github.astrapi69.swing.tree.renderer;
 import java.awt.Component;
 
 import javax.swing.Icon;
-import javax.swing.JLabel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -36,7 +35,7 @@ import org.jdesktop.swingx.JXLabel;
 
 import io.github.astrapi69.tree.BaseTreeNode;
 
-public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
+public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
 	protected final JXLabel treeLabel = new JXLabel("init-tree-label");
@@ -47,7 +46,9 @@ public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 	{
 		if (value instanceof BaseTreeNode)
 		{
-			return initialize((BaseTreeNode<T, K>)value);
+
+			BaseTreeNode<T, K> baseTreeNode = (BaseTreeNode<T, K>)value;
+			return initialize(tree, baseTreeNode, selected, expanded, leaf, row, hasFocus);
 		}
 		if (value instanceof DefaultMutableTreeNode)
 		{
@@ -55,18 +56,25 @@ public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 			Object userObject = node.getUserObject();
 			if (userObject instanceof BaseTreeNode)
 			{
-				return initialize((BaseTreeNode<T, K>)userObject);
+				BaseTreeNode<T, K> baseTreeNode = (BaseTreeNode<T, K>)userObject;
+				return initialize(tree, baseTreeNode, selected, expanded, leaf, row, hasFocus);
 			}
 		}
 		return renderer.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row,
 			hasFocus);
 	}
 
-	protected JLabel initialize(BaseTreeNode<T, K> userObject)
+	protected JXLabel initialize(JTree tree, BaseTreeNode<T, K> userObject, boolean selected,
+		boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
+		JXLabel treeLabel = new JXLabel("init-tree-label");
 		BaseTreeNode<T, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		treeLabel.setText(displayValue);
+		if (selected && treeNode.isLeaf())
+		{
+
+		}
 		if (treeNode.isLeaf())
 		{
 			treeLabel.setIcon(getLeafIcon());
