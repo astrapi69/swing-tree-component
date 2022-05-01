@@ -24,20 +24,20 @@
  */
 package io.github.astrapi69.swing.tree.renderer.state;
 
+import java.awt.Color;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import javax.swing.Icon;
 import javax.swing.JTree;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jdesktop.swingx.JXLabel;
 
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.BaseTreeNode;
-import org.jdesktop.swingx.JXLabel;
-
-import java.awt.Color;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	extends
