@@ -24,6 +24,10 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public enum SimpleTreeCellRendererState
 {
 
@@ -62,7 +66,53 @@ public enum SimpleTreeCellRendererState
 	 */
 	SELECTED_NODE_WITH_CHILDREN;
 
-	public static SimpleTreeCellRendererState getState(boolean leaf, boolean selected, boolean children)
+	private static Map<Object[][], SimpleTreeCellRendererState> stateMap;
+
+	private static Map<Object[][], SimpleTreeCellRendererState> getStateMap()
+	{
+		if (stateMap == null)
+		{
+			stateMap = new LinkedHashMap<>();
+			stateMap.put(getKey(false, false, false), SimpleTreeCellRendererState.NODE);
+			stateMap.put(getKey(false, false, true),
+				SimpleTreeCellRendererState.NODE_WITH_CHILDREN);
+			stateMap.put(getKey(false, true, false), SimpleTreeCellRendererState.SELECTED_NODE);
+			stateMap.put(getKey(false, true, true),
+				SimpleTreeCellRendererState.SELECTED_NODE_WITH_CHILDREN);
+			stateMap.put(getKey(true, false, false), SimpleTreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, false, true), SimpleTreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, true, false), SimpleTreeCellRendererState.SELECTED_LEAF);
+			stateMap.put(getKey(true, true, true), SimpleTreeCellRendererState.SELECTED_LEAF);
+		}
+		return stateMap;
+	}
+
+	private static Object[][] getKey(boolean leaf, boolean selected, boolean children)
+	{
+		final Object[][] currentStateArray = { { "leaf", leaf }, { "selected", selected },
+				{ "children", children } };
+		return currentStateArray;
+	}
+
+	public static SimpleTreeCellRendererState getRenderState(boolean leaf, boolean selected,
+		boolean children)
+	{
+		Object[][] currentKey = getKey(leaf, selected, children);
+		Map<Object[][], SimpleTreeCellRendererState> stateMap = getStateMap();
+		SimpleTreeCellRendererState currentState = null;
+		for (Object[][] key : stateMap.keySet())
+		{
+			if (Arrays.deepEquals(key, currentKey))
+			{
+				currentState = stateMap.get(key);
+				break;
+			}
+		}
+		return currentState;
+	}
+
+	public static SimpleTreeCellRendererState getState(boolean leaf, boolean selected,
+		boolean children)
 	{
 		if (leaf)
 		{

@@ -24,6 +24,10 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public enum TreeCellRendererState
 {
 
@@ -107,8 +111,10 @@ public enum TreeCellRendererState
 	 */
 	SELECTED_FOCUSED_NODE_WITH_CHILDREN;
 
-	public static TreeCellRendererState getRenderState(boolean leaf, boolean selected,
-		boolean expanded, boolean hasFocus, boolean children)
+	private static Map<Object[][], TreeCellRendererState> stateMap;
+
+	public static TreeCellRendererState getState(boolean leaf, boolean selected, boolean expanded,
+		boolean hasFocus, boolean children)
 	{
 		if (leaf)
 		{
@@ -148,7 +154,7 @@ public enum TreeCellRendererState
 		}
 		if (selected)
 		{
-			if(hasFocus)
+			if (hasFocus)
 			{
 				if (children)
 				{
@@ -167,6 +173,95 @@ public enum TreeCellRendererState
 			return NODE_WITH_CHILDREN;
 		}
 		return NODE;
+	}
+
+	private static Map<Object[][], TreeCellRendererState> getStateMap()
+	{
+		if (stateMap == null)
+		{
+			stateMap = new LinkedHashMap<>();
+			stateMap.put(getKey(false, false, false, false, false), TreeCellRendererState.NODE);
+			stateMap.put(getKey(false, false, false, false, true),
+				TreeCellRendererState.NODE_WITH_CHILDREN);
+			stateMap.put(getKey(false, false, false, true, false), TreeCellRendererState.NODE);
+			stateMap.put(getKey(false, false, false, true, true),
+				TreeCellRendererState.NODE_WITH_CHILDREN);
+			stateMap.put(getKey(false, false, true, false, false),
+				TreeCellRendererState.EXPANDED_NODE);
+			stateMap.put(getKey(false, false, true, false, true),
+				TreeCellRendererState.EXPANDED_NODE_WITH_CHILDREN);
+			stateMap.put(getKey(false, false, true, true, false),
+				TreeCellRendererState.EXPANDED_NODE);
+			stateMap.put(getKey(false, false, true, true, true),
+				TreeCellRendererState.EXPANDED_NODE_WITH_CHILDREN);
+			stateMap.put(getKey(false, true, false, false, false),
+				TreeCellRendererState.SELECTED_NODE);
+			stateMap.put(getKey(false, true, false, false, true),
+				TreeCellRendererState.SELECTED_NODE_WITH_CHILDREN);
+			stateMap.put(getKey(false, true, false, true, false),
+				TreeCellRendererState.SELECTED_FOCUSED_NODE);
+			stateMap.put(getKey(false, true, false, true, true),
+				TreeCellRendererState.SELECTED_FOCUSED_NODE_WITH_CHILDREN);
+			stateMap.put(getKey(false, true, true, false, false),
+				TreeCellRendererState.EXPANDED_SELECTED_NODE);
+			stateMap.put(getKey(false, true, true, false, true),
+				TreeCellRendererState.EXPANDED_SELECTED_NODE_WITH_CHILDREN);
+			stateMap.put(getKey(false, true, true, true, false),
+				TreeCellRendererState.EXPANDED_SELECTED_FOCUSED_NODE);
+			stateMap.put(getKey(false, true, true, true, true),
+				TreeCellRendererState.EXPANDED_SELECTED_FOCUSED_NODE_WITH_CHILDREN);
+
+			stateMap.put(getKey(true, false, false, false, false), TreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, false, false, false, true), TreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, false, false, true, false), TreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, false, false, true, true), TreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, false, true, false, false), TreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, false, true, false, true), TreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, false, true, true, false), TreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, false, true, true, true), TreeCellRendererState.LEAF);
+			stateMap.put(getKey(true, true, false, false, false),
+				TreeCellRendererState.SELECTED_LEAF);
+			stateMap.put(getKey(true, true, false, false, true),
+				TreeCellRendererState.SELECTED_LEAF);
+			stateMap.put(getKey(true, true, false, true, false),
+				TreeCellRendererState.SELECTED_FOCUSED_LEAF);
+			stateMap.put(getKey(true, true, false, true, true),
+				TreeCellRendererState.SELECTED_FOCUSED_LEAF);
+			stateMap.put(getKey(true, true, true, false, false),
+				TreeCellRendererState.SELECTED_LEAF);
+			stateMap.put(getKey(true, true, true, false, true),
+				TreeCellRendererState.SELECTED_LEAF);
+			stateMap.put(getKey(true, true, true, true, false),
+				TreeCellRendererState.SELECTED_FOCUSED_LEAF);
+			stateMap.put(getKey(true, true, true, true, true),
+				TreeCellRendererState.SELECTED_FOCUSED_LEAF);
+		}
+		return stateMap;
+	}
+
+	private static Object[][] getKey(boolean leaf, boolean selected, boolean expanded,
+		boolean hasFocus, boolean children)
+	{
+		final Object[][] currentStateArray = { { "leaf", leaf }, { "selected", selected },
+				{ "expanded", expanded }, { "hasFocus", hasFocus }, { "children", children } };
+		return currentStateArray;
+	}
+
+	public static TreeCellRendererState getRenderState(boolean leaf, boolean selected,
+		boolean expanded, boolean hasFocus, boolean children)
+	{
+		Object[][] currentKey = getKey(leaf, selected, expanded, hasFocus, children);
+		Map<Object[][], TreeCellRendererState> stateMap = getStateMap();
+		TreeCellRendererState currentState = null;
+		for (Object[][] key : stateMap.keySet())
+		{
+			if (Arrays.deepEquals(key, currentKey))
+			{
+				currentState = stateMap.get(key);
+				break;
+			}
+		}
+		return currentState;
 	}
 
 }

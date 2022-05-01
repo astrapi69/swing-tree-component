@@ -41,6 +41,10 @@ class SimpleTreeCellRendererStateTest
 		expected = SimpleTreeCellRendererState.LEAF;
 		assertEquals(expected, actual);
 		// new scenario...
+		actual = SimpleTreeCellRendererState.getState(true, false, true);
+		expected = SimpleTreeCellRendererState.LEAF;
+		assertEquals(expected, actual);
+		// new scenario...
 		actual = SimpleTreeCellRendererState.getState(true, true, false);
 		expected = SimpleTreeCellRendererState.SELECTED_LEAF;
 		assertEquals(expected, actual);
@@ -62,6 +66,45 @@ class SimpleTreeCellRendererStateTest
 		assertEquals(expected, actual);
 		// new scenario...
 		actual = SimpleTreeCellRendererState.getState(false, false, true);
+		expected = SimpleTreeCellRendererState.NODE_WITH_CHILDREN;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void getRenderState()
+	{
+		SimpleTreeCellRendererState actual;
+		SimpleTreeCellRendererState expected;
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getRenderState(true, false, false);
+		expected = SimpleTreeCellRendererState.LEAF;
+		assertEquals(expected, actual);
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getRenderState(true, false, true);
+		expected = SimpleTreeCellRendererState.LEAF;
+		assertEquals(expected, actual);
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getRenderState(true, true, false);
+		expected = SimpleTreeCellRendererState.SELECTED_LEAF;
+		assertEquals(expected, actual);
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getRenderState(true, true, true);
+		expected = SimpleTreeCellRendererState.SELECTED_LEAF;
+		assertEquals(expected, actual);
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getRenderState(false, false, false);
+		expected = SimpleTreeCellRendererState.NODE;
+		assertEquals(expected, actual);
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getRenderState(false, true, false);
+		expected = SimpleTreeCellRendererState.SELECTED_NODE;
+		assertEquals(expected, actual);
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getRenderState(false, true, true);
+		expected = SimpleTreeCellRendererState.SELECTED_NODE_WITH_CHILDREN;
+		assertEquals(expected, actual);
+		// new scenario...
+		actual = SimpleTreeCellRendererState.getRenderState(false, false, true);
 		expected = SimpleTreeCellRendererState.NODE_WITH_CHILDREN;
 		assertEquals(expected, actual);
 	}
