@@ -69,7 +69,7 @@ public class JXBaseTreeNodeCellRenderer extends BaseTreeNodeCellRenderer<JXTreeE
 				return this;
 			}
 		}
-		return super.initialize(userObject, selected);
+		return super.initialize(userObject);
 	}
 
 	/**

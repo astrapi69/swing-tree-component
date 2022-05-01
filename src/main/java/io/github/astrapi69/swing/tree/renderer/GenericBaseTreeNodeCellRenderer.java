@@ -25,10 +25,8 @@
 package io.github.astrapi69.swing.tree.renderer;
 
 import java.awt.Color;
-import java.awt.Image;
 
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.apache.commons.lang3.StringUtils;
@@ -48,9 +46,12 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 	protected void onSelected(Object value, boolean selected)
 	{
 		// TODO set selected image
-		if(selected){
+		if (selected)
+		{
 			this.setIcon(selectedTreeIcon);
-		} else {
+		}
+		else
+		{
 			this.setIcon(customTreeIcon);
 		}
 		this.setForeground(selected ? Color.blue : Color.gray);
@@ -58,7 +59,7 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 
 	}
 
-	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>, K> userObject, boolean selected)
+	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>, K> userObject)
 	{
 		BaseTreeNode<GenericTreeElement<T>, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
@@ -83,7 +84,7 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 				return this;
 			}
 		}
-		return super.initialize(userObject,selected);
+		return super.initialize(userObject);
 	}
 
 	protected void initializeCustomTreeIcon(GenericTreeElement<T> value)
