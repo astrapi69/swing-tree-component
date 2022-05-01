@@ -56,23 +56,23 @@ import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeExtensions;
 import io.github.astrapi69.swing.tree.panel.PermissionPanel;
 import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
-import io.github.astrapi69.swing.tree.renderer.GenericBaseTreeNodeCellRenderer;
+import io.github.astrapi69.swing.tree.renderer.state.NewGenericBaseTreeNodeCellRenderer;
 import io.github.astrapi69.test.object.Permission;
 import io.github.astrapi69.tree.BaseTreeNode;
 
-public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
+public class DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel
 	extends
 		BaseTreeNodeGenericTreeElementWithContentPanel<List<Permission>, Long, Permission>
 {
 
 	private static final long serialVersionUID = 1L;
 
-	public DemoBaseTreeNodeGenericTreeElementWithContentPanel()
+	public DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel()
 	{
 		this(BaseModel.of(new BaseTreeNode<>()));
 	}
 
-	public DemoBaseTreeNodeGenericTreeElementWithContentPanel(
+	public DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel(
 		final IModel<BaseTreeNode<GenericTreeElement<List<Permission>>, Long>> model)
 	{
 		super(model);
@@ -82,7 +82,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 	protected JXTree newTree()
 	{
 		JXTree tree = super.newTree();
-		tree.setCellRenderer(new GenericBaseTreeNodeCellRenderer<List<Permission>, Long>());
+		tree.setCellRenderer(new NewGenericBaseTreeNodeCellRenderer<List<Permission>, Long>());
 		return tree;
 	}
 
@@ -106,42 +106,42 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 			protected void onSingleLeftClick(MouseEvent event)
 			{
 				super.onSingleLeftClick(event);
-				DemoBaseTreeNodeGenericTreeElementWithContentPanel.this
+				DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel.this
 					.onTableSingleLeftClick(event);
 			}
 
 			protected void onSingleMiddleClick(MouseEvent event)
 			{
 				super.onSingleMiddleClick(event);
-				DemoBaseTreeNodeGenericTreeElementWithContentPanel.this
+				DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel.this
 					.onTableSingleMiddleClick(event);
 			}
 
 			protected void onSingleRightClick(MouseEvent event)
 			{
 				super.onSingleRightClick(event);
-				DemoBaseTreeNodeGenericTreeElementWithContentPanel.this
+				DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel.this
 					.onTableSingleRightClick(event);
 			}
 
 			protected void onDoubleLeftClick(MouseEvent event)
 			{
 				super.onDoubleLeftClick(event);
-				DemoBaseTreeNodeGenericTreeElementWithContentPanel.this
+				DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel.this
 					.onTableDoubleLeftClick(event);
 			}
 
 			protected void onDoubleMiddleClick(MouseEvent event)
 			{
 				super.onDoubleMiddleClick(event);
-				DemoBaseTreeNodeGenericTreeElementWithContentPanel.this
+				DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel.this
 					.onTableDoubleMiddleClick(event);
 			}
 
 			protected void onDoubleRightClick(MouseEvent event)
 			{
 				super.onDoubleRightClick(event);
-				DemoBaseTreeNodeGenericTreeElementWithContentPanel.this
+				DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel.this
 					.onTableDoubleRightClick(event);
 			}
 		};

@@ -169,15 +169,15 @@ public class TestBaseTreeNodeFactory
 
 		parent = GenericTreeElement.<List<T>> builder().name("parent")
 			.iconPath("io/github/astrapi69/silk/icons/disk.png")
-			.selectedIconPath("io/github/astrapi69/silk/icons/door_open.png")
-			.withText(true).build()
+			.selectedIconPath("io/github/astrapi69/silk/icons/door_open.png").withText(true).build()
 			.setDefaultContent(first);
 		firstChild = GenericTreeElement.<List<T>> builder().name("firstChild/search")
 			.iconPath("io/github/astrapi69/silk/icons/magnifier.png").withText(true).build()
 			.setDefaultContent(new ArrayList<>(second));
 		firstGrandChild = GenericTreeElement.<List<T>> builder().name("firstGrandChild")
-			.iconPath("io/github/astrapi69/silk/icons/lock.png").withText(false).build()
-			.setDefaultContent(new ArrayList<>(second));
+			.iconPath("io/github/astrapi69/silk/icons/lock.png")
+			.selectedIconPath("io/github/astrapi69/silk/icons/lock_edit.png").withText(false)
+			.build().setDefaultContent(new ArrayList<>(second));
 		firstGrandGrandChild = GenericTreeElement.<List<T>> builder().name("firstGrandGrandChild")
 			.leaf(true).build().setDefaultContent(new ArrayList<>(second));
 		secondChild = GenericTreeElement.<List<T>> builder().name("secondChild").build()
