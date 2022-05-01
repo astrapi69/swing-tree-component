@@ -41,7 +41,7 @@ import java.util.Map;
 
 public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	extends
-	AbstractBaseTreeNodeCellRenderer<GenericTreeElement<T>, K>
+		AbstractBaseTreeNodeCellRenderer<GenericTreeElement<T>, K>
 {
 	Map<String, Icon> iconCacheMap = new LinkedHashMap<>();
 
@@ -71,7 +71,9 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 				case SELECTED_NODE_WITH_CHILDREN :
 				case SELECTED_FOCUSED_NODE_WITH_CHILDREN :
 					treeLabel.setText(displayValue);
-					treeLabel.setIcon(selectedTreeIcon == null ? customTreeIcon == null ? getOpenIcon() : customTreeIcon  : selectedTreeIcon);
+					treeLabel.setIcon(selectedTreeIcon == null
+						? customTreeIcon == null ? getOpenIcon() : customTreeIcon
+						: selectedTreeIcon);
 					break;
 				case NODE :
 				case NODE_WITH_CHILDREN :
@@ -102,7 +104,8 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	protected Icon initializeCustomTreeIcon(GenericTreeElement<T> value)
 	{
 		String iconPath = value.getIconPath();
-		if(!iconCacheMap.containsKey(iconPath)) {
+		if (!iconCacheMap.containsKey(iconPath))
+		{
 			if (StringUtils.isNotEmpty(iconPath))
 			{
 				Icon customTreeIcon = null;
@@ -123,7 +126,8 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	protected Icon initializeSelectedTreeIcon(GenericTreeElement<T> value)
 	{
 		String selectedIconPath = value.getSelectedIconPath();
-		if(!iconCacheMap.containsKey(selectedIconPath)) {
+		if (!iconCacheMap.containsKey(selectedIconPath))
+		{
 			if (StringUtils.isNotEmpty(selectedIconPath))
 			{
 				Icon customTreeIcon = null;
