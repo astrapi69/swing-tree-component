@@ -26,6 +26,7 @@ package io.github.astrapi69.swing.tree.renderer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.github.astrapi69.swing.tree.renderer.state.TreeCellRendererState;
 import org.junit.jupiter.api.Test;
 
 class TreeCellRendererStateTest

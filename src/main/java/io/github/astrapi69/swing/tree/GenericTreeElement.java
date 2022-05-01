@@ -65,6 +65,8 @@ public class GenericTreeElement<T> implements Serializable
 	boolean withText;
 	/** The icon path for a custom tree icon, if not set default icon will be set */
 	String iconPath;
+	/** The selected icon path for a custom selected tree icon, if not set default icon will be set */
+	String selectedIconPath;
 
 	/**
 	 * Gets the default content object from the map

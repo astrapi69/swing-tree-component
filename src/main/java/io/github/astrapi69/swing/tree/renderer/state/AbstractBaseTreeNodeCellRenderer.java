@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.renderer;
+package io.github.astrapi69.swing.tree.renderer.state;
 
 import java.awt.Component;
 
@@ -38,7 +38,6 @@ import io.github.astrapi69.tree.BaseTreeNode;
 public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
-	protected final JXLabel treeLabel = new JXLabel("init-tree-label");
 
 	@Override
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
@@ -46,7 +45,6 @@ public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRende
 	{
 		if (value instanceof BaseTreeNode)
 		{
-
 			BaseTreeNode<T, K> baseTreeNode = (BaseTreeNode<T, K>)value;
 			return initialize(tree, baseTreeNode, selected, expanded, leaf, row, hasFocus);
 		}
