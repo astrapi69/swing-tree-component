@@ -70,6 +70,10 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 				case SELECTED_FOCUSED_NODE :
 				case SELECTED_NODE_WITH_CHILDREN :
 				case SELECTED_FOCUSED_NODE_WITH_CHILDREN :
+				case EXPANDED_SELECTED_NODE :
+				case EXPANDED_SELECTED_FOCUSED_NODE :
+				case EXPANDED_SELECTED_NODE_WITH_CHILDREN :
+				case EXPANDED_SELECTED_FOCUSED_NODE_WITH_CHILDREN :
 					treeLabel.setText(displayValue);
 					treeLabel.setIcon(selectedTreeIcon == null
 						? customTreeIcon == null ? getOpenIcon() : customTreeIcon
@@ -78,10 +82,6 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 				case NODE :
 				case NODE_WITH_CHILDREN :
 				case EXPANDED_NODE :
-				case EXPANDED_SELECTED_NODE :
-				case EXPANDED_SELECTED_FOCUSED_NODE :
-				case EXPANDED_SELECTED_NODE_WITH_CHILDREN :
-				case EXPANDED_SELECTED_FOCUSED_NODE_WITH_CHILDREN :
 				case EXPANDED_NODE_WITH_CHILDREN :
 				default :
 					treeLabel.setText(displayValue);
