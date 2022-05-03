@@ -92,8 +92,7 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 			{
 				treeLabel.setText("");
 			}
-			treeLabel.setForeground(selected ? Color.blue : Color.gray);
-			treeLabel.setBackground(Color.black);
+			treeLabel.setForeground(selected ? Color.blue : Color.black);
 
 			treeLabel.setToolTipText(displayValue);
 			return treeLabel;
