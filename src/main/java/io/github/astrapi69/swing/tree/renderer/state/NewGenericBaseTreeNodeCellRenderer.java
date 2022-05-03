@@ -45,11 +45,10 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 {
 	Map<String, Icon> iconCacheMap = new LinkedHashMap<>();
 
-	protected JXLabel initialize(JTree tree, BaseTreeNode<GenericTreeElement<T>, K> userObject,
+	protected JXLabel initialize(JTree tree, BaseTreeNode<GenericTreeElement<T>, K> treeNode,
 		boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
 		JXLabel treeLabel = new JXLabel("");
-		BaseTreeNode<GenericTreeElement<T>, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		treeLabel.setText(displayValue);
 		GenericTreeElement<T> value = treeNode.getValue();
@@ -92,12 +91,12 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 			{
 				treeLabel.setText("");
 			}
-			treeLabel.setForeground(selected ? Color.blue : Color.black);
+			treeLabel.setForeground(selected ? getSelectedLabelForeground() : getLabelForeground());
 
 			treeLabel.setToolTipText(displayValue);
 			return treeLabel;
 		}
-		return super.initialize(tree, userObject, selected, expanded, leaf, row, hasFocus);
+		return super.initialize(tree, treeNode, selected, expanded, leaf, row, hasFocus);
 	}
 
 	protected Icon initializeCustomTreeIcon(GenericTreeElement<T> value)
@@ -107,7 +106,7 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 		{
 			if (StringUtils.isNotEmpty(iconPath))
 			{
-				Icon customTreeIcon = null;
+				Icon customTreeIcon;
 				try
 				{
 					customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
@@ -129,7 +128,7 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 		{
 			if (StringUtils.isNotEmpty(selectedIconPath))
 			{
-				Icon customTreeIcon = null;
+				Icon customTreeIcon;
 				try
 				{
 					customTreeIcon = ImageIconFactory.newImageIcon(selectedIconPath);
@@ -166,5 +165,25 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	public Icon getClosedIcon()
 	{
 		return renderer.getClosedIcon();
+	}
+
+	/**
+	 * Returns the color if the tree node is selected
+	 * 
+	 * @return the color if the tree node is selected
+	 */
+	protected Color getSelectedLabelForeground()
+	{
+		return Color.blue;
+	}
+
+	/**
+	 * Returns the color if the tree node is not selected
+	 * 
+	 * @return the color if the tree node is not selected
+	 */
+	protected Color getLabelForeground()
+	{
+		return Color.black;
 	}
 }
