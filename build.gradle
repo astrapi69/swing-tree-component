@@ -41,6 +41,8 @@ dependencies {
     implementation("io.github.astrapi69:menu-actions:$menuActionsVersion")
     implementation("com.miglayout:miglayout-swing:$miglayoutSwingVersion")
     implementation("io.github.astrapi69:swing-components:$swingComponentsVersion")
+    implementation("io.github.astrapi69:swing-renderer:$swingRendererVersion")
+    implementation("io.github.astrapi69:component-model:$componentModelVersion")
     implementation("io.github.astrapi69:visitor:$designPatternsVersion")
     implementation("io.github.astrapi69:data-api:$dataApiVersion")
     implementation("io.github.astrapi69:silly-collections:$sillyCollectionsVersion")

@@ -34,6 +34,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import io.github.astrapi69.tree.TreeNode;
 
+@Deprecated
 public class TreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();

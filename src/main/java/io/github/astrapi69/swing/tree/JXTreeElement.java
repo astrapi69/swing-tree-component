@@ -49,6 +49,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Deprecated
 public class JXTreeElement implements Serializable
 {
 	public static final String DEFAULT_CONTENT_KEY = "default_content";

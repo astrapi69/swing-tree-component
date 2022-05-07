@@ -37,6 +37,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Deprecated
 public class CheckableTreeNode extends DefaultMutableTreeNode
 {
 

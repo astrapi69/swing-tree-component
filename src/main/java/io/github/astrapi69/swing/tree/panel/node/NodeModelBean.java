@@ -42,6 +42,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Deprecated
 public class NodeModelBean
 {
 	boolean node;

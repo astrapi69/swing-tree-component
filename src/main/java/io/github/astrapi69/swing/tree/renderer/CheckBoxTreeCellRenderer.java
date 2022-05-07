@@ -43,6 +43,7 @@ import io.github.astrapi69.swing.component.factory.DimensionFactory;
 import io.github.astrapi69.swing.tree.label.CheckBoxTreeLabel;
 import io.github.astrapi69.swing.tree.model.CheckableTreeNode;
 
+@Deprecated
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CheckBoxTreeCellRenderer extends JPanel implements TreeCellRenderer

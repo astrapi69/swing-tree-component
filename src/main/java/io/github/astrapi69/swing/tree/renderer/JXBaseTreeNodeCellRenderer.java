@@ -34,6 +34,7 @@ import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.tree.BaseTreeNode;
 
+@Deprecated
 public class JXBaseTreeNodeCellRenderer extends BaseTreeNodeCellRenderer<JXTreeElement, Long>
 {
 

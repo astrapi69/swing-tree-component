@@ -36,6 +36,7 @@ import org.jdesktop.swingx.JXLabel;
 
 import io.github.astrapi69.tree.BaseTreeNode;
 
+@Deprecated
 public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();

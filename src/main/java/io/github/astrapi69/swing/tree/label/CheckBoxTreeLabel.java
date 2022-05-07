@@ -34,6 +34,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Deprecated
 public class CheckBoxTreeLabel extends JLabel
 {
 	@SuppressWarnings("unused")
