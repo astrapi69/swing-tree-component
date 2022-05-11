@@ -43,13 +43,13 @@ project `build.gradle` if you want to import the core functionality of swing-tre
 define version in file gradle.properties
 
 ```
-swingTreeComponentVersion=1.2
+swingTreeComponentVersion=1.3
 ```
 
 or in build.gradle ext area
 
 ```
-    swingTreeComponentVersion = "1.2"
+    swingTreeComponentVersion = "1.3"
 ```
 
 then add the dependency to the dependencies area
@@ -73,7 +73,7 @@ Than you can add the dependency to your dependencies:
     <properties>
             ...
         <!-- swing-tree-component version -->
-        <swing-tree-component.version>1.2</swing-tree-component.version>
+        <swing-tree-component.version>1.3</swing-tree-component.version>
             ...
     </properties>
             ...
