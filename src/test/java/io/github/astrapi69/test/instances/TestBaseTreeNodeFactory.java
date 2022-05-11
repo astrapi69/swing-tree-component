@@ -27,12 +27,12 @@ package io.github.astrapi69.test.instances;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.tree.JXTreeElement;
 import lombok.NonNull;
 import io.github.astrapi69.data.identifiable.IdGenerator;
 import io.github.astrapi69.id.generate.LongIdGenerator;
 import io.github.astrapi69.swing.tree.BaseTreeNodeFactory;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.test.instance.TestPermissionFactory;
 import io.github.astrapi69.test.object.Permission;
 import io.github.astrapi69.tree.BaseTreeNode;

@@ -36,18 +36,18 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
+import io.github.astrapi69.model.node.NodeModel;
+import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.tree.JXTreeElement;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
-import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
-import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
 import io.github.astrapi69.test.object.Permission;
@@ -140,7 +140,7 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
 			.ifPresent(selectedTreeNode -> {
-				TreeNode<GenericTreeElement<java.util.List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
+				TreeNode<GenericTreeElement<List<Permission>>> parentTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedTreeNode
 					.getUserObject();
 				NodePanel nodePanel = new NodePanel();
 				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
@@ -154,17 +154,17 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 
 				if (option == JOptionPane.OK_OPTION)
 				{
-					NodeModelBean modelObject = nodePanel.getModelObject();
-					boolean node = modelObject.isNode();
+					NodeModel modelObject = nodePanel.getModelObject();
+					boolean leaf = modelObject.isLeaf();
 					String name = modelObject.getName();
 					GenericTreeElement<java.util.List<Permission>> treeElement = GenericTreeElement.<java.util.List<Permission>> builder()
-						.name(name).leaf(!node).build();
+						.name(name).leaf(leaf).build();
 					TreeNode<GenericTreeElement<java.util.List<Permission>>> newTreeNode = TreeNode
 						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-						.parent(parentTreeNode).displayValue(name).leaf(!node).build();
+						.parent(parentTreeNode).displayValue(name).leaf(leaf).build();
 
 					DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(selectedTreeNode,
-						newTreeNode, node, true);
+						newTreeNode, leaf, true);
 					((DefaultTreeModel)tree.getModel()).reload(selectedTreeNode);
 					tree.treeDidChange();
 				}

@@ -36,6 +36,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
+import io.github.astrapi69.model.node.NodeModel;
+import io.github.astrapi69.swing.tree.GenericTreeElement;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
@@ -48,12 +50,10 @@ import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeExtensions;
 import io.github.astrapi69.swing.tree.panel.PermissionPanel;
-import io.github.astrapi69.swing.tree.panel.node.NodeModelBean;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.GenericTreeNodeCellRenderer;
 import io.github.astrapi69.test.object.Permission;
@@ -244,16 +244,16 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 				if (option == JOptionPane.OK_OPTION)
 				{
-					NodeModelBean modelObject = nodePanel.getModelObject();
-					boolean node = modelObject.isNode();
+					NodeModel modelObject = nodePanel.getModelObject();
+					boolean leaf = modelObject.isLeaf();
 					String name = modelObject.getName();
 					GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
-						.<List<Permission>> builder().name(name).leaf(!node).build();
+						.<List<Permission>> builder().name(name).leaf(leaf).build();
 					TreeNode<GenericTreeElement<List<Permission>>> newTreeNode = TreeNode
 						.<GenericTreeElement<List<Permission>>> builder().value(treeElement)
-						.parent(selectedTreeNode).displayValue(name).leaf(!node).build();
+						.parent(selectedTreeNode).displayValue(name).leaf(leaf).build();
 
-					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode, node);
+					DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(newTreeNode, leaf);
 					selectedDefaultMutableTreeNode.add(newChild);
 					((DefaultTreeModel)tree.getModel()).reload(selectedDefaultMutableTreeNode);
 					tree.treeDidChange();
@@ -298,8 +298,8 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
 					.getUserObject();
 				NodePanel nodePanel = new NodePanel(
-					BaseModel.of(NodeModelBean.builder().name(selectedTreeNode.getValue().getName())
-						.node(!selectedTreeNode.getValue().isLeaf()).build()));
+					BaseModel.of(NodeModel.builder().name(selectedTreeNode.getValue().getName())
+						.leaf(selectedTreeNode.getValue().isLeaf()).build()));
 				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
 					JOptionPane.OK_CANCEL_OPTION);
 				JDialog dialog = pane.createDialog(null, "Edit node");
@@ -311,18 +311,18 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 				if (option == JOptionPane.OK_OPTION)
 				{
-					NodeModelBean modelObject = nodePanel.getModelObject();
-					boolean node = modelObject.isNode();
+					NodeModel modelObject = nodePanel.getModelObject();
+					boolean leaf = modelObject.isLeaf();
 					String name = modelObject.getName();
-					selectedTreeNode.setLeaf(!node);
+					selectedTreeNode.setLeaf(leaf);
 					selectedTreeNode.setDisplayValue(name);
 
-					if (!selectedTreeNode.getValue().isLeaf() != node)
+					if (selectedTreeNode.getValue().isLeaf() != leaf)
 					{
 						// set to leaf only if the node has no children
-						if ((node) || 0 == selectedDefaultMutableTreeNode.getChildCount())
+						if ((leaf) || 0 == selectedDefaultMutableTreeNode.getChildCount())
 						{
-							selectedTreeNode.getValue().setLeaf(!node);
+							selectedTreeNode.getValue().setLeaf(leaf);
 						}
 					}
 

@@ -28,6 +28,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 
+import io.github.astrapi69.model.node.NodeModel;
 import lombok.Getter;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
@@ -41,19 +42,19 @@ import io.github.astrapi69.swing.component.JMCheckBox;
 import io.github.astrapi69.swing.component.JMTextField;
 
 @Getter
-public class NodePanel extends BasePanel<NodeModelBean>
+public class NodePanel extends BasePanel<NodeModel>
 {
-	JMCheckBox cbxNode;
+	JMCheckBox cbxLeaf;
 	JMTextField txtName;
 	JLabel lblName;
-	JLabel lblNode;
+	JLabel lblLeaf;
 
 	public NodePanel()
 	{
-		this(BaseModel.of(NodeModelBean.builder().build()));
+		this(BaseModel.of(NodeModel.builder().build()));
 	}
 
-	public NodePanel(final IModel<NodeModelBean> model)
+	public NodePanel(final IModel<NodeModel> model)
 	{
 		super(model);
 	}
@@ -64,13 +65,13 @@ public class NodePanel extends BasePanel<NodeModelBean>
 		super.onInitializeComponents();
 		lblName = new JLabel("Enter name for node:");
 		txtName = new JMTextField();
-		lblNode = new JLabel("Is node:");
-		cbxNode = new JMCheckBox();
+		lblLeaf = new JLabel("Is leaf:");
+		cbxLeaf = new JMCheckBox();
 
-		NodeModelBean modelObject = getModelObject();
+		NodeModel modelObject = getModelObject();
 
 		txtName.setPropertyModel(LambdaModel.of(modelObject::getName, modelObject::setName));
-		cbxNode.setPropertyModel(LambdaModel.of(modelObject::isNode, modelObject::setNode));
+		cbxLeaf.setPropertyModel(LambdaModel.of(modelObject::isLeaf, modelObject::setLeaf));
 
 	}
 
@@ -88,8 +89,8 @@ public class NodePanel extends BasePanel<NodeModelBean>
 
 		add(lblName);
 		add(txtName);
-		add(lblNode);
-		add(cbxNode);
+		add(lblLeaf);
+		add(cbxLeaf);
 	}
 
 	protected void onInitializeMigLayout()
@@ -100,7 +101,7 @@ public class NodePanel extends BasePanel<NodeModelBean>
 
 		add(lblName);
 		add(txtName, new CC().grow().width("120px"));
-		add(lblNode, "grow");
-		add(cbxNode, "grow");
+		add(lblLeaf, "grow");
+		add(cbxLeaf, "grow");
 	}
 }
