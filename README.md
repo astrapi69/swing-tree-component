@@ -15,12 +15,15 @@
 
 This project holds a tree component for swing applications.
 
-> Please support this project by simply putting a Github <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/astrapi69/swing-tree-component" data-icon="octicon-star" aria-label="Star astrapi69/swing-tree-component on GitHub">Star ⭐</a>
+> Please support this project by simply putting a
+> Github <!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/astrapi69/swing-tree-component" data-icon="octicon-star" aria-label="Star astrapi69/swing-tree-component on GitHub">
+> Star ⭐</a>
 >
 > Share this library with friends on Twitter and everywhere else you can
 >
-> If you love this project [![donation](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
+> If you love this
+> project [![donation](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 
 ## Note
 
@@ -28,11 +31,13 @@ No animals were harmed in the making of this library.
 
 ## License
 
-The source code comes under the liberal MIT License, making swing-tree-component great for all types of applications.
+The source code comes under the liberal MIT License, making swing-tree-component great for all types
+of applications.
 
 ## gradle dependency
 
-You can first define the version in the ext section and add than the following gradle dependency to your
+You can first define the version in the ext section and add than the following gradle dependency to
+your
 project `build.gradle` if you want to import the core functionality of swing-tree-component:
 
 define version in file gradle.properties
@@ -59,7 +64,8 @@ Maven dependency is now on sonatype. Check
 out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~swing-tree-component~~~)
 for latest snapshots and releases.
 
-Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of
+Add the following maven dependency to your project `pom.xml` if you want to import the core
+functionality of
 swing-tree-component:
 
 Than you can add the dependency to your dependencies:
@@ -84,7 +90,8 @@ Than you can add the dependency to your dependencies:
 
 # Donations
 
-This project is kept as an open source product and relies on contributions to remain being developed. If you like this
+This project is kept as an open source product and relies on contributions to remain being
+developed. If you like this
 library, please consider a donation
 
 over paypal:
@@ -161,17 +168,22 @@ the [wiki page](https://github.com/lightblueseas/mvn-parent-projects/wiki/Semant
 
 ## Want to Help and improve it? ###
 
-The source code for swing-tree-component are on GitHub. Please feel free to fork and send pull requests!
+The source code for swing-tree-component are on GitHub. Please feel free to fork and send pull
+requests!
 
-Create your own fork of [astrapi69/swing-tree-component/fork](https://github.com/astrapi69/swing-tree-component/fork)
+Create your own fork
+of [astrapi69/swing-tree-component/fork](https://github.com/astrapi69/swing-tree-component/fork)
 
-To share your changes, [submit a pull request](https://github.com/astrapi69/swing-tree-component/pull/new/develop).
+To share your
+changes, [submit a pull request](https://github.com/astrapi69/swing-tree-component/pull/new/develop)
+.
 
 Don't forget to add new units tests on your changes.
 
 ## Contacting the Developers
 
-Do not hesitate to contact the swing-tree-component developers with your questions, concerns, comments, bug reports, or
+Do not hesitate to contact the swing-tree-component developers with your questions, concerns,
+comments, bug reports, or
 feature requests.
 
 - Feature requests, questions and bug reports can be reported at

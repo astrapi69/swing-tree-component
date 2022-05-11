@@ -38,12 +38,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
-import io.github.astrapi69.model.node.NodeModel;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
+import io.github.astrapi69.model.node.NodeModel;
 import io.github.astrapi69.swing.dialog.DialogExtensions;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
@@ -53,6 +52,7 @@ import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
 import io.github.astrapi69.swing.tree.BaseTreeNodeFactory;
+import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeExtensions;
 import io.github.astrapi69.swing.tree.panel.PermissionPanel;
