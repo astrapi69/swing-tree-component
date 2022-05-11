@@ -4,7 +4,15 @@
 Version 1.3-SNAPSHOT
 -------------
 
+ADDED:
 
+- new dependency io.github.astrapi69:swing-renderer in new minor version 1.1
+- new dependency io.github.astrapi69:component-model in new major version 1
+
+CHANGED:
+
+- removed all related classes that was moved to its own repository
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.5.2
 
 Version 1.2
 -------------
