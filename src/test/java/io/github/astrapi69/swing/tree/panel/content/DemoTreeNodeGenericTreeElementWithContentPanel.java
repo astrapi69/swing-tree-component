@@ -36,13 +36,13 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
+import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.model.node.NodeModel;
 import io.github.astrapi69.swing.dialog.DialogExtensions;
-import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.listener.RequestFocusListener;
 import io.github.astrapi69.swing.menu.MenuFactory;
 import io.github.astrapi69.swing.table.GenericJXTable;
@@ -232,19 +232,15 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 			.ifPresent(selectedDefaultMutableTreeNode -> {
 				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
 					.getUserObject();
-				NodePanel nodePanel = new NodePanel();
-				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
-					JOptionPane.OK_CANCEL_OPTION);
-				JDialog dialog = pane.createDialog(null, "New node");
-				dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
-				dialog.pack();
-				dialog.setLocationRelativeTo(null);
-				dialog.setVisible(true);
-				int option = JOptionPaneExtensions.getSelectedOption(pane);
+				NodePanel panel = new NodePanel();
+
+				int option = JOptionPaneExtensions.getSelectedOption(panel,
+					JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null, "New node",
+					panel.getTxtName());
 
 				if (option == JOptionPane.OK_OPTION)
 				{
-					NodeModel modelObject = nodePanel.getModelObject();
+					NodeModel modelObject = panel.getModelObject();
 					boolean leaf = modelObject.isLeaf();
 					String name = modelObject.getName();
 					GenericTreeElement<List<Permission>> treeElement = GenericTreeElement
@@ -297,21 +293,17 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 				TreeNode<GenericTreeElement<List<Permission>>> selectedTreeNode = (TreeNode<GenericTreeElement<List<Permission>>>)selectedDefaultMutableTreeNode
 					.getUserObject();
-				NodePanel nodePanel = new NodePanel(
+				NodePanel panel = new NodePanel(
 					BaseModel.of(NodeModel.builder().name(selectedTreeNode.getValue().getName())
 						.leaf(selectedTreeNode.getValue().isLeaf()).build()));
-				JOptionPane pane = new JOptionPane(nodePanel, JOptionPane.INFORMATION_MESSAGE,
-					JOptionPane.OK_CANCEL_OPTION);
-				JDialog dialog = pane.createDialog(null, "Edit node");
-				dialog.addWindowFocusListener(new RequestFocusListener(nodePanel.getTxtName()));
-				dialog.pack();
-				dialog.setLocationRelativeTo(null);
-				dialog.setVisible(true);
-				int option = JOptionPaneExtensions.getSelectedOption(pane);
+
+				int option = JOptionPaneExtensions.getSelectedOption(panel,
+					JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null, "New node",
+					panel.getTxtName());
 
 				if (option == JOptionPane.OK_OPTION)
 				{
-					NodeModel modelObject = nodePanel.getModelObject();
+					NodeModel modelObject = panel.getModelObject();
 					boolean leaf = modelObject.isLeaf();
 					String name = modelObject.getName();
 					selectedTreeNode.setLeaf(leaf);
@@ -393,14 +385,9 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	{
 		getTblTreeEntryTable().getSingleSelectedRowData().ifPresent(tableEntry -> {
 			PermissionPanel panel = new PermissionPanel(BaseModel.of(tableEntry));
-			JOptionPane pane = new JOptionPane(panel, JOptionPane.INFORMATION_MESSAGE,
-				JOptionPane.OK_CANCEL_OPTION);
-			JDialog dialog = pane.createDialog(null, "Edit Permission");
-			dialog.addWindowFocusListener(new RequestFocusListener(panel.getTxtName()));
-			dialog.pack();
-			dialog.setLocationRelativeTo(null);
-			dialog.setVisible(true);
-			int option = JOptionPaneExtensions.getSelectedOption(pane);
+			int option = JOptionPaneExtensions.getSelectedOption(panel,
+				JOptionPane.INFORMATION_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null, "New node",
+				panel.getTxtName());
 
 			if (option == JOptionPane.OK_OPTION)
 			{
@@ -432,22 +419,15 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 
 	protected void onAddTableEntry()
 	{
-		PermissionPanel permissionPanel = new PermissionPanel();
-		JOptionPane pane = new JOptionPane(permissionPanel, JOptionPane.INFORMATION_MESSAGE,
-			JOptionPane.OK_CANCEL_OPTION);
-		JDialog dialog = pane.createDialog(null, "New permission");
-		dialog.addWindowFocusListener(new RequestFocusListener(permissionPanel.getTxtName()));
-		dialog.pack();
-		dialog.setLocationRelativeTo(null);
-		dialog.setVisible(true);
-		int option = JOptionPaneExtensions.getSelectedOption(pane);
+		PermissionPanel panel = new PermissionPanel();
+		int option = JOptionPaneExtensions.getSelectedOption(panel, JOptionPane.INFORMATION_MESSAGE,
+			JOptionPane.OK_CANCEL_OPTION, null, "New node", panel.getTxtName());
 
 		if (option == JOptionPane.OK_OPTION)
 		{
 			Permission permission = Permission.builder()
-				.description(permissionPanel.getTxtDescription().getText())
-				.name(permissionPanel.getTxtName().getText())
-				.shortcut(permissionPanel.getTxtShortcut().getText()).build();
+				.description(panel.getTxtDescription().getText()).name(panel.getTxtName().getText())
+				.shortcut(panel.getTxtShortcut().getText()).build();
 			getTblTreeEntryTable().getGenericTableModel().add(permission);
 			getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
 		}
