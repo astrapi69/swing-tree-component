@@ -1,9 +1,23 @@
 ## Change log
 ----------------------
 
-Version 1.4-SNAPSHOT
+Version 2-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of JDK to newer version 11
+- update of gradle to new version 7.5.1
+- update of gradle-plugin dependency 'io.freefair.gradle:lombok-plugin' to new version 6.5.1
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.10.0
+- update of dependency visitor version to new major version 6
+- update of dependency swing-components to new major version 7
+- update of dependency silly-collection to new major version 20
+- update of test dependency file-worker to new minor version 11.1
+- update of test dependency silly-io to new minor version 2.1
+- update of test dependency test-object to new minor version 7.1
+- update of test dependency throwable to new minor version 2.3
+- update of test dependency junit-jupiter to new minor version 5.9.0
 
 Version 1.3
 -------------

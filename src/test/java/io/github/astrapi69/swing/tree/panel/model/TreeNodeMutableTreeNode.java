@@ -34,7 +34,7 @@ import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.MutableTreeNode;
 
-import io.github.astrapi69.collections.CollectionExtensions;
+import io.github.astrapi69.collection.CollectionExtensions;
 import io.github.astrapi69.tree.TreeNode;
 import io.github.astrapi69.tree.api.ITreeNode;
 

@@ -37,6 +37,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
+import io.github.astrapi69.collection.list.ListFactory;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.model.BaseModel;
@@ -181,7 +182,10 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 		List<Permission> permissions = parentTreeNode.getDefaultContent();
 		// 2. Create a generic table model for the class Permission.
 		getTblTreeEntryTable().getGenericTableModel().removeAll();
-		getTblTreeEntryTable().getGenericTableModel().addList(permissions);
+		if (permissions != null)
+		{
+			getTblTreeEntryTable().getGenericTableModel().addList(permissions);
+		}
 		return getTblTreeEntryTable().getGenericTableModel();
 	}
 
@@ -454,7 +458,15 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 				Object userObject = selectedTreeNode.getUserObject();
 				selectedBaseTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)userObject;
 			}
-			selectedBaseTreeNode.getValue().getDefaultContent().add(permission);
+			if (selectedBaseTreeNode.getValue().getDefaultContent() != null)
+			{
+				selectedBaseTreeNode.getValue().getDefaultContent().add(permission);
+			}
+			else
+			{
+				selectedBaseTreeNode.getValue()
+					.setDefaultContent(ListFactory.newArrayList(permission));
+			}
 			getTblTreeEntryTable().getGenericTableModel().add(permission);
 			getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
 		}
