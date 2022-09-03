@@ -9,9 +9,11 @@ CHANGED:
 - update of JDK to newer version 11
 - update of gradle to new version 7.5.1
 - update of gradle-plugin dependency 'io.freefair.gradle:lombok-plugin' to new version 6.5.1
+- update of gradle-plugin dependency 'org.ajoberstar.grgit:grgit-gradle' to new version 5.0.0
 - update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.10.0
 - update of dependency visitor version to new major version 6
 - update of dependency swing-components to new major version 7
+- update of dependency miglayout-swing to new major version 11.0
 - update of dependency silly-collection to new major version 20
 - update of test dependency file-worker to new minor version 11.1
 - update of test dependency silly-io to new minor version 2.1
