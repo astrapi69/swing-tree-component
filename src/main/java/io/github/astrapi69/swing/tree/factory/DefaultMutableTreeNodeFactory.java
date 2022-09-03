@@ -60,6 +60,8 @@ public final class DefaultMutableTreeNodeFactory
 	 *            the parent {@link DefaultMutableTreeNode} object
 	 * @param userObject
 	 *            the user object
+	 * @param addToParent
+	 *            the flag that indicates if it should add to the parent
 	 * @param <T>
 	 *            the generic type of the given user object
 	 * @return the new {@link DefaultMutableTreeNode} object
@@ -77,6 +79,10 @@ public final class DefaultMutableTreeNodeFactory
 	 *            the parent {@link DefaultMutableTreeNode} object
 	 * @param userObject
 	 *            the user object
+	 * @param allowsChildren
+	 *            the flag if children is allowed
+	 * @param addToParent
+	 *            the flag that indicates if it should add to the parent
 	 * @param <T>
 	 *            the generic type of the given user object
 	 * @return the new {@link DefaultMutableTreeNode} object

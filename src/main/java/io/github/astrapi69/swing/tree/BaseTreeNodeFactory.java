@@ -42,10 +42,12 @@ public class BaseTreeNodeFactory
 	 * Creates a new {@link DefaultMutableTreeNode} object from the given {@link BaseTreeNode}
 	 * object
 	 *
-	 * @param treeNode
-	 *            the {@link BaseTreeNode} object
 	 * @param <T>
 	 *            the generic type of the given {@link BaseTreeNode} object
+	 * @param <K>
+	 *            the generic type of the id of the given {@link BaseTreeNode} object
+	 * @param treeNode
+	 *            the {@link BaseTreeNode} object
 	 * @return the new {@link DefaultMutableTreeNode} object generated from the given
 	 *         {@link BaseTreeNode} object
 	 */
@@ -64,12 +66,14 @@ public class BaseTreeNodeFactory
 	 * Traverses through the given {@link BaseTreeNode} object and return the root
 	 * {@link DefaultMutableTreeNode} object
 	 *
+	 * @param <T>
+	 *            the generic type of the given {@link BaseTreeNode} object
+	 * @param <K>
+	 *            the generic type of the id of the given {@link BaseTreeNode} object
 	 * @param rootDefaultMutableTreeNode
 	 *            the {@link DefaultMutableTreeNode} object
 	 * @param treeNode
 	 *            the {@link BaseTreeNode} object
-	 * @param <T>
-	 *            the generic type of the given {@link BaseTreeNode} object
 	 * @return the root {@link DefaultMutableTreeNode} object
 	 */
 	public static <T, K> DefaultMutableTreeNode traverseAndAdd(
@@ -90,14 +94,19 @@ public class BaseTreeNodeFactory
 		return parent;
 	}
 
+
 	/**
 	 * Factory method that creates a new {@link BaseTreeNode} object from the given
 	 * {@link TreeElement} object
 	 *
+	 * @param <K>
+	 *            the generic type of the id of the given {@link BaseTreeNode} object
 	 * @param treeElement
 	 *            the {@link TreeElement} object
 	 * @param parentTreeNode
 	 *            the parent object
+	 * @param idGenerator
+	 *            the id generator
 	 * @return the new {@link BaseTreeNode} object
 	 */
 	public static <K> BaseTreeNode<TreeElement, K> initializeTreeNodeWithTreeElement(
@@ -115,10 +124,16 @@ public class BaseTreeNodeFactory
 	 * Factory method that creates a new {@link BaseTreeNode} object from the given
 	 * {@link TreeElement} object
 	 *
+	 * @param <T>
+	 *            the generic type of the given {@link BaseTreeNode} object
+	 * @param <K>
+	 *            the generic type of the id of the given {@link BaseTreeNode} object
 	 * @param treeElement
 	 *            the {@link TreeElement} object
 	 * @param parentTreeNode
 	 *            the parent object
+	 * @param idGenerator
+	 *            the id generator
 	 * @return the new {@link BaseTreeNode} object
 	 */
 	public static <T, K> BaseTreeNode<T, K> initializeBaseTreeNodeWithTreeElement(
@@ -138,10 +153,14 @@ public class BaseTreeNodeFactory
 	 * Factory method that creates a new {@link BaseTreeNode} object from the given
 	 * {@link TreeElement} object
 	 *
+	 * @param <K>
+	 *            the generic type of the id of the given {@link BaseTreeNode} object
 	 * @param treeElement
 	 *            the {@link TreeElement} object
 	 * @param parentTreeNode
 	 *            the parent object
+	 * @param idGenerator
+	 *            the id generator
 	 * @return the new {@link BaseTreeNode} object
 	 */
 	public static <K> BaseTreeNode<JXTreeElement, K> initializeTreeNodeWithTreeElement(
@@ -159,10 +178,16 @@ public class BaseTreeNodeFactory
 	 * Factory method that creates a new {@link BaseTreeNode} object from the given
 	 * {@link TreeElement} object
 	 *
+	 * @param <T>
+	 *            the generic type of the given {@link BaseTreeNode} object
+	 * @param <K>
+	 *            the generic type of the id of the given {@link BaseTreeNode} object
 	 * @param treeElement
 	 *            the {@link TreeElement} object
 	 * @param parentTreeNode
 	 *            the parent object
+	 * @param idGenerator
+	 *            the id generator
 	 * @return the new {@link BaseTreeNode} object
 	 */
 	public static <T, K> BaseTreeNode<GenericTreeElement<T>, K> initializeTreeNodeWithTreeElement(

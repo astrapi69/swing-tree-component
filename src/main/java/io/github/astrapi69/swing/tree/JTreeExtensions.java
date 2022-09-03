@@ -37,6 +37,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
+import io.github.astrapi69.tree.BaseTreeNode;
 import lombok.NonNull;
 import io.github.astrapi69.swing.robot.MouseExtensions;
 
@@ -49,6 +50,8 @@ public class JTreeExtensions
 	/**
 	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
 	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param mouseEvent
 	 *            the mouse event
 	 * @param tree
@@ -65,6 +68,8 @@ public class JTreeExtensions
 	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object from the given
 	 * {@link Point} object
 	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param tree
 	 *            the tree
 	 * @param point
@@ -80,6 +85,8 @@ public class JTreeExtensions
 	/**
 	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
 	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param tree
 	 *            the tree
 	 * @param x
@@ -153,6 +160,8 @@ public class JTreeExtensions
 	/**
 	 * Gets the selected user object from the given {@link JTree} object
 	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param tree
 	 *            the tree
 	 */
@@ -167,8 +176,11 @@ public class JTreeExtensions
 	/**
 	 * Gets the selected user object from the given {@link JTree} object
 	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param tree
 	 *            the tree
+	 * @return the selected user object from the given {@link JTree} object
 	 */
 	public static <T> Optional<T> getSelectedUserObject(final @NonNull JTree tree)
 	{
@@ -195,8 +207,11 @@ public class JTreeExtensions
 	/**
 	 * Gets the selected tree node as {@link DefaultMutableTreeNode} object
 	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param tree
 	 *            the tree
+	 * @return the selected user object from the given {@link JTree} object
 	 */
 	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedTreeNode(
 		final @NonNull JTree tree)

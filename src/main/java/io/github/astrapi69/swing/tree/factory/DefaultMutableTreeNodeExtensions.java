@@ -37,12 +37,12 @@ public class DefaultMutableTreeNodeExtensions
 	 * Makes a exact copy of the given {@link DefaultMutableTreeNode} object with the copy of the
 	 * given user object and all descendants {@link DefaultMutableTreeNode} objects
 	 *
+	 * @param <T>
+	 *            the generic type of the given user object
 	 * @param selectedDefaultMutableTreeNode
 	 *            the {@link DefaultMutableTreeNode} object to copy
 	 * @param copyOfUserObject
 	 *            a copy of the user object
-	 * @param <T>
-	 *            the generic type of the given user object
 	 */
 	public static <T> void copyOf(DefaultMutableTreeNode selectedDefaultMutableTreeNode,
 		T copyOfUserObject)
@@ -63,6 +63,8 @@ public class DefaultMutableTreeNodeExtensions
 	 * Copies the given source {@link DefaultMutableTreeNode} object to the given target
 	 * {@link DefaultMutableTreeNode} object
 	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param source
 	 *            the source {@link DefaultMutableTreeNode} object
 	 * @param target
