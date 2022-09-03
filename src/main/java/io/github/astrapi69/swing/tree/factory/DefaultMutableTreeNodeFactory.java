@@ -26,6 +26,10 @@ package io.github.astrapi69.swing.tree.factory;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+/**
+ * The factory class {@link DefaultMutableTreeNodeFactory} holds methods for creating
+ * {@link DefaultMutableTreeNode} objects.
+ */
 public final class DefaultMutableTreeNodeFactory
 {
 	private DefaultMutableTreeNodeFactory()

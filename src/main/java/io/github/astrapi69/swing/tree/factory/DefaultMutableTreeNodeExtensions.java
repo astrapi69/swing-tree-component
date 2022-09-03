@@ -26,6 +26,10 @@ package io.github.astrapi69.swing.tree.factory;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+/**
+ * The class {@link DefaultMutableTreeNodeExtensions} provides methods for copy of
+ * {@link DefaultMutableTreeNode} objects
+ */
 public class DefaultMutableTreeNodeExtensions
 {
 
