@@ -6,6 +6,7 @@ license {
     header rootProject.file("src/main/resources/LICENSE.txt")
     excludes(["**/README",
               "**/README.md",
+              "**/package-info.java",
               "**/LICENSE",
               "**/NOTICE",
               "**/*.xml",
