@@ -38,14 +38,14 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
-import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import org.jdesktop.swingx.JXTree;
 
+import io.github.astrapi69.collection.list.ListFactory;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.model.node.NodeModel;
 import io.github.astrapi69.swing.dialog.DialogExtensions;
-import io.github.astrapi69.swing.listener.RequestFocusListener;
+import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.menu.MenuFactory;
 import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
@@ -457,7 +457,12 @@ public class DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel
 				Object userObject = selectedTreeNode.getUserObject();
 				selectedBaseTreeNode = (BaseTreeNode<GenericTreeElement<List<Permission>>, Long>)userObject;
 			}
-			selectedBaseTreeNode.getValue().getDefaultContent().add(permission);
+			GenericTreeElement<List<Permission>> value = selectedBaseTreeNode.getValue();
+			if (value.getDefaultContent() == null)
+			{
+				value.setDefaultContent(ListFactory.newArrayList());
+			}
+			value.getDefaultContent().add(permission);
 			getTblTreeEntryTable().getGenericTableModel().add(permission);
 			getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
 		}
