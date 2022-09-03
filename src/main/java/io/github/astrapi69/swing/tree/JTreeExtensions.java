@@ -162,8 +162,11 @@ public class JTreeExtensions
 	 *
 	 * @param <T>
 	 *            the generic type
+	 * @param mouseEvent
+	 *            the mouse event
 	 * @param tree
 	 *            the tree
+	 * @return the selected user object from the given {@link JTree} object
 	 */
 	public static <T> Optional<T> getSelectedUserObject(final @NonNull MouseEvent mouseEvent,
 		final @NonNull JTree tree)
