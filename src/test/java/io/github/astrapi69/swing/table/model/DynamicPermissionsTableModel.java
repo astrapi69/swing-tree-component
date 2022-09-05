@@ -47,11 +47,11 @@ public class DynamicPermissionsTableModel extends DynamicTableModel<Permission>
 		switch (col)
 		{
 			case 0 :
-				return permission.getName();
+				return permission.getDescription();
 			case 1 :
-				return permission.getDescription();
-			case 3 :
-				return permission.getDescription();
+				return permission.getName();
+			case 2 :
+				return permission.getShortcut();
 			default :
 				return null;
 		}

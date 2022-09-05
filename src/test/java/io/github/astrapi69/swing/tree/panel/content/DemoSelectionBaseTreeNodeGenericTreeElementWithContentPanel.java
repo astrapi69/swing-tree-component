@@ -399,6 +399,21 @@ public class DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel
 
 	}
 
+	protected void onDeleteTableEntry()
+	{
+		int option = DialogExtensions.showConfirmDialog(null, "Confirm deletion",
+			"<div width='450'>Are you sure<br></div>"
+				+ "<div>The delete action is not recoverable</div>",
+			JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null);
+		if (option == JOptionPane.OK_OPTION)
+		{
+			getTblTreeEntryTable().getAllSelectedRowData().forEach(tableEntry -> {
+				getTblTreeEntryTable().getGenericTableModel().remove(tableEntry);
+			});
+			getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
+		}
+	}
+
 	protected void onEditTableEntry()
 	{
 		getTblTreeEntryTable().getSingleSelectedRowData().ifPresent(tableEntry -> {
@@ -418,21 +433,6 @@ public class DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel
 				getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
 			}
 		});
-	}
-
-	protected void onDeleteTableEntry()
-	{
-		int option = DialogExtensions.showConfirmDialog(null, "Confirm deletion",
-			"<div width='450'>Are you sure<br></div>"
-				+ "<div>The delete action is not recoverable</div>",
-			JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null);
-		if (option == JOptionPane.OK_OPTION)
-		{
-			getTblTreeEntryTable().getAllSelectedRowData().forEach(tableEntry -> {
-				getTblTreeEntryTable().getGenericTableModel().remove(tableEntry);
-			});
-			getTblTreeEntryTable().getGenericTableModel().fireTableDataChanged();
-		}
 	}
 
 	protected void onAddTableEntry()
