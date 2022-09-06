@@ -29,11 +29,9 @@ import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.tree.BaseTreeNode;
 import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.element.TreeElement;
 
 /**
- * The abstract class {@link BaseTreeNodeJXTreeElementPanel} a given {@link TreeNode} parameterized
- * with {@link TreeElement}
+ * The abstract class {@link BaseTreeNodeJXTreeElementPanel} a given parameterized {@link TreeNode}
  */
 public abstract class BaseTreeNodeJXTreeElementPanel
 	extends

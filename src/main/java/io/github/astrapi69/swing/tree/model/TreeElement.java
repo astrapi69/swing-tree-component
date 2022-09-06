@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2021 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,43 +22,42 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.panel.content;
+package io.github.astrapi69.swing.tree.model;
 
-import io.github.astrapi69.model.BaseModel;
-import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.tree.TreeNode;
+import java.io.Serializable;
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
 
 /**
- * The abstract class {@link TreeNodeGenericTreeElementWithContentPanel} a given parameterized
- * {@link TreeNode}
+ * The class {@link TreeElement} represents as the name already presume a tree element
  */
-public abstract class TreeNodeGenericTreeElementWithContentPanel<T, C>
-	extends
-		GenericTreeNodeWithContentPanel<GenericTreeElement<T>, C>
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder(toBuilder = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class TreeElement implements Serializable
 {
-
-	/** The Constant serialVersionUID. */
+	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new {@link TreeNodeGenericTreeElementWithContentPanel}
-	 */
-	public TreeNodeGenericTreeElementWithContentPanel()
-	{
-		this(BaseModel.of(TreeNode.<GenericTreeElement<T>> builder().build()));
-	}
+	/** The name of this tree element. */
+	String name;
 
-	/**
-	 * Instantiates a new t{@link TreeNodeGenericTreeElementWithContentPanel}
-	 *
-	 * @param model
-	 *            the model
-	 */
-	public TreeNodeGenericTreeElementWithContentPanel(
-		final IModel<TreeNode<GenericTreeElement<T>>> model)
-	{
-		super(model);
-	}
+	/** The flag that indicates if this tree element is a node. */
+	boolean node;
 
+	/** The parent of this tree element. */
+	TreeElement parent;
 }

@@ -4,7 +4,9 @@
 Version 2.1-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update of dependency gen-tree to new major version 7
 
 Version 2
 -------------

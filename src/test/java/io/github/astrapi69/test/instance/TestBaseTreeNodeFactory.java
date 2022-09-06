@@ -36,7 +36,7 @@ import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.test.instance.TestPermissionFactory;
 import io.github.astrapi69.test.object.Permission;
 import io.github.astrapi69.tree.BaseTreeNode;
-import io.github.astrapi69.tree.element.TreeElement;
+import io.github.astrapi69.swing.tree.model.TreeElement;
 
 public class TestBaseTreeNodeFactory
 {

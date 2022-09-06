@@ -54,7 +54,7 @@ import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.swing.tree.renderer.TreeNodeCellRenderer;
 import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.element.TreeElement;
+import io.github.astrapi69.swing.tree.model.TreeElement;
 
 public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 {

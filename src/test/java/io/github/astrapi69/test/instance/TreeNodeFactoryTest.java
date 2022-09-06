@@ -33,7 +33,7 @@ import org.junit.jupiter.api.Test;
 
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.element.TreeElement;
+import io.github.astrapi69.swing.tree.model.TreeElement;
 
 
 public class TreeNodeFactoryTest
