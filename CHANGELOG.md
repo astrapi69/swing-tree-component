@@ -6,7 +6,15 @@ Version 2.1-SNAPSHOT
 
 CHANGED:
 
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.11.0
+- update of dependency swing-base-components to new minor version 2.1
 - update of dependency gen-tree to new major version 7
+- update of dependency model-data version to new major version 2
+- update of dependency menu-actions version to new major version 2
+- update of dependency swing-components to new minor version 7.2
+- update of dependency icon-img-extensions to new major version 2
+- update of test dependency file-worker to new minor version 11.3
+- update of test dependency junit-jupiter to new minor version 5.9.1
 
 Version 2
 -------------
