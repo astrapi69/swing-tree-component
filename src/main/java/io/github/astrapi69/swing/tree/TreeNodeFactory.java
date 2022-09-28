@@ -139,6 +139,9 @@ public class TreeNodeFactory
 	/**
 	 * Factory method that creates a new {@link TreeNode} object from the given {@link TreeElement}
 	 * object
+	 * 
+	 * @param <T>
+	 *            the generic type of the given {@link GenericTreeElement} object
 	 *
 	 * @param treeElement
 	 *            the {@link TreeElement} object
