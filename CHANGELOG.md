@@ -1,13 +1,15 @@
 ## Change log
 ----------------------
 
-Version 2.3-SNAPSHOT
+Version 2.3
 -------------
-
 
 CHANGED:
 
 - update of dependency menu-action version to new minor version 2.6
+- update of dependency swing-components to new minor version 7.3
+- update of dependency swing-base-components to new minor version 2.3
+- update of dependency silly-collection to new minor version 20.3
 
 Version 2.2
 -------------
