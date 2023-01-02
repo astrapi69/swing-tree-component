@@ -38,6 +38,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
+import io.github.astrapi69.swing.menu.factory.JMenuItemFactory;
+import io.github.astrapi69.swing.menu.factory.JPopupMenuFactory;
 import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.collection.list.ListFactory;
@@ -46,7 +48,6 @@ import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.model.node.NodeModel;
 import io.github.astrapi69.swing.dialog.DialogExtensions;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
-import io.github.astrapi69.swing.menu.MenuFactory;
 import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
@@ -214,33 +215,33 @@ public class DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel
 		Optional<BaseTreeNode<GenericTreeElement<List<Permission>>, Long>> optionalSelectedUserObject = JTreeExtensions
 			.getSelectedUserObject(mouseEvent, tree);
 		optionalSelectedUserObject.ifPresent(selectedTreeNode -> {
-			JPopupMenu popup = MenuFactory.newJPopupMenu();
+			JPopupMenu popup = JPopupMenuFactory.newJPopupMenu();
 
 			if (!selectedTreeNode.isLeaf())
 			{
-				popup.add(MenuFactory.newJMenuItem("add node...",
+				popup.add(JMenuItemFactory.newJMenuItem("add node...",
 					actionEvent -> this.onAddNewChildTreeNode(mouseEvent)));
 			}
 
 			if (!selectedTreeNode.isRoot())
 			{
-				popup.add(MenuFactory.newJMenuItem("delete",
+				popup.add(JMenuItemFactory.newJMenuItem("delete",
 					actionEvent -> this.onDeleteSelectedTreeNode(mouseEvent)));
 			}
 
-			popup.add(MenuFactory.newJMenuItem("Edit node...",
+			popup.add(JMenuItemFactory.newJMenuItem("Edit node...",
 				actionEvent -> this.onEditSelectedTreeNode(mouseEvent)));
 
 			if (!selectedTreeNode.isRoot())
 			{
-				popup.add(MenuFactory.newJMenuItem("Copy node",
+				popup.add(JMenuItemFactory.newJMenuItem("Copy node",
 					actionEvent -> this.onCopySelectedTreeNode(mouseEvent)));
 			}
 
-			popup.add(MenuFactory.newJMenuItem("Collapse node",
+			popup.add(JMenuItemFactory.newJMenuItem("Collapse node",
 				actionEvent -> this.onCollapseSelectedTreeNode(mouseEvent)));
 
-			popup.add(MenuFactory.newJMenuItem("Expand node",
+			popup.add(JMenuItemFactory.newJMenuItem("Expand node",
 				actionEvent -> this.onExpandSelectedTreeNode(mouseEvent)));
 
 			popup.show(tree, x, y);
@@ -381,17 +382,18 @@ public class DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel
 
 		List<Permission> allSelectedRowData = getTblTreeEntryTable().getAllSelectedRowData();
 
-		JPopupMenu popup = MenuFactory.newJPopupMenu();
+		JPopupMenu popup = JPopupMenuFactory.newJPopupMenu();
 
-		popup.add(
-			MenuFactory.newJMenuItem("add permission...", actionEvent -> this.onAddTableEntry()));
+		popup.add(JMenuItemFactory.newJMenuItem("add permission...",
+			actionEvent -> this.onAddTableEntry()));
 
-		JMenuItem menuItem = MenuFactory.newJMenuItem("delete",
+		JMenuItem menuItem = JMenuItemFactory.newJMenuItem("delete",
 			actionEvent -> this.onDeleteTableEntry());
 		menuItem.setEnabled(!allSelectedRowData.isEmpty());
 		popup.add(menuItem);
 
-		JMenuItem edit = MenuFactory.newJMenuItem("edit", actionEvent -> this.onEditTableEntry());
+		JMenuItem edit = JMenuItemFactory.newJMenuItem("edit",
+			actionEvent -> this.onEditTableEntry());
 		edit.setEnabled(allSelectedRowData.size() == 1);
 		popup.add(edit);
 
