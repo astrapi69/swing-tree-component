@@ -4,7 +4,9 @@
 Version 2.4-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update of dependency swing-renderer version to new minor version 1.2
 
 Version 2.3
 -------------
