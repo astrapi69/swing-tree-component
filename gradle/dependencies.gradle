@@ -11,7 +11,7 @@ dependencies {
     implementation("io.github.astrapi69:gen-tree:$genTreeVersion")
     implementation("io.github.astrapi69:icon-img-extensions:$iconImgExtensionsVersion")
     implementation("io.github.astrapi69:swing-table-components:$swingTableComponentsVersion")
-    implementation("io.github.astrapi69:menu-actions:$menuActionsVersion")
+    implementation("io.github.astrapi69:menu-action:$menuActionVersion")
     implementation("io.github.astrapi69:swing-components:$swingComponentsVersion")
     implementation("io.github.astrapi69:swing-renderer:$swingRendererVersion")
     implementation("io.github.astrapi69:component-model:$componentModelVersion")

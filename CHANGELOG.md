@@ -5,6 +5,9 @@ Version 2.3-SNAPSHOT
 -------------
 
 
+CHANGED:
+
+- update of dependency menu-action version to new minor version 2.6
 
 Version 2.2
 -------------
@@ -24,7 +27,7 @@ CHANGED:
 - update of dependency data-api to new major version 4
 - update of dependency gen-tree to new minor version 7.4
 - update of dependency model-data version to new minor version 2.1
-- update of dependency menu-action version to new minor version 2.4
+- update of dependency menu-actions version to new minor version 2.4
 - update of dependency silly-collection to new minor version 20.2
 - update of test dependency file-worker to new minor version 11.6
 
