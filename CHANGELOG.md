@@ -10,7 +10,7 @@ ADDED:
 
 CHANGED:
 
-- update of gradle to new version 8.0-rc-1
+- update of gradle to new version 7.6
 - update of gradle-plugin dependency 'io.freefair.gradle:lombok-plugin' to new version 6.6.1
 - update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.12.1
 - update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.44.0
