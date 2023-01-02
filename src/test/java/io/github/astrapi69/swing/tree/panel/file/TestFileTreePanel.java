@@ -40,6 +40,7 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
+import io.github.astrapi69.file.create.DirectoryFactory;
 import io.github.astrapi69.file.create.FileCreationState;
 import io.github.astrapi69.file.create.FileFactory;
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
@@ -166,7 +167,7 @@ public class TestFileTreePanel extends JXTreePanel<File>
 				FileCreationState fileCreationState;
 				if (!checkBox.isSelected())
 				{
-					fileCreationState = FileFactory.newDirectory(file);
+					fileCreationState = DirectoryFactory.newDirectory(file);
 				}
 				else
 				{
