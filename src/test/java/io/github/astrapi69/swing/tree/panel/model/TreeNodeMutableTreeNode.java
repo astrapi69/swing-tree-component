@@ -35,8 +35,8 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.tree.MutableTreeNode;
 
 import io.github.astrapi69.collection.CollectionExtensions;
-import io.github.astrapi69.tree.TreeNode;
-import io.github.astrapi69.tree.api.ITreeNode;
+import io.github.astrapi69.gen.tree.TreeNode;
+import io.github.astrapi69.gen.tree.api.ITreeNode;
 
 public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, Serializable
 {

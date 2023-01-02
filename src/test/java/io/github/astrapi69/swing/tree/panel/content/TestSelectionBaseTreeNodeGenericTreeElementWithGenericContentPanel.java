@@ -33,7 +33,7 @@ import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.panel.JXTreePanel;
 import io.github.astrapi69.test.instance.TestBaseTreeNodeFactory;
 import io.github.astrapi69.test.object.Permission;
-import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**

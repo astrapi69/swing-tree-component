@@ -4,6 +4,27 @@
 Version 2.2-SNAPSHOT
 -------------
 
+ADDED:
+
+- new dependency tree-api in new minor version 1.2
+
+CHANGED:
+
+- update of gradle to new version 8.0-rc-1
+- update of gradle-plugin dependency 'io.freefair.gradle:lombok-plugin' to new version 6.6.1
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.12.1
+- update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.44.0
+- update of dependency swing-base-components to new minor version 2.2
+- update of dependency swing-table-components to new major version 2
+- update of dependency data-api to new major version 4
+- update of dependency gen-tree to new minor version 7.4
+- update of dependency model-data version to new minor version 2.1
+- update of dependency menu-action version to new minor version 2.4
+- update of dependency silly-collection to new minor version 20.2
+- update of test dependency file-worker to new minor version 11.6
+
+
+
 Version 2.1
 -------------
 

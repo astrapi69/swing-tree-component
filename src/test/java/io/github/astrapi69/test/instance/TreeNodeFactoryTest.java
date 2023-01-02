@@ -32,7 +32,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import org.junit.jupiter.api.Test;
 
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
-import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.swing.tree.model.TreeElement;
 
 

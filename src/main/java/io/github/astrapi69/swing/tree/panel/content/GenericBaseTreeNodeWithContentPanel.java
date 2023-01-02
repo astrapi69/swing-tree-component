@@ -28,7 +28,7 @@ import javax.swing.GroupLayout;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.gen.tree.BaseTreeNode;
 
 public abstract class GenericBaseTreeNodeWithContentPanel<T, K, C>
 	extends

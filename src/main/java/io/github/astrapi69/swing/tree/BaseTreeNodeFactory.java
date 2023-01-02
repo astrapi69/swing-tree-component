@@ -29,7 +29,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import lombok.NonNull;
 import io.github.astrapi69.data.identifiable.IdGenerator;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
-import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.swing.tree.model.TreeElement;
 
 /**
