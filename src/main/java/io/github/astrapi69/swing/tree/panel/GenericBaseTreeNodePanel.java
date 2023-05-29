@@ -28,8 +28,8 @@ import javax.swing.tree.TreeModel;
 
 import org.jdesktop.swingx.JXTree;
 
-import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.gen.tree.BaseTreeNode;
+import io.github.astrapi69.model.api.IModel;
 
 /**
  * The abstract class {@link GenericBaseTreeNodePanel} a given parameterized {@link BaseTreeNode}

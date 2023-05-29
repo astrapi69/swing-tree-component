@@ -24,7 +24,7 @@
  */
 package io.github.astrapi69.swing.tree.panel.content;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
@@ -34,8 +34,8 @@ import javax.swing.tree.TreePath;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
-import io.github.astrapi69.swing.tree.node.ComponentTreeNode;
 import io.github.astrapi69.swing.tree.model.TreeElement;
+import io.github.astrapi69.swing.tree.node.ComponentTreeNode;
 
 public class ApplicationPreferencesPanel extends PreferencesPanel<TreeElement>
 {

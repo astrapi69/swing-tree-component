@@ -24,10 +24,10 @@
  */
 package io.github.astrapi69.swing.table.model;
 
-import lombok.NonNull;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableModel;
 import io.github.astrapi69.test.object.Permission;
+import lombok.NonNull;
 
 /**
  * The class DynamicPermissionsTableModel

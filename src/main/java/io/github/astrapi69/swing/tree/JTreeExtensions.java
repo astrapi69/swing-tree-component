@@ -24,22 +24,20 @@
  */
 package io.github.astrapi69.swing.tree;
 
-import java.awt.MouseInfo;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
-import io.github.astrapi69.gen.tree.BaseTreeNode;
-import lombok.NonNull;
 import io.github.astrapi69.swing.robot.MouseExtensions;
+import lombok.NonNull;
 
 /**
  * The class {@link JTreeExtensions}.

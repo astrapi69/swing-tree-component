@@ -24,18 +24,15 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.Optional;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeSelectionModel;
-
-import lombok.Getter;
 
 import org.jdesktop.swingx.JXTree;
 
@@ -45,6 +42,7 @@ import io.github.astrapi69.swing.component.factory.DimensionFactory;
 import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
 import io.github.astrapi69.swing.listener.mouse.MouseDoubleClickListener;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
+import lombok.Getter;
 
 
 /**

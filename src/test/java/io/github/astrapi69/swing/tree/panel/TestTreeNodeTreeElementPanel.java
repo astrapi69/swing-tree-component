@@ -24,13 +24,13 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.Frame;
+import java.awt.*;
 
+import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.test.instance.TestTreeNodeFactory;
-import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.swing.tree.model.TreeElement;
+import io.github.astrapi69.test.instance.TestTreeNodeFactory;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**

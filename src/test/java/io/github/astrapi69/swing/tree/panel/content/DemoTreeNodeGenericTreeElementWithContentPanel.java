@@ -28,24 +28,21 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.JDialog;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
-import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
-import io.github.astrapi69.swing.menu.factory.JMenuItemFactory;
-import io.github.astrapi69.swing.menu.factory.JPopupMenuFactory;
 import org.jdesktop.swingx.JXTree;
 
+import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.model.node.NodeModel;
 import io.github.astrapi69.swing.dialog.DialogExtensions;
-import io.github.astrapi69.swing.listener.RequestFocusListener;
+import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
+import io.github.astrapi69.swing.menu.factory.JMenuItemFactory;
+import io.github.astrapi69.swing.menu.factory.JPopupMenuFactory;
 import io.github.astrapi69.swing.table.GenericJXTable;
 import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
@@ -58,7 +55,6 @@ import io.github.astrapi69.swing.tree.panel.PermissionPanel;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
 import io.github.astrapi69.swing.tree.renderer.GenericTreeNodeCellRenderer;
 import io.github.astrapi69.test.object.Permission;
-import io.github.astrapi69.gen.tree.TreeNode;
 
 public class DemoTreeNodeGenericTreeElementWithContentPanel
 	extends
