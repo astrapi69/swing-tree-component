@@ -55,8 +55,6 @@ CHANGED:
 - update of dependency silly-collection to new minor version 20.2
 - update of test dependency file-worker to new minor version 11.6
 
-
-
 Version 2.1
 -------------
 
