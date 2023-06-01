@@ -4,7 +4,10 @@
 Version 2.5-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update of gradle to new version 8.2-rc-1
+- update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.46.0
 
 Version 2.4
 -------------
@@ -19,7 +22,6 @@ CHANGED:
 - update of lombok version to 1.18.28
 - update of gradle-plugin dependency 'io.freefair.gradle:lombok-plugin' to new version 8.0.1
 - update of gradle-plugin dependency 'org.ajoberstar.grgit:grgit-gradle' to new version 5.2.0
-- update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.46.0
 - update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.19.0
 - update of dependency menu-action version to new minor version 2.7
 - update of dependency swing-base-components to new minor version 2.4
