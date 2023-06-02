@@ -43,13 +43,13 @@ project `build.gradle` if you want to import the core functionality of swing-tre
 define version in file gradle.properties
 
 ```
-swingTreeComponentVersion=2.4
+swingTreeComponentVersion=${latestVersion}
 ```
 
 or in build.gradle ext area
 
 ```
-    swingTreeComponentVersion = "2.4"
+    swingTreeComponentVersion = "${latestVersion}"
 ```
 
 then add the dependency to the dependencies area
@@ -68,12 +68,12 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 functionality of
 swing-tree-component:
 
-Than you can add the dependency to your dependencies:
+Then you can add the dependency to your dependencies:
 
     <properties>
             ...
         <!-- swing-tree-component version -->
-        <swing-tree-component.version>2.4</swing-tree-component.version>
+        <swing-tree-component.version>${latestVersion}</swing-tree-component.version>
             ...
     </properties>
             ...
