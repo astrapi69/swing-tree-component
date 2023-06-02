@@ -4,6 +4,11 @@
 Version 2.5-SNAPSHOT
 -------------
 
+ADDED:
+
+- new factory method for create a new DefaultMutableTreeNode object
+- new factory method for create a new DefaultMutableTreeNode object that can traverse and add in a recursive manner
+
 CHANGED:
 
 - update of gradle to new version 8.2-rc-1

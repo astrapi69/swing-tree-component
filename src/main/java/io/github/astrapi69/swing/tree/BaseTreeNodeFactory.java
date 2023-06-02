@@ -94,6 +94,73 @@ public class BaseTreeNodeFactory
 		return parent;
 	}
 
+	/**
+	 * Creates a new {@link DefaultMutableTreeNode} object from the given {@link BaseTreeNode}
+	 * object
+	 *
+	 * @param <T>
+	 *            the generic type of the given {@link BaseTreeNode} object
+	 * @param <K>
+	 *            the generic type of the id of the given {@link BaseTreeNode} object
+	 * @param treeNode
+	 *            the {@link BaseTreeNode} object
+	 * @param onlyRoot
+	 *            the flag if only root tree node will be chosen, otherwise the given tree node will
+	 *            be traversed and added
+	 * @return the new {@link DefaultMutableTreeNode} object generated from the given
+	 *         {@link BaseTreeNode} object
+	 */
+	public static <T, K> DefaultMutableTreeNode newDefaultMutableTreeNode(
+		@NonNull BaseTreeNode<T, K> treeNode, DefaultMutableTreeNode parent, boolean onlyRoot)
+	{
+		BaseTreeNode<T, K> rootNode = treeNode;
+		if (onlyRoot && !treeNode.isRoot())
+		{
+			rootNode = treeNode.getRoot();
+		}
+		return traverseAndAdd(parent, rootNode, true);
+	}
+
+	/**
+	 * Traverses through the given {@link BaseTreeNode} object and return the root
+	 * {@link DefaultMutableTreeNode} object
+	 *
+	 * @param <T>
+	 *            the generic type of the given {@link BaseTreeNode} object
+	 * @param <K>
+	 *            the generic type of the id of the given {@link BaseTreeNode} object
+	 * @param rootDefaultMutableTreeNode
+	 *            the {@link DefaultMutableTreeNode} object
+	 * @param treeNode
+	 *            the {@link BaseTreeNode} object
+	 * @return the root {@link DefaultMutableTreeNode} object
+	 */
+	public static <T, K> DefaultMutableTreeNode traverseAndAdd(
+		DefaultMutableTreeNode rootDefaultMutableTreeNode, @NonNull BaseTreeNode<T, K> treeNode,
+		boolean root)
+	{
+		DefaultMutableTreeNode parent = rootDefaultMutableTreeNode;
+		if (rootDefaultMutableTreeNode == null)
+		{
+			parent = DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(null, treeNode);
+		}
+		else
+		{
+			if (root)
+			{
+				parent = DefaultMutableTreeNodeFactory
+					.newDefaultMutableTreeNode(rootDefaultMutableTreeNode, treeNode);
+			}
+		}
+		for (final BaseTreeNode<T, K> data : treeNode.getChildren())
+		{
+			DefaultMutableTreeNode node = DefaultMutableTreeNodeFactory
+				.newDefaultMutableTreeNode(data);
+			parent.add(node);
+			traverseAndAdd(node, data, false);
+		}
+		return parent;
+	}
 
 	/**
 	 * Factory method that creates a new {@link BaseTreeNode} object from the given
