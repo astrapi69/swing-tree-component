@@ -10,7 +10,7 @@ ADDED:
 
 CHANGED:
 
-- update of gradle to new version 8.3
+- update of gradle to the new version 8.3
 - update of gradle-plugin dependency 'io.freefair.gradle:lombok-plugin' to new version 8.2.2
 - update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.47.0
 - update of dependency swing-components to new major version 8.1
