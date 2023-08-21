@@ -36,7 +36,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
-import io.github.astrapi69.swing.robot.MouseExtensions;
+import io.github.astrapi69.roboter.MouseExtensions;
 import lombok.NonNull;
 
 /**

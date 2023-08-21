@@ -104,6 +104,8 @@ public class BaseTreeNodeFactory
 	 *            the generic type of the id of the given {@link BaseTreeNode} object
 	 * @param treeNode
 	 *            the {@link BaseTreeNode} object
+	 * @param parent
+	 *            the parent {@link DefaultMutableTreeNode} object
 	 * @param onlyRoot
 	 *            the flag if only root tree node will be chosen, otherwise the given tree node will
 	 *            be traversed and added
@@ -133,6 +135,9 @@ public class BaseTreeNodeFactory
 	 *            the {@link DefaultMutableTreeNode} object
 	 * @param treeNode
 	 *            the {@link BaseTreeNode} object
+	 * @param root
+	 *            the flag if the given root tree node will be used for creation of the parent
+	 *            object
 	 * @return the root {@link DefaultMutableTreeNode} object
 	 */
 	public static <T, K> DefaultMutableTreeNode traverseAndAdd(

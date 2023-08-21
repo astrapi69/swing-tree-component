@@ -4,14 +4,22 @@
 Version 2.6-SNAPSHOT
 -------------
 
+ADDED:
+
+- new dependency 'io.github.astrapi69:roboter' in major version 1
+
 CHANGED:
 
-- update of gradle to new version 8.3-rc-1
+- update of gradle to new version 8.3
+- update of gradle-plugin dependency 'io.freefair.gradle:lombok-plugin' to new version 8.2.2
 - update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.47.0
-- update of dependency swing-components to new major version 8
-- update of dependency gen-tree to new minor version 8.3
-- update of dependency tree-api in new minor version 1.3
-- update of dependency swing-base-components in new minor version 2.5
+- update of dependency swing-components to new major version 8.1
+- update of dependency gen-tree to new minor version 8.4
+- update of dependency tree-api in new minor version 1.5
+- update of dependency icon-img-extensions in new minor version 2.2
+- update of dependency commons-lang in new minor version 3.13.0
+- update of dependency swing-base-components in new minor version 2.7
+- update of test dependency junit-jupiter to new milestone version 5.10.0
 
 Version 2.5
 -------------

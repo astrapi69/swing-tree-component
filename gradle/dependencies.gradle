@@ -18,6 +18,7 @@ dependencies {
     implementation("io.github.astrapi69:visitor:$designPatternsVersion")
     implementation("io.github.astrapi69:data-api:$dataApiVersion")
     implementation("io.github.astrapi69:silly-collection:$sillyCollectionVersion")
+    implementation("io.github.astrapi69:roboter:$roboterVersion")
     testCompileOnly("org.projectlombok:lombok:$lombokVersion")
     testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
     testImplementation("org.assertj:assertj-swing:$assertjSwingVersion")
