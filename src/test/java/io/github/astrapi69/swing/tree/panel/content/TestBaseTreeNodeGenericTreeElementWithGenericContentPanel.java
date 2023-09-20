@@ -31,13 +31,13 @@ import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.swing.tree.panel.JXTreePanel;
+import io.github.astrapi69.swing.tree.panel.JTreePanel;
 import io.github.astrapi69.test.instance.TestBaseTreeNodeFactory;
 import io.github.astrapi69.test.object.Permission;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
- * The test class for {@link JXTreePanel}
+ * The test class for {@link JTreePanel}
  */
 public class TestBaseTreeNodeGenericTreeElementWithGenericContentPanel
 {

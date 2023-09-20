@@ -42,10 +42,10 @@ import io.github.astrapi69.file.delete.DeleteFileExtensions;
 import io.github.astrapi69.file.system.SystemFileExtensions;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.tree.panel.JXTreePanel;
+import io.github.astrapi69.swing.tree.panel.JTreePanel;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
-public class TestFileTreePanel extends JXTreePanel<File>
+public class TestFileTreePanel extends JTreePanel<File>
 {
 
 	private static final long serialVersionUID = 1L;

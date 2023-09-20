@@ -24,9 +24,8 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
+import javax.swing.JTree;
 import javax.swing.tree.TreeModel;
-
-import org.jdesktop.swingx.JXTree;
 
 import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.api.IModel;
@@ -34,7 +33,7 @@ import io.github.astrapi69.model.api.IModel;
 /**
  * The abstract class {@link GenericTreeNodePanel} a given parameterized {@link TreeNode}
  */
-public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
+public abstract class GenericTreeNodePanel<T> extends JTreePanel<TreeNode<T>>
 {
 
 	/** The Constant serialVersionUID. */
@@ -62,9 +61,9 @@ public abstract class GenericTreeNodePanel<T> extends JXTreePanel<TreeNode<T>>
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected JXTree newTree()
+	protected JTree newTree()
 	{
-		JXTree tree = super.newTree();
+		JTree tree = super.newTree();
 		return tree;
 	}
 

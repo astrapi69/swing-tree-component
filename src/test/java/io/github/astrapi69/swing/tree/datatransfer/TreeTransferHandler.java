@@ -1,14 +1,14 @@
 package io.github.astrapi69.swing.tree.datatransfer;
 
-import io.github.astrapi69.swing.tree.datatransfer.DefaultMutableTreeNodesTransferable;
-import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
-
 import java.awt.datatransfer.*;
 import java.util.*;
 import java.util.List;
 
 import javax.swing.*;
 import javax.swing.tree.*;
+
+import io.github.astrapi69.swing.tree.datatransfer.DefaultMutableTreeNodesTransferable;
+import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 
 public class TreeTransferHandler extends TransferHandler
 {
@@ -114,8 +114,10 @@ public class TreeTransferHandler extends TransferHandler
 				// exportDone after a successful drop.
 				List<DefaultMutableTreeNode> copies = new ArrayList<DefaultMutableTreeNode>();
 				List<DefaultMutableTreeNode> toRemove = new ArrayList<DefaultMutableTreeNode>();
-				DefaultMutableTreeNode node = (DefaultMutableTreeNode)paths[0].getLastPathComponent();
-				DefaultMutableTreeNode copy = DefaultMutableTreeNodeFactory.newDefaultMutableTreeNode(node);
+				DefaultMutableTreeNode node = (DefaultMutableTreeNode)paths[0]
+					.getLastPathComponent();
+				DefaultMutableTreeNode copy = DefaultMutableTreeNodeFactory
+					.newDefaultMutableTreeNode(node);
 				copies.add(copy);
 				toRemove.add(node);
 				for (int i = 1; i < paths.length; i++)

@@ -32,20 +32,20 @@ import javax.swing.table.TableModel;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
-import io.github.astrapi69.swing.table.GenericJXTable;
+import io.github.astrapi69.swing.table.GenericJTable;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
-import io.github.astrapi69.swing.tree.panel.JXTreePanel;
+import io.github.astrapi69.swing.tree.panel.JTreePanel;
 import lombok.Getter;
 
 @Getter
-public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>
+public abstract class JXTreeWithContentPanel<T, C> extends JTreePanel<T>
 {
 
 	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	protected JScrollPane scrTreeEntryTable;
-	protected GenericJXTable<C> tblTreeEntryTable;
+	protected GenericJTable<C> tblTreeEntryTable;
 
 	public JXTreeWithContentPanel()
 	{
@@ -86,9 +86,9 @@ public abstract class JXTreeWithContentPanel<T, C> extends JXTreePanel<T>
 	 *
 	 * @return the new {@link JTable}
 	 */
-	protected GenericJXTable<C> newJTable()
+	protected GenericJTable<C> newJTable()
 	{
-		return new GenericJXTable<C>(new GenericTableModel<C>()
+		return new GenericJTable<C>(new GenericTableModel<C>()
 		{
 			@Override
 			public int getColumnCount()

@@ -30,14 +30,12 @@ import java.util.Optional;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import org.jdesktop.swingx.JXTree;
-
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.component.factory.JComponentFactory;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
-import io.github.astrapi69.swing.tree.panel.JXTreePanel;
+import io.github.astrapi69.swing.tree.panel.JTreePanel;
 
-public abstract class PreferencesPanel<T> extends JXTreePanel<T>
+public abstract class PreferencesPanel<T> extends JTreePanel<T>
 {
 
 	/** The serialVersionUID. */
@@ -95,9 +93,9 @@ public abstract class PreferencesPanel<T> extends JXTreePanel<T>
 		return new Dimension(width, height);
 	}
 
-	protected JXTree newTree()
+	protected JTree newTree()
 	{
-		JXTree tree = super.newTree();
+		JTree tree = super.newTree();
 
 		tree.addTreeSelectionListener(treeSelectionEvent -> splitPane
 			.setRightComponent(PreferencesPanel.this.getSelectedComponent()));

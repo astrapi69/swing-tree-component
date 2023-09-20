@@ -4,7 +4,9 @@
 Version 3-SNAPSHOT
 -------------
 
+CHANGED:
 
+- remove all classes and methods that are related to dependency 'org.swinglabs.swingx:swingx-all'
 
 Version 2.6
 -------------

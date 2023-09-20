@@ -34,7 +34,7 @@ import io.github.astrapi69.test.instance.TestTreeNodeFactory;
 import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
- * The test class for {@link JXTreePanel}
+ * The test class for {@link JTreePanel}
  */
 public class TestTreeNodeJXTreeElementPanel
 {

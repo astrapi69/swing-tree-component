@@ -34,8 +34,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
-import org.jdesktop.swingx.JXTree;
-
 import io.github.astrapi69.collection.list.ListFactory;
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.model.BaseModel;
@@ -45,7 +43,7 @@ import io.github.astrapi69.swing.dialog.DialogExtensions;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.menu.factory.JMenuItemFactory;
 import io.github.astrapi69.swing.menu.factory.JPopupMenuFactory;
-import io.github.astrapi69.swing.table.GenericJXTable;
+import io.github.astrapi69.swing.table.GenericJTable;
 import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
@@ -77,9 +75,9 @@ public class DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel
 	}
 
 	@Override
-	protected JXTree newTree()
+	protected JTree newTree()
 	{
-		JXTree tree = super.newTree();
+		JTree tree = super.newTree();
 		tree.setCellRenderer(new NewGenericBaseTreeNodeCellRenderer<List<Permission>, Long>());
 		return tree;
 	}
@@ -94,11 +92,11 @@ public class DemoSelectionBaseTreeNodeGenericTreeElementWithContentPanel
 	}
 
 	@Override
-	protected GenericJXTable<Permission> newJTable()
+	protected GenericJTable<Permission> newJTable()
 	{
 		GenericTableModel<Permission> permissionsTableModel = new DynamicPermissionsTableModel(
 			new DynamicTableColumnsModel<>(Permission.class));
-		return new GenericJXTable<Permission>(permissionsTableModel)
+		return new GenericJTable<Permission>(permissionsTableModel)
 		{
 
 			protected void onSingleLeftClick(MouseEvent event)

@@ -37,8 +37,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
-import org.jdesktop.swingx.JXTree;
-
 import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
@@ -64,9 +62,9 @@ public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 	}
 
 	@Override
-	protected JXTree newTree()
+	protected JTree newTree()
 	{
-		JXTree tree = super.newTree();
+		JTree tree = super.newTree();
 		tree.setCellRenderer(new TreeNodeCellRenderer<TreeElement>());
 		return tree;
 	}

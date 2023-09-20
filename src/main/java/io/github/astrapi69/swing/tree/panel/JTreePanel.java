@@ -34,8 +34,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.jdesktop.swingx.JXTree;
-
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.base.BasePanel;
 import io.github.astrapi69.swing.component.factory.DimensionFactory;
@@ -46,7 +44,7 @@ import lombok.Getter;
 
 
 /**
- * The abstract class {@link JXTreePanel} provides a {@link JTree} that is already embedded in a
+ * The abstract class {@link JTreePanel} provides a {@link JTree} that is already embedded in a
  * {@link JScrollPane}. Additionally it provides factory methods that can be overwritten to provide
  * specific behavior.
  *
@@ -54,7 +52,7 @@ import lombok.Getter;
  *            the generic type of the model object
  */
 @Getter
-public abstract class JXTreePanel<T> extends BasePanel<T>
+public abstract class JTreePanel<T> extends BasePanel<T>
 {
 
 	/** The serialVersionUID. */
@@ -69,19 +67,19 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	protected DefaultMutableTreeNode selectedTreeNode;
 
 	/**
-	 * Instantiates a new {@link JXTreePanel} object.
+	 * Instantiates a new {@link JTreePanel} object.
 	 */
-	public JXTreePanel()
+	public JTreePanel()
 	{
 	}
 
 	/**
-	 * Instantiates a new new {@link JXTreePanel} object.
+	 * Instantiates a new new {@link JTreePanel} object.
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public JXTreePanel(final IModel<T> model)
+	public JTreePanel(final IModel<T> model)
 	{
 		super(model);
 	}
@@ -109,9 +107,9 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 	 *
 	 * @return the j tree
 	 */
-	protected JXTree newTree()
+	protected JTree newTree()
 	{
-		JXTree tree = new JXTree();
+		JTree tree = new JTree();
 
 		tree.setModel(newTreeModel(getModel()));
 		// if setEditable is set to true, tree element names are editable with double click
@@ -119,7 +117,7 @@ public abstract class JXTreePanel<T> extends BasePanel<T>
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 
 		tree.addTreeSelectionListener(treeSelectionEvent -> {
-			JXTreePanel.this.selectedTreeNode = (DefaultMutableTreeNode)treeSelectionEvent.getPath()
+			JTreePanel.this.selectedTreeNode = (DefaultMutableTreeNode)treeSelectionEvent.getPath()
 				.getLastPathComponent();
 		});
 
