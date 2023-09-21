@@ -27,6 +27,7 @@ package io.github.astrapi69.swing.tree.panel.content;
 import java.awt.*;
 import java.util.List;
 
+import io.github.astrapi69.awt.window.adapter.CloseWindow;
 import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
@@ -34,7 +35,6 @@ import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.panel.JTreePanel;
 import io.github.astrapi69.test.instance.TestTreeNodeFactory;
 import io.github.astrapi69.test.object.Permission;
-import io.github.astrapi69.window.adapter.CloseWindow;
 
 /**
  * The test class for {@link JTreePanel}

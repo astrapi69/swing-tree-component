@@ -6,6 +6,11 @@ Version 3-SNAPSHOT
 
 CHANGED:
 
+- update of JDK to newer version 17
+- update gradle to new version 8.3
+- update of gradle-plugin dependency 'io.freefair.gradle:lombok-plugin' to new version 8.3
+- update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.48.0
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.21.0
 - remove all classes and methods that are related to dependency 'org.swinglabs.swingx:swingx-all'
 
 Version 2.6

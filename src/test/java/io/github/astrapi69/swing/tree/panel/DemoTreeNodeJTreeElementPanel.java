@@ -33,31 +33,31 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
+import io.github.astrapi69.component.model.node.NodeModel;
 import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.model.node.NodeModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.tree.JTreeElement;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
-import io.github.astrapi69.swing.tree.JXTreeElement;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
-import io.github.astrapi69.swing.tree.renderer.JXTreeNodeCellRenderer;
+import io.github.astrapi69.swing.tree.renderer.JTreeNodeCellRenderer;
 import io.github.astrapi69.test.object.Permission;
 
-public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
+public class DemoTreeNodeJTreeElementPanel extends TreeNodeJTreeElementPanel
 {
 
 	private static final long serialVersionUID = 1L;
 
-	public DemoTreeNodeJXTreeElementPanel()
+	public DemoTreeNodeJTreeElementPanel()
 	{
 		this(BaseModel.of(new TreeNode<>()));
 	}
 
-	public DemoTreeNodeJXTreeElementPanel(final IModel<TreeNode<JXTreeElement>> model)
+	public DemoTreeNodeJTreeElementPanel(final IModel<TreeNode<JTreeElement>> model)
 	{
 		super(model);
 	}
@@ -66,14 +66,14 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 	protected JTree newTree()
 	{
 		JTree tree = super.newTree();
-		tree.setCellRenderer(new JXTreeNodeCellRenderer());
+		tree.setCellRenderer(new JTreeNodeCellRenderer());
 		return tree;
 	}
 
 	@Override
-	protected TreeModel newTreeModel(final IModel<TreeNode<JXTreeElement>> model)
+	protected TreeModel newTreeModel(final IModel<TreeNode<JTreeElement>> model)
 	{
-		TreeNode<JXTreeElement> parentTreeNode = model.getObject();
+		TreeNode<JTreeElement> parentTreeNode = model.getObject();
 		TreeModel treeModel;
 
 		DefaultMutableTreeNode rootNode = TreeNodeFactory.newDefaultMutableTreeNode(parentTreeNode);
@@ -91,7 +91,7 @@ public class DemoTreeNodeJXTreeElementPanel extends TreeNodeJXTreeElementPanel
 
 		Object lastPathComponent = selectionPath.getLastPathComponent();
 		DefaultMutableTreeNode selectedTreeNode = (DefaultMutableTreeNode)lastPathComponent;
-		TreeNode<JXTreeElement> parentTreeNode = (TreeNode<JXTreeElement>)selectedTreeNode
+		TreeNode<JTreeElement> parentTreeNode = (TreeNode<JTreeElement>)selectedTreeNode
 			.getUserObject();
 
 		JPopupMenu popup = new JPopupMenu();

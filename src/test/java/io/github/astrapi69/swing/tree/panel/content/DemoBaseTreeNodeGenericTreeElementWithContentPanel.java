@@ -34,10 +34,10 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
 import io.github.astrapi69.collection.list.ListFactory;
+import io.github.astrapi69.component.model.node.NodeModel;
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.model.node.NodeModel;
 import io.github.astrapi69.swing.dialog.DialogExtensions;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.menu.factory.JMenuItemFactory;

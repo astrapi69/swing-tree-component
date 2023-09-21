@@ -27,34 +27,33 @@ package io.github.astrapi69.swing.tree.panel;
 import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.tree.JXTreeElement;
-import io.github.astrapi69.swing.tree.model.TreeElement;
+import io.github.astrapi69.swing.tree.JTreeElement;
 
 /**
- * The abstract class {@link TreeNodeJXTreeElementPanel} a given {@link TreeNode} parameterized with
- * {@link TreeElement}
+ * The abstract class {@link TreeNodeJTreeElementPanel} a given {@link TreeNode} parameterized with
+ * {@link JTreeElement}
  */
-public abstract class TreeNodeJXTreeElementPanel extends GenericTreeNodePanel<JXTreeElement>
+public abstract class TreeNodeJTreeElementPanel extends GenericTreeNodePanel<JTreeElement>
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new {@link TreeNodeJXTreeElementPanel}
+	 * Instantiates a new {@link TreeNodeJTreeElementPanel}
 	 */
-	public TreeNodeJXTreeElementPanel()
+	public TreeNodeJTreeElementPanel()
 	{
-		this(BaseModel.of(TreeNode.<JXTreeElement> builder().build()));
+		this(BaseModel.of(TreeNode.<JTreeElement> builder().build()));
 	}
 
 	/**
-	 * Instantiates a new t{@link TreeNodeJXTreeElementPanel}
+	 * Instantiates a new t{@link TreeNodeJTreeElementPanel}
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public TreeNodeJXTreeElementPanel(final IModel<TreeNode<JXTreeElement>> model)
+	public TreeNodeJTreeElementPanel(final IModel<TreeNode<JTreeElement>> model)
 	{
 		super(model);
 	}

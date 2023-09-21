@@ -121,10 +121,10 @@ public class TreeNodeFactory
 	 *            the parent object
 	 * @return the new {@link TreeNode} object
 	 */
-	public static TreeNode<JXTreeElement> initializeTreeNodeWithTreeElement(
-		final JXTreeElement treeElement, TreeNode<JXTreeElement> parentTreeNode)
+	public static TreeNode<JTreeElement> initializeTreeNodeWithTreeElement(
+		final JTreeElement treeElement, TreeNode<JTreeElement> parentTreeNode)
 	{
-		TreeNode<JXTreeElement> treeNode;
+		TreeNode<JTreeElement> treeNode;
 		treeNode = new TreeNode<>(treeElement);
 		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());

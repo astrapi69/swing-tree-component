@@ -32,7 +32,7 @@ import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.id.generate.LongIdGenerator;
 import io.github.astrapi69.swing.tree.BaseTreeNodeFactory;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.swing.tree.JXTreeElement;
+import io.github.astrapi69.swing.tree.JTreeElement;
 import io.github.astrapi69.swing.tree.model.TreeElement;
 import io.github.astrapi69.test.object.Permission;
 import lombok.NonNull;
@@ -85,43 +85,43 @@ public class TestBaseTreeNodeFactory
 	}
 
 
-	public static BaseTreeNode<JXTreeElement, Long> initializeTestJXTreeNodeElement()
+	public static BaseTreeNode<JTreeElement, Long> initializeTestJXTreeNodeElement()
 	{
 		LongIdGenerator idGenerator = LongIdGenerator.of(0L);
 		// 1. Create a list with data.
 		final List<Permission> permissions;
 		List<Permission> permissions1;
-		BaseTreeNode<JXTreeElement, Long> firstChildTreeNode;
-		BaseTreeNode<JXTreeElement, Long> firstGrandChildTreeNodeLeaf;
-		BaseTreeNode<JXTreeElement, Long> secondGrandChildTreeNodeLeaf;
-		JXTreeElement firstGrandGrandChild;
-		BaseTreeNode<JXTreeElement, Long> firstGrandGrandChildTreeNode;
-		BaseTreeNode<JXTreeElement, Long> parentTreeNode;
-		BaseTreeNode<JXTreeElement, Long> secondChildTreeNode;
-		List<BaseTreeNode<JXTreeElement, Long>> list;
-		JXTreeElement parent;
-		JXTreeElement firstChild;
-		JXTreeElement firstGrandChild;
-		JXTreeElement secondChild;
-		JXTreeElement secondGrandChild;
+		BaseTreeNode<JTreeElement, Long> firstChildTreeNode;
+		BaseTreeNode<JTreeElement, Long> firstGrandChildTreeNodeLeaf;
+		BaseTreeNode<JTreeElement, Long> secondGrandChildTreeNodeLeaf;
+		JTreeElement firstGrandGrandChild;
+		BaseTreeNode<JTreeElement, Long> firstGrandGrandChildTreeNode;
+		BaseTreeNode<JTreeElement, Long> parentTreeNode;
+		BaseTreeNode<JTreeElement, Long> secondChildTreeNode;
+		List<BaseTreeNode<JTreeElement, Long>> list;
+		JTreeElement parent;
+		JTreeElement firstChild;
+		JTreeElement firstGrandChild;
+		JTreeElement secondChild;
+		JTreeElement secondGrandChild;
 
 		permissions = TestPermissionFactory.getPermissionsInGerman();
 		permissions1 = TestPermissionFactory.getPermissions();
 
-		parent = JXTreeElement.builder().name("parent")
+		parent = JTreeElement.builder().name("parent")
 			.iconPath("io/github/astrapi69/silk/icons/disk.png").withText(true).parent(null)
 			.node(true).build().setDefaultContent(permissions1);
-		firstChild = JXTreeElement.builder().name("firstChild/search").parent(parent)
+		firstChild = JTreeElement.builder().name("firstChild/search").parent(parent)
 			.iconPath("io/github/astrapi69/silk/icons/magnifier.png").withText(true).node(true)
 			.build().setDefaultContent(permissions);
-		firstGrandChild = JXTreeElement.builder().name("firstGrandChild")
+		firstGrandChild = JTreeElement.builder().name("firstGrandChild")
 			.iconPath("io/github/astrapi69/silk/icons/lock.png").withText(false).parent(firstChild)
 			.node(true).build().setDefaultContent(permissions);
-		firstGrandGrandChild = JXTreeElement.builder().name("firstGrandGrandChild")
+		firstGrandGrandChild = JTreeElement.builder().name("firstGrandGrandChild")
 			.parent(firstGrandChild).node(false).build().setDefaultContent(permissions);
-		secondChild = JXTreeElement.builder().name("secondChild").parent(parent).node(true).build()
+		secondChild = JTreeElement.builder().name("secondChild").parent(parent).node(true).build()
 			.setDefaultContent(permissions);
-		secondGrandChild = JXTreeElement.builder().name("secondGrandChild").parent(firstChild)
+		secondGrandChild = JTreeElement.builder().name("secondGrandChild").parent(firstChild)
 			.node(false).build().setDefaultContent(permissions);
 		parentTreeNode = BaseTreeNodeFactory.initializeTreeNodeWithTreeElement(parent, null,
 			idGenerator);

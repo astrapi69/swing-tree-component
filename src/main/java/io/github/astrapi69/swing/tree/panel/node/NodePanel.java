@@ -28,10 +28,10 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import io.github.astrapi69.component.model.node.NodeModel;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.LambdaModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.model.node.NodeModel;
 import io.github.astrapi69.swing.base.BasePanel;
 import io.github.astrapi69.swing.model.component.JMCheckBox;
 import io.github.astrapi69.swing.model.component.JMTextField;

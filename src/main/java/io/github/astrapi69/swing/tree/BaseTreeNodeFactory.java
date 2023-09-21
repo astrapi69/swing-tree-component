@@ -235,11 +235,11 @@ public class BaseTreeNodeFactory
 	 *            the id generator
 	 * @return the new {@link BaseTreeNode} object
 	 */
-	public static <K> BaseTreeNode<JXTreeElement, K> initializeTreeNodeWithTreeElement(
-		final JXTreeElement treeElement, BaseTreeNode<JXTreeElement, K> parentTreeNode,
+	public static <K> BaseTreeNode<JTreeElement, K> initializeTreeNodeWithTreeElement(
+		final JTreeElement treeElement, BaseTreeNode<JTreeElement, K> parentTreeNode,
 		final @NonNull IdGenerator<K> idGenerator)
 	{
-		BaseTreeNode<JXTreeElement, K> treeNode = initializeBaseTreeNodeWithTreeElement(treeElement,
+		BaseTreeNode<JTreeElement, K> treeNode = initializeBaseTreeNodeWithTreeElement(treeElement,
 			parentTreeNode, idGenerator);
 		treeNode.setLeaf(!treeElement.isNode());
 		treeNode.setDisplayValue(treeElement.getName());
