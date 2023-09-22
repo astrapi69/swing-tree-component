@@ -42,17 +42,17 @@ import io.github.astrapi69.swing.dialog.DialogExtensions;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
 import io.github.astrapi69.swing.menu.factory.JMenuItemFactory;
 import io.github.astrapi69.swing.menu.factory.JPopupMenuFactory;
+import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
+import io.github.astrapi69.swing.renderer.tree.renderer.GenericBaseTreeNodeCellRenderer;
 import io.github.astrapi69.swing.table.GenericJTable;
 import io.github.astrapi69.swing.table.model.DynamicPermissionsTableModel;
 import io.github.astrapi69.swing.table.model.GenericTableModel;
 import io.github.astrapi69.swing.table.model.dynamic.DynamicTableColumnsModel;
 import io.github.astrapi69.swing.tree.BaseTreeNodeFactory;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeExtensions;
 import io.github.astrapi69.swing.tree.panel.PermissionPanel;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
-import io.github.astrapi69.swing.tree.renderer.GenericBaseTreeNodeCellRenderer;
 import io.github.astrapi69.test.object.Permission;
 
 public class DemoBaseTreeNodeGenericTreeElementWithContentPanel

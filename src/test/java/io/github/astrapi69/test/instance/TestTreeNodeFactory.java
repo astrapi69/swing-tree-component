@@ -29,8 +29,8 @@ import static io.github.astrapi69.swing.tree.TreeNodeFactory.initializeTreeNodeW
 import java.util.List;
 
 import io.github.astrapi69.gen.tree.TreeNode;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.swing.tree.JTreeElement;
+import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
+import io.github.astrapi69.swing.renderer.tree.JTreeElement;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.swing.tree.model.TreeElement;
 import io.github.astrapi69.test.object.Permission;

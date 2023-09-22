@@ -4,6 +4,12 @@
 Version 3-SNAPSHOT
 -------------
 
+ADDED:
+
+- new class module-info.java that provides this library as a module
+- new dependency swing-model-components in major version 1
+- new test dependency awt-extensions in minor version 1.1
+
 CHANGED:
 
 - update of JDK to newer version 17
@@ -12,6 +18,15 @@ CHANGED:
 - update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.48.0
 - update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.21.0
 - remove all classes and methods that are related to dependency 'org.swinglabs.swingx:swingx-all'
+- remove of dependency swing-components
+- update of dependency roboter in new major version 2
+- update of dependency swing-base-components in new minor version 4.1
+- update of dependency swing-table-components in new minor version 3.1
+- update of dependency swing-renderer in new major version 3
+- update of dependency model-data in new minor version 3.1
+- update of dependency icon-img-extensions in new minor version 3.2
+- update of dependency silly-collection to new major version 27
+- update of test dependency file-worker to new major version 17
 
 Version 2.6
 -------------

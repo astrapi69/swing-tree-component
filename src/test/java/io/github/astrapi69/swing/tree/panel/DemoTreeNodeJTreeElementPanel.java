@@ -38,13 +38,13 @@ import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.dialog.JOptionPaneExtensions;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.swing.tree.JTreeElement;
+import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
+import io.github.astrapi69.swing.renderer.tree.JTreeElement;
+import io.github.astrapi69.swing.renderer.tree.renderer.JTreeNodeCellRenderer;
 import io.github.astrapi69.swing.tree.JTreeExtensions;
 import io.github.astrapi69.swing.tree.TreeNodeFactory;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.swing.tree.panel.node.NodePanel;
-import io.github.astrapi69.swing.tree.renderer.JTreeNodeCellRenderer;
 import io.github.astrapi69.test.object.Permission;
 
 public class DemoTreeNodeJTreeElementPanel extends TreeNodeJTreeElementPanel

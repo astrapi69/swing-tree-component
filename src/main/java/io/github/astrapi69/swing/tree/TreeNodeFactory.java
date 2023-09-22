@@ -27,6 +27,8 @@ package io.github.astrapi69.swing.tree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import io.github.astrapi69.gen.tree.TreeNode;
+import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
+import io.github.astrapi69.swing.renderer.tree.JTreeElement;
 import io.github.astrapi69.swing.tree.factory.DefaultMutableTreeNodeFactory;
 import io.github.astrapi69.swing.tree.model.TreeElement;
 import lombok.NonNull;

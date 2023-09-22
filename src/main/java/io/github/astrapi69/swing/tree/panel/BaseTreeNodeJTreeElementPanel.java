@@ -28,7 +28,7 @@ import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.api.IModel;
-import io.github.astrapi69.swing.tree.JTreeElement;
+import io.github.astrapi69.swing.renderer.tree.JTreeElement;
 
 /**
  * The abstract class {@link BaseTreeNodeJTreeElementPanel} a given parameterized {@link TreeNode}
