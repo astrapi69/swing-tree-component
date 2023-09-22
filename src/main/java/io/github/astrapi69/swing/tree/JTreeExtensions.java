@@ -93,6 +93,7 @@ public class JTreeExtensions
 	 *            the vertical y position
 	 * @return the selected tree node
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedDefaultMutableTreeNode(
 		@NonNull JTree tree, int x, int y)
 	{
@@ -101,8 +102,8 @@ public class JTreeExtensions
 		{
 			return Optional.empty();
 		}
-		Object lastPathComponent = selectionPath.getLastPathComponent();
-		return Optional.of((T)lastPathComponent);
+		T lastPathComponent = (T)selectionPath.getLastPathComponent();
+		return Optional.of(lastPathComponent);
 	}
 
 	/**
@@ -189,6 +190,7 @@ public class JTreeExtensions
 		return getOptionalTreeNode(selectedTreeNode);
 	}
 
+	@SuppressWarnings("unchecked")
 	private static <T> Optional<T> getOptionalTreeNode(
 		Optional<DefaultMutableTreeNode> selectedTreeNode)
 	{
@@ -214,6 +216,7 @@ public class JTreeExtensions
 	 *            the tree
 	 * @return the selected user object from the given {@link JTree} object
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T extends DefaultMutableTreeNode> Optional<T> getSelectedTreeNode(
 		final @NonNull JTree tree)
 	{

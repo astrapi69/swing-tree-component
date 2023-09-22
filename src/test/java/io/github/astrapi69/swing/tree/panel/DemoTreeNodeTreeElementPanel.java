@@ -122,6 +122,7 @@ public class DemoTreeNodeTreeElementPanel extends TreeNodeTreeElementPanel
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	protected void onTreeSingleRightClick(MouseEvent e)
 	{
 		int x = e.getX();

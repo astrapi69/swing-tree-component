@@ -59,6 +59,7 @@ public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, S
 		return userObject.getRoot();
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean isLeaf(Object node)
 	{
 		return ((TreeNode<T>)node).isLeaf();
@@ -69,11 +70,13 @@ public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, S
 		return ((TreeNode)parent).getChildCount();
 	}
 
+	@SuppressWarnings("unchecked")
 	public Object getChild(Object parent, int index)
 	{
 		return CollectionExtensions.toList(((TreeNode)parent).getChildren()).get(index);
 	}
 
+	@SuppressWarnings("unchecked")
 	public int getIndexOfChild(Object parent, Object child)
 	{
 		return CollectionExtensions.toList(((TreeNode)parent).getChildren()).indexOf(child);
@@ -84,6 +87,7 @@ public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, S
 		reload(userObject);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void reload(TreeNode node)
 	{
 		if (node != null)
@@ -119,6 +123,7 @@ public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, S
 	 * @param child
 	 * @param index
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void insert(MutableTreeNode child, int index)
 	{
@@ -335,6 +340,7 @@ public class TreeNodeMutableTreeNode<T> implements Cloneable, MutableTreeNode, S
 	 * Returns the children of the receiver as an <code>Enumeration</code>.
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Enumeration children()
 	{
 		if (children == null)

@@ -82,6 +82,7 @@ public class DemoTreeNodeJTreeElementPanel extends TreeNodeJTreeElementPanel
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	protected void onTreeSingleRightClick(MouseEvent mouseEvent)
 	{
 		int x = mouseEvent.getX();
@@ -130,6 +131,7 @@ public class DemoTreeNodeJTreeElementPanel extends TreeNodeJTreeElementPanel
 		popup.show(tree, x, y);
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void onAddNewChildTreeNode(MouseEvent mouseEvent)
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)

@@ -221,6 +221,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 		});
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void onAddNewChildTreeNode(MouseEvent mouseEvent)
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
@@ -252,6 +253,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 			});
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void onCopySelectedTreeNode(final MouseEvent mouseEvent)
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
@@ -281,6 +283,7 @@ public class DemoTreeNodeGenericTreeElementWithContentPanel
 	 * @param mouseEvent
 	 *            the mouse event
 	 */
+	@SuppressWarnings("unchecked")
 	protected void onEditSelectedTreeNode(final MouseEvent mouseEvent)
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)

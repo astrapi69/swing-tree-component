@@ -240,6 +240,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 		});
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void onAddNewChildTreeNode(MouseEvent mouseEvent)
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
@@ -270,6 +271,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 			});
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void onCopySelectedTreeNode(final MouseEvent mouseEvent)
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
@@ -298,6 +300,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 	 * @param mouseEvent
 	 *            the mouse event
 	 */
+	@SuppressWarnings("unchecked")
 	protected void onEditSelectedTreeNode(final MouseEvent mouseEvent)
 	{
 		JTreeExtensions.getSelectedDefaultMutableTreeNode(mouseEvent, tree)
@@ -430,6 +433,7 @@ public class DemoBaseTreeNodeGenericTreeElementWithContentPanel
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void onAddTableEntry()
 	{
 		PermissionPanel panel = new PermissionPanel();
