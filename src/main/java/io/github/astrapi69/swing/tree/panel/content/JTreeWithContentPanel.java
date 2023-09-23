@@ -38,7 +38,7 @@ import io.github.astrapi69.swing.tree.panel.JTreePanel;
 import lombok.Getter;
 
 @Getter
-public abstract class JXTreeWithContentPanel<T, C> extends JTreePanel<T>
+public abstract class JTreeWithContentPanel<T, C> extends JTreePanel<T>
 {
 
 	/** The serialVersionUID. */
@@ -47,12 +47,12 @@ public abstract class JXTreeWithContentPanel<T, C> extends JTreePanel<T>
 	protected JScrollPane scrTreeEntryTable;
 	protected GenericJTable<C> tblTreeEntryTable;
 
-	public JXTreeWithContentPanel()
+	public JTreeWithContentPanel()
 	{
 		this(BaseModel.of());
 	}
 
-	public JXTreeWithContentPanel(final IModel<T> model)
+	public JTreeWithContentPanel(final IModel<T> model)
 	{
 		super(model);
 	}
@@ -106,37 +106,37 @@ public abstract class JXTreeWithContentPanel<T, C> extends JTreePanel<T>
 			protected void onSingleLeftClick(MouseEvent mouseEvent)
 			{
 				super.onSingleLeftClick(mouseEvent);
-				JXTreeWithContentPanel.this.onTableSingleLeftClick(mouseEvent);
+				JTreeWithContentPanel.this.onTableSingleLeftClick(mouseEvent);
 			}
 
 			protected void onSingleMiddleClick(MouseEvent mouseEvent)
 			{
 				super.onSingleMiddleClick(mouseEvent);
-				JXTreeWithContentPanel.this.onTableSingleMiddleClick(mouseEvent);
+				JTreeWithContentPanel.this.onTableSingleMiddleClick(mouseEvent);
 			}
 
 			protected void onSingleRightClick(MouseEvent mouseEvent)
 			{
 				super.onSingleRightClick(mouseEvent);
-				JXTreeWithContentPanel.this.onTableSingleRightClick(mouseEvent);
+				JTreeWithContentPanel.this.onTableSingleRightClick(mouseEvent);
 			}
 
 			protected void onDoubleLeftClick(MouseEvent mouseEvent)
 			{
 				super.onDoubleLeftClick(mouseEvent);
-				JXTreeWithContentPanel.this.onTableDoubleLeftClick(mouseEvent);
+				JTreeWithContentPanel.this.onTableDoubleLeftClick(mouseEvent);
 			}
 
 			protected void onDoubleMiddleClick(MouseEvent mouseEvent)
 			{
 				super.onDoubleMiddleClick(mouseEvent);
-				JXTreeWithContentPanel.this.onTableDoubleMiddleClick(mouseEvent);
+				JTreeWithContentPanel.this.onTableDoubleMiddleClick(mouseEvent);
 			}
 
 			protected void onDoubleRightClick(MouseEvent mouseEvent)
 			{
 				super.onDoubleRightClick(mouseEvent);
-				JXTreeWithContentPanel.this.onTableDoubleRightClick(mouseEvent);
+				JTreeWithContentPanel.this.onTableDoubleRightClick(mouseEvent);
 			}
 		};
 	}

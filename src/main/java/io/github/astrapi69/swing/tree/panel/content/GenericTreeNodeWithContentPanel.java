@@ -32,7 +32,7 @@ import io.github.astrapi69.model.api.IModel;
 
 public abstract class GenericTreeNodeWithContentPanel<T, C>
 	extends
-		JXTreeWithContentPanel<TreeNode<T>, C>
+        JTreeWithContentPanel<TreeNode<T>, C>
 {
 
 	/**
