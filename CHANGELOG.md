@@ -4,7 +4,11 @@
 Version 3.1-SNAPSHOT
 -------------
 
+CHANGED:
 
+- restructure of packages
+- move factory classes to factory package
+- moved extension classes to extension package
 
 Version 3
 -------------

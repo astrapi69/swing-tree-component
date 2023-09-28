@@ -32,7 +32,7 @@ import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.id.generate.LongIdGenerator;
 import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
 import io.github.astrapi69.swing.renderer.tree.JTreeElement;
-import io.github.astrapi69.swing.tree.BaseTreeNodeFactory;
+import io.github.astrapi69.swing.tree.factory.BaseTreeNodeFactory;
 import io.github.astrapi69.swing.tree.model.TreeElement;
 import io.github.astrapi69.test.object.Permission;
 import lombok.NonNull;

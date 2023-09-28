@@ -32,7 +32,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import io.github.astrapi69.model.api.IModel;
 import io.github.astrapi69.swing.component.factory.JComponentFactory;
-import io.github.astrapi69.swing.tree.JTreeExtensions;
+import io.github.astrapi69.swing.tree.extension.JTreeExtensions;
 import io.github.astrapi69.swing.tree.panel.JTreePanel;
 
 public abstract class PreferencesPanel<T> extends JTreePanel<T>

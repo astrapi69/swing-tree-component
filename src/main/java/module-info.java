@@ -35,7 +35,7 @@ module swing.tree.component.main
 	requires com.miglayout.core;
 	requires com.miglayout.swing;
 
-	exports io.github.astrapi69.swing.tree;
+	exports io.github.astrapi69.swing.tree.extension;
 	exports io.github.astrapi69.swing.tree.factory;
 	exports io.github.astrapi69.swing.tree.model;
 	exports io.github.astrapi69.swing.tree.model.api;

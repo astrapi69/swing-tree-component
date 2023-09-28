@@ -24,14 +24,14 @@
  */
 package io.github.astrapi69.test.instance;
 
-import static io.github.astrapi69.swing.tree.TreeNodeFactory.initializeTreeNodeWithTreeElement;
+import static io.github.astrapi69.swing.tree.factory.TreeNodeFactory.initializeTreeNodeWithTreeElement;
 
 import java.util.List;
 
 import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
 import io.github.astrapi69.swing.renderer.tree.JTreeElement;
-import io.github.astrapi69.swing.tree.TreeNodeFactory;
+import io.github.astrapi69.swing.tree.factory.TreeNodeFactory;
 import io.github.astrapi69.swing.tree.model.TreeElement;
 import io.github.astrapi69.test.object.Permission;
 

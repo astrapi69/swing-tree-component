@@ -39,7 +39,7 @@ import io.github.astrapi69.swing.base.BasePanel;
 import io.github.astrapi69.swing.component.factory.DimensionFactory;
 import io.github.astrapi69.swing.component.factory.SwingContainerFactory;
 import io.github.astrapi69.swing.listener.mouse.MouseDoubleClickListener;
-import io.github.astrapi69.swing.tree.JTreeExtensions;
+import io.github.astrapi69.swing.tree.extension.JTreeExtensions;
 import lombok.Getter;
 
 
