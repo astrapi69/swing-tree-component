@@ -11,8 +11,9 @@ CHANGED:
 - update of gradle-plugin dependency 'com.github.ben-manes.versions.gradle.plugin' to new version 0.50.0
 - update of gradle-plugin dependency 'org.ajoberstar.grgit:grgit-gradle' to new version 5.2.1
 - update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new version 6.22.0
-- update of dependency menu-action version to new minor version 3.4
+- update of dependency menu-action version to new ĉ version 3.4
 - update of dependency gen-tree to new major version 9
+- update of dependency swing-renderer in new minor version 3.1
 - update of test dependency silly-io to new major version 3
 - update of test dependency file-worker to new minor version 17.1
 - update of test dependency test-object to new minor version 8.2

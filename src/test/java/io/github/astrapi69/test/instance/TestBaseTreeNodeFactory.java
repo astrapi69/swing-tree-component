@@ -35,6 +35,7 @@ import io.github.astrapi69.swing.renderer.tree.JTreeElement;
 import io.github.astrapi69.swing.tree.factory.BaseTreeNodeFactory;
 import io.github.astrapi69.swing.tree.model.TreeElement;
 import io.github.astrapi69.test.object.Permission;
+import io.github.astrapi69.test.object.factory.TestPermissionFactory;
 import lombok.NonNull;
 
 public class TestBaseTreeNodeFactory
