@@ -24,10 +24,12 @@
  */
 package io.github.astrapi69.swing.tree.panel.content;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.util.Optional;
 
-import javax.swing.*;
+import javax.swing.JSplitPane;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import io.github.astrapi69.model.api.IModel;

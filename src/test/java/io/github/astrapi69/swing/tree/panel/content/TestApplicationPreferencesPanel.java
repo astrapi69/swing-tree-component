@@ -24,7 +24,7 @@
  */
 package io.github.astrapi69.swing.tree.panel.content;
 
-import java.awt.*;
+import java.awt.Frame;
 
 import io.github.astrapi69.awt.window.adapter.CloseWindow;
 

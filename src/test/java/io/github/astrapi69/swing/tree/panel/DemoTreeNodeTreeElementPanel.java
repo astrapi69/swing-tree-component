@@ -24,10 +24,17 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 
-import javax.swing.*;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
+import javax.swing.JTree;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.TreeModelEvent;

@@ -1,9 +1,14 @@
 package io.github.astrapi69.swing.tree.datatransfer;
 
-import java.util.*;
+import java.util.Enumeration;
 
-import javax.swing.*;
-import javax.swing.tree.*;
+import javax.swing.DropMode;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeSelectionModel;
 
 public class TreeDragAndDrop
 {

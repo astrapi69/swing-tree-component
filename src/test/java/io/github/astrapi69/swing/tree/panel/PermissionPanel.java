@@ -24,7 +24,8 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import javax.swing.*;
+import javax.swing.GroupLayout;
+import javax.swing.JLabel;
 
 import io.github.astrapi69.model.BaseModel;
 import io.github.astrapi69.model.LambdaModel;

@@ -24,11 +24,12 @@
  */
 package io.github.astrapi69.swing.tree.panel;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.util.Optional;
 
-import javax.swing.*;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;

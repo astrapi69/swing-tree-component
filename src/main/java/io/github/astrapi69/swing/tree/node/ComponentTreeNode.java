@@ -24,7 +24,7 @@
  */
 package io.github.astrapi69.swing.tree.node;
 
-import java.awt.*;
+import java.awt.Component;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 

@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.swing.tree.panel.node;
 
-import java.awt.*;
+import java.awt.GridLayout;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 import io.github.astrapi69.component.model.node.NodeModel;
 import io.github.astrapi69.model.BaseModel;

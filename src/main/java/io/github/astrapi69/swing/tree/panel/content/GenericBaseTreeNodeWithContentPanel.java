@@ -24,7 +24,7 @@
  */
 package io.github.astrapi69.swing.tree.panel.content;
 
-import javax.swing.*;
+import javax.swing.GroupLayout;
 
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.model.BaseModel;

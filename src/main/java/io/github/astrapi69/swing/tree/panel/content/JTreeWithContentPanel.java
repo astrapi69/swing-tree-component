@@ -26,7 +26,8 @@ package io.github.astrapi69.swing.tree.panel.content;
 
 import java.awt.event.MouseEvent;
 
-import javax.swing.*;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 import io.github.astrapi69.model.BaseModel;
