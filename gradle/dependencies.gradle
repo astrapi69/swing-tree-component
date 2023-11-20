@@ -31,5 +31,5 @@ dependencies {
     testImplementation("io.github.astrapi69:test-object:$testObjectVersion")
     testImplementation("org.meanbean:meanbean:$meanbeanVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformLauncherVersion")
 }
