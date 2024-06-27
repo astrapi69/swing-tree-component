@@ -21,6 +21,7 @@ dependencies {
     implementation libs.silly.collection
     implementation libs.roboter
     implementation libs.swing.model.components
+
     testImplementation libs.awt.extensions
     testImplementation libs.assertj.swing
     testImplementation libs.id.generate

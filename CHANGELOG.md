@@ -8,6 +8,23 @@ ADDED:
 
 - new libs.versions.toml file for new automatic catalog versions update
 
+CHANGED:
+
+- update gradle to new version 8.8
+- update of dependency lombok version to 1.18.32
+- update of gradle-plugin dependency with id 'com.github.ben-manes.versions' to new patch version 0.51.0
+- update of gradle-plugin dependency with id 'org.ajoberstar.grgit' to new patch version 5.2.2
+- update of gradle-plugin dependency with id 'io.freefair.lombok' to new patch version 8.6
+- update of gradle-plugin dependency with id 'com.diffplug.spotless' to new beta version 7.0.0.BETA1
+- update of dependency commons-lang3 to new version 3.14.0
+- update of dependency icon-img-extensions to new version 4
+- update of dependency miglayout-swing to new version 11.3
+- update of dependency silly-collection to new minor version 27.1
+- update of dependency swing-base-components in new minor version 4.2
+- update of test dependency awt-extensions to new version 1.2
+- update of test dependency file-worker version to 17.2
+- update of test dependency silly-io to new major version 3.1
+- update of test dependency junit-jupiter to new milestone version 5.11.0-M2
 
 Version 3.1
 -------------
