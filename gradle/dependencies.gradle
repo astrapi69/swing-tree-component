@@ -1,36 +1,13 @@
 dependencies {
-
-    compileOnly libs.lombok
-    annotationProcessor libs.lombok
-    testCompileOnly libs.lombok
-    testAnnotationProcessor libs.lombok
-
-    implementation libs.commons.lang3
-    implementation libs.miglayout.swing
-    implementation libs.swing.base.components
-    implementation libs.model.data
-    implementation libs.tree.api
-    implementation libs.gen.tree
-    implementation libs.icon.img.extensions
-    implementation libs.swing.table.components
-    implementation libs.menu.action
-    implementation libs.swing.renderer
-    implementation libs.component.model
-    implementation libs.visitor
-    implementation libs.data.api
-    implementation libs.silly.collection
-    implementation libs.roboter
-    implementation libs.swing.model.components
-
-    testImplementation libs.awt.extensions
-    testImplementation libs.assertj.swing
-    testImplementation libs.id.generate
-    testImplementation libs.silly.io
-    testImplementation libs.file.worker
-    testImplementation libs.throwable
-    testImplementation libs.tango.icon.theme
-    testImplementation libs.silk.icon.theme
     // Note: use of bundles...
+    annotationProcessor libs.bundles.annotation.processor
+    compileOnly libs.bundles.compile.only
+
+    implementation libs.bundles.core.dependencies
+
+    testAnnotationProcessor libs.bundles.test.annotation.processor
+    testCompileOnly libs.bundles.test.compile.only
+
     testImplementation libs.bundles.unit.testing
-    testRuntimeOnly libs.junit.platform.launcher
+    testRuntimeOnly libs.bundles.test.runtime.only
 }

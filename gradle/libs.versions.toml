@@ -1,39 +1,37 @@
 [versions]
 assertj-swing-version = "3.17.1"
-awt-extensions-version = "1.2"
-commons-lang3-version = "3.14.0"
+awt-extensions-version = "2.0"
+commons-lang3-version = "3.20.0"
 component-model-version = "2"
-data-api-version = "4.1"
-file-worker-version = "17.2"
-gen-tree-version = "9"
-gradle-plugin-grgit-version = "5.2.2"
-gradle-plugin-license-version = "0.16.1"
-gradle-plugin-lombok-version = "8.6"
-gradle-plugin-spotless-version = "7.0.0.BETA1"
-gradle-plugin-version-catalog-update-version = "0.8.4"
-gradle-plugin-versions-version = "0.51.0"
-icon-img-extensions-version = "4"
+data-api-version = "5"
+file-worker-version = "19.0"
+gen-tree-version = "11.1"
+gradle-plugin-lombok-version = "9.5.0"
+gradle-plugin-spotless-version = "8.10.0"
+gradle-plugin-version-catalog-update-version = "1.1.1"
+gradle-plugin-versions-version = "0.61.0"
+icon-img-extensions-version = "4.1"
 id-generate-version = "1.1"
-junit-jupiter-version = "5.11.0-M2"
-junit-platform-launcher-version = "1.11.0-M2"
-lombok-version = "1.18.32"
+junit-jupiter-version = "6.1.3"
+junit-platform-launcher-version = "6.1.3"
+lombok-version = "1.18.46"
 meanbean-version = "2.0.3"
-menu-action-version = "3.4"
-miglayout-swing-version = "11.3"
-model-data-version = "3.1"
+menu-action-version = "5.1"
+miglayout-swing-version = "11.4.3"
+model-data-version = "3.2.1"
 roboter-version = "2"
 silk-icon-theme-version = "1"
-silly-collection-version = "27.1"
-silly-io-version = "3.1"
-swing-base-components-version = "4.2"
-swing-model-components-version = "1"
+silly-collection-version = "28.1"
+silly-io-version = "3.6"
+swing-base-components-version = "5.1"
+swing-model-components-version = "1.1"
 swing-renderer-version = "3.1"
 swing-table-components-version = "3.1"
 tango-icon-theme-version = "0.8.90"
-test-object-version = "8.2"
-throwable-version = "2.3"
-tree-api-version = "1.5"
-visitor-version = "6"
+test-object-version = "9"
+throwable-version = "3"
+tree-api-version = "2.1"
+visitor-pattern-version = "7"
 
 [libraries]
 assertj-swing = { module = "org.assertj:assertj-swing", version.ref = "assertj-swing-version" }
@@ -64,19 +62,65 @@ tango-icon-theme = { module = "org.freedesktop.tango:tango-icon-theme", version.
 test-object = { module = "io.github.astrapi69:test-object", version.ref = "test-object-version" }
 throwable = { module = "io.github.astrapi69:throwable", version.ref = "throwable-version" }
 tree-api = { module = "io.github.astrapi69:tree-api", version.ref = "tree-api-version" }
-visitor = { module = "io.github.astrapi69:visitor", version.ref = "visitor-version" }
+visitor-pattern = { module = "io.github.astrapi69:visitor-pattern", version.ref = "visitor-pattern-version" }
 
 [bundles]
+# Dependencies for the annotation processor used during the compilation process
+annotation-processor = [
+    "lombok",
+]
+# Dependencies required only at compile-time and not included in the final artifact
+compile-only = [
+    "lombok",
+]
+# The core dependencies
+core-dependencies = [
+    "commons-lang3",
+    "component-model",
+    "data-api",
+    "gen-tree",
+    "icon-img-extensions",
+    "menu-action",
+    "miglayout-swing",
+    "model-data",
+    "roboter",
+    "silly-collection",
+    "swing-base-components",
+    "swing-model-components",
+    "swing-renderer",
+    "swing-table-components",
+    "tree-api",
+    "visitor-pattern",
+]
+# Annotation processor dependencies used specifically for test classes
+test-annotation-processor = [
+    "lombok",
+]
+# Dependencies required only at test compile-time and not included in test runtime
+test-compile-only = [
+    "lombok",
+]
+# Dependencies required only at test runtime, such as test execution platforms
+test-runtime-only = [
+    "junit-platform-launcher",
+]
+# Dependencies required for unit testing
 unit-testing = [
+    "assertj-swing",
+    "awt-extensions",
+    "file-worker",
+    "id-generate",
     "junit-jupiter",
     "meanbean",
+    "silk-icon-theme",
+    "silly-io",
+    "tango-icon-theme",
     "test-object",
+    "throwable",
 ]
 
 [plugins]
 gradle-versions-plugin = { id = "com.github.ben-manes.versions", version.ref = "gradle-plugin-versions-version" }
-grgit-gradle = { id = "org.ajoberstar.grgit", version.ref = "gradle-plugin-grgit-version" }
-license-gradle-plugin = { id = "com.github.hierynomus.license", version.ref = "gradle-plugin-license-version" }
 lombok-plugin = { id = "io.freefair.lombok", version.ref = "gradle-plugin-lombok-version" }
 spotless-plugin-gradle = { id = "com.diffplug.spotless", version.ref = "gradle-plugin-spotless-version" }
-version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradle-plugin-version-catalog-update-version" }
+versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradle-plugin-version-catalog-update-version" }
