@@ -13,6 +13,10 @@ CHANGED:
 - CI submits the Gradle dependency graph to GitHub (#3)
 - .gitignore no longer hides /gradle (#5)
 - the issue templates' front matter has its line breaks back (#7)
+- publishing as in the rest of the family (#13): the Central Portal through the nmcp settings plugin, a
+  release waiting for the maintainer (USER_MANAGED), the signing subkey through GPG_KEY_ID, signing that
+  follows the key, a refused upload when only half of the key is set, and uploads only from CI, a release
+  only from its RELEASE-* tag; CI and the dependency submission set up JDK 25, as publish.yml already did
 
 Version 3.2
 -------------
