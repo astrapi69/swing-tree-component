@@ -1,30 +1,33 @@
 ## Change log
 ----------------------
 
-Version 3.2-SNAPSHOT
+Version 3.3 (unreleased)
 -------------
-
-ADDED:
-
-- new libs.versions.toml file for new automatic catalog versions update
 
 CHANGED:
 
-- update gradle to new version 8.8
-- update of dependency lombok version to 1.18.32
-- update of gradle-plugin dependency with id 'com.github.ben-manes.versions' to new patch version 0.51.0
-- update of gradle-plugin dependency with id 'org.ajoberstar.grgit' to new patch version 5.2.2
-- update of gradle-plugin dependency with id 'io.freefair.lombok' to new patch version 8.6
-- update of gradle-plugin dependency with id 'com.diffplug.spotless' to new beta version 7.0.0.BETA1
-- update of dependency commons-lang3 to new version 3.14.0
-- update of dependency icon-img-extensions to new version 4
-- update of dependency miglayout-swing to new version 11.3
-- update of dependency silly-collection to new minor version 27.1
-- update of dependency swing-base-components in new minor version 4.2
-- update of test dependency awt-extensions to new version 1.2
-- update of test dependency file-worker version to 17.2
-- update of test dependency silly-io to new major version 3.1
-- update of test dependency junit-jupiter to new milestone version 5.11.0-M2
+- the source of 3.2 is on GitHub (#9): the three commits it was built from had never been pushed. They are
+  merged into develop as they were built; a rebuild of the release commit gives the jars on Central byte for
+  byte, except the manifest's build time and build system
+- a pre-commit hook refuses a commit whose files Spotless would format (#1)
+- CI submits the Gradle dependency graph to GitHub (#3)
+- .gitignore no longer hides /gradle (#5)
+- the issue templates' front matter has its line breaks back (#7)
+
+Version 3.2
+-------------
+
+Released to Maven Central on 2026-08-24, built with Gradle 9.7.0 for JDK 25 (class file major 69,
+swing-tree-component-3.2.module).
+
+**swing-tree-component 3.2 requires JDK 25 or newer, at build and at runtime.**
+
+CHANGED:
+
+- JDK 25, Gradle 9.7.0, a Gradle version catalog, and publishing through the Central Portal
+- at runtime: roboter 2, gen-tree 11.1, menu-action 5.1, model-data 3.2.1, swing-base-components 5.1,
+  swing-model-components 1.1, swing-renderer 3.1, swing-table-components 3.1, silly-collection 28.1,
+  icon-img-extensions 4.1, miglayout-swing 11.4.3, commons-lang3 3.20.0 (swing-tree-component-3.2.module)
 
 Version 3.1
 -------------
