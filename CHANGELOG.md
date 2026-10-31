@@ -1,7 +1,7 @@
 ## Change log
 ----------------------
 
-Version 3.3 (unreleased)
+Version 3.3
 -------------
 
 CHANGED:
@@ -19,6 +19,8 @@ CHANGED:
   only from its RELEASE-* tag; CI and the dependency submission set up JDK 25, as publish.yml already did
 - roboter 3, from 2: it brings randomizer 10.7 instead of 10.1, whose default generator was seeded with the
   current time (GHSA-395w-fmf5-xfj3, #17)
+- the README names the family's funding channels, GitHub Sponsors, Liberapay, Ko-fi and PayPal, and no
+  cryptocurrency address any more (#11); its dead badges and links are replaced (#15)
 
 Version 3.2
 -------------
