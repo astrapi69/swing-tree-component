@@ -21,14 +21,16 @@
 module swing.tree.component.main
 {
 	requires java.desktop;
-	requires data.api;
-	requires gen.tree;
+	requires io.github.astrapisixtynine.data.api;
+	requires io.github.astrapisixtynine.design.patterns.visitor;
+	requires io.github.astrapisixtynine.gen.tree;
 	requires lombok;
+	requires org.danekja.jdk.serializable.functional;
 	requires swing.renderer.main;
 	requires model.data;
-	requires swing.base.components.main;
+	requires io.github.astrapisixtynine.swing.base.components;
 	requires swing.table.components.main;
-	requires menu.actions.main;
+	requires io.github.astrapisixtynine.menu.action;
 	requires roboter.main;
 	requires component.model.main;
 	requires swing.model.components.main;

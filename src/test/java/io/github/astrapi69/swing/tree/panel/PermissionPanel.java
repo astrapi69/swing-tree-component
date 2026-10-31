@@ -69,11 +69,12 @@ public class PermissionPanel extends BasePanel<Permission>
 		txtShortcut = new JMTextField();
 		txtDescription = new JMTextField();
 
-		txtName.setPropertyModel(LambdaModel.of(modelObject::getName, modelObject::setName));
-		txtShortcut
-			.setPropertyModel(LambdaModel.of(modelObject::getShortcut, modelObject::setShortcut));
+		txtName
+			.setPropertyModel(LambdaModel.<String> of(modelObject::getName, modelObject::setName));
+		txtShortcut.setPropertyModel(
+			LambdaModel.<String> of(modelObject::getShortcut, modelObject::setShortcut));
 		txtDescription.setPropertyModel(
-			LambdaModel.of(modelObject::getDescription, modelObject::setDescription));
+			LambdaModel.<String> of(modelObject::getDescription, modelObject::setDescription));
 
 		lblName.setText("Name");
 
