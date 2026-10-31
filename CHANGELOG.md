@@ -17,6 +17,8 @@ CHANGED:
   release waiting for the maintainer (USER_MANAGED), the signing subkey through GPG_KEY_ID, signing that
   follows the key, a refused upload when only half of the key is set, and uploads only from CI, a release
   only from its RELEASE-* tag; CI and the dependency submission set up JDK 25, as publish.yml already did
+- roboter 3, from 2: it brings randomizer 10.7 instead of 10.1, whose default generator was seeded with the
+  current time (GHSA-395w-fmf5-xfj3, #17)
 
 Version 3.2
 -------------
