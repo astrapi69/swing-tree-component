@@ -58,6 +58,14 @@ CHANGED:
 - move factory classes to factory package
 - moved extension classes to extension package
 
+KNOWN ISSUES:
+
+- works only with model-data up to 3.1, named afterwards: NodePanel calls LambdaModel#of with the interfaces
+  SerializableSupplier and SerializableConsumer of io.github.astrapi69.model.api, which model-data 3.2 removed
+  in a minor release. With model-data 3.2 or later on the class path, NodePanel fails at run time with
+  NoClassDefFoundError or NoSuchMethodError; with model-data 3.2 or later use swing-tree-component 3.2 or
+  later (measured 2026-11-18)
+
 Version 3
 -------------
 
@@ -84,6 +92,14 @@ CHANGED:
 - update of dependency icon-img-extensions in new minor version 3.2
 - update of dependency silly-collection to new major version 27
 - update of test dependency file-worker to new major version 17
+
+KNOWN ISSUES:
+
+- works only with model-data up to 3.1, named afterwards: NodePanel calls LambdaModel#of with the interfaces
+  SerializableSupplier and SerializableConsumer of io.github.astrapi69.model.api, which model-data 3.2 removed
+  in a minor release. With model-data 3.2 or later on the class path, NodePanel fails at run time with
+  NoClassDefFoundError or NoSuchMethodError; with model-data 3.2 or later use swing-tree-component 3.2 or
+  later (measured 2026-11-18)
 
 Version 2.6
 -------------
