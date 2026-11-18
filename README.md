@@ -85,6 +85,11 @@ Then you can add the dependency to your dependencies:
             ...
         </dependencies>
 
+## Compatibility
+
+swing-tree-component 3 and 3.1 work only with model-data up to 3.1, because model-data 3.2 removed the
+types their NodePanel calls; with model-data 3.2 or later use swing-tree-component 3.2 or later.
+
 ## Support this project
 
 If swing-tree-component is useful to you, a star on [GitHub](https://github.com/astrapi69/swing-tree-component) helps others find it.
